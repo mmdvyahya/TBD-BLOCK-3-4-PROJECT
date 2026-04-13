@@ -426,7 +426,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1366981707}
-  - component: {fileID: 1366981706}
+  - component: {fileID: 1366981708}
   m_Layer: 0
   m_Name: _GameManager
   m_TagString: Untagged
@@ -434,22 +434,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1366981706
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1366981705}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c119c0080150cc949be2990cd6cf29ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PolarBearGame
-  iceSheetCount: 10
-  laneZSpacing: 3
-  fallBoundaryX: 4.8
-  randomSeed: 42
 --- !u!4 &1366981707
 Transform:
   m_ObjectHideFlags: 0
@@ -465,6 +449,25 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1366981708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1366981705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c119c0080150cc949be2990cd6cf29ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PolarBearGame
+  iceSheetCount: 10
+  laneZSpacing: 3
+  fallBoundaryX: 4.8
+  randomSeed: 42
+  camHeight: 10
+  camZOffset: -5
+  camFollowSpeed: 5
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

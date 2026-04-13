@@ -31,32 +31,27 @@ public class IceSheetController : MonoBehaviour
 
         _obstacleObj = new GameObject($"Obstacle_{sheetIndex}");
         _obstacleObj.transform.SetParent(transform);
-        _obstacleObj.transform.localPosition = new Vector3(0f, 0.65f, 0f);
+        _obstacleObj.transform.localPosition = Vector3.zero;
 
-        var body = GameObject.CreatePrimitive(PrimitiveType.Cube);
-        body.name = "ObstacleBody";
-        body.transform.SetParent(_obstacleObj.transform);
-        body.transform.localPosition = Vector3.zero;
-        body.transform.localScale    = new Vector3(0.68f, 0.88f, 0.68f);
-        PolarBearGame.ApplyMaterial(body, new Color(0.95f, 0.32f, 0.15f));
-        Destroy(body.GetComponent<Collider>());
+        Color snowBase   = new Color(0.92f, 0.96f, 1.00f);
+        Color snowShadow = new Color(0.78f, 0.88f, 0.97f);
 
-        var cap = GameObject.CreatePrimitive(PrimitiveType.Cube);
-        cap.name = "ObstacleCap";
-        cap.transform.SetParent(_obstacleObj.transform);
-        cap.transform.localPosition = new Vector3(0f, 0.52f, 0f);
-        cap.transform.localScale    = new Vector3(0.82f, 0.18f, 0.82f);
-        PolarBearGame.ApplyMaterial(cap, new Color(1f, 0.55f, 0.2f));
-        Destroy(cap.GetComponent<Collider>());
+        MakeSnowball(_obstacleObj.transform, new Vector3(-0.18f, 0.38f,  0.10f), 0.42f, snowShadow);
+        MakeSnowball(_obstacleObj.transform, new Vector3( 0.16f, 0.36f, -0.08f), 0.40f, snowShadow);
+        MakeSnowball(_obstacleObj.transform, new Vector3( 0.00f, 0.38f,  0.00f), 0.48f, snowBase);
+        MakeSnowball(_obstacleObj.transform, new Vector3(-0.10f, 0.70f,  0.05f), 0.30f, snowBase);
+        MakeSnowball(_obstacleObj.transform, new Vector3( 0.08f, 0.72f, -0.04f), 0.28f, snowShadow);
+        MakeSnowball(_obstacleObj.transform, new Vector3( 0.00f, 0.96f,  0.00f), 0.22f, snowBase);
+    }
 
-        var spike = GameObject.CreatePrimitive(PrimitiveType.Cube);
-        spike.name = "ObstacleSpike";
-        spike.transform.SetParent(_obstacleObj.transform);
-        spike.transform.localPosition = new Vector3(0f, 0.78f, 0f);
-        spike.transform.localScale    = new Vector3(0.22f, 0.35f, 0.22f);
-        spike.transform.localRotation = Quaternion.Euler(0f, 45f, 0f);
-        PolarBearGame.ApplyMaterial(spike, new Color(1f, 0.72f, 0.28f));
-        Destroy(spike.GetComponent<Collider>());
+    void MakeSnowball(Transform parent, Vector3 localPos, float radius, Color col)
+    {
+        var s = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+        s.transform.SetParent(parent);
+        s.transform.localPosition = localPos;
+        s.transform.localScale    = Vector3.one * radius;
+        PolarBearGame.ApplyMaterial(s, col);
+        Destroy(s.GetComponent<Collider>());
     }
 
     public void MeltObstacle()
