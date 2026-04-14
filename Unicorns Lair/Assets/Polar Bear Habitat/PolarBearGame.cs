@@ -204,7 +204,7 @@ public class PolarBearGame : MonoBehaviour
         MakeCornerButton("BtnForward", "▲",       new Vector2(-90f, 200f), new Vector2(80f, 70f),  btnIce,  () => Player?.TryJumpForward());
         MakeCornerButton("BtnLeft",    "◀",        new Vector2(-150f, 120f), new Vector2(70f, 70f), btnIce,  () => Player?.TryJumpLateral(-1));
         MakeCornerButton("BtnRight",   "▶",        new Vector2(-30f,  120f), new Vector2(70f, 70f), btnIce,  () => Player?.TryJumpLateral(1));
-        MakeCornerButton("BtnBlow",    "💨 Blow",  new Vector2(-90f,  35f),  new Vector2(130f, 70f), btnBlow, () => Player?.TryBlow());
+        MakeCornerButton("BtnBlow",    "💨 Blaas",  new Vector2(-90f,  35f),  new Vector2(130f, 70f), btnBlow, () => Player?.TryBlow());
 
         var statusObj = new GameObject("StatusText");
         statusObj.transform.SetParent(_canvas.transform, false);
@@ -240,14 +240,14 @@ public class PolarBearGame : MonoBehaviour
         ort.anchoredPosition = new Vector2(0f, 100f);
         ort.sizeDelta        = new Vector2(700f, 120f);
         var ot = oops.AddComponent<Text>();
-        ot.text      = "Splash! 🌊\nTry again!";
+        ot.text      = "Splash! 🌊\nProbeer opnieuw!";
         ot.font      = GetFont();
         ot.fontSize  = 56;
         ot.fontStyle = FontStyle.Bold;
         ot.alignment = TextAnchor.MiddleCenter;
         ot.color     = Color.white;
 
-        MakeCenteredButton("BtnRetry", "🐻‍❄️  Let's go!", new Vector2(0f, -60f),
+        MakeCenteredButton("BtnRetry", "🐻‍❄️  Start!", new Vector2(0f, -60f),
             new Vector2(360f, 120f), new Color(0.22f, 0.75f, 1f), OnRetryPressed, _retryPanel.transform);
 
         _retryPanel.SetActive(false);
@@ -353,7 +353,7 @@ public class PolarBearGame : MonoBehaviour
                 break;
 
             case GameState.ReachedEnd:
-                SetStatus("You made it! 🐟 Tap the fish!");
+                SetStatus("Gelukt! 🐟 Voer de ijsbeer!");
                 FishObject.SetActive(true);
                 FishObject.AddComponent<FeedingController>();
                 break;
@@ -363,7 +363,7 @@ public class PolarBearGame : MonoBehaviour
                 break;
 
             case GameState.Complete:
-                SetStatus("Yum yum! 🎉");
+                SetStatus("Lekker! 🎉");
                 StartCoroutine(CompleteSequence());
                 break;
         }
@@ -372,7 +372,7 @@ public class PolarBearGame : MonoBehaviour
     IEnumerator CompleteSequence()
     {
         yield return new WaitForSeconds(2.5f);
-        Debug.Log("[PolarBear] Minigame complete. Load next scene here.");
+        Debug.Log("[PolarBear] Minigame Gewonnen!");
     }
 
     void OnRetryPressed()
@@ -384,19 +384,19 @@ public class PolarBearGame : MonoBehaviour
 
     public void ShowBlowFeedback(bool hit)
     {
-        SetStatus(hit ? "Poof! 💨 Ice melted!" : "Nothing to blow away!");
+        SetStatus(hit ? "Poof! 💨 Sneeuw Weggeblazen!" : "Er is niks om weg te blazen!");
         StartCoroutine(ClearStatusAfter(1.6f));
     }
 
     public void ShowMissedFeedback()
     {
-        SetStatus("Too far! ❄️ Wait for it...");
+        SetStatus("Te ver! ❄️ Wacht op de ijsplaat!");
         StartCoroutine(ClearStatusAfter(1.6f));
     }
 
     public void ShowBlockedFeedback()
     {
-        SetStatus("Blocked! 🧊  Blow it away first!");
+        SetStatus("Geblockeerd! 🧊  Blaas eerst!");
         StartCoroutine(ClearStatusAfter(1.6f));
     }
 

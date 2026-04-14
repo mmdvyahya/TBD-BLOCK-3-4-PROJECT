@@ -6,7 +6,16 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
+    path: Assets/Start Screen/StartScreen.unity
+    guid: c4715957ff99dd0499b734fd3c267634
+  - enabled: 1
+    path: Assets/Buy Habitat Menu/BuyHabitatScreen.unity
+    guid: 8cfcaded82621d84f9c8aef97e04c4d3
+  - enabled: 1
+    path: Assets/Place Habitats/PlaceHabitats.unity
+    guid: 19252841c6fd8e64b9c9878f5261df6d
+  - enabled: 1
+    path: Assets/beaver habitat/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
