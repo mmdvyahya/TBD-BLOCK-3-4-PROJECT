@@ -26,6 +26,8 @@ public class PlaceBeaverHabitatManager : MonoBehaviour
     {
         _cam = Camera.main;
 
+        LanguageManager.Ensure();
+
         EnsureLight();
         EnsureEventSystem();
 
@@ -136,7 +138,7 @@ public class PlaceBeaverHabitatManager : MonoBehaviour
         lrt.anchorMax = Vector2.one;
         lrt.offsetMin = lrt.offsetMax = Vector2.zero;
         var txt = labelObj.AddComponent<Text>();
-        txt.text          = "Plaatsen";
+        txt.text          = LanguageManager.Instance.Get("btn_plaatsen");
         txt.font          = GetFont();
         txt.fontSize      = 52;
         txt.fontStyle     = FontStyle.Bold;
@@ -192,7 +194,7 @@ public class PlaceBeaverHabitatManager : MonoBehaviour
     {
         yield return StartCoroutine(PopIn(habitatObject));
 
-        _statusText.text = "Goed gedaan! 🎉";
+        _statusText.text = LanguageManager.Instance.Get("well_done");
 
         yield return new WaitForSeconds(0.9f);
 
@@ -314,7 +316,7 @@ public class PlaceBeaverHabitatManager : MonoBehaviour
         lrt.anchorMax = Vector2.one;
         lrt.offsetMin = lrt.offsetMax = Vector2.zero;
         var txt = labelObj.AddComponent<Text>();
-        txt.text          = "Doorgaan";
+        txt.text          = LanguageManager.Instance.Get("btn_continue");
         txt.font          = GetFont();
         txt.fontSize      = 52;
         txt.fontStyle     = FontStyle.Bold;

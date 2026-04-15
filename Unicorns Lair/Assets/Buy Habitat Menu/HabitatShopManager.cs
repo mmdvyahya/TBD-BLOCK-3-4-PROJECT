@@ -13,15 +13,15 @@ public class HabitatShopManager : MonoBehaviour
     private static readonly float CARD_GAP   = 24f;
     private static readonly float CARD_PAD   = 20f;
 
-    private int    _currency;
-    private Canvas _canvas;
-    private Text   _currencyText;
+    private int        _currency;
+    private Canvas     _canvas;
+    private Text       _currencyText;
     private ScrollRect _scrollRect;
 
     private readonly List<HabitatEntry> _habitats = new()
     {
-        new HabitatEntry("Bever Verblijf",   "Een rustige waterplas\nvoor vrolijke bevers.", "🦫",     250, new Color(0.45f, 0.28f, 0.10f)),
-        new HabitatEntry("IJsbeer Verblijf", "Een ijskoud paradijs\nvoor de ijsbeer.",       "🐻\u200d❄️", 250, new Color(0.18f, 0.48f, 0.78f)),
+        new HabitatEntry("habitat_beaver_name",    "habitat_beaver_desc",    "🦫",     250, new Color(0.45f, 0.28f, 0.10f)),
+        new HabitatEntry("habitat_polarbear_name", "habitat_polarbear_desc", "🐻\u200d❄️", 250, new Color(0.18f, 0.48f, 0.78f)),
     };
 
     private readonly List<CardRefs> _cardRefs = new();
@@ -40,7 +40,52 @@ public class HabitatShopManager : MonoBehaviour
         cam.backgroundColor = new Color(0.13f, 0.19f, 0.29f);
         cam.clearFlags      = CameraClearFlags.SolidColor;
 
+        LanguageManager.Ensure();
+
         BuildUI();
+
+        LanguageManager.Instance.LanguageChanged += OnLanguageChanged;
+    }
+
+    void OnDestroy()
+    {
+        if (LanguageManager.Instance != null)
+            LanguageManager.Instance.LanguageChanged -= OnLanguageChanged;
+    }
+
+    void OnLanguageChanged()
+    {
+        RefreshAllText();
+    }
+
+    void RefreshAllText()
+    {
+        UpdateCurrencyText();
+
+        for (int i = 0; i < _cardRefs.Count; i++)
+        {
+            var refs = _cardRefs[i];
+            var h    = _habitats[i];
+
+            refs.NameText.text  = LanguageManager.Instance.Get(h.NameKey);
+            refs.DescText.text  = LanguageManager.Instance.Get(h.DescKey);
+            refs.PriceText.text = LanguageManager.Instance.Get("shop_currency_short", h.Price);
+
+            if (!refs.Purchased)
+                refs.BuyLabel.text = LanguageManager.Instance.Get("btn_buy", h.Price);
+
+            if (refs.PlaatsenLabel != null)
+                refs.PlaatsenLabel.text = LanguageManager.Instance.Get("btn_plaatsen");
+        }
+
+        var headerTitle = _canvas.transform.Find("Header/Title");
+        if (headerTitle) headerTitle.GetComponent<Text>().text = LanguageManager.Instance.Get("shop_title");
+    }
+
+    void UpdateCurrencyText()
+    {
+        if (_currencyText)
+            _currencyText.text = LanguageManager.Instance.Get("shop_currency", _currency);
     }
 
     void BuildUI()
@@ -87,7 +132,7 @@ public class HabitatShopManager : MonoBehaviour
         rt.anchoredPosition = Vector2.zero;
         rt.sizeDelta        = new Vector2(0f, HEADER_H);
 
-        var lrt = MakeLabel("Title", obj.transform, "🏗  Koop een Verblijf", 54, FontStyle.Bold, Color.white);
+        var lrt = MakeLabel("Title", obj.transform, LanguageManager.Instance.Get("shop_title"), 54, FontStyle.Bold, Color.white);
         lrt.anchorMin = Vector2.zero;
         lrt.anchorMax = Vector2.one;
         lrt.offsetMin = new Vector2(20f, 8f);
@@ -108,7 +153,7 @@ public class HabitatShopManager : MonoBehaviour
         rt.anchoredPosition = new Vector2(0f, -HEADER_H);
         rt.sizeDelta        = new Vector2(0f, CURRENCY_H);
 
-        var lrt = MakeLabel("CurrencyText", obj.transform, $"💰  {_currency} munten", 40, FontStyle.Bold, Color.white);
+        var lrt = MakeLabel("CurrencyText", obj.transform, LanguageManager.Instance.Get("shop_currency", _currency), 40, FontStyle.Bold, Color.white);
         lrt.anchorMin = Vector2.zero;
         lrt.anchorMax = Vector2.one;
         lrt.offsetMin = new Vector2(20f, 0f);
@@ -171,7 +216,8 @@ public class HabitatShopManager : MonoBehaviour
 
     void MakeCard(Transform parent, int index)
     {
-        var h = _habitats[index];
+        var h   = _habitats[index];
+        var lm  = LanguageManager.Instance;
 
         var cardObj = new GameObject($"Card_{index}");
         cardObj.transform.SetParent(parent, false);
@@ -210,7 +256,7 @@ public class HabitatShopManager : MonoBehaviour
         eTxt.offsetMin = eTxt.offsetMax = Vector2.zero;
         eTxt.GetComponent<Text>().alignment = TextAnchor.MiddleCenter;
 
-        var nameLrt = MakeLabel("Name", cardObj.transform, h.Name, 48, FontStyle.Bold, Color.white);
+        var nameLrt = MakeLabel("Name", cardObj.transform, lm.Get(h.NameKey), 48, FontStyle.Bold, Color.white);
         nameLrt.anchorMin        = new Vector2(0f, 1f);
         nameLrt.anchorMax        = new Vector2(1f, 1f);
         nameLrt.pivot            = new Vector2(0f, 1f);
@@ -218,7 +264,7 @@ public class HabitatShopManager : MonoBehaviour
         nameLrt.sizeDelta        = new Vector2(-268f, 64f);
         nameLrt.GetComponent<Text>().alignment = TextAnchor.MiddleLeft;
 
-        var descLrt = MakeLabel("Desc", cardObj.transform, h.Description, 30, FontStyle.Normal, new Color(0.75f, 0.88f, 1f));
+        var descLrt = MakeLabel("Desc", cardObj.transform, lm.Get(h.DescKey), 30, FontStyle.Normal, new Color(0.75f, 0.88f, 1f));
         descLrt.anchorMin        = new Vector2(0f, 1f);
         descLrt.anchorMax        = new Vector2(1f, 1f);
         descLrt.pivot            = new Vector2(0f, 1f);
@@ -228,7 +274,7 @@ public class HabitatShopManager : MonoBehaviour
         descTxt.alignment   = TextAnchor.UpperLeft;
         descTxt.lineSpacing = 1.3f;
 
-        var priceLrt = MakeLabel("Price", cardObj.transform, $"💰 {h.Price} munten", 36, FontStyle.Bold, new Color(0.35f, 1f, 0.60f));
+        var priceLrt = MakeLabel("Price", cardObj.transform, lm.Get("shop_currency_short", h.Price), 36, FontStyle.Bold, new Color(0.35f, 1f, 0.60f));
         priceLrt.anchorMin        = new Vector2(0f, 1f);
         priceLrt.anchorMax        = new Vector2(1f, 1f);
         priceLrt.pivot            = new Vector2(0f, 1f);
@@ -236,7 +282,7 @@ public class HabitatShopManager : MonoBehaviour
         priceLrt.sizeDelta        = new Vector2(-268f, 52f);
         priceLrt.GetComponent<Text>().alignment = TextAnchor.MiddleLeft;
 
-        bool hasPlaatsen = index == 0;
+        bool hasPlaatsen = index == 0 || index == 1;
 
         var buyBtnObj = new GameObject("BuyBtn");
         buyBtnObj.transform.SetParent(cardObj.transform, false);
@@ -255,15 +301,16 @@ public class HabitatShopManager : MonoBehaviour
         buyBtn.onClick.AddListener(() => OnBuy(ci));
         buyBtn.colors = MakeColorBlock(h.Color);
 
-        var buyLabelRt = MakeLabel("BtnText", buyBtnObj.transform, $"Kopen voor 💰 {h.Price}", 38, FontStyle.Bold, Color.white);
+        var buyLabelRt = MakeLabel("BtnText", buyBtnObj.transform, lm.Get("btn_buy", h.Price), 38, FontStyle.Bold, Color.white);
         buyLabelRt.anchorMin = Vector2.zero;
         buyLabelRt.anchorMax = Vector2.one;
         buyLabelRt.offsetMin = buyLabelRt.offsetMax = Vector2.zero;
         buyLabelRt.GetComponent<Text>().alignment = TextAnchor.MiddleCenter;
         var buyLabelText = buyLabelRt.GetComponent<Text>();
 
-        Button plaatsenBtn = null;
-        Image  plaatsenImg = null;
+        Button plaatsenBtn   = null;
+        Image  plaatsenImg   = null;
+        Text   plaatsenLabel = null;
 
         if (hasPlaatsen)
         {
@@ -281,25 +328,31 @@ public class HabitatShopManager : MonoBehaviour
             plaatsenBtn = plaatsenObj.AddComponent<Button>();
             plaatsenBtn.targetGraphic = plaatsenImg;
             plaatsenBtn.colors        = MakeColorBlock(new Color(0.28f, 0.65f, 0.38f));
-            plaatsenBtn.onClick.AddListener(() => UnityEngine.SceneManagement.SceneManager.LoadScene("PlaceHabitats"));
+            string targetScene = index == 0 ? "PlaceHabitats" : "PolarBear";
+            plaatsenBtn.onClick.AddListener(() => UnityEngine.SceneManagement.SceneManager.LoadScene(targetScene));
 
-            var pLabelRt = MakeLabel("PlaatsenText", plaatsenObj.transform, "Plaatsen", 36, FontStyle.Bold, Color.white);
+            var pLabelRt = MakeLabel("PlaatsenText", plaatsenObj.transform, lm.Get("btn_plaatsen"), 36, FontStyle.Bold, Color.white);
             pLabelRt.anchorMin = Vector2.zero;
             pLabelRt.anchorMax = Vector2.one;
             pLabelRt.offsetMin = pLabelRt.offsetMax = Vector2.zero;
             pLabelRt.GetComponent<Text>().alignment = TextAnchor.MiddleCenter;
+            plaatsenLabel = pLabelRt.GetComponent<Text>();
 
             plaatsenObj.SetActive(false);
         }
 
         _cardRefs.Add(new CardRefs
         {
-            Btn         = buyBtn,
-            BtnImg      = buyBtnImg,
-            NormalColor = h.Color,
-            BuyLabel    = buyLabelText,
-            PlaatsenBtn = plaatsenBtn,
-            PlaatsenImg = plaatsenImg,
+            Btn           = buyBtn,
+            BtnImg        = buyBtnImg,
+            NormalColor   = h.Color,
+            BuyLabel      = buyLabelText,
+            NameText      = nameLrt.GetComponent<Text>(),
+            DescText      = descLrt.GetComponent<Text>(),
+            PriceText     = priceLrt.GetComponent<Text>(),
+            PlaatsenBtn   = plaatsenBtn,
+            PlaatsenImg   = plaatsenImg,
+            PlaatsenLabel = plaatsenLabel,
         });
     }
 
@@ -313,31 +366,31 @@ public class HabitatShopManager : MonoBehaviour
         if (_currency < h.Price)
         {
             StartCoroutine(ShakeCard(index));
-            StartCoroutine(ShowToast("Niet genoeg munten! 💸", new Color(0.80f, 0.18f, 0.12f)));
+            StartCoroutine(ShowToast(LanguageManager.Instance.Get("not_enough"), new Color(0.80f, 0.18f, 0.12f)));
             return;
         }
 
         _currency -= h.Price;
-        _currencyText.text  = $"💰  {_currency} munten";
-        refs.Purchased      = true;
-        refs.BuyLabel.text  = "✓  Gekocht!";
-        refs.BtnImg.color   = new Color(0.10f, 0.48f, 0.22f);
+        UpdateCurrencyText();
+
+        refs.Purchased    = true;
+        refs.BuyLabel.text = LanguageManager.Instance.Get("bought");
+        refs.BtnImg.color  = new Color(0.10f, 0.48f, 0.22f);
         refs.Btn.interactable = false;
-        refs.Btn.colors     = MakeColorBlock(new Color(0.10f, 0.48f, 0.22f));
+        refs.Btn.colors    = MakeColorBlock(new Color(0.10f, 0.48f, 0.22f));
 
         if (refs.PlaatsenBtn != null)
         {
             refs.PlaatsenBtn.gameObject.SetActive(true);
-
             var buyRt = refs.BtnImg.GetComponent<RectTransform>();
             buyRt.sizeDelta = new Vector2(-264f, 106f);
         }
 
         RefreshButtons();
-        StartCoroutine(ShowToast($"{h.Name} gekocht! 🎉", new Color(0.08f, 0.55f, 0.28f)));
+        StartCoroutine(ShowToast(
+            LanguageManager.Instance.Get(h.NameKey) + " " + LanguageManager.Instance.Get("bought") + " 🎉",
+            new Color(0.08f, 0.55f, 0.28f)));
         StartCoroutine(BounceCard(index));
-
-        Debug.Log($"[HabitatShop] Gekocht: {h.Name} — open plaatsingsmodus hier.");
     }
 
     void MakeScrollButtons(Transform root)
@@ -388,10 +441,10 @@ public class HabitatShopManager : MonoBehaviour
 
     IEnumerator SmoothScroll(int direction)
     {
-        float start     = _scrollRect.verticalNormalizedPosition;
-        float target    = Mathf.Clamp01(start + direction * 0.35f);
-        float t         = 0f;
-        float dur       = 0.25f;
+        float start  = _scrollRect.verticalNormalizedPosition;
+        float target = Mathf.Clamp01(start + direction * 0.35f);
+        float t      = 0f;
+        float dur    = 0.25f;
 
         while (t < dur)
         {
@@ -482,8 +535,8 @@ public class HabitatShopManager : MonoBehaviour
     static void MakeBgImage(GameObject obj, Color col)
     {
         var img = obj.AddComponent<Image>();
-        img.color          = col;
-        img.raycastTarget  = false;
+        img.color         = col;
+        img.raycastTarget = false;
     }
 
     void MakeBg(string name, Transform parent, Color col)
@@ -525,19 +578,19 @@ public class HabitatShopManager : MonoBehaviour
 
 public class HabitatEntry
 {
-    public string Name;
-    public string Description;
+    public string NameKey;
+    public string DescKey;
     public string Emoji;
     public int    Price;
     public Color  Color;
 
-    public HabitatEntry(string name, string desc, string emoji, int price, Color color)
+    public HabitatEntry(string nameKey, string descKey, string emoji, int price, Color color)
     {
-        Name        = name;
-        Description = desc;
-        Emoji       = emoji;
-        Price       = price;
-        Color       = color;
+        NameKey = nameKey;
+        DescKey = descKey;
+        Emoji   = emoji;
+        Price   = price;
+        Color   = color;
     }
 }
 
@@ -547,7 +600,11 @@ public class CardRefs
     public Image  BtnImg;
     public Color  NormalColor;
     public Text   BuyLabel;
+    public Text   NameText;
+    public Text   DescText;
+    public Text   PriceText;
     public Button PlaatsenBtn;
     public Image  PlaatsenImg;
+    public Text   PlaatsenLabel;
     public bool   Purchased;
 }

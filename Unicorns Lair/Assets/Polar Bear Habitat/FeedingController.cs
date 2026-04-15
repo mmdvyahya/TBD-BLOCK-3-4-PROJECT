@@ -12,6 +12,7 @@ public class FeedingController : MonoBehaviour
     void Start()
     {
         _cam = Camera.main;
+        LanguageManager.Ensure();
 
         var bob = GetComponent<FishBob>();
         if (bob != null) bob.enabled = false;
@@ -96,7 +97,7 @@ public class FeedingController : MonoBehaviour
         lrt.anchorMax = Vector2.one;
         lrt.offsetMin = lrt.offsetMax = Vector2.zero;
         var txt = labelObj.AddComponent<Text>();
-        txt.text      = "🐟  Feed Fish!";
+        txt.text      = LanguageManager.Instance.Get("pb_feed_btn");
         txt.font      = PolarBearGame.GetFont();
         txt.fontSize  = 52;
         txt.fontStyle = FontStyle.Bold;

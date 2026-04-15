@@ -35,6 +35,7 @@ public class PolarBearGame : MonoBehaviour
 
     void Start()
     {
+        LanguageManager.Ensure();
         BuildScene();
         BuildUI();
         SetState(GameState.Playing);
@@ -204,7 +205,7 @@ public class PolarBearGame : MonoBehaviour
         MakeCornerButton("BtnForward", "▲",       new Vector2(-90f, 200f), new Vector2(80f, 70f),  btnIce,  () => Player?.TryJumpForward());
         MakeCornerButton("BtnLeft",    "◀",        new Vector2(-150f, 120f), new Vector2(70f, 70f), btnIce,  () => Player?.TryJumpLateral(-1));
         MakeCornerButton("BtnRight",   "▶",        new Vector2(-30f,  120f), new Vector2(70f, 70f), btnIce,  () => Player?.TryJumpLateral(1));
-        MakeCornerButton("BtnBlow",    "💨 Blaas",  new Vector2(-90f,  35f),  new Vector2(130f, 70f), btnBlow, () => Player?.TryBlow());
+        MakeCornerButton("BtnBlow",    LanguageManager.Instance.Get("pb_btn_blow"),  new Vector2(-90f,  35f),  new Vector2(130f, 70f), btnBlow, () => Player?.TryBlow());
 
         var statusObj = new GameObject("StatusText");
         statusObj.transform.SetParent(_canvas.transform, false);
@@ -240,14 +241,16 @@ public class PolarBearGame : MonoBehaviour
         ort.anchoredPosition = new Vector2(0f, 100f);
         ort.sizeDelta        = new Vector2(700f, 120f);
         var ot = oops.AddComponent<Text>();
-        ot.text      = "Splash! 🌊\nProbeer opnieuw!";
+        ot.text      = LanguageManager.Instance.Get("pb_retry_text");
         ot.font      = GetFont();
         ot.fontSize  = 56;
         ot.fontStyle = FontStyle.Bold;
         ot.alignment = TextAnchor.MiddleCenter;
         ot.color     = Color.white;
+        var otLoc = oops.AddComponent<LocalizedText>();
+        otLoc.key = "pb_retry_text";
 
-        MakeCenteredButton("BtnRetry", "🐻‍❄️  Start!", new Vector2(0f, -60f),
+        MakeCenteredButton("BtnRetry", LanguageManager.Instance.Get("pb_retry_btn"), new Vector2(0f, -60f),
             new Vector2(360f, 120f), new Color(0.22f, 0.75f, 1f), OnRetryPressed, _retryPanel.transform);
 
         _retryPanel.SetActive(false);
@@ -348,12 +351,12 @@ public class PolarBearGame : MonoBehaviour
                 break;
 
             case GameState.Dead:
-                SetStatus("Splash! 🌊");
+                SetStatus(LanguageManager.Instance.Get("pb_splash"));
                 _retryPanel.SetActive(true);
                 break;
 
             case GameState.ReachedEnd:
-                SetStatus("Gelukt! 🐟 Voer de ijsbeer!");
+                SetStatus(LanguageManager.Instance.Get("pb_reached_end"));
                 FishObject.SetActive(true);
                 FishObject.AddComponent<FeedingController>();
                 break;
@@ -363,7 +366,7 @@ public class PolarBearGame : MonoBehaviour
                 break;
 
             case GameState.Complete:
-                SetStatus("Lekker! 🎉");
+                SetStatus(LanguageManager.Instance.Get("pb_complete"));
                 StartCoroutine(CompleteSequence());
                 break;
         }
@@ -372,7 +375,7 @@ public class PolarBearGame : MonoBehaviour
     IEnumerator CompleteSequence()
     {
         yield return new WaitForSeconds(2.5f);
-        Debug.Log("[PolarBear] Minigame Gewonnen!");
+        Debug.Log("[PolarBear] Minigame complete. Load next scene here.");
     }
 
     void OnRetryPressed()
@@ -384,19 +387,19 @@ public class PolarBearGame : MonoBehaviour
 
     public void ShowBlowFeedback(bool hit)
     {
-        SetStatus(hit ? "Poof! 💨 Sneeuw Weggeblazen!" : "Er is niks om weg te blazen!");
+        SetStatus(hit ? LanguageManager.Instance.Get("pb_blow_hit") : LanguageManager.Instance.Get("pb_blow_miss"));
         StartCoroutine(ClearStatusAfter(1.6f));
     }
 
     public void ShowMissedFeedback()
     {
-        SetStatus("Te ver! ❄️ Wacht op de ijsplaat!");
+        SetStatus(LanguageManager.Instance.Get("pb_missed"));
         StartCoroutine(ClearStatusAfter(1.6f));
     }
 
     public void ShowBlockedFeedback()
     {
-        SetStatus("Geblockeerd! 🧊  Blaas eerst!");
+        SetStatus(LanguageManager.Instance.Get("pb_blocked"));
         StartCoroutine(ClearStatusAfter(1.6f));
     }
 
