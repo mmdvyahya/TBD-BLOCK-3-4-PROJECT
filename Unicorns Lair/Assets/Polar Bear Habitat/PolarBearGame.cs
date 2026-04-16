@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+#if UNITY_ANDROID
+using UnityEngine.Android;
+#endif
+using UnityEngine.InputSystem;
 
 public enum GameState { Playing, Dead, ReachedEnd, Feeding, Complete }
 
@@ -9,33 +13,34 @@ public class PolarBearGame : MonoBehaviour
 {
     public static PolarBearGame Instance { get; private set; }
 
-    [SerializeField] private int   iceSheetCount = 10;
-    [SerializeField] private float laneZSpacing  = 3f;
+    [SerializeField] private int iceSheetCount = 10;
+    [SerializeField] private float laneZSpacing = 3f;
     [SerializeField] private float fallBoundaryX = 4.8f;
-    [SerializeField] private int   randomSeed    = 42;
+    [SerializeField] private int randomSeed = 42;
 
-    [SerializeField] private float camHeight      = 10f;
-    [SerializeField] private float camZOffset     = -5f;
+    [SerializeField] private float camHeight = 10f;
+    [SerializeField] private float camZOffset = -5f;
     [SerializeField] private float camFollowSpeed = 5f;
 
-    public PolarBearPlayer          Player    { get; private set; }
-    public List<IceSheetController> IceSheets { get; private set; } = new();
-    public GameObject               FishObject{ get; private set; }
-    public int                      IceSheetCount => iceSheetCount;
-    public float                    LaneZSpacing  => laneZSpacing;
-    public float                    FallBoundaryX => fallBoundaryX;
-    public GameState                CurrentState  { get; private set; }
+    public PolarBearPlayer Player { get; private set; }
+    public List<IceSheetController> IceSheets { get; private set; } = new ();
+    public GameObject FishObject { get; private set; }
+    public int IceSheetCount => iceSheetCount;
+    public float LaneZSpacing => laneZSpacing;
+    public float FallBoundaryX => fallBoundaryX;
+    public GameState CurrentState { get; private set; }
 
-    private Canvas     _canvas;
-    private Text       _statusText;
+    private Canvas _canvas;
+    private Text _statusText;
     private GameObject _retryPanel;
-    private Camera     _cam;
+    private Camera _cam;
 
     void Awake() => Instance = this;
 
     void Start()
     {
         LanguageManager.Ensure();
+        EnsureEventSystem();
         BuildScene();
         BuildUI();
         SetState(GameState.Playing);
@@ -43,6 +48,7 @@ public class PolarBearGame : MonoBehaviour
 
     void LateUpdate()
     {
+
         if (Player == null || _cam == null) return;
         if (CurrentState != GameState.Playing && CurrentState != GameState.Dead) return;
 
@@ -58,20 +64,20 @@ public class PolarBearGame : MonoBehaviour
         if (_cam == null)
         {
             var co = new GameObject("Main Camera");
-            _cam   = co.AddComponent<Camera>();
+            _cam = co.AddComponent<Camera>();
             co.tag = "MainCamera";
         }
         _cam.transform.position = new Vector3(0f, camHeight, camZOffset);
         _cam.transform.rotation = Quaternion.Euler(52f, 0f, 0f);
-        _cam.fieldOfView        = 55f;
-        _cam.backgroundColor    = new Color(0.53f, 0.81f, 0.98f);
+        _cam.fieldOfView = 55f;
+        _cam.backgroundColor = new Color(0.53f, 0.81f, 0.98f);
 
         float totalLen = (iceSheetCount + 2) * laneZSpacing;
-        float midZ     = (iceSheetCount + 1) * laneZSpacing * 0.5f;
+        float midZ = (iceSheetCount + 1) * laneZSpacing * 0.5f;
 
         var water = GameObject.CreatePrimitive(PrimitiveType.Plane);
         water.name = "Water";
-        water.transform.position   = new Vector3(0f, -0.25f, midZ);
+        water.transform.position = new Vector3(0f, -0.25f, midZ);
         water.transform.localScale = new Vector3(3f, 1f, totalLen * 0.1f);
         ApplyMaterial(water, new Color(0.15f, 0.42f, 0.82f));
         Destroy(water.GetComponent<Collider>());
@@ -85,8 +91,8 @@ public class PolarBearGame : MonoBehaviour
         Random.InitState(randomSeed);
         for (int i = 0; i < iceSheetCount; i++)
         {
-            float z     = (i + 1) * laneZSpacing;
-            bool  obs   = i >= 2 && i <= iceSheetCount - 3 && Random.value > 0.45f;
+            float z = (i + 1) * laneZSpacing;
+            bool obs = i >= 2 && i <= iceSheetCount - 3 && Random.value > 0.45f;
             float speed = Random.Range(0.6f, 1.7f) * (i % 2 == 0 ? 1f : -1f);
             float range = Random.Range(1.2f, 2.6f);
             IceSheets.Add(CreateIceSheet(i, z, speed, range, obs));
@@ -94,28 +100,40 @@ public class PolarBearGame : MonoBehaviour
 
         var bearObj = GameObject.CreatePrimitive(PrimitiveType.Capsule);
         bearObj.name = "PolarBear";
-        bearObj.transform.position   = new Vector3(0f, 1.1f, 0f);
+        bearObj.transform.position = new Vector3(0f, 1.1f, 0f);
         bearObj.transform.localScale = new Vector3(0.65f, 0.65f, 0.65f);
         ApplyMaterial(bearObj, new Color(0.95f, 0.97f, 1f));
         Destroy(bearObj.GetComponent<CapsuleCollider>());
         Player = bearObj.AddComponent<PolarBearPlayer>();
+
+        var micObj = new GameObject("PolarBearMicBlowInput");
+        micObj.AddComponent<PolarBearMicBlowInput>();
     }
 
     void EnsureLight()
     {
         if (FindFirstObjectByType<Light>() != null) return;
         var lo = new GameObject("DirectionalLight");
-        var l  = lo.AddComponent<Light>();
-        l.type            = LightType.Directional;
-        l.intensity       = 1.2f;
+        var l = lo.AddComponent<Light>();
+        l.type = LightType.Directional;
+        l.intensity = 1.2f;
         lo.transform.rotation = Quaternion.Euler(50f, -30f, 0f);
+    }
+
+    void EnsureEventSystem()
+    {
+        if (UnityEngine.EventSystems.EventSystem.current != null) return;
+
+        var es = new GameObject("EventSystem");
+        es.AddComponent<UnityEngine.EventSystems.EventSystem>();
+        es.AddComponent<UnityEngine.InputSystem.UI.InputSystemUIInputModule>();
     }
 
     void CreatePlatform(string name, Vector3 pos, Color col)
     {
         var obj = GameObject.CreatePrimitive(PrimitiveType.Cube);
         obj.name = name;
-        obj.transform.position   = pos;
+        obj.transform.position = pos;
         obj.transform.localScale = new Vector3(2.4f, 0.3f, 2.4f);
         ApplyMaterial(obj, col);
         Destroy(obj.GetComponent<Collider>());
@@ -125,16 +143,16 @@ public class PolarBearGame : MonoBehaviour
     {
         var obj = GameObject.CreatePrimitive(PrimitiveType.Cube);
         obj.name = $"IceSheet_{idx + 1:D2}";
-        obj.transform.position   = new Vector3(0f, 0f, z);
+        obj.transform.position = new Vector3(0f, 0f, z);
         obj.transform.localScale = new Vector3(2.2f, 0.25f, 2.2f);
         Color iceCol = idx % 2 == 0 ? new Color(0.83f, 0.95f, 1f) : new Color(0.90f, 0.97f, 1f);
         ApplyMaterial(obj, iceCol);
         Destroy(obj.GetComponent<Collider>());
 
-        var ctrl        = obj.AddComponent<IceSheetController>();
+        var ctrl = obj.AddComponent<IceSheetController>();
         ctrl.sheetIndex = idx;
-        ctrl.moveSpeed  = speed;
-        ctrl.moveRange  = range;
+        ctrl.moveSpeed = speed;
+        ctrl.moveRange = range;
         if (obstacle) ctrl.SpawnObstacle();
         return ctrl;
     }
@@ -148,7 +166,7 @@ public class PolarBearGame : MonoBehaviour
         body.name = "FishBody";
         body.transform.SetParent(fish.transform);
         body.transform.localPosition = Vector3.zero;
-        body.transform.localScale    = new Vector3(0.75f, 0.42f, 0.32f);
+        body.transform.localScale = new Vector3(0.75f, 0.42f, 0.32f);
         ApplyMaterial(body, new Color(1f, 0.52f, 0.12f));
         Destroy(body.GetComponent<Collider>());
 
@@ -156,7 +174,7 @@ public class PolarBearGame : MonoBehaviour
         tail.name = "FishTail";
         tail.transform.SetParent(fish.transform);
         tail.transform.localPosition = new Vector3(-0.5f, 0f, 0f);
-        tail.transform.localScale    = new Vector3(0.28f, 0.28f, 0.18f);
+        tail.transform.localScale = new Vector3(0.28f, 0.28f, 0.18f);
         tail.transform.localRotation = Quaternion.Euler(0f, 0f, 40f);
         ApplyMaterial(tail, new Color(0.95f, 0.42f, 0.08f));
         Destroy(tail.GetComponent<Collider>());
@@ -165,7 +183,7 @@ public class PolarBearGame : MonoBehaviour
         eye.name = "FishEye";
         eye.transform.SetParent(fish.transform);
         eye.transform.localPosition = new Vector3(0.28f, 0.12f, 0.14f);
-        eye.transform.localScale    = Vector3.one * 0.1f;
+        eye.transform.localScale = Vector3.one * 0.1f;
         ApplyMaterial(eye, Color.black);
         Destroy(eye.GetComponent<Collider>());
 
@@ -191,43 +209,43 @@ public class PolarBearGame : MonoBehaviour
 
     void BuildUI()
     {
-        var co     = new GameObject("UICanvas");
-        _canvas    = co.AddComponent<Canvas>();
+        var co = new GameObject("UICanvas");
+        _canvas = co.AddComponent<Canvas>();
         _canvas.renderMode = RenderMode.ScreenSpaceOverlay;
         var scaler = co.AddComponent<CanvasScaler>();
-        scaler.uiScaleMode         = CanvasScaler.ScaleMode.ScaleWithScreenSize;
+        scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
         scaler.referenceResolution = new Vector2(1080, 1920);
         co.AddComponent<GraphicRaycaster>();
 
-        Color btnIce  = new Color(0.75f, 0.92f, 1f, 0.92f);
+        Color btnIce = new Color(0.75f, 0.92f, 1f, 0.92f);
         Color btnBlow = new Color(0.55f, 0.82f, 1f, 0.92f);
 
-        MakeCornerButton("BtnForward", "▲",       new Vector2(-90f, 200f), new Vector2(80f, 70f),  btnIce,  () => Player?.TryJumpForward());
-        MakeCornerButton("BtnLeft",    "◀",        new Vector2(-150f, 120f), new Vector2(70f, 70f), btnIce,  () => Player?.TryJumpLateral(-1));
-        MakeCornerButton("BtnRight",   "▶",        new Vector2(-30f,  120f), new Vector2(70f, 70f), btnIce,  () => Player?.TryJumpLateral(1));
-        MakeCornerButton("BtnBlow",    LanguageManager.Instance.Get("pb_btn_blow"),  new Vector2(-90f,  35f),  new Vector2(130f, 70f), btnBlow, () => Player?.TryBlow());
+        MakeCornerButton("BtnForward", "▲", new Vector2(-90f, 200f), new Vector2(80f, 70f), btnIce, () => Player?.TryJumpForward());
+        MakeCornerButton("BtnLeft", "◀", new Vector2(-150f, 120f), new Vector2(70f, 70f), btnIce, () => Player?.TryJumpLateral(-1));
+        MakeCornerButton("BtnRight", "▶", new Vector2(-30f, 120f), new Vector2(70f, 70f), btnIce, () => Player?.TryJumpLateral(1));
+        MakeCornerButton("BtnBlow", LanguageManager.Instance.Get("pb_btn_blow"), new Vector2(-90f, 35f), new Vector2(130f, 70f), btnBlow, () => Player?.TryBlow());
 
         var statusObj = new GameObject("StatusText");
         statusObj.transform.SetParent(_canvas.transform, false);
         var srt = statusObj.AddComponent<RectTransform>();
-        srt.anchorMin        = new Vector2(0.5f, 1f);
-        srt.anchorMax        = new Vector2(0.5f, 1f);
-        srt.pivot            = new Vector2(0.5f, 1f);
+        srt.anchorMin = new Vector2(0.5f, 1f);
+        srt.anchorMax = new Vector2(0.5f, 1f);
+        srt.pivot = new Vector2(0.5f, 1f);
         srt.anchoredPosition = new Vector2(0f, -60f);
-        srt.sizeDelta        = new Vector2(800f, 90f);
-        _statusText           = statusObj.AddComponent<Text>();
-        _statusText.font       = GetFont();
-        _statusText.fontSize   = 46;
-        _statusText.fontStyle  = FontStyle.Bold;
-        _statusText.alignment  = TextAnchor.UpperCenter;
-        _statusText.color      = Color.white;
+        srt.sizeDelta = new Vector2(800f, 90f);
+        _statusText = statusObj.AddComponent<Text>();
+        _statusText.font = GetFont();
+        _statusText.fontSize = 46;
+        _statusText.fontStyle = FontStyle.Bold;
+        _statusText.alignment = TextAnchor.UpperCenter;
+        _statusText.color = Color.white;
         var so = statusObj.AddComponent<Outline>();
-        so.effectColor    = new Color(0f, 0f, 0f, 0.7f);
+        so.effectColor = new Color(0f, 0f, 0f, 0.7f);
         so.effectDistance = new Vector2(2f, -2f);
 
         _retryPanel = new GameObject("RetryPanel");
         _retryPanel.transform.SetParent(_canvas.transform, false);
-        var bg  = _retryPanel.AddComponent<Image>();
+        var bg = _retryPanel.AddComponent<Image>();
         bg.color = new Color(0f, 0.1f, 0.3f, 0.72f);
         var brt = _retryPanel.GetComponent<RectTransform>();
         brt.anchorMin = Vector2.zero;
@@ -239,14 +257,14 @@ public class PolarBearGame : MonoBehaviour
         var ort = oops.AddComponent<RectTransform>();
         ort.anchorMin = ort.anchorMax = ort.pivot = new Vector2(0.5f, 0.5f);
         ort.anchoredPosition = new Vector2(0f, 100f);
-        ort.sizeDelta        = new Vector2(700f, 120f);
+        ort.sizeDelta = new Vector2(700f, 120f);
         var ot = oops.AddComponent<Text>();
-        ot.text      = LanguageManager.Instance.Get("pb_retry_text");
-        ot.font      = GetFont();
-        ot.fontSize  = 56;
+        ot.text = LanguageManager.Instance.Get("pb_retry_text");
+        ot.font = GetFont();
+        ot.fontSize = 56;
         ot.fontStyle = FontStyle.Bold;
         ot.alignment = TextAnchor.MiddleCenter;
-        ot.color     = Color.white;
+        ot.color = Color.white;
         var otLoc = oops.AddComponent<LocalizedText>();
         otLoc.key = "pb_retry_text";
 
@@ -263,18 +281,18 @@ public class PolarBearGame : MonoBehaviour
         obj.transform.SetParent(_canvas.transform, false);
 
         var rt = obj.AddComponent<RectTransform>();
-        rt.anchorMin        = new Vector2(1f, 0f);
-        rt.anchorMax        = new Vector2(1f, 0f);
-        rt.pivot            = new Vector2(0.5f, 0f);
+        rt.anchorMin = new Vector2(1f, 0f);
+        rt.anchorMax = new Vector2(1f, 0f);
+        rt.pivot = new Vector2(0.5f, 0f);
         rt.anchoredPosition = pos;
-        rt.sizeDelta        = size;
+        rt.sizeDelta = size;
 
         var img = obj.AddComponent<Image>();
         img.color = bg;
 
         var btn = obj.AddComponent<Button>();
         btn.targetGraphic = img;
-        btn.colors        = MakeColorBlock(bg);
+        btn.colors = MakeColorBlock(bg);
         btn.onClick.AddListener(cb);
 
         var tObj = new GameObject("Label");
@@ -284,12 +302,12 @@ public class PolarBearGame : MonoBehaviour
         trt.anchorMax = Vector2.one;
         trt.offsetMin = trt.offsetMax = Vector2.zero;
         var t = tObj.AddComponent<Text>();
-        t.text      = label;
-        t.font      = GetFont();
-        t.fontSize  = 30;
+        t.text = label;
+        t.font = GetFont();
+        t.fontSize = 30;
         t.fontStyle = FontStyle.Bold;
         t.alignment = TextAnchor.MiddleCenter;
-        t.color     = new Color(0.08f, 0.1f, 0.3f);
+        t.color = new Color(0.08f, 0.1f, 0.3f);
     }
 
     void MakeCenteredButton(string name, string label, Vector2 pos, Vector2 size,
@@ -299,18 +317,18 @@ public class PolarBearGame : MonoBehaviour
         obj.transform.SetParent(parent, false);
 
         var rt = obj.AddComponent<RectTransform>();
-        rt.anchorMin        = new Vector2(0.5f, 0.5f);
-        rt.anchorMax        = new Vector2(0.5f, 0.5f);
-        rt.pivot            = new Vector2(0.5f, 0.5f);
+        rt.anchorMin = new Vector2(0.5f, 0.5f);
+        rt.anchorMax = new Vector2(0.5f, 0.5f);
+        rt.pivot = new Vector2(0.5f, 0.5f);
         rt.anchoredPosition = pos;
-        rt.sizeDelta        = size;
+        rt.sizeDelta = size;
 
         var img = obj.AddComponent<Image>();
         img.color = bg;
 
         var btn = obj.AddComponent<Button>();
         btn.targetGraphic = img;
-        btn.colors        = MakeColorBlock(bg);
+        btn.colors = MakeColorBlock(bg);
         btn.onClick.AddListener(cb);
 
         var tObj = new GameObject("Label");
@@ -320,23 +338,23 @@ public class PolarBearGame : MonoBehaviour
         trt.anchorMax = Vector2.one;
         trt.offsetMin = trt.offsetMax = Vector2.zero;
         var t = tObj.AddComponent<Text>();
-        t.text      = label;
-        t.font      = GetFont();
-        t.fontSize  = 36;
+        t.text = label;
+        t.font = GetFont();
+        t.fontSize = 36;
         t.fontStyle = FontStyle.Bold;
         t.alignment = TextAnchor.MiddleCenter;
-        t.color     = new Color(0.08f, 0.1f, 0.3f);
+        t.color = new Color(0.08f, 0.1f, 0.3f);
     }
 
     static ColorBlock MakeColorBlock(Color bg) => new ColorBlock
     {
-        normalColor      = bg,
+        normalColor = bg,
         highlightedColor = bg * 1.15f,
-        pressedColor     = bg * 0.75f,
-        selectedColor    = bg,
-        disabledColor    = bg * 0.5f,
-        colorMultiplier  = 1f,
-        fadeDuration     = 0.08f
+        pressedColor = bg * 0.75f,
+        selectedColor = bg,
+        disabledColor = bg * 0.5f,
+        colorMultiplier = 1f,
+        fadeDuration = 0.08f
     };
 
     public void SetState(GameState next)
@@ -424,9 +442,118 @@ public class PolarBearGame : MonoBehaviour
     }
 }
 
+public class PolarBearMicBlowInput : MonoBehaviour
+{
+    [SerializeField] private int sampleWindow = 128;
+    [SerializeField] private float blowThreshold = 0.15f;
+    [SerializeField] private float cooldownBetweenBlows = 0.35f;
+
+    [Header("Editor Debug")]
+    [SerializeField] private bool allowKeyboardDebug = true;
+    [SerializeField] private Key debugBlowKey = Key.Space;
+    [SerializeField] private float debugLevel = 0.25f;
+
+    private PolarBearPlayer _player;
+    private PolarBearGame _game;
+    private string _micDevice;
+    private AudioClip _micClip;
+    private float _cooldownTimer;
+
+    void Start()
+    {
+        _player = FindFirstObjectByType<PolarBearPlayer>();
+        _game = FindFirstObjectByType<PolarBearGame>();
+        StartMic();
+    }
+
+    void Update()
+    {
+        if (_player == null || _game == null) return;
+        if (_game.CurrentState != GameState.Playing) return;
+
+        if (_cooldownTimer > 0f)
+            _cooldownTimer -= Time.deltaTime;
+
+        float level = 0f;
+
+        if (_micClip != null && !string.IsNullOrEmpty(_micDevice) && Microphone.IsRecording(_micDevice))
+            level = GetMicLevel();
+
+#if UNITY_EDITOR || UNITY_STANDALONE
+        if (allowKeyboardDebug && Keyboard.current != null && Keyboard.current[debugBlowKey].isPressed)
+            level = Mathf.Max(level, debugLevel);
+#endif
+
+        if (level >= blowThreshold && _cooldownTimer <= 0f)
+        {
+            _player.TryBlow();
+            _cooldownTimer = cooldownBetweenBlows;
+        }
+    }
+
+    void StartMic()
+    {
+#if UNITY_ANDROID && !UNITY_EDITOR
+        if (!Permission.HasUserAuthorizedPermission(Permission.Microphone))
+        {
+            Permission.RequestUserPermission(Permission.Microphone);
+            return;
+        }
+#endif
+
+        if (Microphone.devices == null || Microphone.devices.Length == 0)
+        {
+            Debug.LogWarning("No microphone device found.");
+            return;
+        }
+
+        _micDevice = Microphone.devices[0];
+        _micClip = Microphone.Start(_micDevice, true, 1, AudioSettings.outputSampleRate);
+
+        if (_micClip == null)
+            Debug.LogWarning("Failed to start microphone.");
+    }
+
+    float GetMicLevel()
+    {
+        int micPos = Microphone.GetPosition(_micDevice) - sampleWindow;
+        if (micPos < 0) return 0f;
+
+        float[] samples = new float[sampleWindow];
+        _micClip.GetData(samples, micPos);
+
+        float sum = 0f;
+        for (int i = 0; i < sampleWindow; i++)
+        {
+            float s = samples[i];
+            sum += s * s;
+        }
+
+        float rms = Mathf.Sqrt(sum / sampleWindow);
+        float boosted = rms * 20f;
+        return Mathf.Clamp01(boosted);
+    }
+
+    void OnDisable()
+    {
+        StopMic();
+    }
+
+    void OnDestroy()
+    {
+        StopMic();
+    }
+
+    void StopMic()
+    {
+        if (!string.IsNullOrEmpty(_micDevice) && Microphone.IsRecording(_micDevice))
+            Microphone.End(_micDevice);
+    }
+}
+
 public class FishBob : MonoBehaviour
 {
     private Vector3 _origin;
-    void Start()  => _origin = transform.position;
+    void Start() => _origin = transform.position;
     void Update() => transform.position = _origin + Vector3.up * (Mathf.Sin(Time.time * 2.2f) * 0.12f);
 }
