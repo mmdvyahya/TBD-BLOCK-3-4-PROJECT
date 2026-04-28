@@ -187,6 +187,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Grass (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c48b730e791bec943abf6396b764302a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5039687269024256309, guid: c48b730e791bec943abf6396b764302a, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -583,6 +587,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a024fda1aa139e64ba883312b67601fd, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -737,6 +745,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: c48b730e791bec943abf6396b764302a, type: 3}
       propertyPath: m_Name
       value: Grass (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c48b730e791bec943abf6396b764302a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5039687269024256309, guid: c48b730e791bec943abf6396b764302a, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -901,6 +913,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: baca7909ddbc00140ad18fec13ef98ad, type: 3}
       propertyPath: m_Name
       value: rock (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: baca7909ddbc00140ad18fec13ef98ad, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1503,6 +1519,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a024fda1aa139e64ba883312b67601fd, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1759,6 +1779,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: baca7909ddbc00140ad18fec13ef98ad, type: 3}
       propertyPath: m_Name
       value: rock
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: baca7909ddbc00140ad18fec13ef98ad, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2468,6 +2492,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: rock (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: baca7909ddbc00140ad18fec13ef98ad, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2545,6 +2573,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: c48b730e791bec943abf6396b764302a, type: 3}
       propertyPath: m_Name
       value: Grass
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c48b730e791bec943abf6396b764302a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5039687269024256309, guid: c48b730e791bec943abf6396b764302a, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -2804,6 +2836,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: rock (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: baca7909ddbc00140ad18fec13ef98ad, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2881,6 +2917,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: baca7909ddbc00140ad18fec13ef98ad, type: 3}
       propertyPath: m_Name
       value: rock (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: baca7909ddbc00140ad18fec13ef98ad, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3073,6 +3113,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: rock (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: baca7909ddbc00140ad18fec13ef98ad, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3150,6 +3194,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: c48b730e791bec943abf6396b764302a, type: 3}
       propertyPath: m_Name
       value: Grass (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c48b730e791bec943abf6396b764302a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5039687269024256309, guid: c48b730e791bec943abf6396b764302a, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -3318,6 +3366,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: baca7909ddbc00140ad18fec13ef98ad, type: 3}
       propertyPath: m_Name
       value: rock (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: baca7909ddbc00140ad18fec13ef98ad, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3644,6 +3696,7 @@ GameObject:
   - component: {fileID: 1485196175}
   - component: {fileID: 1485196174}
   - component: {fileID: 1485196177}
+  - component: {fileID: 1485196178}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -3718,13 +3771,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1485196173}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.30070576, y: 0, z: 0, w: 0.953717}
+  m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
   m_LocalPosition: {x: -15, y: 10, z: -35}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 35, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
 --- !u!114 &1485196177
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3769,6 +3822,23 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
+--- !u!114 &1485196178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1485196173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62818d202bede464db9ce9389028d296, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraController
+  dragSpeed: 2
+  zoomSpeed: 10
+  minDistance: 5
+  maxDistance: 80
+  focusPoint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1501459271
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3836,6 +3906,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: c48b730e791bec943abf6396b764302a, type: 3}
       propertyPath: m_Name
       value: Grass (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c48b730e791bec943abf6396b764302a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5039687269024256309, guid: c48b730e791bec943abf6396b764302a, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -3910,6 +3984,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: baca7909ddbc00140ad18fec13ef98ad, type: 3}
       propertyPath: m_Name
       value: rock (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: baca7909ddbc00140ad18fec13ef98ad, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4100,6 +4178,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: baca7909ddbc00140ad18fec13ef98ad, type: 3}
       propertyPath: m_Name
       value: rock (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: baca7909ddbc00140ad18fec13ef98ad, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5041,6 +5123,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 220deca34771597428c7a3e80bc1319c, type: 3}
       propertyPath: m_Name
       value: Beaver2
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 220deca34771597428c7a3e80bc1319c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
