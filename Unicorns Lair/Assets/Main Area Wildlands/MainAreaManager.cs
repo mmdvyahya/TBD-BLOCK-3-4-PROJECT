@@ -5,6 +5,9 @@ using UnityEngine.InputSystem;
 
 public class MainAreaManager : MonoBehaviour
 {
+    [Header("Habitat Inspection")]
+    [SerializeField] private HabitatInspectionManager habitatInspectionManager;
+    [SerializeField] private HabitatInteractionMenu habitatInteractionMenu;
     [Header("Scene References")]
     [SerializeField] private GameObject habitatObject;
     [SerializeField] private Transform beaverBuyAnchor;
@@ -33,7 +36,57 @@ public class MainAreaManager : MonoBehaviour
         WaitingForBuy,
         WaitingForPlace,
         Building,
-        Complete
+        Complete,
+        InspectingHabitat
+    }
+    public void NotifyHabitatTapped(InspectableHabitat habitat)
+    {
+        if (_state != SceneState.Complete) return;
+        if (habitat == null) return;
+
+        if (_cameraSwipe != null)
+            _cameraSwipe.enabled = false;
+
+        if (habitatInteractionMenu != null)
+            habitatInteractionMenu.OpenMenu(habitat);
+    }
+
+    public void NotifyInspectHabitat(InspectableHabitat habitat)
+    {
+        if (_state != SceneState.Complete) return;
+        if (habitat == null) return;
+
+        SetState(SceneState.InspectingHabitat);
+
+        if (habitatInteractionMenu != null)
+            habitatInteractionMenu.CloseMenu();
+
+        if (habitatInspectionManager != null)
+            habitatInspectionManager.OpenMinigame(habitat);
+    }
+
+    public void NotifyExitInspection()
+    {
+        if (_state != SceneState.InspectingHabitat) return;
+
+        if (habitatInspectionManager != null)
+            habitatInspectionManager.CloseInspectionMode();
+
+        if (_cameraSwipe != null)
+            _cameraSwipe.enabled = true;
+
+        SetState(SceneState.Complete);
+    }
+
+    public void NotifyCloseHabitatMenu()
+    {
+        if (_state != SceneState.Complete) return;
+
+        if (habitatInteractionMenu != null)
+            habitatInteractionMenu.CloseMenu();
+
+        if (_cameraSwipe != null)
+            _cameraSwipe.enabled = true;
     }
 
     private SceneState _state = SceneState.Idle;
@@ -115,8 +168,12 @@ public class MainAreaManager : MonoBehaviour
     {
         _state = next;
 
+
         switch (_state)
         {
+            case SceneState.InspectingHabitat:
+                SetBuyButtonActive(false);
+                break;
             case SceneState.WaitingForBuy:
                 _builder?.HideAll();
                 SpawnWorldButton();
