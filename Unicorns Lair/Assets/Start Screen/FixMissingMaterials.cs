@@ -16,9 +16,14 @@ public class FixMissingMaterials : MonoBehaviour
             for (int i = 0; i < mats.Length; i++)
             {
                 if (mats[i] == null) continue;
-                Color col = mats[i].HasProperty("_BaseColor")
-                    ? mats[i].GetColor("_BaseColor")
-                    : mats[i].color;
+
+                Color col;
+                if (mats[i].HasProperty("_BaseColor"))
+                    col = mats[i].GetColor("_BaseColor");
+                else if (mats[i].HasProperty("_Color"))
+                    col = mats[i].GetColor("_Color");
+                else
+                    continue;
 
                 if (col.r > 0.7f && col.g < 0.3f && col.b < 0.3f)
                 {

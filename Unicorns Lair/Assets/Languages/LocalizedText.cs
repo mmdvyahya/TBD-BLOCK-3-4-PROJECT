@@ -29,6 +29,7 @@ public class LocalizedText : MonoBehaviour
     {
         if (_text == null) _text = GetComponent<Text>();
         if (_text == null) return;
+        if (string.IsNullOrEmpty(key)) return;
         if (LanguageManager.Instance == null) { LanguageManager.Ensure(); }
         if (LanguageManager.Instance == null) return;
         _text.text = LanguageManager.Instance.Get(key);
