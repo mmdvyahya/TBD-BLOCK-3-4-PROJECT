@@ -6,16 +6,16 @@ using UnityEngine.SceneManagement;
 public class StartScreenManager : MonoBehaviour
 {
     [Header("Timing")]
-    [SerializeField] private float flyDuration  = 3.5f;
-    [SerializeField] private float irisStartAt  = 0.72f;
+    [SerializeField] private float flyDuration = 3.5f;
+    [SerializeField] private float irisStartAt = 0.72f;
     [SerializeField] private float irisDuration = 0.9f;
 
-    private static readonly Vector3    EndPos = new Vector3(-125.4f, 26.1f, 1070.5f);
+    private static readonly Vector3 EndPos = new Vector3(-125.4f, 26.1f, 1070.5f);
     private static readonly Quaternion EndRot = Quaternion.Euler(10.05f, 90.855f, 0f);
 
-    private Camera  _cam;
-    private Canvas  _canvas;
-    private bool    _flying;
+    private Camera _cam;
+    private Canvas _canvas;
+    private bool _flying;
 
     void Start()
     {
@@ -23,7 +23,7 @@ public class StartScreenManager : MonoBehaviour
         if (_cam == null)
         {
             var co = new GameObject("Main Camera");
-            _cam   = co.AddComponent<Camera>();
+            _cam = co.AddComponent<Camera>();
             co.tag = "MainCamera";
         }
 
@@ -38,9 +38,9 @@ public class StartScreenManager : MonoBehaviour
         _canvas.renderMode = RenderMode.ScreenSpaceOverlay;
 
         var scaler = cObj.AddComponent<CanvasScaler>();
-        scaler.uiScaleMode         = CanvasScaler.ScaleMode.ScaleWithScreenSize;
+        scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
         scaler.referenceResolution = new Vector2(1080, 1920);
-        scaler.matchWidthOrHeight  = 0.5f;
+        scaler.matchWidthOrHeight = 0.5f;
 
         cObj.AddComponent<GraphicRaycaster>();
 
@@ -49,33 +49,33 @@ public class StartScreenManager : MonoBehaviour
         var titleObj = new GameObject("Title");
         titleObj.transform.SetParent(_canvas.transform, false);
         var trt = titleObj.AddComponent<RectTransform>();
-        trt.anchorMin        = new Vector2(0.5f, 0.5f);
-        trt.anchorMax        = new Vector2(0.5f, 0.5f);
-        trt.pivot            = new Vector2(0.5f, 0.5f);
+        trt.anchorMin = new Vector2(0.5f, 0.5f);
+        trt.anchorMax = new Vector2(0.5f, 0.5f);
+        trt.pivot = new Vector2(0.5f, 0.5f);
         trt.anchoredPosition = new Vector2(0f, 260f);
-        trt.sizeDelta        = new Vector2(960f, 220f);
+        trt.sizeDelta = new Vector2(960f, 220f);
         var titleTxt = titleObj.AddComponent<Text>();
-        titleTxt.font          = GetFont();
-        titleTxt.fontSize      = 100;
-        titleTxt.fontStyle     = FontStyle.Bold;
-        titleTxt.alignment     = TextAnchor.MiddleCenter;
-        titleTxt.color         = Color.white;
+        titleTxt.font = GetFont();
+        titleTxt.fontSize = 100;
+        titleTxt.fontStyle = FontStyle.Bold;
+        titleTxt.alignment = TextAnchor.MiddleCenter;
+        titleTxt.color = Color.white;
         titleTxt.raycastTarget = false;
         var titleLoc = titleObj.AddComponent<LocalizedText>();
         titleLoc.key = "title_wildlands";
         titleLoc.Refresh();
         var to = titleObj.AddComponent<Outline>();
-        to.effectColor    = new Color(0f, 0f, 0f, 0.65f);
+        to.effectColor = new Color(0f, 0f, 0f, 0.65f);
         to.effectDistance = new Vector2(5f, -5f);
 
         var btnObj = new GameObject("SpelenBtn");
         btnObj.transform.SetParent(_canvas.transform, false);
         var brt = btnObj.AddComponent<RectTransform>();
-        brt.anchorMin        = new Vector2(0.5f, 0.5f);
-        brt.anchorMax        = new Vector2(0.5f, 0.5f);
-        brt.pivot            = new Vector2(0.5f, 0.5f);
+        brt.anchorMin = new Vector2(0.5f, 0.5f);
+        brt.anchorMax = new Vector2(0.5f, 0.5f);
+        brt.pivot = new Vector2(0.5f, 0.5f);
         brt.anchoredPosition = new Vector2(0f, -40f);
-        brt.sizeDelta        = new Vector2(420f, 150f);
+        brt.sizeDelta = new Vector2(420f, 150f);
 
         var btnImg = btnObj.AddComponent<Image>();
         btnImg.color = new Color(0.12f, 0.72f, 0.36f);
@@ -84,13 +84,13 @@ public class StartScreenManager : MonoBehaviour
         btn.targetGraphic = btnImg;
         btn.colors = new ColorBlock
         {
-            normalColor      = new Color(0.12f, 0.72f, 0.36f),
+            normalColor = new Color(0.12f, 0.72f, 0.36f),
             highlightedColor = new Color(0.20f, 0.88f, 0.48f),
-            pressedColor     = new Color(0.07f, 0.48f, 0.22f),
-            selectedColor    = new Color(0.12f, 0.72f, 0.36f),
-            disabledColor    = new Color(0.35f, 0.35f, 0.35f),
-            colorMultiplier  = 1f,
-            fadeDuration     = 0.1f
+            pressedColor = new Color(0.07f, 0.48f, 0.22f),
+            selectedColor = new Color(0.12f, 0.72f, 0.36f),
+            disabledColor = new Color(0.35f, 0.35f, 0.35f),
+            colorMultiplier = 1f,
+            fadeDuration = 0.1f
         };
         btn.onClick.AddListener(OnSpelen);
 
@@ -101,17 +101,17 @@ public class StartScreenManager : MonoBehaviour
         lrt.anchorMax = Vector2.one;
         lrt.offsetMin = lrt.offsetMax = Vector2.zero;
         var lTxt = lblObj.AddComponent<Text>();
-        lTxt.font          = GetFont();
-        lTxt.fontSize      = 64;
-        lTxt.fontStyle     = FontStyle.Bold;
-        lTxt.alignment     = TextAnchor.MiddleCenter;
-        lTxt.color         = Color.white;
+        lTxt.font = GetFont();
+        lTxt.fontSize = 64;
+        lTxt.fontStyle = FontStyle.Bold;
+        lTxt.alignment = TextAnchor.MiddleCenter;
+        lTxt.color = Color.white;
         lTxt.raycastTarget = false;
         var spelenLoc = lblObj.AddComponent<LocalizedText>();
         spelenLoc.key = "btn_spelen";
         spelenLoc.Refresh();
         var lo = lblObj.AddComponent<Outline>();
-        lo.effectColor    = new Color(0f, 0.2f, 0.1f, 0.6f);
+        lo.effectColor = new Color(0f, 0.2f, 0.1f, 0.6f);
         lo.effectDistance = new Vector2(2f, -2f);
 
         MakeSettingsButton(_canvas.transform);
@@ -124,11 +124,11 @@ public class StartScreenManager : MonoBehaviour
         var obj = new GameObject("SettingsBtn");
         obj.transform.SetParent(parent, false);
         var rt = obj.AddComponent<RectTransform>();
-        rt.anchorMin        = new Vector2(1f, 1f);
-        rt.anchorMax        = new Vector2(1f, 1f);
-        rt.pivot            = new Vector2(1f, 1f);
+        rt.anchorMin = new Vector2(1f, 1f);
+        rt.anchorMax = new Vector2(1f, 1f);
+        rt.pivot = new Vector2(1f, 1f);
         rt.anchoredPosition = new Vector2(-30f, -30f);
-        rt.sizeDelta        = new Vector2(120f, 120f);
+        rt.sizeDelta = new Vector2(120f, 120f);
 
         var img = obj.AddComponent<Image>();
         img.color = new Color(0f, 0f, 0f, 0.45f);
@@ -137,13 +137,13 @@ public class StartScreenManager : MonoBehaviour
         btn.targetGraphic = img;
         btn.colors = new ColorBlock
         {
-            normalColor      = new Color(0f, 0f, 0f, 0.45f),
+            normalColor = new Color(0f, 0f, 0f, 0.45f),
             highlightedColor = new Color(0.2f, 0.2f, 0.2f, 0.7f),
-            pressedColor     = new Color(0f, 0f, 0f, 0.8f),
-            selectedColor    = new Color(0f, 0f, 0f, 0.45f),
-            disabledColor    = new Color(0f, 0f, 0f, 0.2f),
-            colorMultiplier  = 1f,
-            fadeDuration     = 0.08f
+            pressedColor = new Color(0f, 0f, 0f, 0.8f),
+            selectedColor = new Color(0f, 0f, 0f, 0.45f),
+            disabledColor = new Color(0f, 0f, 0f, 0.2f),
+            colorMultiplier = 1f,
+            fadeDuration = 0.08f
         };
         btn.onClick.AddListener(() => BuildSettingsPanel());
 
@@ -154,11 +154,11 @@ public class StartScreenManager : MonoBehaviour
         lrt.anchorMax = Vector2.one;
         lrt.offsetMin = lrt.offsetMax = Vector2.zero;
         var lTxt = lObj.AddComponent<Text>();
-        lTxt.text          = "⚙";
-        lTxt.font          = GetFont();
-        lTxt.fontSize      = 72;
-        lTxt.alignment     = TextAnchor.MiddleCenter;
-        lTxt.color         = Color.white;
+        lTxt.text = "⚙";
+        lTxt.font = GetFont();
+        lTxt.fontSize = 72;
+        lTxt.alignment = TextAnchor.MiddleCenter;
+        lTxt.color = Color.white;
         lTxt.raycastTarget = false;
     }
 
@@ -174,23 +174,23 @@ public class StartScreenManager : MonoBehaviour
         prt.anchorMax = Vector2.one;
         prt.offsetMin = prt.offsetMax = Vector2.zero;
         var overlay = panel.AddComponent<Image>();
-        overlay.color         = new Color(0f, 0f, 0f, 0.78f);
+        overlay.color = new Color(0f, 0f, 0f, 0.78f);
         overlay.raycastTarget = true;
 
         var box = new GameObject("Box");
         box.transform.SetParent(panel.transform, false);
         var brt = box.AddComponent<RectTransform>();
-        brt.anchorMin        = new Vector2(0.5f, 0.5f);
-        brt.anchorMax        = new Vector2(0.5f, 0.5f);
-        brt.pivot            = new Vector2(0.5f, 0.5f);
+        brt.anchorMin = new Vector2(0.5f, 0.5f);
+        brt.anchorMax = new Vector2(0.5f, 0.5f);
+        brt.pivot = new Vector2(0.5f, 0.5f);
         brt.anchoredPosition = Vector2.zero;
-        brt.sizeDelta        = new Vector2(720f, 760f);
+        brt.sizeDelta = new Vector2(720f, 880f);
         var boxImg = box.AddComponent<Image>();
-        boxImg.color         = new Color(0.10f, 0.15f, 0.22f);
+        boxImg.color = new Color(0.10f, 0.15f, 0.22f);
         boxImg.raycastTarget = false;
 
-        MakePanelLabel(box.transform, "settings_title",    56, FontStyle.Bold,   Color.white,                    new Vector2(0f,  290f), new Vector2(680f, 90f));
-        MakePanelLabel(box.transform, "settings_language", 36, FontStyle.Normal, new Color(0.72f, 0.85f, 1f),    new Vector2(0f,  190f), new Vector2(680f, 60f));
+        MakePanelLabel(box.transform, "settings_title", 56, FontStyle.Bold, Color.white, new Vector2(0f, 290f), new Vector2(680f, 90f));
+        MakePanelLabel(box.transform, "settings_language", 36, FontStyle.Normal, new Color(0.72f, 0.85f, 1f), new Vector2(0f, 190f), new Vector2(680f, 60f));
 
         var langs = new[] {
             ("Nederlands", Language.Nederlands),
@@ -203,17 +203,17 @@ public class StartScreenManager : MonoBehaviour
         for (int i = 0; i < langs.Length; i++)
         {
             var (name, lang) = langs[i];
-            bool  active  = LanguageManager.Instance.CurrentLanguage == lang;
-            Color btnCol  = active ? new Color(0.12f, 0.62f, 0.32f) : new Color(0.22f, 0.30f, 0.44f);
+            bool active = LanguageManager.Instance.CurrentLanguage == lang;
+            Color btnCol = active ? new Color(0.12f, 0.62f, 0.32f) : new Color(0.22f, 0.30f, 0.44f);
 
             var lbObj = new GameObject($"Lang_{name}");
             lbObj.transform.SetParent(box.transform, false);
             var lbrt = lbObj.AddComponent<RectTransform>();
-            lbrt.anchorMin        = new Vector2(0.5f, 0.5f);
-            lbrt.anchorMax        = new Vector2(0.5f, 0.5f);
-            lbrt.pivot            = new Vector2(0.5f, 0.5f);
+            lbrt.anchorMin = new Vector2(0.5f, 0.5f);
+            lbrt.anchorMax = new Vector2(0.5f, 0.5f);
+            lbrt.pivot = new Vector2(0.5f, 0.5f);
             lbrt.anchoredPosition = new Vector2(0f, yPos[i]);
-            lbrt.sizeDelta        = new Vector2(620f, 110f);
+            lbrt.sizeDelta = new Vector2(620f, 110f);
 
             var lbImg = lbObj.AddComponent<Image>();
             lbImg.color = btnCol;
@@ -221,16 +221,16 @@ public class StartScreenManager : MonoBehaviour
             lbBtn.targetGraphic = lbImg;
             lbBtn.colors = new ColorBlock
             {
-                normalColor      = btnCol,
+                normalColor = btnCol,
                 highlightedColor = btnCol * 1.2f,
-                pressedColor     = btnCol * 0.75f,
-                selectedColor    = btnCol,
-                disabledColor    = btnCol * 0.5f,
-                colorMultiplier  = 1f,
-                fadeDuration     = 0.08f
+                pressedColor = btnCol * 0.75f,
+                selectedColor = btnCol,
+                disabledColor = btnCol * 0.5f,
+                colorMultiplier = 1f,
+                fadeDuration = 0.08f
             };
 
-            Language capturedLang  = lang;
+            Language capturedLang = lang;
             GameObject capturedPanel = panel;
             lbBtn.onClick.AddListener(() => {
                 LanguageManager.Instance.SetLanguage(capturedLang);
@@ -245,36 +245,36 @@ public class StartScreenManager : MonoBehaviour
             llbrt.anchorMax = Vector2.one;
             llbrt.offsetMin = llbrt.offsetMax = Vector2.zero;
             var llbTxt = llbObj.AddComponent<Text>();
-            llbTxt.text          = (active ? "✓  " : "       ") + name;
-            llbTxt.font          = GetFont();
-            llbTxt.fontSize      = 50;
-            llbTxt.fontStyle     = FontStyle.Bold;
-            llbTxt.alignment     = TextAnchor.MiddleCenter;
-            llbTxt.color         = Color.white;
+            llbTxt.text = (active ? "✓  " : "       ") + name;
+            llbTxt.font = GetFont();
+            llbTxt.fontSize = 50;
+            llbTxt.fontStyle = FontStyle.Bold;
+            llbTxt.alignment = TextAnchor.MiddleCenter;
+            llbTxt.color = Color.white;
             llbTxt.raycastTarget = false;
         }
 
         var closeObj = new GameObject("CloseBtn");
         closeObj.transform.SetParent(box.transform, false);
         var crt = closeObj.AddComponent<RectTransform>();
-        crt.anchorMin        = new Vector2(0.5f, 0.5f);
-        crt.anchorMax        = new Vector2(0.5f, 0.5f);
-        crt.pivot            = new Vector2(0.5f, 0.5f);
-        crt.anchoredPosition = new Vector2(0f, -330f);
-        crt.sizeDelta        = new Vector2(480f, 100f);
+        crt.anchorMin = new Vector2(0.5f, 0.5f);
+        crt.anchorMax = new Vector2(0.5f, 0.5f);
+        crt.pivot = new Vector2(0.5f, 0.5f);
+        crt.anchoredPosition = new Vector2(0f, -310f);
+        crt.sizeDelta = new Vector2(480f, 100f);
         var cImg = closeObj.AddComponent<Image>();
         cImg.color = new Color(0.55f, 0.18f, 0.18f);
         var cBtn = closeObj.AddComponent<Button>();
         cBtn.targetGraphic = cImg;
         cBtn.colors = new ColorBlock
         {
-            normalColor      = new Color(0.55f, 0.18f, 0.18f),
+            normalColor = new Color(0.55f, 0.18f, 0.18f),
             highlightedColor = new Color(0.72f, 0.25f, 0.25f),
-            pressedColor     = new Color(0.38f, 0.10f, 0.10f),
-            selectedColor    = new Color(0.55f, 0.18f, 0.18f),
-            disabledColor    = new Color(0.3f,  0.3f,  0.3f),
-            colorMultiplier  = 1f,
-            fadeDuration     = 0.08f
+            pressedColor = new Color(0.38f, 0.10f, 0.10f),
+            selectedColor = new Color(0.55f, 0.18f, 0.18f),
+            disabledColor = new Color(0.3f, 0.3f, 0.3f),
+            colorMultiplier = 1f,
+            fadeDuration = 0.08f
         };
         cBtn.onClick.AddListener(() => Destroy(panel));
 
@@ -285,15 +285,59 @@ public class StartScreenManager : MonoBehaviour
         clrt.anchorMax = Vector2.one;
         clrt.offsetMin = clrt.offsetMax = Vector2.zero;
         var clTxt = clObj.AddComponent<Text>();
-        clTxt.font          = GetFont();
-        clTxt.fontSize      = 46;
-        clTxt.fontStyle     = FontStyle.Bold;
-        clTxt.alignment     = TextAnchor.MiddleCenter;
-        clTxt.color         = Color.white;
+        clTxt.font = GetFont();
+        clTxt.fontSize = 46;
+        clTxt.fontStyle = FontStyle.Bold;
+        clTxt.alignment = TextAnchor.MiddleCenter;
+        clTxt.color = Color.white;
         clTxt.raycastTarget = false;
         var closeLoc = clObj.AddComponent<LocalizedText>();
         closeLoc.key = "btn_close";
         closeLoc.Refresh();
+
+        var resetObj = new GameObject("ResetBtn");
+        resetObj.transform.SetParent(box.transform, false);
+        var rrt = resetObj.AddComponent<RectTransform>();
+        rrt.anchorMin = new Vector2(0.5f, 0.5f);
+        rrt.anchorMax = new Vector2(0.5f, 0.5f);
+        rrt.pivot = new Vector2(0.5f, 0.5f);
+        rrt.anchoredPosition = new Vector2(0f, -430f);
+        rrt.sizeDelta = new Vector2(480f, 90f);
+        var rImg = resetObj.AddComponent<Image>();
+        rImg.color = new Color(0.35f, 0.12f, 0.12f);
+        var rBtn = resetObj.AddComponent<Button>();
+        rBtn.targetGraphic = rImg;
+        rBtn.colors = new ColorBlock
+        {
+            normalColor = new Color(0.35f, 0.12f, 0.12f),
+            highlightedColor = new Color(0.55f, 0.18f, 0.18f),
+            pressedColor = new Color(0.20f, 0.06f, 0.06f),
+            selectedColor = new Color(0.35f, 0.12f, 0.12f),
+            disabledColor = new Color(0.3f, 0.3f, 0.3f),
+            colorMultiplier = 1f,
+            fadeDuration = 0.08f
+        };
+        rBtn.onClick.AddListener(() =>
+        {
+            GameStateManager.Ensure();
+            GameStateManager.Instance.ResetAllProgress();
+            Destroy(panel);
+        });
+
+        var rlObj = new GameObject("Label");
+        rlObj.transform.SetParent(resetObj.transform, false);
+        var rlrt = rlObj.AddComponent<RectTransform>();
+        rlrt.anchorMin = Vector2.zero;
+        rlrt.anchorMax = Vector2.one;
+        rlrt.offsetMin = rlrt.offsetMax = Vector2.zero;
+        var rlTxt = rlObj.AddComponent<Text>();
+        rlTxt.text = "🗑  Reset Progress";
+        rlTxt.font = GetFont();
+        rlTxt.fontSize = 36;
+        rlTxt.fontStyle = FontStyle.Bold;
+        rlTxt.alignment = TextAnchor.MiddleCenter;
+        rlTxt.color = new Color(1f, 0.65f, 0.65f);
+        rlTxt.raycastTarget = false;
     }
 
     void MakePanelLabel(Transform parent, string key, int size, FontStyle style, Color color, Vector2 pos, Vector2 sizeDelta)
@@ -301,17 +345,17 @@ public class StartScreenManager : MonoBehaviour
         var obj = new GameObject(key);
         obj.transform.SetParent(parent, false);
         var rt = obj.AddComponent<RectTransform>();
-        rt.anchorMin        = new Vector2(0.5f, 0.5f);
-        rt.anchorMax        = new Vector2(0.5f, 0.5f);
-        rt.pivot            = new Vector2(0.5f, 0.5f);
+        rt.anchorMin = new Vector2(0.5f, 0.5f);
+        rt.anchorMax = new Vector2(0.5f, 0.5f);
+        rt.pivot = new Vector2(0.5f, 0.5f);
         rt.anchoredPosition = pos;
-        rt.sizeDelta        = sizeDelta;
+        rt.sizeDelta = sizeDelta;
         var txt = obj.AddComponent<Text>();
-        txt.font          = GetFont();
-        txt.fontSize      = size;
-        txt.fontStyle     = style;
-        txt.alignment     = TextAnchor.MiddleCenter;
-        txt.color         = color;
+        txt.font = GetFont();
+        txt.fontSize = size;
+        txt.fontStyle = style;
+        txt.alignment = TextAnchor.MiddleCenter;
+        txt.color = color;
         txt.raycastTarget = false;
         var loc = obj.AddComponent<LocalizedText>();
         loc.key = key;
@@ -340,10 +384,10 @@ public class StartScreenManager : MonoBehaviour
     {
         HideUI();
 
-        Vector3    startPos = _cam.transform.position;
+        Vector3 startPos = _cam.transform.position;
         Quaternion startRot = _cam.transform.rotation;
 
-        bool      irisStarted   = false;
+        bool irisStarted = false;
         Coroutine irisCoroutine = null;
 
         float t = 0f;
@@ -357,7 +401,7 @@ public class StartScreenManager : MonoBehaviour
 
             if (!irisStarted && t / flyDuration >= irisStartAt)
             {
-                irisStarted   = true;
+                irisStarted = true;
                 irisCoroutine = StartCoroutine(IrisClose(irisDuration));
             }
 
@@ -376,9 +420,9 @@ public class StartScreenManager : MonoBehaviour
 
     IEnumerator IrisClose(float duration)
     {
-        int res     = 128;
-        float cx    = res * 0.5f;
-        float cy    = res * 0.5f;
+        int res = 128;
+        float cx = res * 0.5f;
+        float cy = res * 0.5f;
         float aspect = (float)Screen.height / Mathf.Max(Screen.width, 1);
 
         float[] dists = new float[res * res];
@@ -387,14 +431,14 @@ public class StartScreenManager : MonoBehaviour
         {
             float nx = ((i % res) - cx) / res;
             float ny = ((i / res) - cy) / res * aspect;
-            float d  = Mathf.Sqrt(nx * nx + ny * ny);
+            float d = Mathf.Sqrt(nx * nx + ny * ny);
             dists[i] = d;
             if (d > maxDist) maxDist = d;
         }
 
         var tex = new Texture2D(res, res, TextureFormat.RGBA32, false);
         tex.filterMode = FilterMode.Bilinear;
-        tex.wrapMode   = TextureWrapMode.Clamp;
+        tex.wrapMode = TextureWrapMode.Clamp;
 
         var irisObj = new GameObject("IrisWipe");
         irisObj.transform.SetParent(_canvas.transform, false);
@@ -404,23 +448,23 @@ public class StartScreenManager : MonoBehaviour
         irt.anchorMax = Vector2.one;
         irt.offsetMin = irt.offsetMax = Vector2.zero;
         var raw = irisObj.AddComponent<RawImage>();
-        raw.texture       = tex;
+        raw.texture = tex;
         raw.raycastTarget = false;
 
-        Color[] pixels  = new Color[res * res];
-        float   feather = 0.018f;
-        float   elapsed = 0f;
+        Color[] pixels = new Color[res * res];
+        float feather = 0.018f;
+        float elapsed = 0f;
 
         while (elapsed < duration)
         {
             elapsed += Time.deltaTime;
-            float p      = Mathf.SmoothStep(0f, 1f, Mathf.Clamp01(elapsed / duration));
+            float p = Mathf.SmoothStep(0f, 1f, Mathf.Clamp01(elapsed / duration));
             float radius = Mathf.Lerp(maxDist * 1.05f, 0f, p);
 
             for (int i = 0; i < pixels.Length; i++)
             {
-                float alpha  = Mathf.Clamp01((dists[i] - radius) / feather + 0.5f);
-                pixels[i]    = new Color(0f, 0f, 0f, alpha);
+                float alpha = Mathf.Clamp01((dists[i] - radius) / feather + 0.5f);
+                pixels[i] = new Color(0f, 0f, 0f, alpha);
             }
 
             tex.SetPixels(pixels);
