@@ -117,6 +117,150 @@ public class LanguageManager : MonoBehaviour
                 [Language.Deutsch] = "Im Bau! 🔨",
                 [Language.English] = "Under construction! 🔨",
             },
+            ["building_title"] = new()
+            {
+                [Language.Nederlands] = "🦫  Bever Verblijf bouwen!  🪵",
+                [Language.Deutsch] = "🦫  Biber-Gehege bauen!  🪵",
+                [Language.English] = "🦫  Building Beaver Habitat!  🪵",
+            },
+            ["building_fun_0"] = new()
+            {
+                [Language.Nederlands] = "De bevers komen eraan! 🦫",
+                [Language.Deutsch] = "Die Biber kommen! 🦫",
+                [Language.English] = "The beavers are coming! 🦫",
+            },
+            ["building_fun_1"] = new()
+            {
+                [Language.Nederlands] = "Water ophalen... 💧",
+                [Language.Deutsch] = "Wasser holen... 💧",
+                [Language.English] = "Fetching water... 💧",
+            },
+            ["building_fun_2"] = new()
+            {
+                [Language.Nederlands] = "Takken verzamelen! 🌿",
+                [Language.Deutsch] = "Äste sammeln! 🌿",
+                [Language.English] = "Gathering branches! 🌿",
+            },
+            ["building_fun_3"] = new()
+            {
+                [Language.Nederlands] = "Knaag knaag knaag! 🪵",
+                [Language.Deutsch] = "Nag nag nag! 🪵",
+                [Language.English] = "Gnaw gnaw gnaw! 🪵",
+            },
+            ["building_fun_4"] = new()
+            {
+                [Language.Nederlands] = "De dam wordt gebouwd! 🔨",
+                [Language.Deutsch] = "Der Damm wird gebaut! 🔨",
+                [Language.English] = "Building the dam! 🔨",
+            },
+            ["building_fun_5"] = new()
+            {
+                [Language.Nederlands] = "Bijna klaar... nog even! ⏳",
+                [Language.Deutsch] = "Fast fertig... noch kurz! ⏳",
+                [Language.English] = "Almost done... hang tight! ⏳",
+            },
+            ["building_fun_6"] = new()
+            {
+                [Language.Nederlands] = "Bevers zijn superdruk! 🦫💨",
+                [Language.Deutsch] = "Biber sind superbeschäftigt! 🦫💨",
+                [Language.English] = "Beavers are super busy! 🦫💨",
+            },
+            ["building_fun_7"] = new()
+            {
+                [Language.Nederlands] = "Een perfect thuis! 🏠",
+                [Language.Deutsch] = "Ein perfektes Zuhause! 🏠",
+                [Language.English] = "A perfect home! 🏠",
+            },
+            ["building_fun_8"] = new()
+            {
+                [Language.Nederlands] = "Plons! 💦 Bijna af!",
+                [Language.Deutsch] = "Plitsch! 💦 Fast fertig!",
+                [Language.English] = "Splash! 💦 Nearly done!",
+            },
+            ["building_fun_9"] = new()
+            {
+                [Language.Nederlands] = "🌊 Het water stroomt al!",
+                [Language.Deutsch] = "🌊 Das Wasser fließt schon!",
+                [Language.English] = "🌊 The water flows already!",
+            },
+            ["btn_back"] = new()
+            {
+                [Language.Nederlands] = "◀  Terug",
+                [Language.Deutsch] = "◀  Zurück",
+                [Language.English] = "◀  Back",
+            },
+            ["btn_inspect"] = new()
+            {
+                [Language.Nederlands] = "🔍  Inspecteren",
+                [Language.Deutsch] = "🔍  Inspizieren",
+                [Language.English] = "🔍  Inspect",
+            },
+            ["btn_minigame"] = new()
+            {
+                [Language.Nederlands] = "🎮  Minigame",
+                [Language.Deutsch] = "🎮  Minispiel",
+                [Language.English] = "🎮  Minigame",
+            },
+            ["minigame_complete"] = new()
+            {
+                [Language.Nederlands] = "Gefeliciteerd! 🎉",
+                [Language.Deutsch] = "Glückwunsch! 🎉",
+                [Language.English] = "Congratulations! 🎉",
+            },
+            ["minigame_beaver_title"] = new()
+            {
+                [Language.Nederlands] = "🦫  Bever Balans!",
+                [Language.Deutsch] = "🦫  Biber-Balance!",
+                [Language.English] = "🦫  Beaver Balance!",
+            },
+            ["minigame_instruction_pc"] = new()
+            {
+                [Language.Nederlands] = "Druk A / D om te kantelen",
+                [Language.Deutsch] = "A / D drücken zum Kippen",
+                [Language.English] = "Press A / D to tilt",
+            },
+            ["minigame_instruction_tablet"] = new()
+            {
+                [Language.Nederlands] = "Kantel de tablet!",
+                [Language.Deutsch] = "Tablet kippen!",
+                [Language.English] = "Tilt the tablet!",
+            },
+            ["minigame_coins_earned"] = new()
+            {
+                [Language.Nederlands] = "Je hebt 10 munten verdiend! 💰",
+                [Language.Deutsch] = "Du hast 10 Münzen verdient! 💰",
+                [Language.English] = "You earned 10 coins! 💰",
+            },
+            ["minigame_success_desc"] = new()
+            {
+                [Language.Nederlands] = "De bever heeft de stok in balans gehouden!",
+                [Language.Deutsch] = "Der Biber hat den Stock ausbalanciert!",
+                [Language.English] = "The beaver kept the stick balanced!",
+            },
+            ["inspect_hint"] = new()
+            {
+                [Language.Nederlands] = "Kantel tablet om rond te kijken",
+                [Language.Deutsch] = "Tablet kippen zum Umschauen",
+                [Language.English] = "Tilt tablet to look around",
+            },
+            ["beaver_name"] = new()
+            {
+                [Language.Nederlands] = "🦫 Bever Verblijf",
+                [Language.Deutsch] = "🦫 Biber-Gehege",
+                [Language.English] = "🦫 Beaver Habitat",
+            },
+            ["beaver_desc"] = new()
+            {
+                [Language.Nederlands] = "Een rustige waterplas voor vrolijke bevers.",
+                [Language.Deutsch] = "Ein ruhiger Teich für fröhliche Biber.",
+                [Language.English] = "A calm pond for happy beavers.",
+            },
+            ["beaver_fact"] = new()
+            {
+                [Language.Nederlands] = "Bevers bouwen dammen van takken en modder! 🌿",
+                [Language.Deutsch] = "Biber bauen Dämme aus Ästen und Schlamm! 🌿",
+                [Language.English] = "Beavers build dams from sticks and mud! 🌿",
+            },
             ["btn_continue"] = new()
             {
                 [Language.Nederlands] = "Doorgaan",

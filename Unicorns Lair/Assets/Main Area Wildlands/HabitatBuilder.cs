@@ -668,7 +668,9 @@ public class HabitatBuilder : MonoBehaviour
         titleRt.anchoredPosition = new Vector2(0f, -20f);
         titleRt.sizeDelta = new Vector2(900f, 80f);
         var titleTxt = titleObj.AddComponent<Text>();
-        titleTxt.text = "🦫  Bever Verblijf bouwen!  🪵";
+        titleTxt.text = LanguageManager.Instance != null
+            ? LanguageManager.Instance.Get("building_title")
+            : "🦫  Bever Verblijf bouwen!  🪵";
         titleTxt.font = GetFont();
         titleTxt.fontSize = 46;
         titleTxt.fontStyle = FontStyle.Bold;
@@ -719,18 +721,18 @@ public class HabitatBuilder : MonoBehaviour
         StartCoroutine(CycleFunText());
     }
 
-    private static readonly string[] _funTexts =
+    private static readonly string[] _funTextKeys =
     {
-        "De bevers komen eraan! 🦫",
-        "Water ophalen... 💧",
-        "Takken verzamelen! 🌿",
-        "Knaag knaag knaag! 🪵",
-        "De dam wordt gebouwd! 🔨",
-        "Bijna klaar... nog even! ⏳",
-        "Bevers zijn superdruk! 🦫💨",
-        "Een perfect thuis! 🏠",
-        "Plons! 💦 Bijna af!",
-        "🌊 Het water stroomt al!",
+        "building_fun_0",
+        "building_fun_1",
+        "building_fun_2",
+        "building_fun_3",
+        "building_fun_4",
+        "building_fun_5",
+        "building_fun_6",
+        "building_fun_7",
+        "building_fun_8",
+        "building_fun_9",
     };
 
     IEnumerator CycleFunText()
@@ -738,7 +740,10 @@ public class HabitatBuilder : MonoBehaviour
         int idx = 0;
         while (_buildLabel != null)
         {
-            SetBuildLabel(_funTexts[idx % _funTexts.Length]);
+            string text = (LanguageManager.Instance != null)
+                ? LanguageManager.Instance.Get(_funTextKeys[idx % _funTextKeys.Length])
+                : _funTextKeys[idx % _funTextKeys.Length];
+            SetBuildLabel(text);
             idx++;
             yield return new WaitForSeconds(1.1f);
         }
