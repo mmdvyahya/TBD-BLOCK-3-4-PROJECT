@@ -201,6 +201,30 @@ public class LanguageManager : MonoBehaviour
                 [Language.Deutsch] = "🎮  Minispiel",
                 [Language.English] = "🎮  Minigame",
             },
+            ["minigames_title"] = new()
+            {
+                [Language.Nederlands] = "Minigames",
+                [Language.Deutsch] = "Minispiele",
+                [Language.English] = "Minigames",
+            },
+            ["minigame_parrot"] = new()
+            {
+                [Language.Nederlands] = "Papegaai Voeren",
+                [Language.Deutsch] = "Papagei Füttern",
+                [Language.English] = "Feed the Parrot",
+            },
+            ["minigame_polarbear"] = new()
+            {
+                [Language.Nederlands] = "IJsbeer Avontuur",
+                [Language.Deutsch] = "Eisbär Abenteuer",
+                [Language.English] = "Polar Bear Adventure",
+            },
+            ["minigame_prairiedog"] = new()
+            {
+                [Language.Nederlands] = "Prairiehond Peek",
+                [Language.Deutsch] = "Präriehund Gucken",
+                [Language.English] = "Prairie Dog Peek",
+            },
             ["minigame_complete"] = new()
             {
                 [Language.Nederlands] = "Gefeliciteerd! 🎉",
