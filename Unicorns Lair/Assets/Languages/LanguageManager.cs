@@ -207,6 +207,36 @@ public class LanguageManager : MonoBehaviour
                 [Language.Deutsch] = "Minispiele",
                 [Language.English] = "Minigames",
             },
+            ["codes_title"] = new()
+            {
+                [Language.Nederlands] = "Codes",
+                [Language.Deutsch] = "Codes",
+                [Language.English] = "Codes",
+            },
+            ["codes_subtitle"] = new()
+            {
+                [Language.Nederlands] = "Voer een 4-cijferige code in",
+                [Language.Deutsch] = "Gib einen 4-stelligen Code ein",
+                [Language.English] = "Enter a 4-digit code",
+            },
+            ["codes_enter"] = new()
+            {
+                [Language.Nederlands] = "Bevestig",
+                [Language.Deutsch] = "Bestätigen",
+                [Language.English] = "Enter",
+            },
+            ["codes_invalid"] = new()
+            {
+                [Language.Nederlands] = "❌ Ongeldige code",
+                [Language.Deutsch] = "❌ Ungültiger Code",
+                [Language.English] = "❌ Invalid code",
+            },
+            ["codes_too_short"] = new()
+            {
+                [Language.Nederlands] = "Code moet 4 cijfers zijn",
+                [Language.Deutsch] = "Code muss 4 Ziffern lang sein",
+                [Language.English] = "Code must be 4 digits",
+            },
             ["minigame_parrot"] = new()
             {
                 [Language.Nederlands] = "Papegaai Voeren",

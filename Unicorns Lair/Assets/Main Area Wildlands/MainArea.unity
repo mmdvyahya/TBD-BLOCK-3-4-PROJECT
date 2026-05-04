@@ -1361,6 +1361,59 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f188bc12456fabb46a336bb5dacf1df6, type: 3}
+--- !u!1 &1451951750
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1451951752}
+  - component: {fileID: 1451951751}
+  m_Layer: 0
+  m_Name: _CodesManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1451951751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1451951750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38792fd8865d1884687b1fa1d94cafe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CodesManager
+  codes:
+  - code: 1234
+    rewardMessage: Purple Beaver Skin Unlocked!
+  - code: 4321
+    rewardMessage: Golden Baboon Skin Unlocked!
+  - code: 6767
+    rewardMessage: Tung Tung Tung Sahur Unlocked!
+  - code: 0000
+    rewardMessage: Translucent Hippo Skin Unlocked!
+--- !u!4 &1451951752
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1451951750}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1138.3625, y: -0.00001, z: 1284.9681}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1728870604
 GameObject:
   m_ObjectHideFlags: 0
@@ -1552,3 +1605,4 @@ SceneRoots:
   - {fileID: 746981633}
   - {fileID: 530932635}
   - {fileID: 1327599265}
+  - {fileID: 1451951752}
