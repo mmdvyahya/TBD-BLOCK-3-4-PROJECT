@@ -237,6 +237,36 @@ public class LanguageManager : MonoBehaviour
                 [Language.Deutsch] = "Code muss 4 Ziffern lang sein",
                 [Language.English] = "Code must be 4 digits",
             },
+            ["codes_all_skins"] = new()
+            {
+                [Language.Nederlands] = "Alle Skins",
+                [Language.Deutsch] = "Alle Skins",
+                [Language.English] = "All Skins",
+            },
+            ["codes_unlocked"] = new()
+            {
+                [Language.Nederlands] = "ontgrendeld",
+                [Language.Deutsch] = "freigeschaltet",
+                [Language.English] = "unlocked",
+            },
+            ["codes_locked"] = new()
+            {
+                [Language.Nederlands] = "??? Vergrendeld",
+                [Language.Deutsch] = "??? Gesperrt",
+                [Language.English] = "??? Locked",
+            },
+            ["codes_already"] = new()
+            {
+                [Language.Nederlands] = "⚠️ Skin al ontgrendeld",
+                [Language.Deutsch] = "⚠️ Skin schon freigeschaltet",
+                [Language.English] = "⚠️ Skin already unlocked",
+            },
+            ["codes_info_body"] = new()
+            {
+                [Language.Nederlands] = "Ga naar Wildlands Zoo om codes te vinden!\n\nBij elk dierenverblijf staat een infobord met een geheime code. Voer de code hier in om een nieuwe skin voor dat dier te ontgrendelen! 🎨",
+                [Language.Deutsch] = "Geh in den Wildlands Zoo, um Codes zu finden!\n\nAn jedem Tiergehege steht ein Infoschild mit einem geheimen Code. Gib den Code hier ein, um einen neuen Skin für dieses Tier freizuschalten! 🎨",
+                [Language.English] = "Visit Wildlands Zoo to find codes!\n\nEach animal exhibit has an info sign with a secret code. Enter the code here to unlock a new skin for that animal! 🎨",
+            },
             ["minigame_parrot"] = new()
             {
                 [Language.Nederlands] = "Papegaai Voeren",

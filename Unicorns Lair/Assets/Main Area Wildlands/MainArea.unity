@@ -1392,12 +1392,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CodesManager
   codes:
   - code: 1234
+    skinName: Purple Beaver
     rewardMessage: Purple Beaver Skin Unlocked!
   - code: 4321
+    skinName: Golden Baboon
     rewardMessage: Golden Baboon Skin Unlocked!
   - code: 6767
+    skinName: Tung Tung Tung Sahur
     rewardMessage: Tung Tung Tung Sahur Unlocked!
   - code: 0000
+    skinName: Translucent Hippo
     rewardMessage: Translucent Hippo Skin Unlocked!
 --- !u!4 &1451951752
 Transform:
