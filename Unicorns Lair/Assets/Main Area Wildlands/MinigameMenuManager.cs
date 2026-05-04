@@ -13,6 +13,8 @@ public class MinigameMenuManager : MonoBehaviour
         ("minigame_parrot",     "Papegaai",   "🦜", new Color(0.18f, 0.62f, 0.25f), "ParrotFeeding_minigame"),
         ("minigame_polarbear",  "IJsbeer",    "🐻‍❄️", new Color(0.18f, 0.48f, 0.78f), "PolarBear"),
         ("minigame_prairiedog", "Prairiehond","🐾", new Color(0.72f, 0.48f, 0.12f), "PrairieDogminigame"),
+        ("minigame_hippo",      "Nijlpaard",   "🦛", new Color(0.46f, 0.42f, 0.62f), "HippoMinigame"),
+    ("minigame_baboon",     "Baviaan",     "🐒", new Color(0.55f, 0.32f, 0.16f), "Minigame"),
     };
 
     void Start()
