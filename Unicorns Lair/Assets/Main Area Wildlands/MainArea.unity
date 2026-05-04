@@ -734,18 +734,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.3411671, y: 0.96545655, z: 1.2169838}
   m_Center: {x: 0.005998166, y: 0.3612511, z: -0.086196}
---- !u!114 &831118027
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 831118025}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0442faab6448a684b8dd229e9d03be0c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HabitatTapHandler
 --- !u!114 &831118028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1000,9 +988,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: bcee0be25ef2ee5409e208299145eceb, type: 3}
       insertIndex: -1
       addedObject: {fileID: 831118028}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: bcee0be25ef2ee5409e208299145eceb, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 831118027}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: bcee0be25ef2ee5409e208299145eceb, type: 3}
       insertIndex: -1
       addedObject: {fileID: 831118026}
