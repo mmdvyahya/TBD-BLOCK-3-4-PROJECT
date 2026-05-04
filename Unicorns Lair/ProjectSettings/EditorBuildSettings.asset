@@ -27,6 +27,12 @@ EditorBuildSettings:
     path: Assets/PrairieDogPeek_Minigame/PrairieDogminigame.unity
     guid: 12923f146d678524f915b2a85aee4e51
   - enabled: 1
+    path: Assets/BabbonMinigame/Minigame.unity
+    guid: 1ba2cb3bb2918e8459d6f0f332705467
+  - enabled: 1
+    path: Assets/Hippo Minigame/HippoMinigame.unity
+    guid: f948c7cc1b65a7c46bace86db0bb6ba7
+  - enabled: 1
     path: Assets/Main Area Wildlands/MainArea.unity
     guid: 918a3f740b8d54c42b94c2bc22b9494e
   m_configObjects:
