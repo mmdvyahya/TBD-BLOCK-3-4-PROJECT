@@ -63,7 +63,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: b7a569a991457444bbc31202e5c6b89e, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 9f573a3bea719fd4bb5d22865dd3e391, type: 2}
+      objectReference: {fileID: 2100000, guid: 306351766a0146b4bb175716805e904b, type: 2}
     - target: {fileID: 919132149155446097, guid: b7a569a991457444bbc31202e5c6b89e, type: 3}
       propertyPath: m_Name
       value: Large Rock_4

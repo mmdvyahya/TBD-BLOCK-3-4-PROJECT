@@ -231,20 +231,31 @@ Shader "WILDLANDS/Base Shader"
             #pragma vertex vert
             #pragma fragment frag
             #pragma multi_compile_instancing
+            #pragma shader_feature_local _ALPHATEST_ON
 
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
 
             struct Attributes
             {
                 float4 positionOS : POSITION;
-                float3 normalOS   : NORMAL;
+                float3 normalOS : NORMAL;
+                float2 uv : TEXCOORD0;
             };
 
             struct Varyings
             {
                 float4 positionCS : SV_POSITION;
-                float3 normalWS   : TEXCOORD0;
+                float3 normalWS : TEXCOORD0;
+                float2 uv : TEXCOORD1;
             };
+
+            CBUFFER_START(UnityPerMaterial)
+                float4 _Albedo_ST;
+                float  _Threshold;
+            CBUFFER_END
+
+            TEXTURE2D(_Albedo);
+            SAMPLER(sampler_Albedo);
 
             Varyings vert(Attributes v)
             {
@@ -255,8 +266,13 @@ Shader "WILDLANDS/Base Shader"
                 return o;
             }
 
+            // Allows alpha clipping to work with water
             half4 frag(Varyings i) : SV_Target
             {
+                #ifdef _ALPHATEST_ON
+                    float alpha = SAMPLE_TEXTURE2D(_Albedo, sampler_Albedo, i.uv).a;
+                    clip(alpha - _Threshold);
+                #endif
                 return float4(normalize(i.normalWS) * 0.5 + 0.5, 0);
             }
 
