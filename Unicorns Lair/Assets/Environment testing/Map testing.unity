@@ -5997,6 +5997,63 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5566359858545930202, guid: 617cf380f10c48a409585e08ef187279, type: 3}
   m_PrefabInstance: {fileID: 941894920}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &957404080
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 957404082}
+  - component: {fileID: 957404081}
+  m_Layer: 0
+  m_Name: DayNightCycleManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &957404081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 957404080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08f0e0d5a4c963647877f139fb0db944, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DayNightCycleManager
+  sunLight: {fileID: 1860465841}
+  mainCamera: {fileID: 1485196175}
+  fullDayDuration: 20
+  startTimeOfDay: 0.45
+  dayIntensity: 1.2
+  sunsetIntensity: 0.75
+  nightIntensity: 0.18
+  dayLightColor: {r: 1, g: 0.96, b: 0.86, a: 1}
+  sunsetLightColor: {r: 1, g: 0.55, b: 0.25, a: 1}
+  nightLightColor: {r: 0.25, g: 0.35, b: 0.75, a: 1}
+  daySkyColor: {r: 0.53, g: 0.81, b: 0.98, a: 1}
+  sunsetSkyColor: {r: 1, g: 0.45, b: 0.25, a: 1}
+  nightSkyColor: {r: 0.03, g: 0.05, b: 0.12, a: 1}
+--- !u!4 &957404082
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 957404080}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.97766, y: -0, z: -5.46517}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &960965260
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11727,3 +11784,4 @@ SceneRoots:
   - {fileID: 506271298}
   - {fileID: 465679022}
   - {fileID: 731777915}
+  - {fileID: 957404082}
