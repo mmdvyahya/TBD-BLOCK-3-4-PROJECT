@@ -17,10 +17,10 @@ public class CodesManager : MonoBehaviour
     [SerializeField]
     private List<CodeEntry> codes = new()
     {
-        new CodeEntry { code = "1234", skinName = "Golden Beaver",   rewardMessage = "🦫 Golden Beaver skin unlocked!" },
-        new CodeEntry { code = "0000", skinName = "Polar Explorer",  rewardMessage = "🐻‍❄️ Polar Explorer skin unlocked!" },
-        new CodeEntry { code = "4242", skinName = "Sunset Parrot",   rewardMessage = "🦜 Sunset Parrot skin unlocked!" },
-        new CodeEntry { code = "9999", skinName = "Desert Prairie",  rewardMessage = "🐾 Desert Prairie skin unlocked!" },
+        new CodeEntry { code = "1234", skinName = "Golden Beaver",   rewardMessage = "" },
+        new CodeEntry { code = "0000", skinName = "Polar Explorer",  rewardMessage = "" },
+        new CodeEntry { code = "4242", skinName = "Sunset Parrot",   rewardMessage = "" },
+        new CodeEntry { code = "9999", skinName = "Desert Prairie",  rewardMessage = "" },
     };
 
     private const string SKIN_PREF_KEY = "unlocked_skins";
@@ -108,7 +108,7 @@ public class CodesManager : MonoBehaviour
         lrt.anchorMin = Vector2.zero; lrt.anchorMax = Vector2.one;
         lrt.offsetMin = lrt.offsetMax = Vector2.zero;
         var lTxt = lObj.AddComponent<Text>();
-        lTxt.text = "🔑  " + SafeGet("codes_title", "Codes");
+        lTxt.text = SafeGet("codes_title", "Codes");
         lTxt.font = GetFont();
         lTxt.fontSize = 38;
         lTxt.fontStyle = FontStyle.Bold;
@@ -160,7 +160,7 @@ public class CodesManager : MonoBehaviour
         iaRt.pivot = new Vector2(0.5f, 1f); iaRt.anchoredPosition = Vector2.zero; iaRt.sizeDelta = new Vector2(0f, 8f);
         iAccent.AddComponent<Image>().color = new Color(1f, 0.85f, 0.25f);
 
-        MakeLabel(info.transform, "🦒  Wildlands Tip!",
+        MakeLabel(info.transform, "Wildlands Tip!",
             new Vector2(0f, -25f), new Vector2(360f, 50f), 28, FontStyle.Bold,
             new Color(1f, 0.85f, 0.25f), withOutline: true);
 
@@ -171,7 +171,7 @@ public class CodesManager : MonoBehaviour
         bRt.offsetMin = new Vector2(20f, 80f); bRt.offsetMax = new Vector2(-20f, -90f);
         var bTxt = bodyObj.AddComponent<Text>();
         bTxt.text = SafeGet("codes_info_body",
-            "Ga naar Wildlands Zoo om codes te vinden!\n\nBij elk dierenverblijf staat een infobord met een geheime code. Voer de code hier in om een nieuwe skin voor dat dier te ontgrendelen! 🎨");
+            "Ga naar Wildlands Zoo om codes te vinden!\n\nBij elk dierenverblijf staat een infobord met een geheime code. Voer de code hier in om een nieuwe skin voor dat dier te ontgrendelen!");
         bTxt.font = GetFont(); bTxt.fontSize = 22; bTxt.fontStyle = FontStyle.Normal;
         bTxt.alignment = TextAnchor.UpperLeft; bTxt.color = new Color(0.85f, 0.92f, 1f);
         bTxt.raycastTarget = false;
@@ -202,7 +202,7 @@ public class CodesManager : MonoBehaviour
         aRt.pivot = new Vector2(0.5f, 1f); aRt.anchoredPosition = Vector2.zero; aRt.sizeDelta = new Vector2(0f, 11f);
         accent.AddComponent<Image>().color = new Color(0.55f, 0.25f, 0.78f);
 
-        MakeLabel(card.transform, "🔑  " + SafeGet("codes_title", "Codes"),
+        MakeLabel(card.transform, "" + SafeGet("codes_title", "Codes"),
             new Vector2(0f, -22f), new Vector2(594f, 64f), 42, FontStyle.Bold, Color.white, withOutline: true);
         MakeLabel(card.transform, SafeGet("codes_subtitle", "Voer een 4-cijferige code in"),
             new Vector2(0f, -86f), new Vector2(594f, 40f), 22, FontStyle.Normal, new Color(0.75f, 0.85f, 1f));
@@ -253,7 +253,7 @@ public class CodesManager : MonoBehaviour
             new Vector2(560f, 86f), new Color(0.18f, 0.62f, 0.32f));
         enterBtn.onClick.AddListener(SubmitCode);
 
-        var skinsBtn = MakeKey(card.transform, "🎨  " + SafeGet("codes_all_skins", "All Skins"), new Vector2(0f, -945f),
+        var skinsBtn = MakeKey(card.transform, "" + SafeGet("codes_all_skins", "All Skins"), new Vector2(0f, -945f),
             new Vector2(560f, 70f), new Color(0.42f, 0.18f, 0.62f));
         skinsBtn.onClick.AddListener(ToggleSkinDrawer);
 
@@ -296,7 +296,7 @@ public class CodesManager : MonoBehaviour
         aRt.pivot = new Vector2(0.5f, 1f); aRt.anchoredPosition = Vector2.zero; aRt.sizeDelta = new Vector2(0f, 10f);
         accent.AddComponent<Image>().color = new Color(0.55f, 0.25f, 0.78f);
 
-        MakeLabel(_skinDrawer.transform, "🎨  " + SafeGet("codes_all_skins", "All Skins"),
+        MakeLabel(_skinDrawer.transform, "" + SafeGet("codes_all_skins", "All Skins"),
             new Vector2(0f, -22f), new Vector2(420f, 56f), 32, FontStyle.Bold, Color.white, withOutline: true);
 
         int unlockedCount = 0;
@@ -332,7 +332,7 @@ public class CodesManager : MonoBehaviour
             crt.pivot = new Vector2(0f, 0.5f); crt.anchoredPosition = new Vector2(14f, 0f);
             crt.sizeDelta = new Vector2(50f, 50f);
             var cTxt = checkObj.AddComponent<Text>();
-            cTxt.text = isUnlocked ? "✓" : "🔒";
+            cTxt.text = isUnlocked ? "" : "";
             cTxt.font = GetFont();
             cTxt.fontSize = isUnlocked ? 44 : 30;
             cTxt.fontStyle = FontStyle.Bold;

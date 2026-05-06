@@ -200,7 +200,7 @@ public class BeaverBalanceMinigame : MonoBehaviour
         _complete = true;
         _isRunning = false;
 
-        if (_statusText != null) _statusText.text = "🎉 " + SafeGet("minigame_complete", "Gefeliciteerd!");
+        if (_statusText != null) _statusText.text = SafeGet("minigame_complete", "Gefeliciteerd!");
         if (_instructionText != null) _instructionText.text = SafeGet("minigame_success_desc", "De bever heeft de stok in balans gehouden!");
 
         yield return new WaitForSeconds(1.5f);
@@ -360,7 +360,7 @@ public class BeaverBalanceMinigame : MonoBehaviour
         hrt.sizeDelta = new Vector2(0f, 140f);
         header.AddComponent<Image>().color = new Color(0.08f, 0.12f, 0.20f, 0.90f);
 
-        MakeLabel(header.transform, SafeGet("minigame_beaver_title", "🦫  Bever Balans!"),
+        MakeLabel(header.transform, SafeGet("minigame_beaver_title", "Bever Balans!"),
             new Vector2(0f, -14f), new Vector2(1000f, 70f), 52, FontStyle.Bold, Color.white, ref _statusText);
 
         string instrKey = allowKeyboardDebug ? "minigame_instruction_pc" : "minigame_instruction_tablet";
@@ -422,7 +422,7 @@ public class BeaverBalanceMinigame : MonoBehaviour
             _instructionText.text = SafeGet(instrKey, allowKeyboardDebug ? "Druk A / D om te kantelen" : "Kantel de tablet!");
         }
         if (_statusText != null && !_complete)
-            _statusText.text = SafeGet("minigame_beaver_title", "🦫  Bever Balans!");
+            _statusText.text = SafeGet("minigame_beaver_title", "Bever Balans!");
     }
 
     void MakeLabel(Transform parent, string text, Vector2 pos, Vector2 size,
@@ -447,7 +447,7 @@ public class BeaverBalanceMinigame : MonoBehaviour
         _countdownText.color = stable ? new Color(0.25f, 1f, 0.45f) : Color.white;
 
         if (_statusText != null && !_complete)
-            _statusText.text = stable ? "⚖️  In balans!" : "🦫  Bever Balans!";
+            _statusText.text = stable ? "In balans!" : "Bever Balans!";
     }
 
     void DestroyUI()
