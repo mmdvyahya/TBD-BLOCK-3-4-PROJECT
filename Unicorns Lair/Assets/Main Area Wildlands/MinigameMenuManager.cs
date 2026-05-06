@@ -4,17 +4,17 @@ using UnityEngine.SceneManagement;
 
 public class MinigameMenuManager : MonoBehaviour
 {
-    private Canvas    _canvas;
-    private bool      _menuOpen;
+    private Canvas _canvas;
+    private bool _menuOpen;
     private GameObject _menuPanel;
 
-    private static readonly (string labelKey, string fallback, string emoji, Color color, string scene)[] Minigames =
+    private static readonly (string labelKey, string fallback, Color color, string scene)[] Minigames =
     {
-        ("minigame_parrot",     "Papegaai",   "🦜", new Color(0.18f, 0.62f, 0.25f), "ParrotFeeding_minigame"),
-        ("minigame_polarbear",  "IJsbeer",    "🐻‍❄️", new Color(0.18f, 0.48f, 0.78f), "PolarBear"),
-        ("minigame_prairiedog", "Prairiehond","🐾", new Color(0.72f, 0.48f, 0.12f), "PrairieDogminigame"),
-        ("minigame_hippo",      "Nijlpaard",   "🦛", new Color(0.46f, 0.42f, 0.62f), "HippoMinigame"),
-    ("minigame_baboon",     "Baviaan",     "🐒", new Color(0.55f, 0.32f, 0.16f), "Minigame"),
+        ("minigame_parrot",     "Papegaai",    new Color(0.18f, 0.62f, 0.25f), "ParrotFeeding_minigame"),
+        ("minigame_polarbear",  "IJsbeer",     new Color(0.18f, 0.48f, 0.78f), "PolarBear"),
+        ("minigame_prairiedog", "Prairiehond", new Color(0.72f, 0.48f, 0.12f), "PrairieDogminigame"),
+        ("minigame_hippo",      "Nijlpaard",   new Color(0.46f, 0.42f, 0.62f), "HippoMinigame"),
+        ("minigame_baboon",     "Baviaan",     new Color(0.55f, 0.32f, 0.16f), "Minigame"),
     };
 
     void Start()
@@ -27,12 +27,12 @@ public class MinigameMenuManager : MonoBehaviour
     {
         var cObj = new GameObject("MinigameMenuCanvas");
         _canvas = cObj.AddComponent<Canvas>();
-        _canvas.renderMode   = RenderMode.ScreenSpaceOverlay;
+        _canvas.renderMode = RenderMode.ScreenSpaceOverlay;
         _canvas.sortingOrder = 6;
         var scaler = cObj.AddComponent<CanvasScaler>();
-        scaler.uiScaleMode         = CanvasScaler.ScaleMode.ScaleWithScreenSize;
+        scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
         scaler.referenceResolution = new Vector2(1080, 1920);
-        scaler.matchWidthOrHeight  = 0.5f;
+        scaler.matchWidthOrHeight = 0.5f;
         cObj.AddComponent<GraphicRaycaster>();
 
         EnsureEventSystem();
@@ -40,11 +40,11 @@ public class MinigameMenuManager : MonoBehaviour
         var btnObj = new GameObject("MinigamesBtn");
         btnObj.transform.SetParent(cObj.transform, false);
         var rt = btnObj.AddComponent<RectTransform>();
-        rt.anchorMin        = new Vector2(1f, 1f);
-        rt.anchorMax        = new Vector2(1f, 1f);
-        rt.pivot            = new Vector2(1f, 1f);
+        rt.anchorMin = new Vector2(1f, 1f);
+        rt.anchorMax = new Vector2(1f, 1f);
+        rt.pivot = new Vector2(1f, 1f);
         rt.anchoredPosition = new Vector2(-20f, -20f);
-        rt.sizeDelta        = new Vector2(280f, 100f);
+        rt.sizeDelta = new Vector2(280f, 100f);
 
         var img = btnObj.AddComponent<Image>();
         img.color = new Color(0.12f, 0.18f, 0.32f, 0.92f);
@@ -53,13 +53,13 @@ public class MinigameMenuManager : MonoBehaviour
         btn.targetGraphic = img;
         btn.colors = new ColorBlock
         {
-            normalColor      = new Color(0.12f, 0.18f, 0.32f, 0.92f),
+            normalColor = new Color(0.12f, 0.18f, 0.32f, 0.92f),
             highlightedColor = new Color(0.20f, 0.30f, 0.50f, 1f),
-            pressedColor     = new Color(0.08f, 0.12f, 0.22f, 1f),
-            selectedColor    = new Color(0.12f, 0.18f, 0.32f, 0.92f),
-            disabledColor    = new Color(0.3f,  0.3f,  0.3f,  0.5f),
-            colorMultiplier  = 1f,
-            fadeDuration     = 0.08f
+            pressedColor = new Color(0.08f, 0.12f, 0.22f, 1f),
+            selectedColor = new Color(0.12f, 0.18f, 0.32f, 0.92f),
+            disabledColor = new Color(0.3f, 0.3f, 0.3f, 0.5f),
+            colorMultiplier = 1f,
+            fadeDuration = 0.08f
         };
         btn.onClick.AddListener(ToggleMenu);
 
@@ -69,12 +69,12 @@ public class MinigameMenuManager : MonoBehaviour
         lrt.anchorMin = Vector2.zero; lrt.anchorMax = Vector2.one;
         lrt.offsetMin = lrt.offsetMax = Vector2.zero;
         var lTxt = lObj.AddComponent<Text>();
-        lTxt.text          = "🎮  Minigames";
-        lTxt.font          = GetFont();
-        lTxt.fontSize      = 38;
-        lTxt.fontStyle     = FontStyle.Bold;
-        lTxt.alignment     = TextAnchor.MiddleCenter;
-        lTxt.color         = Color.white;
+        lTxt.text = "Minigames";
+        lTxt.font = GetFont();
+        lTxt.fontSize = 38;
+        lTxt.fontStyle = FontStyle.Bold;
+        lTxt.alignment = TextAnchor.MiddleCenter;
+        lTxt.color = Color.white;
         lTxt.raycastTarget = false;
     }
 
@@ -112,18 +112,19 @@ public class MinigameMenuManager : MonoBehaviour
             pressedColor = new Color(0f, 0f, 0f, 0.55f),
             selectedColor = new Color(0f, 0f, 0f, 0.55f),
             disabledColor = new Color(0f, 0f, 0f, 0.55f),
-            colorMultiplier = 1f, fadeDuration = 0f
+            colorMultiplier = 1f,
+            fadeDuration = 0f
         };
         overlayBtn.onClick.AddListener(CloseMenu);
 
         var card = new GameObject("Card");
         card.transform.SetParent(_menuPanel.transform, false);
         var crt = card.AddComponent<RectTransform>();
-        crt.anchorMin        = new Vector2(0.5f, 0.5f);
-        crt.anchorMax        = new Vector2(0.5f, 0.5f);
-        crt.pivot            = new Vector2(0.5f, 0.5f);
+        crt.anchorMin = new Vector2(0.5f, 0.5f);
+        crt.anchorMax = new Vector2(0.5f, 0.5f);
+        crt.pivot = new Vector2(0.5f, 0.5f);
         crt.anchoredPosition = Vector2.zero;
-        crt.sizeDelta        = new Vector2(820f, 100f + Minigames.Length * 160f);
+        crt.sizeDelta = new Vector2(820f, 100f + Minigames.Length * 160f);
         var cImg = card.AddComponent<Image>();
         cImg.color = new Color(0.08f, 0.12f, 0.20f, 0.97f);
         cImg.raycastTarget = true;
@@ -143,14 +144,14 @@ public class MinigameMenuManager : MonoBehaviour
         trt.anchoredPosition = new Vector2(0f, -20f);
         trt.sizeDelta = new Vector2(780f, 76f);
         var tTxt = titleObj.AddComponent<Text>();
-        tTxt.text = "🎮  " + (lm != null ? lm.Get("minigames_title") : "Minigames");
+        tTxt.text = lm != null ? lm.Get("minigames_title") : "Minigames";
         tTxt.font = GetFont(); tTxt.fontSize = 50; tTxt.fontStyle = FontStyle.Bold;
         tTxt.alignment = TextAnchor.MiddleCenter; tTxt.color = Color.white; tTxt.raycastTarget = false;
         titleObj.AddComponent<Outline>().effectColor = new Color(0f, 0f, 0f, 0.6f);
 
         for (int i = 0; i < Minigames.Length; i++)
         {
-            var (key, fallback, emoji, color, scene) = Minigames[i];
+            var (key, fallback, color, scene) = Minigames[i];
             float yPos = -108f - i * 160f;
 
             var row = new GameObject($"Row_{i}");
@@ -168,12 +169,13 @@ public class MinigameMenuManager : MonoBehaviour
             string capturedScene = scene;
             rowBtn.colors = new ColorBlock
             {
-                normalColor      = new Color(color.r * 0.6f, color.g * 0.6f, color.b * 0.6f, 0.5f),
+                normalColor = new Color(color.r * 0.6f, color.g * 0.6f, color.b * 0.6f, 0.5f),
                 highlightedColor = new Color(color.r, color.g, color.b, 0.9f),
-                pressedColor     = new Color(color.r * 0.4f, color.g * 0.4f, color.b * 0.4f, 1f),
-                selectedColor    = new Color(color.r * 0.6f, color.g * 0.6f, color.b * 0.6f, 0.5f),
-                disabledColor    = new Color(0.3f, 0.3f, 0.3f, 0.5f),
-                colorMultiplier  = 1f, fadeDuration = 0.1f
+                pressedColor = new Color(color.r * 0.4f, color.g * 0.4f, color.b * 0.4f, 1f),
+                selectedColor = new Color(color.r * 0.6f, color.g * 0.6f, color.b * 0.6f, 0.5f),
+                disabledColor = new Color(0.3f, 0.3f, 0.3f, 0.5f),
+                colorMultiplier = 1f,
+                fadeDuration = 0.1f
             };
             rowBtn.onClick.AddListener(() => SceneManager.LoadScene(capturedScene));
 
@@ -184,15 +186,6 @@ public class MinigameMenuManager : MonoBehaviour
             cbRt.pivot = new Vector2(0f, 0.5f); cbRt.anchoredPosition = Vector2.zero; cbRt.sizeDelta = new Vector2(12f, 0f);
             colorBar.AddComponent<Image>().color = color;
 
-            var emojiObj = new GameObject("Emoji");
-            emojiObj.transform.SetParent(row.transform, false);
-            var ert = emojiObj.AddComponent<RectTransform>();
-            ert.anchorMin = new Vector2(0f, 0.5f); ert.anchorMax = new Vector2(0f, 0.5f);
-            ert.pivot = new Vector2(0f, 0.5f); ert.anchoredPosition = new Vector2(22f, 0f); ert.sizeDelta = new Vector2(100f, 100f);
-            var eTxt = emojiObj.AddComponent<Text>();
-            eTxt.text = emoji; eTxt.font = GetFont(); eTxt.fontSize = 64;
-            eTxt.alignment = TextAnchor.MiddleCenter; eTxt.color = Color.white; eTxt.raycastTarget = false;
-
             string label = lm != null ? lm.Get(key) : fallback;
             if (label == $"[{key}]") label = fallback;
 
@@ -200,8 +193,8 @@ public class MinigameMenuManager : MonoBehaviour
             nameObj.transform.SetParent(row.transform, false);
             var nrt = nameObj.AddComponent<RectTransform>();
             nrt.anchorMin = new Vector2(0f, 0.5f); nrt.anchorMax = new Vector2(1f, 0.5f);
-            nrt.pivot = new Vector2(0f, 0.5f); nrt.anchoredPosition = new Vector2(136f, 0f);
-            nrt.sizeDelta = new Vector2(-160f, 80f);
+            nrt.pivot = new Vector2(0f, 0.5f); nrt.anchoredPosition = new Vector2(36f, 0f);
+            nrt.sizeDelta = new Vector2(-100f, 80f);
             var nTxt = nameObj.AddComponent<Text>();
             nTxt.text = label; nTxt.font = GetFont(); nTxt.fontSize = 46; nTxt.fontStyle = FontStyle.Bold;
             nTxt.alignment = TextAnchor.MiddleLeft; nTxt.color = Color.white; nTxt.raycastTarget = false;

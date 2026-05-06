@@ -243,7 +243,7 @@ public class BeaverBalanceMinigame : MonoBehaviour
         atRt.pivot = new Vector2(0.5f, 1f); atRt.anchoredPosition = Vector2.zero; atRt.sizeDelta = new Vector2(0f, 12f);
         accentTop.AddComponent<Image>().color = new Color(1f, 0.82f, 0.2f);
 
-        MakeCongratsLabel(card.transform, "🎉", new Vector2(0f, -50f), new Vector2(860f, 100f), 80, FontStyle.Normal, new Color(1f, 0.85f, 0.2f));
+        MakeCongratsLabel(card.transform, "", new Vector2(0f, -50f), new Vector2(860f, 100f), 80, FontStyle.Normal, new Color(1f, 0.85f, 0.2f));
         MakeCongratsLabelLocalized(card.transform, "minigame_complete", "Gefeliciteerd!",
             new Vector2(0f, -155f), new Vector2(860f, 80f), 60, FontStyle.Bold, Color.white);
         MakeCongratsLabelLocalized(card.transform, "minigame_coins_earned", "Je hebt 10 munten verdiend!",

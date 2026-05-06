@@ -17,9 +17,9 @@ public class LanguageManager : MonoBehaviour
         {
             ["btn_spelen"] = new()
             {
-                [Language.Nederlands] = "Spelen  ▶",
-                [Language.Deutsch] = "Spielen  ▶",
-                [Language.English] = "Play  ▶",
+                [Language.Nederlands] = "Spelen ▶",
+                [Language.Deutsch] = "Spielen ▶",
+                [Language.English] = "Play ▶",
             },
             ["title_wildlands"] = new()
             {
@@ -29,9 +29,9 @@ public class LanguageManager : MonoBehaviour
             },
             ["btn_settings"] = new()
             {
-                [Language.Nederlands] = "⚙",
-                [Language.Deutsch] = "⚙",
-                [Language.English] = "⚙",
+                [Language.Nederlands] = "",
+                [Language.Deutsch] = "",
+                [Language.English] = "",
             },
             ["settings_title"] = new()
             {
@@ -53,27 +53,27 @@ public class LanguageManager : MonoBehaviour
             },
             ["shop_title"] = new()
             {
-                [Language.Nederlands] = "🏗  Koop een Verblijf",
-                [Language.Deutsch] = "🏗  Gehege kaufen",
-                [Language.English] = "🏗  Buy a Habitat",
+                [Language.Nederlands] = "Koop een Verblijf",
+                [Language.Deutsch] = "Gehege kaufen",
+                [Language.English] = "Buy a Habitat",
             },
             ["shop_currency"] = new()
             {
-                [Language.Nederlands] = "💰  {0} munten",
-                [Language.Deutsch] = "💰  {0} Münzen",
-                [Language.English] = "💰  {0} coins",
+                [Language.Nederlands] = "{0} munten",
+                [Language.Deutsch] = "{0} Münzen",
+                [Language.English] = "{0} coins",
             },
             ["shop_currency_short"] = new()
             {
-                [Language.Nederlands] = "💰 {0} munten",
-                [Language.Deutsch] = "💰 {0} Münzen",
-                [Language.English] = "💰 {0} coins",
+                [Language.Nederlands] = "{0} munten",
+                [Language.Deutsch] = "{0} Münzen",
+                [Language.English] = "{0} coins",
             },
             ["btn_buy"] = new()
             {
-                [Language.Nederlands] = "Kopen voor 💰 {0}",
-                [Language.Deutsch] = "Kaufen für 💰 {0}",
-                [Language.English] = "Buy for 💰 {0}",
+                [Language.Nederlands] = "Kopen voor {0}",
+                [Language.Deutsch] = "Kaufen für {0}",
+                [Language.English] = "Buy for {0}",
             },
             ["btn_plaatsen"] = new()
             {
@@ -83,15 +83,15 @@ public class LanguageManager : MonoBehaviour
             },
             ["bought"] = new()
             {
-                [Language.Nederlands] = "✓  Gekocht!",
-                [Language.Deutsch] = "✓  Gekauft!",
-                [Language.English] = "✓  Bought!",
+                [Language.Nederlands] = "Gekocht!",
+                [Language.Deutsch] = "Gekauft!",
+                [Language.English] = "Bought!",
             },
             ["not_enough"] = new()
             {
-                [Language.Nederlands] = "Niet genoeg munten! 💸",
-                [Language.Deutsch] = "Nicht genug Münzen! 💸",
-                [Language.English] = "Not enough coins! 💸",
+                [Language.Nederlands] = "Niet genoeg munten!",
+                [Language.Deutsch] = "Nicht genug Münzen!",
+                [Language.English] = "Not enough coins!",
             },
             ["place_instruction"] = new()
             {
@@ -101,57 +101,57 @@ public class LanguageManager : MonoBehaviour
             },
             ["well_done"] = new()
             {
-                [Language.Nederlands] = "Goed gedaan! 🎉",
-                [Language.Deutsch] = "Gut gemacht! 🎉",
-                [Language.English] = "Well done! 🎉",
+                [Language.Nederlands] = "Goed gedaan!",
+                [Language.Deutsch] = "Gut gemacht!",
+                [Language.English] = "Well done!",
             },
             ["building_label"] = new()
             {
-                [Language.Nederlands] = "In aanbouw! 🔨",
-                [Language.Deutsch] = "Im Bau! 🔨",
-                [Language.English] = "Building! 🔨",
+                [Language.Nederlands] = "In aanbouw!",
+                [Language.Deutsch] = "Im Bau!",
+                [Language.English] = "Building!",
             },
             ["building_label"] = new()
             {
-                [Language.Nederlands] = "In aanbouw! 🔨",
-                [Language.Deutsch] = "Im Bau! 🔨",
-                [Language.English] = "Under construction! 🔨",
+                [Language.Nederlands] = "In aanbouw!",
+                [Language.Deutsch] = "Im Bau!",
+                [Language.English] = "Under construction!",
             },
             ["building_title"] = new()
             {
-                [Language.Nederlands] = "🦫  Bever Verblijf bouwen!  🪵",
-                [Language.Deutsch] = "🦫  Biber-Gehege bauen!  🪵",
-                [Language.English] = "🦫  Building Beaver Habitat!  🪵",
+                [Language.Nederlands] = "Bever Verblijf bouwen!",
+                [Language.Deutsch] = "Biber-Gehege bauen!",
+                [Language.English] = "Building Beaver Habitat!",
             },
             ["building_fun_0"] = new()
             {
-                [Language.Nederlands] = "De bevers komen eraan! 🦫",
-                [Language.Deutsch] = "Die Biber kommen! 🦫",
-                [Language.English] = "The beavers are coming! 🦫",
+                [Language.Nederlands] = "De bevers komen eraan!",
+                [Language.Deutsch] = "Die Biber kommen!",
+                [Language.English] = "The beavers are coming!",
             },
             ["building_fun_1"] = new()
             {
-                [Language.Nederlands] = "Water ophalen... 💧",
-                [Language.Deutsch] = "Wasser holen... 💧",
-                [Language.English] = "Fetching water... 💧",
+                [Language.Nederlands] = "Water ophalen...",
+                [Language.Deutsch] = "Wasser holen...",
+                [Language.English] = "Fetching water...",
             },
             ["building_fun_2"] = new()
             {
-                [Language.Nederlands] = "Takken verzamelen! 🌿",
-                [Language.Deutsch] = "Äste sammeln! 🌿",
-                [Language.English] = "Gathering branches! 🌿",
+                [Language.Nederlands] = "Takken verzamelen!",
+                [Language.Deutsch] = "Äste sammeln!",
+                [Language.English] = "Gathering branches!",
             },
             ["building_fun_3"] = new()
             {
-                [Language.Nederlands] = "Knaag knaag knaag! 🪵",
-                [Language.Deutsch] = "Nag nag nag! 🪵",
-                [Language.English] = "Gnaw gnaw gnaw! 🪵",
+                [Language.Nederlands] = "Knaag knaag knaag!",
+                [Language.Deutsch] = "Nag nag nag!",
+                [Language.English] = "Gnaw gnaw gnaw!",
             },
             ["building_fun_4"] = new()
             {
-                [Language.Nederlands] = "De dam wordt gebouwd! 🔨",
-                [Language.Deutsch] = "Der Damm wird gebaut! 🔨",
-                [Language.English] = "Building the dam! 🔨",
+                [Language.Nederlands] = "De dam wordt gebouwd!",
+                [Language.Deutsch] = "Der Damm wird gebaut!",
+                [Language.English] = "Building the dam!",
             },
             ["building_fun_5"] = new()
             {
@@ -161,45 +161,45 @@ public class LanguageManager : MonoBehaviour
             },
             ["building_fun_6"] = new()
             {
-                [Language.Nederlands] = "Bevers zijn superdruk! 🦫💨",
-                [Language.Deutsch] = "Biber sind superbeschäftigt! 🦫💨",
-                [Language.English] = "Beavers are super busy! 🦫💨",
+                [Language.Nederlands] = "Bevers zijn superdruk!",
+                [Language.Deutsch] = "Biber sind superbeschäftigt!",
+                [Language.English] = "Beavers are super busy!",
             },
             ["building_fun_7"] = new()
             {
-                [Language.Nederlands] = "Een perfect thuis! 🏠",
-                [Language.Deutsch] = "Ein perfektes Zuhause! 🏠",
-                [Language.English] = "A perfect home! 🏠",
+                [Language.Nederlands] = "Een perfect thuis!",
+                [Language.Deutsch] = "Ein perfektes Zuhause!",
+                [Language.English] = "A perfect home!",
             },
             ["building_fun_8"] = new()
             {
-                [Language.Nederlands] = "Plons! 💦 Bijna af!",
-                [Language.Deutsch] = "Plitsch! 💦 Fast fertig!",
-                [Language.English] = "Splash! 💦 Nearly done!",
+                [Language.Nederlands] = "Plons! Bijna af!",
+                [Language.Deutsch] = "Plitsch! Fast fertig!",
+                [Language.English] = "Splash! Nearly done!",
             },
             ["building_fun_9"] = new()
             {
-                [Language.Nederlands] = "🌊 Het water stroomt al!",
-                [Language.Deutsch] = "🌊 Das Wasser fließt schon!",
-                [Language.English] = "🌊 The water flows already!",
+                [Language.Nederlands] = "Het water stroomt al!",
+                [Language.Deutsch] = "Das Wasser fließt schon!",
+                [Language.English] = "The water flows already!",
             },
             ["btn_back"] = new()
             {
-                [Language.Nederlands] = "◀  Terug",
-                [Language.Deutsch] = "◀  Zurück",
-                [Language.English] = "◀  Back",
+                [Language.Nederlands] = "◀ Terug",
+                [Language.Deutsch] = "◀ Zurück",
+                [Language.English] = "◀ Back",
             },
             ["btn_inspect"] = new()
             {
-                [Language.Nederlands] = "🔍  Inspecteren",
-                [Language.Deutsch] = "🔍  Inspizieren",
-                [Language.English] = "🔍  Inspect",
+                [Language.Nederlands] = "Inspecteren",
+                [Language.Deutsch] = "Inspizieren",
+                [Language.English] = "Inspect",
             },
             ["btn_minigame"] = new()
             {
-                [Language.Nederlands] = "🎮  Minigame",
-                [Language.Deutsch] = "🎮  Minispiel",
-                [Language.English] = "🎮  Minigame",
+                [Language.Nederlands] = "Minigame",
+                [Language.Deutsch] = "Minispiel",
+                [Language.English] = "Minigame",
             },
             ["minigames_title"] = new()
             {
@@ -227,9 +227,9 @@ public class LanguageManager : MonoBehaviour
             },
             ["codes_invalid"] = new()
             {
-                [Language.Nederlands] = "❌ Ongeldige code",
-                [Language.Deutsch] = "❌ Ungültiger Code",
-                [Language.English] = "❌ Invalid code",
+                [Language.Nederlands] = "Ongeldige code",
+                [Language.Deutsch] = "Ungültiger Code",
+                [Language.English] = "Invalid code",
             },
             ["codes_too_short"] = new()
             {
@@ -257,15 +257,15 @@ public class LanguageManager : MonoBehaviour
             },
             ["codes_already"] = new()
             {
-                [Language.Nederlands] = "⚠️ Skin al ontgrendeld",
-                [Language.Deutsch] = "⚠️ Skin schon freigeschaltet",
-                [Language.English] = "⚠️ Skin already unlocked",
+                [Language.Nederlands] = "Skin al ontgrendeld",
+                [Language.Deutsch] = "Skin schon freigeschaltet",
+                [Language.English] = "Skin already unlocked",
             },
             ["codes_info_body"] = new()
             {
-                [Language.Nederlands] = "Ga naar Wildlands Zoo om codes te vinden!\n\nBij elk dierenverblijf staat een infobord met een geheime code. Voer de code hier in om een nieuwe skin voor dat dier te ontgrendelen! 🎨",
-                [Language.Deutsch] = "Geh in den Wildlands Zoo, um Codes zu finden!\n\nAn jedem Tiergehege steht ein Infoschild mit einem geheimen Code. Gib den Code hier ein, um einen neuen Skin für dieses Tier freizuschalten! 🎨",
-                [Language.English] = "Visit Wildlands Zoo to find codes!\n\nEach animal exhibit has an info sign with a secret code. Enter the code here to unlock a new skin for that animal! 🎨",
+                [Language.Nederlands] = "Ga naar Wildlands Zoo om codes te vinden!\n\nBij elk dierenverblijf staat een infobord met een geheime code. Voer de code hier in om een nieuwe skin voor dat dier te ontgrendelen!",
+                [Language.Deutsch] = "Geh in den Wildlands Zoo, um Codes zu finden!\n\nAn jedem Tiergehege steht ein Infoschild mit einem geheimen Code. Gib den Code hier ein, um einen neuen Skin für dieses Tier freizuschalten!",
+                [Language.English] = "Visit Wildlands Zoo to find codes!\n\nEach animal exhibit has an info sign with a secret code. Enter the code here to unlock a new skin for that animal!",
             },
             ["minigame_parrot"] = new()
             {
@@ -287,15 +287,15 @@ public class LanguageManager : MonoBehaviour
             },
             ["minigame_complete"] = new()
             {
-                [Language.Nederlands] = "Gefeliciteerd! 🎉",
-                [Language.Deutsch] = "Glückwunsch! 🎉",
-                [Language.English] = "Congratulations! 🎉",
+                [Language.Nederlands] = "Gefeliciteerd!",
+                [Language.Deutsch] = "Glückwunsch!",
+                [Language.English] = "Congratulations!",
             },
             ["minigame_beaver_title"] = new()
             {
-                [Language.Nederlands] = "🦫  Bever Balans!",
-                [Language.Deutsch] = "🦫  Biber-Balance!",
-                [Language.English] = "🦫  Beaver Balance!",
+                [Language.Nederlands] = "Bever Balans!",
+                [Language.Deutsch] = "Biber-Balance!",
+                [Language.English] = "Beaver Balance!",
             },
             ["minigame_instruction_pc"] = new()
             {
@@ -311,9 +311,9 @@ public class LanguageManager : MonoBehaviour
             },
             ["minigame_coins_earned"] = new()
             {
-                [Language.Nederlands] = "Je hebt 10 munten verdiend! 💰",
-                [Language.Deutsch] = "Du hast 10 Münzen verdient! 💰",
-                [Language.English] = "You earned 10 coins! 💰",
+                [Language.Nederlands] = "Je hebt 10 munten verdiend!",
+                [Language.Deutsch] = "Du hast 10 Münzen verdient!",
+                [Language.English] = "You earned 10 coins!",
             },
             ["minigame_success_desc"] = new()
             {
@@ -329,9 +329,9 @@ public class LanguageManager : MonoBehaviour
             },
             ["beaver_name"] = new()
             {
-                [Language.Nederlands] = "🦫 Bever Verblijf",
-                [Language.Deutsch] = "🦫 Biber-Gehege",
-                [Language.English] = "🦫 Beaver Habitat",
+                [Language.Nederlands] = "Bever Verblijf",
+                [Language.Deutsch] = "Biber-Gehege",
+                [Language.English] = "Beaver Habitat",
             },
             ["beaver_desc"] = new()
             {
@@ -341,9 +341,9 @@ public class LanguageManager : MonoBehaviour
             },
             ["beaver_fact"] = new()
             {
-                [Language.Nederlands] = "Bevers bouwen dammen van takken en modder! 🌿",
-                [Language.Deutsch] = "Biber bauen Dämme aus Ästen und Schlamm! 🌿",
-                [Language.English] = "Beavers build dams from sticks and mud! 🌿",
+                [Language.Nederlands] = "Bevers bouwen dammen van takken en modder!",
+                [Language.Deutsch] = "Biber bauen Dämme aus Ästen und Schlamm!",
+                [Language.English] = "Beavers build dams from sticks and mud!",
             },
             ["btn_continue"] = new()
             {
@@ -353,45 +353,45 @@ public class LanguageManager : MonoBehaviour
             },
             ["pb_btn_blow"] = new()
             {
-                [Language.Nederlands] = "💨 Blaas",
-                [Language.Deutsch] = "💨 Pusten",
-                [Language.English] = "💨 Blow",
+                [Language.Nederlands] = "Blaas",
+                [Language.Deutsch] = "Pusten",
+                [Language.English] = "Blow",
             },
             ["pb_splash"] = new()
             {
-                [Language.Nederlands] = "Splash! 🌊",
-                [Language.Deutsch] = "Platsch! 🌊",
-                [Language.English] = "Splash! 🌊",
+                [Language.Nederlands] = "Splash!",
+                [Language.Deutsch] = "Platsch!",
+                [Language.English] = "Splash!",
             },
             ["pb_retry_text"] = new()
             {
-                [Language.Nederlands] = "Splash! 🌊\nProbeer opnieuw!",
-                [Language.Deutsch] = "Platsch! 🌊\nNochmal versuchen!",
-                [Language.English] = "Splash! 🌊\nTry again!",
+                [Language.Nederlands] = "Splash! \nProbeer opnieuw!",
+                [Language.Deutsch] = "Platsch! \nNochmal versuchen!",
+                [Language.English] = "Splash! \nTry again!",
             },
             ["pb_retry_btn"] = new()
             {
-                [Language.Nederlands] = "🐻‍❄️  Start!",
-                [Language.Deutsch] = "🐻‍❄️  Los!",
-                [Language.English] = "🐻‍❄️  Go!",
+                [Language.Nederlands] = "Start!",
+                [Language.Deutsch] = "Los!",
+                [Language.English] = "Go!",
             },
             ["pb_reached_end"] = new()
             {
-                [Language.Nederlands] = "Gelukt! 🐟 Voer de ijsbeer!",
-                [Language.Deutsch] = "Geschafft! 🐟 Füttere den Eisbären!",
-                [Language.English] = "Made it! 🐟 Feed the polar bear!",
+                [Language.Nederlands] = "Gelukt! Voer de ijsbeer!",
+                [Language.Deutsch] = "Geschafft! Füttere den Eisbären!",
+                [Language.English] = "Made it! Feed the polar bear!",
             },
             ["pb_complete"] = new()
             {
-                [Language.Nederlands] = "Lekker! 🎉",
-                [Language.Deutsch] = "Super! 🎉",
-                [Language.English] = "Yummy! 🎉",
+                [Language.Nederlands] = "Lekker!",
+                [Language.Deutsch] = "Super!",
+                [Language.English] = "Yummy!",
             },
             ["pb_blow_hit"] = new()
             {
-                [Language.Nederlands] = "Poof! 💨 Sneeuw Weggeblazen!",
-                [Language.Deutsch] = "Puff! 💨 Schnee weggeblasen!",
-                [Language.English] = "Poof! 💨 Snow blown away!",
+                [Language.Nederlands] = "Poof! Sneeuw Weggeblazen!",
+                [Language.Deutsch] = "Puff! Schnee weggeblasen!",
+                [Language.English] = "Poof! Snow blown away!",
             },
             ["pb_blow_miss"] = new()
             {
@@ -401,21 +401,21 @@ public class LanguageManager : MonoBehaviour
             },
             ["pb_missed"] = new()
             {
-                [Language.Nederlands] = "Te ver! ❄️ Wacht op de ijsplaat!",
-                [Language.Deutsch] = "Zu weit! ❄️ Warte auf die Eisscholle!",
-                [Language.English] = "Too far! ❄️ Wait for the ice sheet!",
+                [Language.Nederlands] = "Te ver! Wacht op de ijsplaat!",
+                [Language.Deutsch] = "Zu weit! Warte auf die Eisscholle!",
+                [Language.English] = "Too far! Wait for the ice sheet!",
             },
             ["pb_blocked"] = new()
             {
-                [Language.Nederlands] = "Geblockeerd! 🧊  Blaas eerst!",
-                [Language.Deutsch] = "Blockiert! 🧊  Erst pusten!",
-                [Language.English] = "Blocked! 🧊  Blow it away first!",
+                [Language.Nederlands] = "Geblockeerd! Blaas eerst!",
+                [Language.Deutsch] = "Blockiert! Erst pusten!",
+                [Language.English] = "Blocked! Blow it away first!",
             },
             ["pb_feed_btn"] = new()
             {
-                [Language.Nederlands] = "🐟  Voer IJsbeer!",
-                [Language.Deutsch] = "🐟  Eisbär füttern!",
-                [Language.English] = "🐟  Feed Bear!",
+                [Language.Nederlands] = "Voer IJsbeer!",
+                [Language.Deutsch] = "Eisbär füttern!",
+                [Language.English] = "Feed Bear!",
             },
             ["habitat_beaver_name"] = new()
             {
