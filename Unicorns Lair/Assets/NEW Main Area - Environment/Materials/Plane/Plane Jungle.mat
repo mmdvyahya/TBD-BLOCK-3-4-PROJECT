@@ -12,7 +12,7 @@ Material:
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
-  - _CEL_MODE_NONE
+  - _CEL_MODE_SINGLE
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -94,7 +94,7 @@ Material:
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
     - _BumpScale: 1
-    - _CEL_MODE: 0
+    - _CEL_MODE: 1
     - _CelMode: 0
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
@@ -108,7 +108,7 @@ Material:
     - _DstBlendAlpha: 0
     - _EdgeSize1: 0.05
     - _EdgeSize2: 0.05
-    - _Edge_Size_1: 0.5
+    - _Edge_Size_1: 0
     - _Edge_Size_2: 0.05
     - _EnvironmentReflections: 1
     - _GlossMapScale: 0
@@ -116,7 +116,7 @@ Material:
     - _GlossyReflections: 0
     - _LocalizedShading1: 1
     - _LocalizedShading2: 1
-    - _Localized_Shading_1: 0.907
+    - _Localized_Shading_1: 1
     - _Localized_Shading_2: 1
     - _MainLightContribution: 1
     - _Main_Light_Color_Contribution: 1
@@ -128,7 +128,7 @@ Material:
     - _ReceiveShadows: 1
     - _SelfShadingSize1: 0.5
     - _SelfShadingSize2: 0.6
-    - _Self_Shading_Size_1: 0.5
+    - _Self_Shading_Size_1: 0.722
     - _Self_Shading_Size_2: 0.6
     - _Shadow_Treshhold: 0.5
     - _Smoothness: 0.5
@@ -148,7 +148,7 @@ Material:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Base_Color: {r: 0.5411765, g: 0.6392157, b: 0.33333334, a: 1}
     - _Color: {r: 0, g: 0, b: 0, a: 1}
-    - _Color_Shaded_1: {r: 0.42745098, g: 0.5294118, b: 0.2509804, a: 1}
+    - _Color_Shaded_1: {r: 0.36078432, g: 0.38039216, b: 0.3882353, a: 1}
     - _Color_Shaded_2: {r: 0, g: 0, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _ShadedColor1: {r: 0, g: 0, b: 0, a: 1}
