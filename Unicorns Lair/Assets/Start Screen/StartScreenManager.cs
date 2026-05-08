@@ -415,7 +415,7 @@ public class StartScreenManager : MonoBehaviour
             yield return irisCoroutine;
 
         yield return new WaitForSeconds(0.2f);
-        SceneManager.LoadScene("MainArea");
+        SceneManager.LoadScene("WILDLANDS World");
     }
 
     IEnumerator IrisClose(float duration)

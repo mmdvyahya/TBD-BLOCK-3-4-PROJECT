@@ -119,69 +119,69 @@ public class LanguageManager : MonoBehaviour
             },
             ["building_title"] = new()
             {
-                [Language.Nederlands] = "Bever Verblijf bouwen!",
-                [Language.Deutsch] = "Biber-Gehege bauen!",
-                [Language.English] = "Building Beaver Habitat!",
+                [Language.Nederlands] = "Verblijf bouwen!",
+                [Language.Deutsch] = "Gehege wird gebaut!",
+                [Language.English] = "Building habitat!",
             },
             ["building_fun_0"] = new()
             {
-                [Language.Nederlands] = "De bevers komen eraan!",
-                [Language.Deutsch] = "Die Biber kommen!",
-                [Language.English] = "The beavers are coming!",
+                [Language.Nederlands] = "De dieren komen eraan!",
+                [Language.Deutsch] = "Die Tiere kommen!",
+                [Language.English] = "The animals are coming!",
             },
             ["building_fun_1"] = new()
             {
-                [Language.Nederlands] = "Water ophalen...",
-                [Language.Deutsch] = "Wasser holen...",
-                [Language.English] = "Fetching water...",
+                [Language.Nederlands] = "Materialen ophalen...",
+                [Language.Deutsch] = "Materialien werden geholt...",
+                [Language.English] = "Fetching materials...",
             },
             ["building_fun_2"] = new()
             {
-                [Language.Nederlands] = "Takken verzamelen!",
-                [Language.Deutsch] = "Äste sammeln!",
-                [Language.English] = "Gathering branches!",
+                [Language.Nederlands] = "Spullen verzamelen!",
+                [Language.Deutsch] = "Sachen werden gesammelt!",
+                [Language.English] = "Gathering supplies!",
             },
             ["building_fun_3"] = new()
             {
-                [Language.Nederlands] = "Knaag knaag knaag!",
-                [Language.Deutsch] = "Nag nag nag!",
-                [Language.English] = "Gnaw gnaw gnaw!",
+                [Language.Nederlands] = "Hamer hamer hamer!",
+                [Language.Deutsch] = "Hammer hammer hammer!",
+                [Language.English] = "Hammer hammer hammer!",
             },
             ["building_fun_4"] = new()
             {
-                [Language.Nederlands] = "De dam wordt gebouwd!",
-                [Language.Deutsch] = "Der Damm wird gebaut!",
-                [Language.English] = "Building the dam!",
+                [Language.Nederlands] = "Het verblijf wordt gebouwd!",
+                [Language.Deutsch] = "Das Gehege wird gebaut!",
+                [Language.English] = "The habitat is being built!",
             },
             ["building_fun_5"] = new()
             {
-                [Language.Nederlands] = "Bijna klaar... nog even! ⏳",
-                [Language.Deutsch] = "Fast fertig... noch kurz! ⏳",
-                [Language.English] = "Almost done... hang tight! ⏳",
+                [Language.Nederlands] = "Bijna klaar... nog even!",
+                [Language.Deutsch] = "Fast fertig... noch kurz!",
+                [Language.English] = "Almost done... hang tight!",
             },
             ["building_fun_6"] = new()
             {
-                [Language.Nederlands] = "Bevers zijn superdruk!",
-                [Language.Deutsch] = "Biber sind superbeschäftigt!",
-                [Language.English] = "Beavers are super busy!",
+                [Language.Nederlands] = "De bouwers zijn superdruk!",
+                [Language.Deutsch] = "Die Bauarbeiter sind super beschäftigt!",
+                [Language.English] = "The builders are super busy!",
             },
             ["building_fun_7"] = new()
             {
-                [Language.Nederlands] = "Een perfect thuis!",
-                [Language.Deutsch] = "Ein perfektes Zuhause!",
-                [Language.English] = "A perfect home!",
+                [Language.Nederlands] = "Een perfect thuis voor de dieren!",
+                [Language.Deutsch] = "Ein perfektes Zuhause für die Tiere!",
+                [Language.English] = "A perfect home for the animals!",
             },
             ["building_fun_8"] = new()
             {
-                [Language.Nederlands] = "Plons! Bijna af!",
-                [Language.Deutsch] = "Plitsch! Fast fertig!",
-                [Language.English] = "Splash! Nearly done!",
+                [Language.Nederlands] = "Bijna af!",
+                [Language.Deutsch] = "Fast fertig!",
+                [Language.English] = "Nearly done!",
             },
             ["building_fun_9"] = new()
             {
-                [Language.Nederlands] = "Het water stroomt al!",
-                [Language.Deutsch] = "Das Wasser fließt schon!",
-                [Language.English] = "The water flows already!",
+                [Language.Nederlands] = "De laatste hand wordt gelegd!",
+                [Language.Deutsch] = "Der letzte Schliff wird angebracht!",
+                [Language.English] = "Putting on the finishing touches!",
             },
             ["btn_back"] = new()
             {
@@ -429,17 +429,121 @@ public class LanguageManager : MonoBehaviour
                 [Language.Deutsch] = "Ein ruhiger Teich\nfür fröhliche Biber.",
                 [Language.English] = "A calm pond\nfor happy beavers.",
             },
+            ["habitat_baboon_name"] = new()
+            {
+                [Language.Nederlands] = "Baviaan Verblijf",
+                [Language.Deutsch] = "Pavian-Gehege",
+                [Language.English] = "Baboon Habitat",
+            },
             ["habitat_polarbear_name"] = new()
             {
                 [Language.Nederlands] = "IJsbeer Verblijf",
                 [Language.Deutsch] = "Eisbär-Gehege",
                 [Language.English] = "Polar Bear Habitat",
             },
-            ["habitat_polarbear_desc"] = new()
+            ["habitat_racoon_name"] = new()
             {
-                [Language.Nederlands] = "Een ijskoud paradijs\nvoor de ijsbeer.",
-                [Language.Deutsch] = "Ein eiskaltes Paradies\nfür den Eisbären.",
-                [Language.English] = "An icy paradise\nfor the polar bear.",
+                [Language.Nederlands] = "Wasbeer Verblijf",
+                [Language.Deutsch] = "Waschbär-Gehege",
+                [Language.English] = "Raccoon Habitat",
+            },
+            ["habitat_prairiedog_name"] = new()
+            {
+                [Language.Nederlands] = "Prairiehond Verblijf",
+                [Language.Deutsch] = "Präriehund-Gehege",
+                [Language.English] = "Prairie Dog Habitat",
+            },
+            ["build_mode_label"] = new()
+            {
+                [Language.Nederlands] = "Bouw Modus",
+                [Language.Deutsch] = "Baumodus",
+                [Language.English] = "Build Mode",
+            },
+            ["build_mode_on"] = new()
+            {
+                [Language.Nederlands] = "AAN",
+                [Language.Deutsch] = "AN",
+                [Language.English] = "ON",
+            },
+            ["build_mode_off"] = new()
+            {
+                [Language.Nederlands] = "UIT",
+                [Language.Deutsch] = "AUS",
+                [Language.English] = "OFF",
+            },
+            ["baboon_name"] = new()
+            {
+                [Language.Nederlands] = "Baviaan Verblijf",
+                [Language.Deutsch] = "Pavian-Gehege",
+                [Language.English] = "Baboon Habitat",
+            },
+            ["baboon_desc"] = new()
+            {
+                [Language.Nederlands] = "Een rotsachtig speelterrein vol slimme bavianen.",
+                [Language.Deutsch] = "Ein felsiger Spielplatz voller cleverer Paviane.",
+                [Language.English] = "A rocky playground full of clever baboons.",
+            },
+            ["baboon_fact"] = new()
+            {
+                [Language.Nederlands] = "Bavianen leven in groepen die soms wel 100 dieren tellen!",
+                [Language.Deutsch] = "Paviane leben in Gruppen mit bis zu 100 Tieren!",
+                [Language.English] = "Baboons live in troops that can have up to 100 members!",
+            },
+
+            ["racoon_name"] = new()
+            {
+                [Language.Nederlands] = "Wasbeer Verblijf",
+                [Language.Deutsch] = "Waschbär-Gehege",
+                [Language.English] = "Raccoon Habitat",
+            },
+            ["racoon_desc"] = new()
+            {
+                [Language.Nederlands] = "Een gezellig bos met klimboomstammen voor stoute wasberen.",
+                [Language.Deutsch] = "Ein gemütlicher Wald mit Klettermöglichkeiten für freche Waschbären.",
+                [Language.English] = "A cozy forest with climbing logs for mischievous raccoons.",
+            },
+            ["racoon_fact"] = new()
+            {
+                [Language.Nederlands] = "Wasberen wassen hun eten voor ze het opeten!",
+                [Language.Deutsch] = "Waschbären waschen ihr Essen, bevor sie es fressen!",
+                [Language.English] = "Raccoons wash their food before eating it!",
+            },
+
+            ["prairiedog_name"] = new()
+            {
+                [Language.Nederlands] = "Prairiehond Verblijf",
+                [Language.Deutsch] = "Präriehund-Gehege",
+                [Language.English] = "Prairie Dog Habitat",
+            },
+            ["prairiedog_desc"] = new()
+            {
+                [Language.Nederlands] = "Een grasveld vol tunnels en piepende prairiehondjes.",
+                [Language.Deutsch] = "Eine Wiese voller Tunnel und quiekender Präriehunde.",
+                [Language.English] = "A grassy field full of tunnels and squeaking prairie dogs.",
+            },
+            ["prairiedog_fact"] = new()
+            {
+                [Language.Nederlands] = "Prairiehonden geven elkaar een kus om hallo te zeggen!",
+                [Language.Deutsch] = "Präriehunde küssen sich zur Begrüßung!",
+                [Language.English] = "Prairie dogs kiss each other to say hello!",
+            },
+            ["polarbear_name"] = new()
+            {
+                [Language.Nederlands] = "IJsbeer Verblijf",
+                [Language.Deutsch] = "Eisbär-Gehege",
+                [Language.English] = "Polar Bear Habitat",
+            },
+            ["polarbear_desc"] = new()
+            {
+                [Language.Nederlands] = "Een ijskoud paradijs met sneeuw en water voor grote ijsberen.",
+                [Language.Deutsch] = "Ein eiskaltes Paradies mit Schnee und Wasser für große Eisbären.",
+                [Language.English] = "An icy paradise with snow and water for big polar bears.",
+            },
+            ["polarbear_fact"] = new()
+            {
+                [Language.Nederlands] = "IJsberen hebben zwarte huid onder hun witte vacht!",
+                [Language.Deutsch] = "Eisbären haben schwarze Haut unter ihrem weißen Fell!",
+                [Language.English] = "Polar bears have black skin under their white fur!",
             },
         };
 
