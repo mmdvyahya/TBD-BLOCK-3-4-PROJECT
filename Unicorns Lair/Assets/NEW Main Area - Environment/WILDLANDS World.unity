@@ -20212,9 +20212,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MoveWorld
   dragSpeed: 5
   zoomSpeed: 5
+  pinchSensitivity: 0.05
   minDistance: 10
   maxDistance: 75
   focusPoint: {x: 0, y: 0, z: 0}
+  useBounds: 1
+  minBoundsXZ: {x: -50, y: 0}
+  maxBoundsXZ: {x: 40, y: 50}
 --- !u!1001 &1494858559
 PrefabInstance:
   m_ObjectHideFlags: 0
