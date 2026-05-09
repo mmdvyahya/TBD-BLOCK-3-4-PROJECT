@@ -30776,7 +30776,7 @@ MonoBehaviour:
   educationalFactKey: polarbear_fact
   habitatCamView: {fileID: 373997474}
   inspectionCenter: {fileID: 485378603}
-  minigameScene: PolarBear
+  minigameScene: PolarBearMinigame
 --- !u!65 &1561436869
 BoxCollider:
   m_ObjectHideFlags: 0

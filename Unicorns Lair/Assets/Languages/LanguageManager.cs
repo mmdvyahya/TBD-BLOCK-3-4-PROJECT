@@ -311,9 +311,9 @@ public class LanguageManager : MonoBehaviour
             },
             ["minigame_coins_earned"] = new()
             {
-                [Language.Nederlands] = "Je hebt 10 munten verdiend!",
-                [Language.Deutsch] = "Du hast 10 Münzen verdient!",
-                [Language.English] = "You earned 10 coins!",
+                [Language.Nederlands] = "Je hebt 100 munten verdiend!",
+                [Language.Deutsch] = "Du hast 100 Münzen verdient!",
+                [Language.English] = "You earned 100 coins!",
             },
             ["minigame_success_desc"] = new()
             {
@@ -544,6 +544,42 @@ public class LanguageManager : MonoBehaviour
                 [Language.Nederlands] = "IJsberen hebben zwarte huid onder hun witte vacht!",
                 [Language.Deutsch] = "Eisbären haben schwarze Haut unter ihrem weißen Fell!",
                 [Language.English] = "Polar bears have black skin under their white fur!",
+            },
+            ["minigame_polarbear_title"] = new()
+            {
+                [Language.Nederlands] = "IJsbeer Verkoeling",
+                [Language.Deutsch] = "Eisbär-Abkühlung",
+                [Language.English] = "Polar Bear Cooldown",
+            },
+            ["minigame_polarbear_instruction"] = new()
+            {
+                [Language.Nederlands] = "Blaas in de microfoon om de ijsbeer af te koelen!",
+                [Language.Deutsch] = "Blas ins Mikrofon, um den Eisbär abzukühlen!",
+                [Language.English] = "Blow into the microphone to cool the polar bear down!",
+            },
+            ["minigame_polarbear_listening"] = new()
+            {
+                [Language.Nederlands] = "Aan het luisteren...",
+                [Language.Deutsch] = "Hört zu...",
+                [Language.English] = "Listening...",
+            },
+            ["minigame_polarbear_blowing"] = new()
+            {
+                [Language.Nederlands] = "Blazen!",
+                [Language.Deutsch] = "Pusten!",
+                [Language.English] = "Blowing!",
+            },
+            ["minigame_polarbear_success_title"] = new()
+            {
+                [Language.Nederlands] = "Lekker koel!",
+                [Language.Deutsch] = "Schön kühl!",
+                [Language.English] = "Nice and cool!",
+            },
+            ["minigame_polarbear_success_desc"] = new()
+            {
+                [Language.Nederlands] = "De ijsbeer voelt zich weer happy!",
+                [Language.Deutsch] = "Der Eisbär ist wieder glücklich!",
+                [Language.English] = "The polar bear is happy again!",
             },
         };
 
