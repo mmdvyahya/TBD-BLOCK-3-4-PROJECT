@@ -131,6 +131,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fence (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 737257187606748849, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.16
@@ -171,6 +175,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1950190772974024620, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2956042886513104591, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6503226110575309990, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -187,6 +203,10 @@ PrefabInstance:
     - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_Name
       value: Fence (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 737257187606748849, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_LocalScale.x
@@ -236,6 +256,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1950190772974024620, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2956042886513104591, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6503226110575309990, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -255,7 +287,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 12034990}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ButtonAnchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -415,6 +447,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Large Rock_3 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3127617304709722768, guid: 748fad7c59f19e449aebbeee9681f04c, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3487891874427556677, guid: 748fad7c59f19e449aebbeee9681f04c, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -519,6 +555,10 @@ PrefabInstance:
       value: Fence
       objectReference: {fileID: 0}
     - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -570,6 +610,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1950190772974024620, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2956042886513104591, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6503226110575309990, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -592,7 +644,7 @@ GameObject:
   - component: {fileID: 42688714}
   - component: {fileID: 42688713}
   - component: {fileID: 42688712}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Quad (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -706,6 +758,10 @@ PrefabInstance:
       value: Large Rock_1 (9)
       objectReference: {fileID: 0}
     - target: {fileID: 5076821631644464480, guid: 617cf380f10c48a409585e08ef187279, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5076821631644464480, guid: 617cf380f10c48a409585e08ef187279, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -783,6 +839,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pebble (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6267785518163352872, guid: 7c30c4bd1e69b22439b763fc822e36eb, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6751024573959276434, guid: 7c30c4bd1e69b22439b763fc822e36eb, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.6522588
@@ -856,7 +916,7 @@ GameObject:
   - component: {fileID: 78638889}
   - component: {fileID: 78638891}
   - component: {fileID: 78638890}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pillar (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -948,6 +1008,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fence (19)
       objectReference: {fileID: 0}
+    - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 737257187606748849, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.61993015
@@ -996,6 +1060,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1950190772974024620, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2956042886513104591, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6503226110575309990, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1011,11 +1087,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5566359858545930202, guid: 617cf380f10c48a409585e08ef187279, type: 3}
   m_PrefabInstance: {fileID: 4518732306414951091}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &93398065 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4896653716000216, guid: 18d653ec6ac008e43a69363f42d8c371, type: 3}
-  m_PrefabInstance: {fileID: 1076718261}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &94150899
 GameObject:
   m_ObjectHideFlags: 0
@@ -1028,7 +1099,7 @@ GameObject:
   - component: {fileID: 94150903}
   - component: {fileID: 94150902}
   - component: {fileID: 94150901}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1192,6 +1263,10 @@ PrefabInstance:
     - target: {fileID: 3127617304709722768, guid: 748fad7c59f19e449aebbeee9681f04c, type: 3}
       propertyPath: m_Name
       value: Large Rock_3 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3127617304709722768, guid: 748fad7c59f19e449aebbeee9681f04c, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1401,6 +1476,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Large Rock_2 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4674186342208238825, guid: dcdd5c471dfd0ca4fa7f1a66471cb019, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5446500229224181331, guid: dcdd5c471dfd0ca4fa7f1a66471cb019, type: 3}
       propertyPath: m_LocalScale.x
       value: 3.9637182
@@ -1474,6 +1553,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fence (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 737257187606748849, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 7.66
@@ -1514,6 +1597,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1950190772974024620, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2956042886513104591, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6503226110575309990, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1533,7 +1628,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 138138507}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Empty
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1654,6 +1749,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fence (16)
       objectReference: {fileID: 0}
+    - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 737257187606748849, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 23.1303
@@ -1694,6 +1793,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1950190772974024620, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2956042886513104591, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6503226110575309990, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1720,6 +1831,10 @@ PrefabInstance:
     - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_Name
       value: Fence (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_IsActive
@@ -1773,6 +1888,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1950190772974024620, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2956042886513104591, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6503226110575309990, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1794,6 +1921,10 @@ PrefabInstance:
     - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_Name
       value: Fence (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 737257187606748849, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1835,6 +1966,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1950190772974024620, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2956042886513104591, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6503226110575309990, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6503226110575309990, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -1869,7 +2012,7 @@ GameObject:
   - component: {fileID: 155753972}
   - component: {fileID: 155753971}
   - component: {fileID: 155753970}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Plane (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1981,6 +2124,10 @@ PrefabInstance:
     - target: {fileID: 4674186342208238825, guid: dcdd5c471dfd0ca4fa7f1a66471cb019, type: 3}
       propertyPath: m_Name
       value: Large Rock_2 (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4674186342208238825, guid: dcdd5c471dfd0ca4fa7f1a66471cb019, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4674186342208238825, guid: dcdd5c471dfd0ca4fa7f1a66471cb019, type: 3}
       propertyPath: m_IsActive
@@ -2142,6 +2289,10 @@ PrefabInstance:
       value: Pine Tree_1 (2)
       objectReference: {fileID: 0}
     - target: {fileID: 4861350178741744783, guid: f514935b1acc09e40be257de4012b174, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4861350178741744783, guid: f514935b1acc09e40be257de4012b174, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -2219,7 +2370,7 @@ GameObject:
   - component: {fileID: 173419537}
   - component: {fileID: 173419536}
   - component: {fileID: 173419535}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Quad (14)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2331,7 +2482,7 @@ GameObject:
   - component: {fileID: 173971170}
   - component: {fileID: 173971172}
   - component: {fileID: 173971171}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ground Mound (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2421,7 +2572,7 @@ GameObject:
   m_Component:
   - component: {fileID: 187172156}
   - component: {fileID: 187172157}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Polar Bear Habitat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2523,7 +2674,7 @@ GameObject:
   - component: {fileID: 191861695}
   - component: {fileID: 191861694}
   - component: {fileID: 191861693}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Plane (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2636,7 +2787,7 @@ GameObject:
   - component: {fileID: 192529777}
   - component: {fileID: 192529776}
   - component: {fileID: 192529775}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Plane (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2749,6 +2900,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fence (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 737257187606748849, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.98
@@ -2789,6 +2944,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1950190772974024620, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2956042886513104591, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6503226110575309990, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6503226110575309990, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -2822,7 +2989,7 @@ GameObject:
   - component: {fileID: 199286317}
   - component: {fileID: 199286319}
   - component: {fileID: 199286318}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Built
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3003,6 +3170,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Large Rock_2 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 4674186342208238825, guid: dcdd5c471dfd0ca4fa7f1a66471cb019, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5446500229224181331, guid: dcdd5c471dfd0ca4fa7f1a66471cb019, type: 3}
       propertyPath: m_LocalScale.x
       value: 2.293152
@@ -3129,6 +3300,10 @@ PrefabInstance:
       value: Large Rock_4
       objectReference: {fileID: 0}
     - target: {fileID: 8767163349780330757, guid: da8ce56a680e856419633ac645026d3b, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8767163349780330757, guid: da8ce56a680e856419633ac645026d3b, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -3148,6 +3323,10 @@ PrefabInstance:
     - target: {fileID: 4861350178741744783, guid: f514935b1acc09e40be257de4012b174, type: 3}
       propertyPath: m_Name
       value: Pine Tree_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4861350178741744783, guid: f514935b1acc09e40be257de4012b174, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5205365774551526965, guid: f514935b1acc09e40be257de4012b174, type: 3}
       propertyPath: m_LocalScale.x
@@ -3224,6 +3403,10 @@ PrefabInstance:
       value: Fence (2)
       objectReference: {fileID: 0}
     - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -3275,6 +3458,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1950190772974024620, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2956042886513104591, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6503226110575309990, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3285,6 +3480,59 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 737257187606748849, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
   m_PrefabInstance: {fileID: 219796490}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &220455372
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 220455374}
+  - component: {fileID: 220455373}
+  m_Layer: 0
+  m_Name: RainImpactSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &220455373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 220455372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 711228e701ed796498a59100446a0599, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RainImpactSpawner
+  splashPrefab: {fileID: 1428615830092775445, guid: 7ab1a9161ba4466478f2bb4e936aa07b, type: 3}
+  areaCenter: {x: -2.8, y: 0.5, z: -1.19}
+  areaSize: {x: 80, y: 30, z: 80}
+  spawnHeight: 20
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 8
+  splashInterval: 0.03
+  splashesPerTick: 3
+--- !u!4 &220455374
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 220455372}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.8, y: 0.5, z: -1.19}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &225216560
 GameObject:
   m_ObjectHideFlags: 0
@@ -3294,7 +3542,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 225216561}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3328,7 +3576,7 @@ GameObject:
   - component: {fileID: 230885362}
   - component: {fileID: 230885361}
   - component: {fileID: 230885360}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Quad
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3440,7 +3688,7 @@ GameObject:
   - component: {fileID: 239273214}
   - component: {fileID: 239273216}
   - component: {fileID: 239273215}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Large Rock_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3529,7 +3777,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 240830182}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Empty
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3584,6 +3832,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fence (20)
       objectReference: {fileID: 0}
+    - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 737257187606748849, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.61993015
@@ -3631,6 +3883,18 @@ PrefabInstance:
     - target: {fileID: 737257187606748849, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1950190772974024620, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2956042886513104591, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6503226110575309990, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3732,6 +3996,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fence (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 737257187606748849, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.22000313
@@ -3771,6 +4039,18 @@ PrefabInstance:
     - target: {fileID: 737257187606748849, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1950190772974024620, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2956042886513104591, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6503226110575309990, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3871,6 +4151,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Large Rock_2
       objectReference: {fileID: 0}
+    - target: {fileID: 4674186342208238825, guid: dcdd5c471dfd0ca4fa7f1a66471cb019, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5446500229224181331, guid: dcdd5c471dfd0ca4fa7f1a66471cb019, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5303
@@ -3946,7 +4230,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 254304405}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Built
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3980,7 +4264,7 @@ GameObject:
   - component: {fileID: 257856991}
   - component: {fileID: 257856990}
   - component: {fileID: 257856989}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Quad (22)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4090,7 +4374,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 259154860}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Fence group (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4182,9 +4466,21 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 473a8c7b18a8ae34082cb8af573e2bb6, type: 2}
+    - target: {fileID: -3973107660126017756, guid: c48b730e791bec943abf6396b764302a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -3556817346404478780, guid: c48b730e791bec943abf6396b764302a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: c48b730e791bec943abf6396b764302a, type: 3}
       propertyPath: m_Name
       value: Grass (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c48b730e791bec943abf6396b764302a, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: c48b730e791bec943abf6396b764302a, type: 3}
       propertyPath: m_IsActive
@@ -4198,6 +4494,10 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 473a8c7b18a8ae34082cb8af573e2bb6, type: 2}
+    - target: {fileID: 6471496338278676438, guid: c48b730e791bec943abf6396b764302a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4219,6 +4519,10 @@ PrefabInstance:
     - target: {fileID: 4674186342208238825, guid: dcdd5c471dfd0ca4fa7f1a66471cb019, type: 3}
       propertyPath: m_Name
       value: Large Rock_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4674186342208238825, guid: dcdd5c471dfd0ca4fa7f1a66471cb019, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5446500229224181331, guid: dcdd5c471dfd0ca4fa7f1a66471cb019, type: 3}
       propertyPath: m_LocalScale.x
@@ -4380,7 +4684,7 @@ GameObject:
   - component: {fileID: 272357384}
   - component: {fileID: 272357383}
   - component: {fileID: 272357382}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Quad (15)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4571,6 +4875,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fence (25)
       objectReference: {fileID: 0}
+    - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 737257187606748849, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.61993015
@@ -4619,6 +4927,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1950190772974024620, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2956042886513104591, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6503226110575309990, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4640,6 +4960,10 @@ PrefabInstance:
     - target: {fileID: 5076821631644464480, guid: 617cf380f10c48a409585e08ef187279, type: 3}
       propertyPath: m_Name
       value: Large Rock_1 (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5076821631644464480, guid: 617cf380f10c48a409585e08ef187279, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5076821631644464480, guid: 617cf380f10c48a409585e08ef187279, type: 3}
       propertyPath: m_IsActive
@@ -4715,7 +5039,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 296970187}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Built
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4765,6 +5089,10 @@ PrefabInstance:
     - target: {fileID: 5076821631644464480, guid: 617cf380f10c48a409585e08ef187279, type: 3}
       propertyPath: m_Name
       value: Large Rock_1 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5076821631644464480, guid: 617cf380f10c48a409585e08ef187279, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5076821631644464480, guid: 617cf380f10c48a409585e08ef187279, type: 3}
       propertyPath: m_IsActive
@@ -4927,6 +5255,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fence (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 737257187606748849, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 12.4800625
@@ -4967,6 +5299,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1950190772974024620, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2956042886513104591, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6503226110575309990, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4989,7 +5333,7 @@ GameObject:
   - component: {fileID: 347529778}
   - component: {fileID: 347529777}
   - component: {fileID: 347529776}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Quad (13)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5103,6 +5447,10 @@ PrefabInstance:
       value: Fence (4)
       objectReference: {fileID: 0}
     - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -5153,6 +5501,18 @@ PrefabInstance:
     - target: {fileID: 737257187606748849, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1950190772974024620, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2956042886513104591, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6503226110575309990, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6503226110575309990, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_IsActive
@@ -5431,6 +5791,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Polar Bear
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 68d26dc33edc640409ac17eae77db55e, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5450,7 +5814,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 368124245}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5519,7 +5883,7 @@ GameObject:
   - component: {fileID: 375650851}
   - component: {fileID: 375650853}
   - component: {fileID: 375650852}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube.010 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5706,6 +6070,10 @@ PrefabInstance:
     - target: {fileID: 3127617304709722768, guid: 748fad7c59f19e449aebbeee9681f04c, type: 3}
       propertyPath: m_Name
       value: Large Rock_3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3127617304709722768, guid: 748fad7c59f19e449aebbeee9681f04c, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5937,6 +6305,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fence (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 737257187606748849, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -5977,6 +6349,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1950190772974024620, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2956042886513104591, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6503226110575309990, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6503226110575309990, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -6005,6 +6389,10 @@ PrefabInstance:
     - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_Name
       value: Fence (18)
+      objectReference: {fileID: 0}
+    - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 737257187606748849, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_LocalScale.x
@@ -6054,6 +6442,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1950190772974024620, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2956042886513104591, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6503226110575309990, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6075,6 +6475,10 @@ PrefabInstance:
     - target: {fileID: 5076821631644464480, guid: 617cf380f10c48a409585e08ef187279, type: 3}
       propertyPath: m_Name
       value: Large Rock_1 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5076821631644464480, guid: 617cf380f10c48a409585e08ef187279, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5566359858545930202, guid: 617cf380f10c48a409585e08ef187279, type: 3}
       propertyPath: m_LocalScale.x
@@ -6154,7 +6558,7 @@ GameObject:
   - component: {fileID: 417636572}
   - component: {fileID: 417636571}
   - component: {fileID: 417636570}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Quad (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6273,6 +6677,10 @@ PrefabInstance:
       value: Large Rock_1 (2)
       objectReference: {fileID: 0}
     - target: {fileID: 5076821631644464480, guid: 617cf380f10c48a409585e08ef187279, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5076821631644464480, guid: 617cf380f10c48a409585e08ef187279, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -6352,7 +6760,7 @@ GameObject:
   m_Component:
   - component: {fileID: 437603969}
   - component: {fileID: 437603970}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Prairie Dog Habitat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6408,6 +6816,10 @@ PrefabInstance:
     - target: {fileID: 4674186342208238825, guid: dcdd5c471dfd0ca4fa7f1a66471cb019, type: 3}
       propertyPath: m_Name
       value: Large Rock_2 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4674186342208238825, guid: dcdd5c471dfd0ca4fa7f1a66471cb019, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5446500229224181331, guid: dcdd5c471dfd0ca4fa7f1a66471cb019, type: 3}
       propertyPath: m_LocalScale.x
@@ -6479,6 +6891,10 @@ PrefabInstance:
       value: Fence 2 (1)
       objectReference: {fileID: 0}
     - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -6522,6 +6938,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1950190772974024620, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2956042886513104591, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6503226110575309990, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6543,7 +6971,7 @@ GameObject:
   - component: {fileID: 465269739}
   - component: {fileID: 465269741}
   - component: {fileID: 465269740}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ground Mound (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6863,7 +7291,7 @@ GameObject:
   - component: {fileID: 480920955}
   - component: {fileID: 480920957}
   - component: {fileID: 480920956}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pillar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6952,7 +7380,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 485378603}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: PolarbearInspectCenter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6985,6 +7413,10 @@ PrefabInstance:
     - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_Name
       value: Fence (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_IsActive
@@ -7037,6 +7469,18 @@ PrefabInstance:
     - target: {fileID: 737257187606748849, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1950190772974024620, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2956042886513104591, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6503226110575309990, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7129,7 +7573,7 @@ GameObject:
   - component: {fileID: 511609297}
   - component: {fileID: 511609296}
   - component: {fileID: 511609295}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Quad (14)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7239,7 +7683,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 515032005}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7275,7 +7719,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5076821631644464480, guid: 617cf380f10c48a409585e08ef187279, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5076821631644464480, guid: 617cf380f10c48a409585e08ef187279, type: 3}
       propertyPath: m_IsActive
@@ -7441,7 +7885,7 @@ GameObject:
   - component: {fileID: 551013907}
   - component: {fileID: 551013906}
   - component: {fileID: 551013905}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Quad (13)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7637,7 +8081,7 @@ GameObject:
   - component: {fileID: 553486527}
   - component: {fileID: 553486526}
   - component: {fileID: 553486525}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Arch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8815,6 +9259,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fence (18)
       objectReference: {fileID: 0}
+    - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 737257187606748849, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.61993015
@@ -8862,6 +9310,18 @@ PrefabInstance:
     - target: {fileID: 737257187606748849, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1950190772974024620, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2956042886513104591, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6503226110575309990, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8938,6 +9398,10 @@ PrefabInstance:
       value: Large Rock_3 (3)
       objectReference: {fileID: 0}
     - target: {fileID: 3127617304709722768, guid: 748fad7c59f19e449aebbeee9681f04c, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3127617304709722768, guid: 748fad7c59f19e449aebbeee9681f04c, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -8962,6 +9426,10 @@ PrefabInstance:
     - target: {fileID: 4674186342208238825, guid: dcdd5c471dfd0ca4fa7f1a66471cb019, type: 3}
       propertyPath: m_Name
       value: Large Rock_2 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4674186342208238825, guid: dcdd5c471dfd0ca4fa7f1a66471cb019, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5446500229224181331, guid: dcdd5c471dfd0ca4fa7f1a66471cb019, type: 3}
       propertyPath: m_LocalScale.x
@@ -9031,6 +9499,10 @@ PrefabInstance:
     - target: {fileID: 4674186342208238825, guid: dcdd5c471dfd0ca4fa7f1a66471cb019, type: 3}
       propertyPath: m_Name
       value: Large Rock_2 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4674186342208238825, guid: dcdd5c471dfd0ca4fa7f1a66471cb019, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5446500229224181331, guid: dcdd5c471dfd0ca4fa7f1a66471cb019, type: 3}
       propertyPath: m_LocalScale.x
@@ -10784,7 +11256,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 576255066}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Fence group (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10821,6 +11293,10 @@ PrefabInstance:
     - target: {fileID: 4674186342208238825, guid: dcdd5c471dfd0ca4fa7f1a66471cb019, type: 3}
       propertyPath: m_Name
       value: Large Rock_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4674186342208238825, guid: dcdd5c471dfd0ca4fa7f1a66471cb019, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5446500229224181331, guid: dcdd5c471dfd0ca4fa7f1a66471cb019, type: 3}
       propertyPath: m_LocalScale.x
@@ -10897,7 +11373,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 576812402}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Built
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10941,7 +11417,7 @@ GameObject:
   - component: {fileID: 584491792}
   - component: {fileID: 584491791}
   - component: {fileID: 584491790}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Quad (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11053,7 +11529,7 @@ GameObject:
   - component: {fileID: 588469781}
   - component: {fileID: 588469783}
   - component: {fileID: 588469782}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube.007 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11261,9 +11737,21 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 473a8c7b18a8ae34082cb8af573e2bb6, type: 2}
+    - target: {fileID: -3973107660126017756, guid: c48b730e791bec943abf6396b764302a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -3556817346404478780, guid: c48b730e791bec943abf6396b764302a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: c48b730e791bec943abf6396b764302a, type: 3}
       propertyPath: m_Name
       value: Grass (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c48b730e791bec943abf6396b764302a, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: c48b730e791bec943abf6396b764302a, type: 3}
       propertyPath: m_IsActive
@@ -11277,6 +11765,10 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 473a8c7b18a8ae34082cb8af573e2bb6, type: 2}
+    - target: {fileID: 6471496338278676438, guid: c48b730e791bec943abf6396b764302a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11370,7 +11862,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 603896982}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Empty
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11416,7 +11908,7 @@ GameObject:
   - component: {fileID: 605024415}
   - component: {fileID: 605024414}
   - component: {fileID: 605024413}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Quad (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11755,6 +12247,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fence (20)
       objectReference: {fileID: 0}
+    - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 737257187606748849, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.61993015
@@ -11802,6 +12298,18 @@ PrefabInstance:
     - target: {fileID: 737257187606748849, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1950190772974024620, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2956042886513104591, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6503226110575309990, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11873,6 +12381,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Large Rock_4
       objectReference: {fileID: 0}
+    - target: {fileID: 8767163349780330757, guid: da8ce56a680e856419633ac645026d3b, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11899,6 +12411,10 @@ PrefabInstance:
     - target: {fileID: 4674186342208238825, guid: dcdd5c471dfd0ca4fa7f1a66471cb019, type: 3}
       propertyPath: m_Name
       value: Large Rock_2 (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4674186342208238825, guid: dcdd5c471dfd0ca4fa7f1a66471cb019, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4674186342208238825, guid: dcdd5c471dfd0ca4fa7f1a66471cb019, type: 3}
       propertyPath: m_IsActive
@@ -11981,6 +12497,10 @@ PrefabInstance:
     - target: {fileID: 6267785518163352872, guid: 7c30c4bd1e69b22439b763fc822e36eb, type: 3}
       propertyPath: m_Name
       value: Pebble
+      objectReference: {fileID: 0}
+    - target: {fileID: 6267785518163352872, guid: 7c30c4bd1e69b22439b763fc822e36eb, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6751024573959276434, guid: 7c30c4bd1e69b22439b763fc822e36eb, type: 3}
       propertyPath: m_LocalScale.x
@@ -12177,6 +12697,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fence (18)
       objectReference: {fileID: 0}
+    - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 737257187606748849, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.61993015
@@ -12224,6 +12748,18 @@ PrefabInstance:
     - target: {fileID: 737257187606748849, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1950190772974024620, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2956042886513104591, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6503226110575309990, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -12325,6 +12861,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree
       objectReference: {fileID: 0}
+    - target: {fileID: 4861350178741744783, guid: f514935b1acc09e40be257de4012b174, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5205365774551526965, guid: f514935b1acc09e40be257de4012b174, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.1135014
@@ -12398,6 +12938,10 @@ PrefabInstance:
     - target: {fileID: 5076821631644464480, guid: 617cf380f10c48a409585e08ef187279, type: 3}
       propertyPath: m_Name
       value: Large Rock_1 (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5076821631644464480, guid: 617cf380f10c48a409585e08ef187279, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5076821631644464480, guid: 617cf380f10c48a409585e08ef187279, type: 3}
       propertyPath: m_IsActive
@@ -12525,7 +13069,7 @@ GameObject:
   - component: {fileID: 718083407}
   - component: {fileID: 718083409}
   - component: {fileID: 718083408}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: rock (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12686,7 +13230,7 @@ GameObject:
   - component: {fileID: 732733278}
   - component: {fileID: 732733277}
   - component: {fileID: 732733276}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Quad (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12798,7 +13342,7 @@ GameObject:
   - component: {fileID: 732957127}
   - component: {fileID: 732957128}
   - component: {fileID: 732957129}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Built
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12872,7 +13416,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 734692441}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ButtonAnchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12906,7 +13450,7 @@ GameObject:
   - component: {fileID: 736493220}
   - component: {fileID: 736493219}
   - component: {fileID: 736493218}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Quad (05)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13016,7 +13560,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 737235098}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Fence group
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13111,9 +13655,21 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 473a8c7b18a8ae34082cb8af573e2bb6, type: 2}
+    - target: {fileID: -3973107660126017756, guid: c48b730e791bec943abf6396b764302a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -3556817346404478780, guid: c48b730e791bec943abf6396b764302a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: c48b730e791bec943abf6396b764302a, type: 3}
       propertyPath: m_Name
       value: Grass (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c48b730e791bec943abf6396b764302a, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: c48b730e791bec943abf6396b764302a, type: 3}
       propertyPath: m_IsActive
@@ -13127,6 +13683,10 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 473a8c7b18a8ae34082cb8af573e2bb6, type: 2}
+    - target: {fileID: 6471496338278676438, guid: c48b730e791bec943abf6396b764302a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13146,7 +13706,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 763514232}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Empty
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13264,6 +13824,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fence (17)
       objectReference: {fileID: 0}
+    - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 737257187606748849, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 24.456802
@@ -13304,6 +13868,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1950190772974024620, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2956042886513104591, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6503226110575309990, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13325,6 +13901,10 @@ PrefabInstance:
     - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_Name
       value: Fence (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 737257187606748849, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -13366,6 +13946,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1950190772974024620, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2956042886513104591, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6503226110575309990, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13380,7 +13972,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 776700006}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13418,6 +14010,10 @@ PrefabInstance:
     - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_Name
       value: Fence (22)
+      objectReference: {fileID: 0}
+    - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 737257187606748849, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_LocalScale.x
@@ -13466,6 +14062,18 @@ PrefabInstance:
     - target: {fileID: 737257187606748849, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1950190772974024620, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2956042886513104591, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6503226110575309990, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6503226110575309990, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_IsActive
@@ -13578,6 +14186,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fence (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 737257187606748849, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 17.490063
@@ -13617,6 +14229,18 @@ PrefabInstance:
     - target: {fileID: 737257187606748849, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1950190772974024620, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2956042886513104591, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6503226110575309990, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -13680,6 +14304,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fence (20)
       objectReference: {fileID: 0}
+    - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 737257187606748849, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.61993015
@@ -13728,6 +14356,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1950190772974024620, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2956042886513104591, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6503226110575309990, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13747,7 +14387,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 798693289}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Built
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13812,7 +14452,7 @@ GameObject:
   - component: {fileID: 806201214}
   - component: {fileID: 806201213}
   - component: {fileID: 806201212}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Quad (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13925,6 +14565,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fence (15)
       objectReference: {fileID: 0}
+    - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 737257187606748849, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 21.87779
@@ -13965,6 +14609,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1950190772974024620, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2956042886513104591, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6503226110575309990, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13986,6 +14642,10 @@ PrefabInstance:
     - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_Name
       value: Fence (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 737257187606748849, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -14027,6 +14687,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1950190772974024620, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2956042886513104591, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6503226110575309990, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -14048,6 +14720,10 @@ PrefabInstance:
     - target: {fileID: 5076821631644464480, guid: 617cf380f10c48a409585e08ef187279, type: 3}
       propertyPath: m_Name
       value: Large Rock_1 (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5076821631644464480, guid: 617cf380f10c48a409585e08ef187279, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5076821631644464480, guid: 617cf380f10c48a409585e08ef187279, type: 3}
       propertyPath: m_IsActive
@@ -14151,6 +14827,7 @@ MonoBehaviour:
   rainParticles: {fileID: 1274323944}
   timeBetweenRain: 40
   rainDuration: 10
+  rainImpactSpawner: {fileID: 220455373}
   enableWetLook: 1
   wetRenderers: []
   wetSmoothness: 0.85
@@ -14251,7 +14928,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5076821631644464480, guid: 617cf380f10c48a409585e08ef187279, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5076821631644464480, guid: 617cf380f10c48a409585e08ef187279, type: 3}
       propertyPath: m_IsActive
@@ -14369,6 +15046,10 @@ PrefabInstance:
     - target: {fileID: 3127617304709722768, guid: 748fad7c59f19e449aebbeee9681f04c, type: 3}
       propertyPath: m_Name
       value: Large Rock_3 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3127617304709722768, guid: 748fad7c59f19e449aebbeee9681f04c, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -14543,6 +15224,10 @@ PrefabInstance:
     - target: {fileID: 4861350178741744783, guid: f514935b1acc09e40be257de4012b174, type: 3}
       propertyPath: m_Name
       value: Tree (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4861350178741744783, guid: f514935b1acc09e40be257de4012b174, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5205365774551526965, guid: f514935b1acc09e40be257de4012b174, type: 3}
       propertyPath: m_LocalScale.x
@@ -14863,6 +15548,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fence (21)
       objectReference: {fileID: 0}
+    - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 737257187606748849, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.61993015
@@ -14910,6 +15599,18 @@ PrefabInstance:
     - target: {fileID: 737257187606748849, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1950190772974024620, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2956042886513104591, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6503226110575309990, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -15073,7 +15774,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 901329051}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Otter Habitat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15148,6 +15849,10 @@ PrefabInstance:
     - target: {fileID: 3127617304709722768, guid: 748fad7c59f19e449aebbeee9681f04c, type: 3}
       propertyPath: m_Name
       value: Large Rock_3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3127617304709722768, guid: 748fad7c59f19e449aebbeee9681f04c, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3487891874427556677, guid: 748fad7c59f19e449aebbeee9681f04c, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -15262,6 +15967,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fence (23)
       objectReference: {fileID: 0}
+    - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 737257187606748849, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.61993015
@@ -15310,6 +16019,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -8.97
       objectReference: {fileID: 0}
+    - target: {fileID: 1950190772974024620, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2956042886513104591, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6503226110575309990, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -15320,6 +16041,66 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 737257187606748849, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
   m_PrefabInstance: {fileID: 917365198}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &917672813
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 917672816}
+  - component: {fileID: 917672815}
+  - component: {fileID: 917672814}
+  m_Layer: 0
+  m_Name: VisualScripting SceneVariables
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &917672814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 917672813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 765181c9ef4b24d32a4f7cbd2ef370dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.VisualScripting.Core::Unity.VisualScripting.SceneVariables
+--- !u!114 &917672815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 917672813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e741851cba3ad425c91ecf922cc6b379, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.VisualScripting.Core::Unity.VisualScripting.Variables
+  _data:
+    _json: '{"declarations":{"Kind":"Object","collection":{"$content":[],"$version":"A"},"$version":"A"}}'
+    _objectReferences: []
+--- !u!4 &917672816
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 917672813}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &922799197
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15499,6 +16280,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fence (22)
       objectReference: {fileID: 0}
+    - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 737257187606748849, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.61993015
@@ -15547,6 +16332,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1950190772974024620, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2956042886513104591, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6503226110575309990, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6503226110575309990, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -15578,7 +16375,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 947592210}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Empty
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15703,6 +16500,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fence (22)
       objectReference: {fileID: 0}
+    - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 737257187606748849, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.61993015
@@ -15750,6 +16551,18 @@ PrefabInstance:
     - target: {fileID: 737257187606748849, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1950190772974024620, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2956042886513104591, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6503226110575309990, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -15904,6 +16717,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Large Rock_3 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 3127617304709722768, guid: 748fad7c59f19e449aebbeee9681f04c, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3487891874427556677, guid: 748fad7c59f19e449aebbeee9681f04c, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -15927,7 +16744,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 976256391}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ButtonAnchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16030,6 +16847,10 @@ PrefabInstance:
       value: Beaver2
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 220deca34771597428c7a3e80bc1319c, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 220deca34771597428c7a3e80bc1319c, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -16052,7 +16873,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 991405083}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Fence group
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16137,6 +16958,10 @@ PrefabInstance:
     - target: {fileID: 2981198689146391769, guid: 62198116f1abd2242a3a22e6b2ad83b5, type: 3}
       propertyPath: m_Name
       value: Mushroom
+      objectReference: {fileID: 0}
+    - target: {fileID: 2981198689146391769, guid: 62198116f1abd2242a3a22e6b2ad83b5, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -16403,9 +17228,21 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: d009bf79113af3b4bafec5e23091da99, type: 2}
+    - target: {fileID: -516098083770646512, guid: 1c2e4e7b0c0cf934abc2ec0fac342454, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 1c2e4e7b0c0cf934abc2ec0fac342454, type: 3}
       propertyPath: m_Name
       value: Animal Habitat Prarie dog
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1c2e4e7b0c0cf934abc2ec0fac342454, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8416272007918961125, guid: 1c2e4e7b0c0cf934abc2ec0fac342454, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -16434,6 +17271,10 @@ PrefabInstance:
     - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_Name
       value: Fence (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 737257187606748849, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -16475,6 +17316,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1950190772974024620, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2956042886513104591, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6503226110575309990, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -16492,7 +17345,7 @@ GameObject:
   - component: {fileID: 1045081184}
   - component: {fileID: 1045081183}
   - component: {fileID: 1045081182}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Quad (24)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16605,7 +17458,7 @@ GameObject:
   - component: {fileID: 1068829670}
   - component: {fileID: 1068829669}
   - component: {fileID: 1068829668}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Quad (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16862,67 +17715,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5446500229224181331, guid: dcdd5c471dfd0ca4fa7f1a66471cb019, type: 3}
   m_PrefabInstance: {fileID: 1069719050}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &1076718261
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 1485196176}
-    m_Modifications:
-    - target: {fileID: 1624732227010082, guid: 18d653ec6ac008e43a69363f42d8c371, type: 3}
-      propertyPath: m_Name
-      value: Rain Particles
-      objectReference: {fileID: 0}
-    - target: {fileID: 1624732227010082, guid: 18d653ec6ac008e43a69363f42d8c371, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4896653716000216, guid: 18d653ec6ac008e43a69363f42d8c371, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4896653716000216, guid: 18d653ec6ac008e43a69363f42d8c371, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 4896653716000216, guid: 18d653ec6ac008e43a69363f42d8c371, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 4896653716000216, guid: 18d653ec6ac008e43a69363f42d8c371, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.38268346
-      objectReference: {fileID: 0}
-    - target: {fileID: 4896653716000216, guid: 18d653ec6ac008e43a69363f42d8c371, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.9238795
-      objectReference: {fileID: 0}
-    - target: {fileID: 4896653716000216, guid: 18d653ec6ac008e43a69363f42d8c371, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4896653716000216, guid: 18d653ec6ac008e43a69363f42d8c371, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4896653716000216, guid: 18d653ec6ac008e43a69363f42d8c371, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: -90
-      objectReference: {fileID: 0}
-    - target: {fileID: 4896653716000216, guid: 18d653ec6ac008e43a69363f42d8c371, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4896653716000216, guid: 18d653ec6ac008e43a69363f42d8c371, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 18d653ec6ac008e43a69363f42d8c371, type: 3}
 --- !u!4 &1078729214 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 737257187606748849, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
@@ -16937,7 +17729,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1082445759}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cave
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16972,7 +17764,7 @@ GameObject:
   - component: {fileID: 1090123583}
   - component: {fileID: 1090123585}
   - component: {fileID: 1090123584}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Large Rock_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17064,6 +17856,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fence (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 737257187606748849, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 19.39
@@ -17104,6 +17900,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1950190772974024620, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2956042886513104591, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6503226110575309990, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -17123,7 +17931,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1095475780}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17156,6 +17964,10 @@ PrefabInstance:
     - target: {fileID: 4674186342208238825, guid: dcdd5c471dfd0ca4fa7f1a66471cb019, type: 3}
       propertyPath: m_Name
       value: Large Rock_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4674186342208238825, guid: dcdd5c471dfd0ca4fa7f1a66471cb019, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5446500229224181331, guid: dcdd5c471dfd0ca4fa7f1a66471cb019, type: 3}
       propertyPath: m_LocalScale.x
@@ -17235,6 +18047,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fence
       objectReference: {fileID: 0}
+    - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 737257187606748849, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.35
@@ -17275,6 +18091,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1950190772974024620, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2956042886513104591, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6503226110575309990, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -17296,6 +18124,10 @@ PrefabInstance:
     - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_Name
       value: Fence (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 737257187606748849, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_LocalScale.x
@@ -17344,6 +18176,18 @@ PrefabInstance:
     - target: {fileID: 737257187606748849, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1950190772974024620, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2956042886513104591, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6503226110575309990, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -17454,7 +18298,7 @@ GameObject:
   - component: {fileID: 1129947655}
   - component: {fileID: 1129947654}
   - component: {fileID: 1129947653}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Arch (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18632,6 +19476,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fence (20)
       objectReference: {fileID: 0}
+    - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 737257187606748849, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.61993015
@@ -18679,6 +19527,18 @@ PrefabInstance:
     - target: {fileID: 737257187606748849, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1950190772974024620, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2956042886513104591, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6503226110575309990, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -18786,6 +19646,10 @@ PrefabInstance:
       value: Fence (3)
       objectReference: {fileID: 0}
     - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -18837,6 +19701,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1950190772974024620, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2956042886513104591, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6503226110575309990, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -18856,7 +19732,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1145129899}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Fence group
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18984,6 +19860,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mushroom (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 2981198689146391769, guid: 62198116f1abd2242a3a22e6b2ad83b5, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -19005,7 +19885,7 @@ GameObject:
   - component: {fileID: 1172013473}
   - component: {fileID: 1172013475}
   - component: {fileID: 1172013474}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ground Mound (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19097,6 +19977,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Large Rock_1
       objectReference: {fileID: 0}
+    - target: {fileID: 5076821631644464480, guid: 617cf380f10c48a409585e08ef187279, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5566359858545930202, guid: 617cf380f10c48a409585e08ef187279, type: 3}
       propertyPath: m_LocalScale.x
       value: 3.1625218
@@ -19168,7 +20052,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1178964361}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ButtonAnchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19201,6 +20085,10 @@ PrefabInstance:
     - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_Name
       value: Fence (24)
+      objectReference: {fileID: 0}
+    - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 737257187606748849, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_LocalScale.x
@@ -19250,6 +20138,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1950190772974024620, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2956042886513104591, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6503226110575309990, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -19271,6 +20171,10 @@ PrefabInstance:
     - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_Name
       value: Fence (22)
+      objectReference: {fileID: 0}
+    - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 737257187606748849, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_LocalScale.x
@@ -19320,6 +20224,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1950190772974024620, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2956042886513104591, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6503226110575309990, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6503226110575309990, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -19353,7 +20269,7 @@ GameObject:
   - component: {fileID: 1190403865}
   - component: {fileID: 1190403867}
   - component: {fileID: 1190403866}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube.010 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19443,7 +20359,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1194890178}
   - component: {fileID: 1194890179}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Racoon Habitat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19500,6 +20416,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fence (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 737257187606748849, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 20.641401
@@ -19540,6 +20460,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1950190772974024620, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2956042886513104591, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6503226110575309990, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -19566,6 +20498,10 @@ PrefabInstance:
     - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_Name
       value: Fence (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 737257187606748849, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -19607,6 +20543,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1950190772974024620, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2956042886513104591, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6503226110575309990, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -19621,7 +20569,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1203311276}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Fence group
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19657,7 +20605,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1210543200}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Fence group (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19693,7 +20641,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1214099463}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19778,6 +20726,10 @@ PrefabInstance:
     - target: {fileID: 3127617304709722768, guid: 748fad7c59f19e449aebbeee9681f04c, type: 3}
       propertyPath: m_Name
       value: Large Rock_3 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3127617304709722768, guid: 748fad7c59f19e449aebbeee9681f04c, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3487891874427556677, guid: 748fad7c59f19e449aebbeee9681f04c, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -19953,7 +20905,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1222317911}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19984,7 +20936,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1222624581}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Built
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20020,6 +20972,10 @@ PrefabInstance:
     - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_Name
       value: Fence (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 737257187606748849, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -20061,6 +21017,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1950190772974024620, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2956042886513104591, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6503226110575309990, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6503226110575309990, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -20092,7 +21060,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1228345117}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cave (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20281,6 +21249,10 @@ PrefabInstance:
       value: Fence (6)
       objectReference: {fileID: 0}
     - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -20332,6 +21304,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1950190772974024620, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2956042886513104591, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6503226110575309990, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -20358,7 +21342,7 @@ GameObject:
   - component: {fileID: 1262710512}
   - component: {fileID: 1262710514}
   - component: {fileID: 1262710513}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: rock (15)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20447,7 +21431,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1264999703}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Hippo Habitat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20681,7 +21665,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 150aee38b5d848b42b75593618992bb7, type: 2}
+  - {fileID: 2100000, guid: fb2189123cc6b074c88eaa3ed6a466ef, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -21374,7 +22358,7 @@ ParticleSystem:
     donutRadius: 0.2
     m_Position: {x: 0, y: 0, z: 0}
     m_Rotation: {x: 0, y: 0, z: 0}
-    m_Scale: {x: 188, y: 1, z: 12}
+    m_Scale: {x: 188, y: 30, z: 12}
     placementMode: 0
     m_MeshMaterialIndex: 0
     m_MeshNormalOffset: 0
@@ -25544,6 +26528,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fence (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 737257187606748849, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.61993015
@@ -25591,6 +26579,18 @@ PrefabInstance:
     - target: {fileID: 737257187606748849, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1950190772974024620, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2956042886513104591, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6503226110575309990, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -25666,6 +26666,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Large Rock_3 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3127617304709722768, guid: 748fad7c59f19e449aebbeee9681f04c, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3487891874427556677, guid: 748fad7c59f19e449aebbeee9681f04c, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -25739,9 +26743,21 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 473a8c7b18a8ae34082cb8af573e2bb6, type: 2}
+    - target: {fileID: -3973107660126017756, guid: c48b730e791bec943abf6396b764302a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -3556817346404478780, guid: c48b730e791bec943abf6396b764302a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: c48b730e791bec943abf6396b764302a, type: 3}
       propertyPath: m_Name
       value: Grass (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c48b730e791bec943abf6396b764302a, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: c48b730e791bec943abf6396b764302a, type: 3}
       propertyPath: m_IsActive
@@ -25755,6 +26771,10 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 473a8c7b18a8ae34082cb8af573e2bb6, type: 2}
+    - target: {fileID: 6471496338278676438, guid: c48b730e791bec943abf6396b764302a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -25776,6 +26796,10 @@ PrefabInstance:
     - target: {fileID: 4674186342208238825, guid: dcdd5c471dfd0ca4fa7f1a66471cb019, type: 3}
       propertyPath: m_Name
       value: Large Rock_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4674186342208238825, guid: dcdd5c471dfd0ca4fa7f1a66471cb019, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5446500229224181331, guid: dcdd5c471dfd0ca4fa7f1a66471cb019, type: 3}
       propertyPath: m_LocalScale.x
@@ -25920,6 +26944,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fence (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 737257187606748849, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.45
@@ -25959,6 +26987,18 @@ PrefabInstance:
     - target: {fileID: 737257187606748849, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1950190772974024620, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2956042886513104591, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6503226110575309990, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -26034,6 +27074,10 @@ PrefabInstance:
       value: Waterfall
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 07f98da4162c2b44d84aa9963825ddea, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 07f98da4162c2b44d84aa9963825ddea, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -26101,7 +27145,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1315868466}
   - component: {fileID: 1315868467}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Baboon Habitat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26160,7 +27204,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1328142561}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Empty
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26220,7 +27264,7 @@ GameObject:
   - component: {fileID: 1350419710}
   - component: {fileID: 1350419712}
   - component: {fileID: 1350419711}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Large Rock_4 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26309,7 +27353,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1350669540}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Fence group
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26346,7 +27390,7 @@ GameObject:
   - component: {fileID: 1354400910}
   - component: {fileID: 1354400912}
   - component: {fileID: 1354400911}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: rock (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26438,7 +27482,7 @@ GameObject:
   - component: {fileID: 1355513900}
   - component: {fileID: 1355513899}
   - component: {fileID: 1355513898}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Quad (25)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26551,6 +27595,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fence (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 737257187606748849, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.25
@@ -26590,6 +27638,18 @@ PrefabInstance:
     - target: {fileID: 737257187606748849, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1950190772974024620, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2956042886513104591, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6503226110575309990, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6503226110575309990, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_IsActive
@@ -26682,6 +27742,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Large Rock_2 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4674186342208238825, guid: dcdd5c471dfd0ca4fa7f1a66471cb019, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5446500229224181331, guid: dcdd5c471dfd0ca4fa7f1a66471cb019, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5303
@@ -26752,7 +27816,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1369926439}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26785,6 +27849,10 @@ PrefabInstance:
     - target: {fileID: 4861350178741744783, guid: f514935b1acc09e40be257de4012b174, type: 3}
       propertyPath: m_Name
       value: Pine Tree_1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4861350178741744783, guid: f514935b1acc09e40be257de4012b174, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4861350178741744783, guid: f514935b1acc09e40be257de4012b174, type: 3}
       propertyPath: m_IsActive
@@ -26869,6 +27937,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fence (21)
       objectReference: {fileID: 0}
+    - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 737257187606748849, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.61993015
@@ -26917,6 +27989,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1950190772974024620, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2956042886513104591, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6503226110575309990, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -26938,6 +28022,10 @@ PrefabInstance:
     - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_Name
       value: Fence (24)
+      objectReference: {fileID: 0}
+    - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 737257187606748849, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_LocalScale.x
@@ -26986,6 +28074,18 @@ PrefabInstance:
     - target: {fileID: 737257187606748849, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -8.97
+      objectReference: {fileID: 0}
+    - target: {fileID: 1950190772974024620, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2956042886513104591, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6503226110575309990, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6503226110575309990, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_IsActive
@@ -27398,6 +28498,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fence (21)
       objectReference: {fileID: 0}
+    - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 737257187606748849, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.61993015
@@ -27445,6 +28549,18 @@ PrefabInstance:
     - target: {fileID: 737257187606748849, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1950190772974024620, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2956042886513104591, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6503226110575309990, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -27524,6 +28640,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Waterfall (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 07f98da4162c2b44d84aa9963825ddea, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -27545,6 +28665,10 @@ PrefabInstance:
     - target: {fileID: 4674186342208238825, guid: dcdd5c471dfd0ca4fa7f1a66471cb019, type: 3}
       propertyPath: m_Name
       value: Large Rock_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4674186342208238825, guid: dcdd5c471dfd0ca4fa7f1a66471cb019, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5446500229224181331, guid: dcdd5c471dfd0ca4fa7f1a66471cb019, type: 3}
       propertyPath: m_LocalScale.x
@@ -27693,6 +28817,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Large Rock_2 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4674186342208238825, guid: dcdd5c471dfd0ca4fa7f1a66471cb019, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5446500229224181331, guid: dcdd5c471dfd0ca4fa7f1a66471cb019, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5302999
@@ -27771,7 +28899,7 @@ GameObject:
   - component: {fileID: 1422468139}
   - component: {fileID: 1422468138}
   - component: {fileID: 1422468137}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Quad (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28071,9 +29199,21 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 473a8c7b18a8ae34082cb8af573e2bb6, type: 2}
+    - target: {fileID: -3973107660126017756, guid: c48b730e791bec943abf6396b764302a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -3556817346404478780, guid: c48b730e791bec943abf6396b764302a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: c48b730e791bec943abf6396b764302a, type: 3}
       propertyPath: m_Name
       value: Grass
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c48b730e791bec943abf6396b764302a, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: c48b730e791bec943abf6396b764302a, type: 3}
       propertyPath: m_IsActive
@@ -28087,6 +29227,10 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 473a8c7b18a8ae34082cb8af573e2bb6, type: 2}
+    - target: {fileID: 6471496338278676438, guid: c48b730e791bec943abf6396b764302a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -28228,6 +29372,10 @@ PrefabInstance:
       value: Fence (8)
       objectReference: {fileID: 0}
     - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -28279,6 +29427,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1950190772974024620, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2956042886513104591, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6503226110575309990, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6503226110575309990, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -28310,7 +29470,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1446715757}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: 'RacoonInspectCenter '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28347,6 +29507,10 @@ PrefabInstance:
     - target: {fileID: 6267785518163352872, guid: 7c30c4bd1e69b22439b763fc822e36eb, type: 3}
       propertyPath: m_Name
       value: Pebble
+      objectReference: {fileID: 0}
+    - target: {fileID: 6267785518163352872, guid: 7c30c4bd1e69b22439b763fc822e36eb, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6751024573959276434, guid: 7c30c4bd1e69b22439b763fc822e36eb, type: 3}
       propertyPath: m_LocalPosition.x
@@ -28407,7 +29571,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1451980287}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28493,6 +29657,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: HabitatBorders
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 81df8b37fca102f4a8d2bda7ff4c8d3f, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -28509,6 +29677,10 @@ PrefabInstance:
     - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_Name
       value: Fence (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 737257187606748849, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_LocalScale.x
@@ -28557,6 +29729,18 @@ PrefabInstance:
     - target: {fileID: 737257187606748849, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1950190772974024620, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2956042886513104591, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6503226110575309990, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -28724,6 +29908,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pebble
       objectReference: {fileID: 0}
+    - target: {fileID: 6267785518163352872, guid: 7c30c4bd1e69b22439b763fc822e36eb, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6751024573959276434, guid: 7c30c4bd1e69b22439b763fc822e36eb, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.6522589
@@ -28879,7 +30067,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 645233680}
-  - {fileID: 93398065}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
 --- !u!114 &1485196177
@@ -29011,6 +30198,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Large Rock_4
       objectReference: {fileID: 0}
+    - target: {fileID: 8767163349780330757, guid: da8ce56a680e856419633ac645026d3b, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -29025,7 +30216,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1495165667}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29059,7 +30250,7 @@ GameObject:
   - component: {fileID: 1511155254}
   - component: {fileID: 1511155253}
   - component: {fileID: 1511155252}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Quad (17)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29173,6 +30364,10 @@ PrefabInstance:
       value: Large Rock_1 (9)
       objectReference: {fileID: 0}
     - target: {fileID: 5076821631644464480, guid: 617cf380f10c48a409585e08ef187279, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5076821631644464480, guid: 617cf380f10c48a409585e08ef187279, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -29259,7 +30454,7 @@ GameObject:
   - component: {fileID: 1541171079}
   - component: {fileID: 1541171078}
   - component: {fileID: 1541171077}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Quad (20)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29434,6 +30629,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Large Rock_3
       objectReference: {fileID: 0}
+    - target: {fileID: 3127617304709722768, guid: 748fad7c59f19e449aebbeee9681f04c, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -29450,6 +30649,10 @@ PrefabInstance:
     - target: {fileID: 4674186342208238825, guid: dcdd5c471dfd0ca4fa7f1a66471cb019, type: 3}
       propertyPath: m_Name
       value: Large Rock_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4674186342208238825, guid: dcdd5c471dfd0ca4fa7f1a66471cb019, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5446500229224181331, guid: dcdd5c471dfd0ca4fa7f1a66471cb019, type: 3}
       propertyPath: m_LocalScale.x
@@ -29523,7 +30726,7 @@ GameObject:
   - component: {fileID: 1561436867}
   - component: {fileID: 1561436869}
   - component: {fileID: 1561436868}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Built
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29654,7 +30857,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5076821631644464480, guid: 617cf380f10c48a409585e08ef187279, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5076821631644464480, guid: 617cf380f10c48a409585e08ef187279, type: 3}
       propertyPath: m_IsActive
@@ -29738,6 +30941,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4861350178741744783, guid: f514935b1acc09e40be257de4012b174, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5205365774551526965, guid: f514935b1acc09e40be257de4012b174, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.7001363
@@ -29809,7 +31016,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1584067594}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29927,6 +31134,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fence (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 737257187606748849, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.63
@@ -29966,6 +31177,18 @@ PrefabInstance:
     - target: {fileID: 737257187606748849, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1950190772974024620, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2956042886513104591, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6503226110575309990, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6503226110575309990, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_IsActive
@@ -30078,6 +31301,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Large Rock_1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5076821631644464480, guid: 617cf380f10c48a409585e08ef187279, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5566359858545930202, guid: 617cf380f10c48a409585e08ef187279, type: 3}
       propertyPath: m_LocalScale.x
       value: 2.5766015
@@ -30158,7 +31385,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1623028663}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Empty
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30208,7 +31435,7 @@ GameObject:
   - component: {fileID: 1626051914}
   - component: {fileID: 1626051916}
   - component: {fileID: 1626051915}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube.007 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30352,6 +31579,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fence (22)
       objectReference: {fileID: 0}
+    - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 737257187606748849, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.61993015
@@ -30400,6 +31631,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1950190772974024620, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2956042886513104591, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6503226110575309990, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6503226110575309990, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -30433,6 +31676,10 @@ PrefabInstance:
     - target: {fileID: 5076821631644464480, guid: 617cf380f10c48a409585e08ef187279, type: 3}
       propertyPath: m_Name
       value: Large Rock_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5076821631644464480, guid: 617cf380f10c48a409585e08ef187279, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5566359858545930202, guid: 617cf380f10c48a409585e08ef187279, type: 3}
       propertyPath: m_LocalScale.x
@@ -30513,6 +31760,10 @@ PrefabInstance:
       value: Fence (5)
       objectReference: {fileID: 0}
     - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -30563,6 +31814,18 @@ PrefabInstance:
     - target: {fileID: 737257187606748849, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1950190772974024620, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2956042886513104591, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6503226110575309990, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -30666,7 +31929,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5076821631644464480, guid: 617cf380f10c48a409585e08ef187279, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5566359858545930202, guid: 617cf380f10c48a409585e08ef187279, type: 3}
       propertyPath: m_LocalScale.x
@@ -30746,7 +32009,7 @@ GameObject:
   - component: {fileID: 1662679256}
   - component: {fileID: 1662679255}
   - component: {fileID: 1662679254}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Quad (21)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30859,7 +32122,7 @@ GameObject:
   - component: {fileID: 1663168825}
   - component: {fileID: 1663168824}
   - component: {fileID: 1663168823}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Quad (16)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30972,6 +32235,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fence (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 737257187606748849, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 14.910064
@@ -31012,6 +32279,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1950190772974024620, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2956042886513104591, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6503226110575309990, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -31031,7 +32310,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1668916021}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: 2D Path
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31159,6 +32438,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fence (19)
       objectReference: {fileID: 0}
+    - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 737257187606748849, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.61993015
@@ -31207,6 +32490,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1950190772974024620, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2956042886513104591, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6503226110575309990, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -31229,7 +32524,7 @@ GameObject:
   - component: {fileID: 1685908164}
   - component: {fileID: 1685908163}
   - component: {fileID: 1685908162}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Quad (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31373,7 +32668,7 @@ GameObject:
   - component: {fileID: 1688072228}
   - component: {fileID: 1688072227}
   - component: {fileID: 1688072226}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Quad (23)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31483,7 +32778,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1688256186}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Fence group (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31523,7 +32818,7 @@ GameObject:
   - component: {fileID: 1703770419}
   - component: {fileID: 1703770418}
   - component: {fileID: 1703770417}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Quad (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31636,6 +32931,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fence (19)
       objectReference: {fileID: 0}
+    - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 737257187606748849, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.61993015
@@ -31683,6 +32982,18 @@ PrefabInstance:
     - target: {fileID: 737257187606748849, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1950190772974024620, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2956042886513104591, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6503226110575309990, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -31787,7 +33098,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5076821631644464480, guid: 617cf380f10c48a409585e08ef187279, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5076821631644464480, guid: 617cf380f10c48a409585e08ef187279, type: 3}
       propertyPath: m_IsActive
@@ -31872,6 +33183,10 @@ PrefabInstance:
       value: Large Rock_1 (3)
       objectReference: {fileID: 0}
     - target: {fileID: 5076821631644464480, guid: 617cf380f10c48a409585e08ef187279, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5076821631644464480, guid: 617cf380f10c48a409585e08ef187279, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -31954,7 +33269,7 @@ GameObject:
   - component: {fileID: 1752055980}
   - component: {fileID: 1752055979}
   - component: {fileID: 1752055978}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Arch (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33132,7 +34447,7 @@ GameObject:
   - component: {fileID: 1752355368}
   - component: {fileID: 1752355367}
   - component: {fileID: 1752355366}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Quad (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33323,6 +34638,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Large Rock_1
       objectReference: {fileID: 0}
+    - target: {fileID: 5076821631644464480, guid: 617cf380f10c48a409585e08ef187279, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5566359858545930202, guid: 617cf380f10c48a409585e08ef187279, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.7468789
@@ -33400,7 +34719,7 @@ GameObject:
   - component: {fileID: 1767377378}
   - component: {fileID: 1767377380}
   - component: {fileID: 1767377379}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: rock (16)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33573,7 +34892,7 @@ GameObject:
   - component: {fileID: 1773511303}
   - component: {fileID: 1773511305}
   - component: {fileID: 1773511304}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube.007 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33781,6 +35100,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Large Rock_3
       objectReference: {fileID: 0}
+    - target: {fileID: 3127617304709722768, guid: 748fad7c59f19e449aebbeee9681f04c, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3487891874427556677, guid: 748fad7c59f19e449aebbeee9681f04c, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -33986,6 +35309,10 @@ PrefabInstance:
       value: Large Rock_1 (7)
       objectReference: {fileID: 0}
     - target: {fileID: 5076821631644464480, guid: 617cf380f10c48a409585e08ef187279, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5076821631644464480, guid: 617cf380f10c48a409585e08ef187279, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -34103,6 +35430,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mushroom (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2981198689146391769, guid: 62198116f1abd2242a3a22e6b2ad83b5, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -34202,6 +35533,10 @@ PrefabInstance:
     - target: {fileID: 4861350178741744783, guid: f514935b1acc09e40be257de4012b174, type: 3}
       propertyPath: m_Name
       value: Tree (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4861350178741744783, guid: f514935b1acc09e40be257de4012b174, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5205365774551526965, guid: f514935b1acc09e40be257de4012b174, type: 3}
       propertyPath: m_LocalScale.x
@@ -34351,6 +35686,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4861350178741744783, guid: f514935b1acc09e40be257de4012b174, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5205365774551526965, guid: f514935b1acc09e40be257de4012b174, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.5069017
@@ -34482,6 +35821,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fence (19)
       objectReference: {fileID: 0}
+    - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 737257187606748849, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.61993015
@@ -34530,6 +35873,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1950190772974024620, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2956042886513104591, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6503226110575309990, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -34551,6 +35906,10 @@ PrefabInstance:
     - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_Name
       value: Fence (23)
+      objectReference: {fileID: 0}
+    - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 737257187606748849, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_LocalScale.x
@@ -34600,6 +35959,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1950190772974024620, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2956042886513104591, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6503226110575309990, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6503226110575309990, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -34633,6 +36004,10 @@ PrefabInstance:
     - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_Name
       value: Fence (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 737257187606748849, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -34674,6 +36049,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1950190772974024620, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2956042886513104591, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6503226110575309990, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -34695,6 +36082,10 @@ PrefabInstance:
     - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_Name
       value: Fence (21)
+      objectReference: {fileID: 0}
+    - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 737257187606748849, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_LocalScale.x
@@ -34744,6 +36135,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1950190772974024620, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2956042886513104591, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6503226110575309990, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -34765,6 +36168,10 @@ PrefabInstance:
     - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_Name
       value: Fence (19)
+      objectReference: {fileID: 0}
+    - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 737257187606748849, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_LocalScale.x
@@ -34813,6 +36220,18 @@ PrefabInstance:
     - target: {fileID: 737257187606748849, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1950190772974024620, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2956042886513104591, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6503226110575309990, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -35043,7 +36462,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1875324873}
   - component: {fileID: 1875324874}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Beaver Habitat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35106,6 +36525,10 @@ PrefabInstance:
       value: Fence 2 (2)
       objectReference: {fileID: 0}
     - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -35149,6 +36572,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1950190772974024620, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2956042886513104591, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6503226110575309990, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6503226110575309990, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -35183,7 +36618,7 @@ GameObject:
   - component: {fileID: 1890941758}
   - component: {fileID: 1890941757}
   - component: {fileID: 1890941756}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Quad (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35298,7 +36733,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5076821631644464480, guid: 617cf380f10c48a409585e08ef187279, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5076821631644464480, guid: 617cf380f10c48a409585e08ef187279, type: 3}
       propertyPath: m_IsActive
@@ -35384,7 +36819,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1911453618}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35417,6 +36852,10 @@ PrefabInstance:
     - target: {fileID: 5076821631644464480, guid: 617cf380f10c48a409585e08ef187279, type: 3}
       propertyPath: m_Name
       value: Large Rock_1 (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5076821631644464480, guid: 617cf380f10c48a409585e08ef187279, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5076821631644464480, guid: 617cf380f10c48a409585e08ef187279, type: 3}
       propertyPath: m_IsActive
@@ -35496,7 +36935,7 @@ GameObject:
   - component: {fileID: 1925970403}
   - component: {fileID: 1925970402}
   - component: {fileID: 1925970401}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Quad (13)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35609,6 +37048,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Large Rock_2
       objectReference: {fileID: 0}
+    - target: {fileID: 4674186342208238825, guid: dcdd5c471dfd0ca4fa7f1a66471cb019, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5446500229224181331, guid: dcdd5c471dfd0ca4fa7f1a66471cb019, type: 3}
       propertyPath: m_LocalScale.x
       value: 2.6202936
@@ -35682,7 +37125,7 @@ GameObject:
   - component: {fileID: 1928880052}
   - component: {fileID: 1928880051}
   - component: {fileID: 1928880050}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Quad (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35795,6 +37238,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fence (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 737257187606748849, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.8300018
@@ -35835,6 +37282,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1950190772974024620, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2956042886513104591, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6503226110575309990, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -35859,7 +37318,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1943368540}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Parrot Habitat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35892,7 +37351,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1943640363}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: 'BeaverInspectCenter '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36008,7 +37467,7 @@ GameObject:
   - component: {fileID: 1952190027}
   - component: {fileID: 1952190026}
   - component: {fileID: 1952190025}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Quad (18)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36121,6 +37580,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fence (21)
       objectReference: {fileID: 0}
+    - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 737257187606748849, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.61993015
@@ -36169,6 +37632,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1950190772974024620, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2956042886513104591, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6503226110575309990, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -36190,7 +37665,7 @@ GameObject:
   - component: {fileID: 1960781884}
   - component: {fileID: 1960781886}
   - component: {fileID: 1960781885}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Baboon_mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36282,7 +37757,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1966078053}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: 'PrairiedogInspectCenter '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36313,7 +37788,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1970168792}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36344,7 +37819,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1972019424}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36377,6 +37852,10 @@ PrefabInstance:
     - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_Name
       value: Fence (18)
+      objectReference: {fileID: 0}
+    - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 737257187606748849, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_LocalScale.x
@@ -36425,6 +37904,18 @@ PrefabInstance:
     - target: {fileID: 737257187606748849, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -8.97
+      objectReference: {fileID: 0}
+    - target: {fileID: 1950190772974024620, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2956042886513104591, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6503226110575309990, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -36589,6 +38080,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Terrain
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c49d0b8228c8daa4293ada4a8cb0142d, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -36610,7 +38105,7 @@ GameObject:
   - component: {fileID: 1983500253}
   - component: {fileID: 1983500255}
   - component: {fileID: 1983500254}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Baboon_mesh (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36764,7 +38259,7 @@ GameObject:
   - component: {fileID: 2007002709}
   - component: {fileID: 2007002708}
   - component: {fileID: 2007002707}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Quad (19)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36877,6 +38372,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fence (23)
       objectReference: {fileID: 0}
+    - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 737257187606748849, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.61993015
@@ -36925,6 +38424,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1950190772974024620, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2956042886513104591, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6503226110575309990, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -36944,7 +38455,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2019846433}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37053,7 +38564,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5076821631644464480, guid: 617cf380f10c48a409585e08ef187279, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5076821631644464480, guid: 617cf380f10c48a409585e08ef187279, type: 3}
       propertyPath: m_IsActive
@@ -37188,6 +38699,10 @@ PrefabInstance:
     - target: {fileID: 3127617304709722768, guid: 748fad7c59f19e449aebbeee9681f04c, type: 3}
       propertyPath: m_Name
       value: Large Rock_3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3127617304709722768, guid: 748fad7c59f19e449aebbeee9681f04c, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3487891874427556677, guid: 748fad7c59f19e449aebbeee9681f04c, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -37365,6 +38880,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fence (26)
       objectReference: {fileID: 0}
+    - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 737257187606748849, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.61993015
@@ -37413,9 +38932,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1950190772974024620, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2956042886513104591, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2956042886513104591, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6503226110575309990, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6503226110575309990, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_IsActive
@@ -37525,7 +39056,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2056560178}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ButtonAnchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37556,7 +39087,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2064670817}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37589,6 +39120,10 @@ PrefabInstance:
     - target: {fileID: 4861350178741744783, guid: f514935b1acc09e40be257de4012b174, type: 3}
       propertyPath: m_Name
       value: Tree (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4861350178741744783, guid: f514935b1acc09e40be257de4012b174, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5205365774551526965, guid: f514935b1acc09e40be257de4012b174, type: 3}
       propertyPath: m_LocalScale.x
@@ -37666,7 +39201,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5076821631644464480, guid: 617cf380f10c48a409585e08ef187279, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5076821631644464480, guid: 617cf380f10c48a409585e08ef187279, type: 3}
       propertyPath: m_IsActive
@@ -37750,6 +39285,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pebble (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 6267785518163352872, guid: 7c30c4bd1e69b22439b763fc822e36eb, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6751024573959276434, guid: 7c30c4bd1e69b22439b763fc822e36eb, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.7444882
@@ -37824,6 +39363,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fence (18)
       objectReference: {fileID: 0}
+    - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 737257187606748849, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.61993015
@@ -37872,6 +39415,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1950190772974024620, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2956042886513104591, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6503226110575309990, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -37882,6 +39437,135 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 737257187606748849, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
   m_PrefabInstance: {fileID: 2081810926}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2085664828
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2085664833}
+  - component: {fileID: 2085664832}
+  - component: {fileID: 2085664831}
+  - component: {fileID: 2085664830}
+  - component: {fileID: 2085664829}
+  m_Layer: 0
+  m_Name: RainRipple
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2085664829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2085664828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 810ae5a78dd3498458f073a159ea3cf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RainRipple
+  lifeTime: 0.45
+  startScale: 0.15
+  endScale: 0.65
+--- !u!64 &2085664830
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2085664828}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2085664831
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2085664828}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: fbbf8a8be3fae9c47a0c67c56856ad2e, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &2085664832
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2085664828}
+  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &2085664833
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2085664828}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 1.8, y: 2.60782, z: -19.37855}
+  m_LocalScale: {x: 0.35, y: 0.35, z: 0.35}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!4 &2091714303 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 81df8b37fca102f4a8d2bda7ff4c8d3f, type: 3}
@@ -37896,7 +39580,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2094797306}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: BaboonInspectCenter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37927,7 +39611,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2097022175}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Empty
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37977,7 +39661,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2097177071}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38070,7 +39754,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5076821631644464480, guid: 617cf380f10c48a409585e08ef187279, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5076821631644464480, guid: 617cf380f10c48a409585e08ef187279, type: 3}
       propertyPath: m_IsActive
@@ -38201,6 +39885,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Large Rock_3
       objectReference: {fileID: 0}
+    - target: {fileID: 3127617304709722768, guid: 748fad7c59f19e449aebbeee9681f04c, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3487891874427556677, guid: 748fad7c59f19e449aebbeee9681f04c, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -38224,7 +39912,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2116295992}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38257,7 +39945,7 @@ GameObject:
   - component: {fileID: 2117052246}
   - component: {fileID: 2117052248}
   - component: {fileID: 2117052247}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ground Mound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38349,6 +40037,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fence (20)
       objectReference: {fileID: 0}
+    - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 737257187606748849, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.61993015
@@ -38397,6 +40089,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1950190772974024620, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2956042886513104591, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6503226110575309990, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -38419,7 +40123,7 @@ GameObject:
   - component: {fileID: 2139352298}
   - component: {fileID: 2139352297}
   - component: {fileID: 2139352296}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Quad (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38525,63 +40229,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2318324608071510058, guid: 748fad7c59f19e449aebbeee9681f04c, type: 3}
   m_PrefabInstance: {fileID: 1291674557}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &246077324639828918
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1704327968753400437, guid: 7b037a1cfca0c384b8eaa8794a6b6cd5, type: 3}
-      propertyPath: m_Name
-      value: RainSplash
-      objectReference: {fileID: 0}
-    - target: {fileID: 2632257977828820290, guid: 7b037a1cfca0c384b8eaa8794a6b6cd5, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -10.23343
-      objectReference: {fileID: 0}
-    - target: {fileID: 2632257977828820290, guid: 7b037a1cfca0c384b8eaa8794a6b6cd5, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2632257977828820290, guid: 7b037a1cfca0c384b8eaa8794a6b6cd5, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 21.96335
-      objectReference: {fileID: 0}
-    - target: {fileID: 2632257977828820290, guid: 7b037a1cfca0c384b8eaa8794a6b6cd5, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 2632257977828820290, guid: 7b037a1cfca0c384b8eaa8794a6b6cd5, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 2632257977828820290, guid: 7b037a1cfca0c384b8eaa8794a6b6cd5, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2632257977828820290, guid: 7b037a1cfca0c384b8eaa8794a6b6cd5, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2632257977828820290, guid: 7b037a1cfca0c384b8eaa8794a6b6cd5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: -90
-      objectReference: {fileID: 0}
-    - target: {fileID: 2632257977828820290, guid: 7b037a1cfca0c384b8eaa8794a6b6cd5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2632257977828820290, guid: 7b037a1cfca0c384b8eaa8794a6b6cd5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 7b037a1cfca0c384b8eaa8794a6b6cd5, type: 3}
 --- !u!4 &414112262178608656
 Transform:
   m_ObjectHideFlags: 0
@@ -38803,7 +40450,7 @@ GameObject:
   - component: {fileID: 414112262178608656}
   - component: {fileID: 4650774795480090388}
   - component: {fileID: 2836756322307936838}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube.007
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38821,7 +40468,7 @@ GameObject:
   - component: {fileID: 7673796624167950525}
   - component: {fileID: 6184194403115157762}
   - component: {fileID: 4795829231749564112}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube.009
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38839,6 +40486,10 @@ PrefabInstance:
     - target: {fileID: 5076821631644464480, guid: 617cf380f10c48a409585e08ef187279, type: 3}
       propertyPath: m_Name
       value: rock
+      objectReference: {fileID: 0}
+    - target: {fileID: 5076821631644464480, guid: 617cf380f10c48a409585e08ef187279, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5566359858545930202, guid: 617cf380f10c48a409585e08ef187279, type: 3}
       propertyPath: m_LocalPosition.x
@@ -38885,6 +40536,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 617cf380f10c48a409585e08ef187279, type: 3}
+--- !u!1001 &4648119848722170947
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 749702141288038963, guid: 7ab1a9161ba4466478f2bb4e936aa07b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -10.23343
+      objectReference: {fileID: 0}
+    - target: {fileID: 749702141288038963, guid: 7ab1a9161ba4466478f2bb4e936aa07b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 749702141288038963, guid: 7ab1a9161ba4466478f2bb4e936aa07b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 21.96335
+      objectReference: {fileID: 0}
+    - target: {fileID: 749702141288038963, guid: 7ab1a9161ba4466478f2bb4e936aa07b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 749702141288038963, guid: 7ab1a9161ba4466478f2bb4e936aa07b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 749702141288038963, guid: 7ab1a9161ba4466478f2bb4e936aa07b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 749702141288038963, guid: 7ab1a9161ba4466478f2bb4e936aa07b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 749702141288038963, guid: 7ab1a9161ba4466478f2bb4e936aa07b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 749702141288038963, guid: 7ab1a9161ba4466478f2bb4e936aa07b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 749702141288038963, guid: 7ab1a9161ba4466478f2bb4e936aa07b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1428615830092775445, guid: 7ab1a9161ba4466478f2bb4e936aa07b, type: 3}
+      propertyPath: m_Name
+      value: RainSplash
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7ab1a9161ba4466478f2bb4e936aa07b, type: 3}
 --- !u!33 &4650774795480090388
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -38904,6 +40612,10 @@ PrefabInstance:
     - target: {fileID: 4861350178741744783, guid: f514935b1acc09e40be257de4012b174, type: 3}
       propertyPath: m_Name
       value: Tree
+      objectReference: {fileID: 0}
+    - target: {fileID: 4861350178741744783, guid: f514935b1acc09e40be257de4012b174, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5205365774551526965, guid: f514935b1acc09e40be257de4012b174, type: 3}
       propertyPath: m_LocalPosition.x
@@ -39090,6 +40802,10 @@ PrefabInstance:
       value: Fence 2
       objectReference: {fileID: 0}
     - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 103744613412963339, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -39133,6 +40849,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1950190772974024620, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2956042886513104591, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6503226110575309990, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -39164,7 +40892,7 @@ GameObject:
   - component: {fileID: 2454807859159504901}
   - component: {fileID: 1722416936573764230}
   - component: {fileID: 2434751641601432223}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube.010
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39208,4 +40936,7 @@ SceneRoots:
   - {fileID: 1566849613}
   - {fileID: 1424788813}
   - {fileID: 822968221}
-  - {fileID: 246077324639828918}
+  - {fileID: 4648119848722170947}
+  - {fileID: 917672816}
+  - {fileID: 220455374}
+  - {fileID: 2085664833}
