@@ -581,6 +581,30 @@ public class LanguageManager : MonoBehaviour
                 [Language.Deutsch] = "Der Eisbär ist wieder glücklich!",
                 [Language.English] = "The polar bear is happy again!",
             },
+            ["habitat_hippo_name"] = new()
+            {
+                [Language.Nederlands] = "Nijlpaard Verblijf",
+                [Language.Deutsch] = "Nilpferd-Gehege",
+                [Language.English] = "Hippo Habitat",
+            },
+            ["hippo_name"] = new()
+            {
+                [Language.Nederlands] = "Nijlpaard Verblijf",
+                [Language.Deutsch] = "Nilpferd-Gehege",
+                [Language.English] = "Hippo Habitat",
+            },
+            ["hippo_desc"] = new()
+            {
+                [Language.Nederlands] = "Een modderig waterpoeltje voor lekkere luie nijlpaarden.",
+                [Language.Deutsch] = "Eine schlammige Wasserstelle für richtig faule Nilpferde.",
+                [Language.English] = "A muddy waterhole for nice lazy hippos.",
+            },
+            ["hippo_fact"] = new()
+            {
+                [Language.Nederlands] = "Nijlpaarden zweten roze om hun huid te beschermen!",
+                [Language.Deutsch] = "Nilpferde schwitzen rosa, um ihre Haut zu schützen!",
+                [Language.English] = "Hippos sweat pink to protect their skin!",
+            },
         };
 
     void Awake()
