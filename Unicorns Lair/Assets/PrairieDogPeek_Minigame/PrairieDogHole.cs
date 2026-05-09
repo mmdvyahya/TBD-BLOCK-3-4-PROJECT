@@ -12,7 +12,6 @@ public class PrairieDogHole : MonoBehaviour
 
     [Header("Animation Settings")]
     [SerializeField] private float popHeight = 0.75f;
-    [SerializeField] private float popSpeed = 8f;
     [SerializeField] private float shakeAmount = 0.08f;
     [SerializeField] private float shakeDuration = 0.8f;
 
@@ -47,27 +46,25 @@ public class PrairieDogHole : MonoBehaviour
         manager?.NotifyHolePressed(this);
     }
 
-    public IEnumerator PlayReveal(float visibleDuration)
+    public IEnumerator PlayReveal(float visibleDuration, float popSpeed)
     {
-        yield return StartCoroutine(PlayHoleShake());
-
         if (prairieDogVisual != null)
         {
             prairieDogVisual.gameObject.SetActive(true);
-            yield return StartCoroutine(MoveDog(dogHiddenLocalPos, dogVisibleLocalPos));
+            yield return StartCoroutine(MoveDog(dogHiddenLocalPos, dogVisibleLocalPos, popSpeed));
             yield return new WaitForSeconds(visibleDuration);
-            yield return StartCoroutine(MoveDog(dogVisibleLocalPos, dogHiddenLocalPos));
+            yield return StartCoroutine(MoveDog(dogVisibleLocalPos, dogHiddenLocalPos, popSpeed));
             prairieDogVisual.gameObject.SetActive(false);
         }
     }
 
-    public IEnumerator PlayCorrectFeedback()
+    public IEnumerator PlayCorrectFeedback(float popSpeed)
     {
         if (prairieDogVisual == null)
             yield break;
 
         prairieDogVisual.gameObject.SetActive(true);
-        yield return StartCoroutine(MoveDog(dogHiddenLocalPos, dogVisibleLocalPos));
+        yield return StartCoroutine(MoveDog(dogHiddenLocalPos, dogVisibleLocalPos, popSpeed));
 
         Vector3 baseScale = prairieDogVisual.localScale;
         float t = 0f;
@@ -82,7 +79,7 @@ public class PrairieDogHole : MonoBehaviour
 
         prairieDogVisual.localScale = baseScale;
         yield return new WaitForSeconds(0.5f);
-        yield return StartCoroutine(MoveDog(dogVisibleLocalPos, dogHiddenLocalPos));
+        yield return StartCoroutine(MoveDog(dogVisibleLocalPos, dogHiddenLocalPos, popSpeed));
         prairieDogVisual.gameObject.SetActive(false);
     }
 
@@ -97,7 +94,7 @@ public class PrairieDogHole : MonoBehaviour
         holeVisual.localScale = baseScale;
     }
 
-    private IEnumerator PlayHoleShake()
+    public IEnumerator PlayHoleShake()
     {
         if (holeVisual == null)
             yield break;
@@ -115,13 +112,13 @@ public class PrairieDogHole : MonoBehaviour
         holeVisual.localPosition = holeOriginalLocalPos;
     }
 
-    private IEnumerator MoveDog(Vector3 from, Vector3 to)
+    private IEnumerator MoveDog(Vector3 from, Vector3 to, float speed)
     {
         float t = 0f;
 
         while (t < 1f)
         {
-            t += Time.deltaTime * popSpeed;
+            t += Time.deltaTime * speed;
             prairieDogVisual.localPosition = Vector3.Lerp(from, to, Mathf.SmoothStep(0f, 1f, t));
             yield return null;
         }

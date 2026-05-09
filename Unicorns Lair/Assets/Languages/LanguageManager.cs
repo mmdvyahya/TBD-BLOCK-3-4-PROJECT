@@ -605,6 +605,60 @@ public class LanguageManager : MonoBehaviour
                 [Language.Deutsch] = "Nilpferde schwitzen rosa, um ihre Haut zu schützen!",
                 [Language.English] = "Hippos sweat pink to protect their skin!",
             },
+            ["minigame_prairiedog_title"] = new()
+            {
+                [Language.Nederlands] = "Prairiehond Spel",
+                [Language.Deutsch] = "Präriehund-Spiel",
+                [Language.English] = "Prairie Dog Game",
+            },
+            ["minigame_prairiedog_shake_pc"] = new()
+            {
+                [Language.Nederlands] = "Schud de tablet!",
+                [Language.Deutsch] = "Schüttle das Tablet!",
+                [Language.English] = "Shake the tablet!",
+            },
+            ["minigame_prairiedog_shake_tablet"] = new()
+            {
+                [Language.Nederlands] = "Schud de tablet!",
+                [Language.Deutsch] = "Schüttle das Tablet!",
+                [Language.English] = "Shake the tablet!",
+            },
+            ["minigame_prairiedog_watch"] = new()
+            {
+                [Language.Nederlands] = "Kijk goed!",
+                [Language.Deutsch] = "Pass auf!",
+                [Language.English] = "Watch carefully!",
+            },
+            ["minigame_prairiedog_tap"] = new()
+            {
+                [Language.Nederlands] = "Tik op het juiste hol!",
+                [Language.Deutsch] = "Tippe das richtige Loch!",
+                [Language.English] = "Tap the correct hole!",
+            },
+            ["minigame_prairiedog_correct"] = new()
+            {
+                [Language.Nederlands] = "Goed gedaan!",
+                [Language.Deutsch] = "Sehr gut!",
+                [Language.English] = "Correct!",
+            },
+            ["minigame_prairiedog_wrong"] = new()
+            {
+                [Language.Nederlands] = "Niet helemaal! Hier was hij.",
+                [Language.Deutsch] = "Nicht ganz! Hier war er.",
+                [Language.English] = "Not quite! It was here.",
+            },
+            ["minigame_prairiedog_success_title"] = new()
+            {
+                [Language.Nederlands] = "Goed gespot!",
+                [Language.Deutsch] = "Gut erkannt!",
+                [Language.English] = "Good spotting!",
+            },
+            ["minigame_prairiedog_success_desc"] = new()
+            {
+                [Language.Nederlands] = "Goed gedaan, dierenoppasser!",
+                [Language.Deutsch] = "Gut gemacht, Tierpfleger!",
+                [Language.English] = "Well done, zookeeper!",
+            },
         };
 
     void Awake()
