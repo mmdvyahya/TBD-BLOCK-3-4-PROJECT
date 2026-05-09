@@ -701,6 +701,51 @@ public class LanguageManager : MonoBehaviour
                 [Language.Deutsch] = "Der Pavian ist stolz auf dich!",
                 [Language.English] = "The baboon is proud of you!",
             },
+            ["minigame_hippo_title"] = new()
+            {
+                [Language.Nederlands] = "Nijlpaard Eten Sorteren",
+                [Language.Deutsch] = "Nilpferd-Futter sortieren",
+                [Language.English] = "Hippo Food Sorting",
+            },
+            ["minigame_hippo_instruction"] = new()
+            {
+                [Language.Nederlands] = "Swipe links = Lekker  |  Swipe rechts = Niet lekker",
+                [Language.Deutsch] = "Wische links = Lecker  |  Wische rechts = Nicht geeignet",
+                [Language.English] = "Swipe left = Yummy  |  Swipe right = Not suitable",
+            },
+            ["minigame_hippo_correct"] = new()
+            {
+                [Language.Nederlands] = "Goed gedaan!",
+                [Language.Deutsch] = "Gut gemacht!",
+                [Language.English] = "Well done!",
+            },
+            ["minigame_hippo_wrong"] = new()
+            {
+                [Language.Nederlands] = "Niet helemaal!",
+                [Language.Deutsch] = "Nicht ganz!",
+                [Language.English] = "Not quite!",
+            },
+            ["minigame_hippo_success_title"] = new()
+            {
+                [Language.Nederlands] = "Goed gesorteerd!",
+                [Language.Deutsch] = "Toll sortiert!",
+                [Language.English] = "Great sorting!",
+            },
+            ["minigame_hippo_success_desc"] = new()
+            {
+                [Language.Nederlands] = "De nijlpaard eet nu lekker en gezond!",
+                [Language.Deutsch] = "Das Nilpferd isst jetzt gesund und lecker!",
+                [Language.English] = "The hippo is eating healthy and happy now!",
+            },
+
+            ["food_watermelon"] = new() { [Language.Nederlands] = "Watermeloen", [Language.Deutsch] = "Wassermelone", [Language.English] = "Watermelon" },
+            ["food_lettuce"] = new() { [Language.Nederlands] = "Sla", [Language.Deutsch] = "Salat", [Language.English] = "Lettuce" },
+            ["food_cabbage"] = new() { [Language.Nederlands] = "Kool", [Language.Deutsch] = "Kohl", [Language.English] = "Cabbage" },
+            ["food_apples"] = new() { [Language.Nederlands] = "Appels", [Language.Deutsch] = "Äpfel", [Language.English] = "Apples" },
+            ["food_candy"] = new() { [Language.Nederlands] = "Snoep", [Language.Deutsch] = "Süßigkeiten", [Language.English] = "Candy" },
+            ["food_chocolate"] = new() { [Language.Nederlands] = "Chocolade", [Language.Deutsch] = "Schokolade", [Language.English] = "Chocolate" },
+            ["food_chips"] = new() { [Language.Nederlands] = "Chips", [Language.Deutsch] = "Chips", [Language.English] = "Chips" },
+            ["food_bread"] = new() { [Language.Nederlands] = "Brood", [Language.Deutsch] = "Brot", [Language.English] = "Bread" },
         };
 
     void Awake()

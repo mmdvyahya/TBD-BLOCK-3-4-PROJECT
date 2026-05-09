@@ -17,7 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Place Habitats/PlaceHabitats.unity
     guid: 19252841c6fd8e64b9c9878f5261df6d
-  - enabled: 1
+  - enabled: 0
     path: Assets/beaver habitat/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
@@ -28,7 +28,7 @@ EditorBuildSettings:
     guid: 8f8a66613ccb3684582954aa06c8c48d
   - enabled: 1
     path: Assets/PrairieDogPeek_Minigame/PrairieDogminigame.unity
-    guid: 12923f146d678524f915b2a85aee4e51
+    guid: ec23029c800642a4587d7b32237644cb
   - enabled: 1
     path: Assets/BabbonMinigame/Minigame.unity
     guid: 1ba2cb3bb2918e8459d6f0f332705467
