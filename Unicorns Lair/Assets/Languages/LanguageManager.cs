@@ -659,6 +659,48 @@ public class LanguageManager : MonoBehaviour
                 [Language.Deutsch] = "Gut gemacht, Tierpfleger!",
                 [Language.English] = "Well done, zookeeper!",
             },
+            ["minigame_baboon_title"] = new()
+            {
+                [Language.Nederlands] = "Baviaan Patroon",
+                [Language.Deutsch] = "Pavian-Muster",
+                [Language.English] = "Baboon Pattern",
+            },
+            ["minigame_baboon_watch"] = new()
+            {
+                [Language.Nederlands] = "Kijk naar de baviaan!",
+                [Language.Deutsch] = "Schau dem Pavian zu!",
+                [Language.English] = "Watch the baboon!",
+            },
+            ["minigame_baboon_your_turn"] = new()
+            {
+                [Language.Nederlands] = "Jouw beurt!",
+                [Language.Deutsch] = "Du bist dran!",
+                [Language.English] = "Your turn!",
+            },
+            ["minigame_baboon_correct"] = new()
+            {
+                [Language.Nederlands] = "Goed!",
+                [Language.Deutsch] = "Gut!",
+                [Language.English] = "Good!",
+            },
+            ["minigame_baboon_wrong"] = new()
+            {
+                [Language.Nederlands] = "Probeer opnieuw! Kijk goed.",
+                [Language.Deutsch] = "Versuch's nochmal! Pass auf.",
+                [Language.English] = "Try again! Watch carefully.",
+            },
+            ["minigame_baboon_success_title"] = new()
+            {
+                [Language.Nederlands] = "Geweldig gedaan!",
+                [Language.Deutsch] = "Super gemacht!",
+                [Language.English] = "Awesome job!",
+            },
+            ["minigame_baboon_success_desc"] = new()
+            {
+                [Language.Nederlands] = "De baviaan is trots op je!",
+                [Language.Deutsch] = "Der Pavian ist stolz auf dich!",
+                [Language.English] = "The baboon is proud of you!",
+            },
         };
 
     void Awake()
