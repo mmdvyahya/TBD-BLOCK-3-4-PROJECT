@@ -2642,7 +2642,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Habitat
   habitatId: polarbear_habitat
-  nameKey: polarbear_habitat
+  nameKey: polarbear_name
   cost: 100
   builtChild: {fileID: 1561436866}
   buttonAnchor: {fileID: 2056560178}
@@ -7123,7 +7123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Habitat
   habitatId: prairiedog_habitat
-  nameKey: prairiedog_habitat
+  nameKey: prairiedog_name
   cost: 100
   builtChild: {fileID: 1222624580}
   buttonAnchor: {fileID: 734692441}
@@ -20801,8 +20801,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Habitat
   habitatId: racoon_habitat
-  nameKey: racoon_habitat
-  cost: 100
+  nameKey: racoon_name
+  cost: 0
   builtChild: {fileID: 732957126}
   buttonAnchor: {fileID: 976256391}
   mainCamera: {fileID: 0}
@@ -21914,7 +21914,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Habitat
   habitatId: hippo_habitat
-  nameKey: habitat_hippo_name
+  nameKey: hippo_name
   cost: 100
   builtChild: {fileID: 798693288}
   buttonAnchor: {fileID: 1814173356}
@@ -27723,7 +27723,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Habitat
   habitatId: baboon_habitat
-  nameKey: baboon_habitat
+  nameKey: baboon_name
   cost: 100
   builtChild: {fileID: 296970186}
   buttonAnchor: {fileID: 1178964361}
