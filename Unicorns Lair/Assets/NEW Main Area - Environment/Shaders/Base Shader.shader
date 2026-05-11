@@ -36,7 +36,7 @@ Shader "WILDLANDS/Base Shader"
     
     SubShader
     {
-        Tags { "RenderPipeline"="UniversalPipeline" "RenderType"="Opaque" "Queue"="Geometry+[_QueueOffset]" }
+        Tags { "RenderPipeline"="UniversalPipeline" "RenderType"="Opaque" "Queue"="Geometry" }
 
         Pass
         {
