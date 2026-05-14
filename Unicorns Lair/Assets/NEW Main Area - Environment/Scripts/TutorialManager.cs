@@ -27,6 +27,9 @@ public class TutorialManager : MonoBehaviour
         "beaver_habitat","polarbear_habitat","racoon_habitat","prairiedog_habitat","baboon_habitat","hippo_habitat",
     };
 
+    [Tooltip("Habitats listed here stay locked (no buy button) for the entire tutorial. They unlock once the tutorial completes. Use this for habitats present in the scene that should not be part of the guided sequence.")]
+    [SerializeField] private string[] tutorialSkipHabitats;
+
     [Header("Visuals")]
     [Tooltip("Optional. Sprite shown hovering above the habitat when player needs to tap on it.")]
     [SerializeField] private Sprite tapIcon;
@@ -157,6 +160,8 @@ public class TutorialManager : MonoBehaviour
     {
         if (_introActive) return false;
         if (_tutorialFinished) return true;
+        if (tutorialSkipHabitats != null && System.Array.IndexOf(tutorialSkipHabitats, habitatId) >= 0)
+            return false;
         int idx = System.Array.IndexOf(habitatOrder, habitatId);
         if (idx < 0) return true;
         return idx <= _currentStep;

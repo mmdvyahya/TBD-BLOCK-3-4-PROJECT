@@ -28006,15 +28006,36 @@ MonoBehaviour:
   habitatOrder:
   - beaver_habitat
   - polarbear_habitat
-  - racoon_habitat
   - prairiedog_habitat
   - baboon_habitat
+  tutorialSkipHabitats:
+  - racoon_habitat
   - hippo_habitat
   tapIcon: {fileID: 1520866622, guid: bc0953893233fe64bbdd1ace03dcd99a, type: 3}
   glowColor: {r: 1, g: 0.85, b: 0.2, a: 1}
   glowGroundOffset: 0.05
   inspectionPromptSeconds: 5
   mainCamera: {fileID: 0}
+  speakerNameKey: intro_speaker
+  speakerNameFallback: Boswachter
+  charsPerSecond: 38
+  introDialogue:
+  - localizationKey: intro_dlg_0
+    fallbackText: "H\xE9 daar, kleine ontdekker!"
+  - localizationKey: intro_dlg_1
+    fallbackText: Welkom in Wildlands... gelukkig ben jij er!
+  - localizationKey: intro_dlg_2
+    fallbackText: Oh nee, we hebben jouw hulp echt nodig!
+  - localizationKey: intro_dlg_3
+    fallbackText: De dieren hebben nog geen plek om te wonen...
+  - localizationKey: intro_dlg_4
+    fallbackText: Help jij ons om een dierentuin voor ze te bouwen?
+  - localizationKey: intro_dlg_5
+    fallbackText: Speel leuke minigames met de dieren om munten te verdienen!
+  - localizationKey: intro_dlg_6
+    fallbackText: Bouw met die munten gloednieuwe verblijven!
+  - localizationKey: intro_dlg_7
+    fallbackText: Klaar om de allerbeste dierenheld te worden? Tik om te beginnen!
 --- !u!4 &1303785811
 Transform:
   m_ObjectHideFlags: 0
