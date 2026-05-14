@@ -299,9 +299,9 @@ public class LanguageManager : MonoBehaviour
             },
             ["minigame_instruction_pc"] = new()
             {
-                [Language.Nederlands] = "Druk A / D om te kantelen",
-                [Language.Deutsch] = "A / D drücken zum Kippen",
-                [Language.English] = "Press A / D to tilt",
+                [Language.Nederlands] = "Kantel de tablet!",
+                [Language.Deutsch] = "Tablet kippen!",
+                [Language.English] = "Tilt the tablet!",
             },
             ["minigame_instruction_tablet"] = new()
             {
@@ -746,6 +746,221 @@ public class LanguageManager : MonoBehaviour
             ["food_chocolate"] = new() { [Language.Nederlands] = "Chocolade", [Language.Deutsch] = "Schokolade", [Language.English] = "Chocolate" },
             ["food_chips"] = new() { [Language.Nederlands] = "Chips", [Language.Deutsch] = "Chips", [Language.English] = "Chips" },
             ["food_bread"] = new() { [Language.Nederlands] = "Brood", [Language.Deutsch] = "Brot", [Language.English] = "Bread" },
+            ["intro_title"] = new()
+            {
+                [Language.Nederlands] = "Welkom bij Wildlands\nLittle Explorers!",
+                [Language.Deutsch] = "Willkommen bei Wildlands\nLittle Explorers!",
+                [Language.English] = "Welcome to Wildlands\nLittle Explorers!",
+            },
+            ["intro_line1"] = new()
+            {
+                [Language.Nederlands] = "Bouw je eigen dierentuin!",
+                [Language.Deutsch] = "Bau deinen eigenen Zoo!",
+                [Language.English] = "Build your own zoo!",
+            },
+            ["intro_line2"] = new()
+            {
+                [Language.Nederlands] = "Speel leuke minigames met de dieren om munten te verdienen.",
+                [Language.Deutsch] = "Spiele lustige Minispiele mit den Tieren, um Münzen zu verdienen.",
+                [Language.English] = "Play fun minigames with the animals to earn coins.",
+            },
+            ["intro_line3"] = new()
+            {
+                [Language.Nederlands] = "Geef je munten uit aan nieuwe verblijven!",
+                [Language.Deutsch] = "Gib deine Münzen für neue Gehege aus!",
+                [Language.English] = "Spend your coins on new habitats!",
+            },
+            ["intro_line4"] = new()
+            {
+                [Language.Nederlands] = "Tik op verblijven om de dieren te ontmoeten!",
+                [Language.Deutsch] = "Tippe auf Gehege, um die Tiere zu treffen!",
+                [Language.English] = "Tap habitats to meet the animals!",
+            },
+            ["intro_ready"] = new()
+            {
+                [Language.Nederlands] = "Klaar om te beginnen?",
+                [Language.Deutsch] = "Bereit anzufangen?",
+                [Language.English] = "Ready to start?",
+            },
+            ["btn_lets_go"] = new()
+            {
+                [Language.Nederlands] = "Laten we beginnen!",
+                [Language.Deutsch] = "Los geht's!",
+                [Language.English] = "Let's go!",
+            },
+            ["tutorial_first_buy"] = new()
+            {
+                [Language.Nederlands] = "Tik op de groene knop om je eerste verblijf te bouwen!",
+                [Language.Deutsch] = "Tippe auf den grünen Knopf, um dein erstes Gehege zu bauen!",
+                [Language.English] = "Tap the green button to build your first habitat!",
+            },
+            ["tutorial_next_buy"] = new()
+            {
+                [Language.Nederlands] = "Goed gedaan! Bouw nu het volgende verblijf!",
+                [Language.Deutsch] = "Gut gemacht! Bau jetzt das nächste Gehege!",
+                [Language.English] = "Great job! Now build the next habitat!",
+            },
+            ["tutorial_complete"] = new()
+            {
+                [Language.Nederlands] = "Geweldig! Alle dieren hebben een thuis. Speel verder!",
+                [Language.Deutsch] = "Toll! Alle Tiere haben ein Zuhause. Spiel weiter!",
+                [Language.English] = "Amazing! All animals have a home. Keep playing!",
+            },
+            ["tutorial_building"] = new()
+            {
+                [Language.Nederlands] = "Even wachten... je verblijf wordt gebouwd!",
+                [Language.Deutsch] = "Einen Moment... dein Gehege wird gebaut!",
+                [Language.English] = "Hold on... your habitat is being built!",
+            },
+            ["tutorial_tap_habitat"] = new()
+            {
+                [Language.Nederlands] = "Tik op het verblijf om het dier te ontmoeten!",
+                [Language.Deutsch] = "Tippe auf das Gehege, um das Tier zu treffen!",
+                [Language.English] = "Tap the habitat to meet the animal!",
+            },
+            ["tutorial_press_inspect"] = new()
+            {
+                [Language.Nederlands] = "Druk op Inspecteren om rond te kijken!",
+                [Language.Deutsch] = "Drück auf Erkunden, um dich umzusehen!",
+                [Language.English] = "Press Inspect to look around!",
+            },
+            ["tutorial_inspecting"] = new()
+            {
+                [Language.Nederlands] = "Kijk goed rond! Kantel de tablet of gebruik WASD.",
+                [Language.Deutsch] = "Sieh dich gut um! Neig das Tablet oder benutze WASD.",
+                [Language.English] = "Have a good look around! Tilt the tablet or use WASD.",
+            },
+            ["tutorial_press_back"] = new()
+            {
+                [Language.Nederlands] = "Druk op Terug om verder te gaan!",
+                [Language.Deutsch] = "Drück auf Zurück, um weiterzumachen!",
+                [Language.English] = "Press Back to continue!",
+            },
+            ["tutorial_press_minigame"] = new()
+            {
+                [Language.Nederlands] = "Speel een minigame om munten te verdienen!",
+                [Language.Deutsch] = "Spiel ein Minispiel, um Münzen zu verdienen!",
+                [Language.English] = "Play a minigame to earn coins!",
+            },
+            // Intro Dialog
+
+            ["intro_speaker"] = new()
+            {
+                [Language.Nederlands] = "Dierenverzorger",
+                [Language.Deutsch] = "Tierpfleger",
+                [Language.English] = "Zookeeper",
+            },
+            ["intro_tap_continue"] = new()
+            {
+                [Language.Nederlands] = "Tik om verder ▶",
+                [Language.Deutsch] = "Tippe weiter ▶",
+                [Language.English] = "Tap to continue ▶",
+            },
+            ["intro_dlg_0"] = new()
+            {
+                [Language.Nederlands] = "Hé daar, kleine ontdekker!",
+                [Language.Deutsch] = "Hallo da, kleiner Entdecker!",
+                [Language.English] = "Hey there, little explorer!",
+            },
+            ["intro_dlg_1"] = new()
+            {
+                [Language.Nederlands] = "Welkom in Wildlands... gelukkig ben jij er!",
+                [Language.Deutsch] = "Willkommen in Wildlands... zum Glück bist du da!",
+                [Language.English] = "Welcome to Wildlands... lucky you're here!",
+            },
+            ["intro_dlg_2"] = new()
+            {
+                [Language.Nederlands] = "Oh nee, we hebben jouw hulp echt nodig!",
+                [Language.Deutsch] = "Oh nein, wir brauchen deine Hilfe wirklich!",
+                [Language.English] = "Oh no, we really need your help!",
+            },
+            ["intro_dlg_3"] = new()
+            {
+                [Language.Nederlands] = "De dieren hebben nog geen plek om te wonen...",
+                [Language.Deutsch] = "Die Tiere haben noch keinen Platz zum Wohnen...",
+                [Language.English] = "The animals don't have anywhere to live yet...",
+            },
+            ["intro_dlg_4"] = new()
+            {
+                [Language.Nederlands] = "Help jij ons om een dierentuin voor ze te bouwen?",
+                [Language.Deutsch] = "Hilfst du uns, einen Zoo für sie zu bauen?",
+                [Language.English] = "Will you help us build a zoo for them?",
+            },
+            ["intro_dlg_5"] = new()
+            {
+                [Language.Nederlands] = "Speel leuke minigames met de dieren om munten te verdienen!",
+                [Language.Deutsch] = "Spiele lustige Minispiele mit den Tieren, um Münzen zu verdienen!",
+                [Language.English] = "Play fun minigames with the animals to earn coins!",
+            },
+            ["intro_dlg_6"] = new()
+            {
+                [Language.Nederlands] = "Bouw met die munten gloednieuwe verblijven!",
+                [Language.Deutsch] = "Bau mit diesen Münzen brandneue Gehege!",
+                [Language.English] = "Use those coins to build brand-new habitats!",
+            },
+            ["intro_dlg_7"] = new()
+            {
+                [Language.Nederlands] = "Klaar om de allerbeste dierenheld te worden? Tik om te beginnen!",
+                [Language.Deutsch] = "Bereit, der allerbeste Tier-Held zu werden? Tippe los!",
+                [Language.English] = "Ready to become the greatest animal hero? Tap to start!",
+            },
+
+            // Tutorial Banners
+
+            ["tutorial_first_buy"] = new()
+            {
+                [Language.Nederlands] = "Tik op de groene knop om je eerste verblijf te bouwen!",
+                [Language.Deutsch] = "Tippe auf den grünen Knopf, um dein erstes Gehege zu bauen!",
+                [Language.English] = "Tap the green button to build your first habitat!",
+            },
+            ["tutorial_next_buy"] = new()
+            {
+                [Language.Nederlands] = "Goed gedaan! Bouw nu het volgende verblijf!",
+                [Language.Deutsch] = "Gut gemacht! Bau jetzt das nächste Gehege!",
+                [Language.English] = "Great job! Now build the next habitat!",
+            },
+            ["tutorial_building"] = new()
+            {
+                [Language.Nederlands] = "Even wachten... je verblijf wordt gebouwd!",
+                [Language.Deutsch] = "Einen Moment... dein Gehege wird gebaut!",
+                [Language.English] = "Hold on... your habitat is being built!",
+            },
+            ["tutorial_tap_habitat"] = new()
+            {
+                [Language.Nederlands] = "Tik op het verblijf om het dier te ontmoeten!",
+                [Language.Deutsch] = "Tippe auf das Gehege, um das Tier zu treffen!",
+                [Language.English] = "Tap the habitat to meet the animal!",
+            },
+            ["tutorial_press_inspect"] = new()
+            {
+                [Language.Nederlands] = "Druk op Inspecteren om rond te kijken!",
+                [Language.Deutsch] = "Drück auf Erkunden, um dich umzusehen!",
+                [Language.English] = "Press Inspect to look around!",
+            },
+            ["tutorial_inspecting"] = new()
+            {
+                [Language.Nederlands] = "Kijk goed rond! Kantel de tablet of gebruik WASD.",
+                [Language.Deutsch] = "Sieh dich gut um! Neig das Tablet oder benutze WASD.",
+                [Language.English] = "Have a good look around! Tilt the tablet or use WASD.",
+            },
+            ["tutorial_press_back"] = new()
+            {
+                [Language.Nederlands] = "Druk op Terug om verder te gaan!",
+                [Language.Deutsch] = "Drück auf Zurück, um weiterzumachen!",
+                [Language.English] = "Press Back to continue!",
+            },
+            ["tutorial_press_minigame"] = new()
+            {
+                [Language.Nederlands] = "Speel een minigame om munten te verdienen!",
+                [Language.Deutsch] = "Spiel ein Minispiel, um Münzen zu verdienen!",
+                [Language.English] = "Play a minigame to earn coins!",
+            },
+            ["tutorial_complete"] = new()
+            {
+                [Language.Nederlands] = "Geweldig! Alle dieren hebben een thuis. Speel verder!",
+                [Language.Deutsch] = "Toll! Alle Tiere haben ein Zuhause. Spiel weiter!",
+                [Language.English] = "Amazing! All animals have a home. Keep playing!",
+            },
         };
 
     void Awake()

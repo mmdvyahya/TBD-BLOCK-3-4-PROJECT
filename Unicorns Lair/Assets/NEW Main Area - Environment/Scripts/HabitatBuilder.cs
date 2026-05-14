@@ -7,7 +7,7 @@ public class HabitatBuilder : MonoBehaviour
 {
     [Header("Settings")]
     [SerializeField] public string itemId = "beaver_habitat";
-    [SerializeField] private float totalBuildTime = 10f;
+    [SerializeField] private float totalBuildTime = 5f;
 
     public delegate void OnBuildComplete(string id);
     public event OnBuildComplete BuildComplete;
@@ -629,11 +629,11 @@ public class HabitatBuilder : MonoBehaviour
         var card = new GameObject("Card");
         card.transform.SetParent(cObj.transform, false);
         var cardRt = card.AddComponent<RectTransform>();
-        cardRt.anchorMin = new Vector2(0.5f, 0.5f);
-        cardRt.anchorMax = new Vector2(0.5f, 0.5f);
-        cardRt.pivot = new Vector2(0.5f, 0.5f);
-        cardRt.anchoredPosition = Vector2.zero;
-        cardRt.sizeDelta = new Vector2(920f, 340f);
+        cardRt.anchorMin = new Vector2(0.5f, 0f);
+        cardRt.anchorMax = new Vector2(0.5f, 0f);
+        cardRt.pivot = new Vector2(0.5f, 0f);
+        cardRt.anchoredPosition = new Vector2(0f, 30f);
+        cardRt.sizeDelta = new Vector2(460f, 130f);
         cardRt.localScale = Vector3.zero;
         var cardBg = card.AddComponent<Image>();
         cardBg.color = new Color(0.16f, 0.09f, 0.04f, 0.95f);
@@ -646,7 +646,7 @@ public class HabitatBuilder : MonoBehaviour
         acRt.anchorMax = new Vector2(1f, 1f);
         acRt.pivot = new Vector2(0.5f, 1f);
         acRt.anchoredPosition = Vector2.zero;
-        acRt.sizeDelta = new Vector2(0f, 14f);
+        acRt.sizeDelta = new Vector2(0f, 6f);
         accent.AddComponent<Image>().color = new Color(0.76f, 0.52f, 0.22f);
 
         var accentBot = new GameObject("AccentBot");
@@ -656,7 +656,7 @@ public class HabitatBuilder : MonoBehaviour
         acBotRt.anchorMax = new Vector2(1f, 0f);
         acBotRt.pivot = new Vector2(0.5f, 0f);
         acBotRt.anchoredPosition = Vector2.zero;
-        acBotRt.sizeDelta = new Vector2(0f, 14f);
+        acBotRt.sizeDelta = new Vector2(0f, 6f);
         accentBot.AddComponent<Image>().color = new Color(0.76f, 0.52f, 0.22f);
 
         var titleObj = new GameObject("Title");
@@ -665,14 +665,14 @@ public class HabitatBuilder : MonoBehaviour
         titleRt.anchorMin = new Vector2(0.5f, 1f);
         titleRt.anchorMax = new Vector2(0.5f, 1f);
         titleRt.pivot = new Vector2(0.5f, 1f);
-        titleRt.anchoredPosition = new Vector2(0f, -20f);
-        titleRt.sizeDelta = new Vector2(900f, 80f);
+        titleRt.anchoredPosition = new Vector2(0f, -10f);
+        titleRt.sizeDelta = new Vector2(440f, 32f);
         var titleTxt = titleObj.AddComponent<Text>();
         titleTxt.text = LanguageManager.Instance != null
             ? LanguageManager.Instance.Get("building_title")
-            : "🦫  Bever Verblijf bouwen!  🪵";
+            : "Verblijf bouwen!";
         titleTxt.font = GetFont();
-        titleTxt.fontSize = 46;
+        titleTxt.fontSize = 22;
         titleTxt.fontStyle = FontStyle.Bold;
         titleTxt.alignment = TextAnchor.MiddleCenter;
         titleTxt.color = new Color(1f, 0.82f, 0.42f);
@@ -685,11 +685,11 @@ public class HabitatBuilder : MonoBehaviour
         trt.anchorMin = new Vector2(0.5f, 0.5f);
         trt.anchorMax = new Vector2(0.5f, 0.5f);
         trt.pivot = new Vector2(0.5f, 0.5f);
-        trt.anchoredPosition = new Vector2(0f, 22f);
-        trt.sizeDelta = new Vector2(880f, 90f);
+        trt.anchoredPosition = new Vector2(0f, 2f);
+        trt.sizeDelta = new Vector2(430f, 38f);
         _buildLabel = tObj.AddComponent<Text>();
         _buildLabel.font = GetFont();
-        _buildLabel.fontSize = 54;
+        _buildLabel.fontSize = 24;
         _buildLabel.fontStyle = FontStyle.Bold;
         _buildLabel.alignment = TextAnchor.MiddleCenter;
         _buildLabel.color = Color.white;
@@ -702,8 +702,8 @@ public class HabitatBuilder : MonoBehaviour
         barBgRt.anchorMin = new Vector2(0.5f, 0f);
         barBgRt.anchorMax = new Vector2(0.5f, 0f);
         barBgRt.pivot = new Vector2(0.5f, 0f);
-        barBgRt.anchoredPosition = new Vector2(0f, 28f);
-        barBgRt.sizeDelta = new Vector2(860f, 44f);
+        barBgRt.anchoredPosition = new Vector2(0f, 14f);
+        barBgRt.sizeDelta = new Vector2(420f, 18f);
         barBg.AddComponent<Image>().color = new Color(0f, 0f, 0f, 0.55f);
 
         var barFill = new GameObject("ProgressFill");
@@ -712,8 +712,8 @@ public class HabitatBuilder : MonoBehaviour
         _progressBar.anchorMin = new Vector2(0f, 0f);
         _progressBar.anchorMax = new Vector2(0f, 1f);
         _progressBar.pivot = new Vector2(0f, 0.5f);
-        _progressBar.offsetMin = new Vector2(4f, 4f);
-        _progressBar.offsetMax = new Vector2(4f, -4f);
+        _progressBar.offsetMin = new Vector2(3f, 3f);
+        _progressBar.offsetMax = new Vector2(3f, -3f);
         _progressBar.sizeDelta = new Vector2(0f, 0f);
         barFill.AddComponent<Image>().color = new Color(0.76f, 0.52f, 0.22f);
 
@@ -768,7 +768,7 @@ public class HabitatBuilder : MonoBehaviour
     void SetProgress(float p)
     {
         if (_progressBar == null) return;
-        _progressBar.sizeDelta = new Vector2(852f * p, 0f);
+        _progressBar.sizeDelta = new Vector2(414f * p, 0f);
     }
 
     void CleanupUI()

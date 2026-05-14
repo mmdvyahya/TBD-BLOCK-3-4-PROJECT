@@ -5,6 +5,11 @@ using UnityEngine.UI;
 
 public class HabitatInteractionController : MonoBehaviour
 {
+    public static event System.Action<Button, Button, Button, InspectableHabitat> CardShown;
+    public static event System.Action<Button> InspectBackButtonShown;
+    public static event System.Action<InspectableHabitat> MinigamePressed;
+    public static event System.Action CardClosed;
+
     [Header("References")]
     [SerializeField] private Camera mainCamera;
     [SerializeField] private HabitatInspectionManager inspectionManager;
@@ -209,8 +214,14 @@ public class HabitatInteractionController : MonoBehaviour
 
         if (mgBtn != null)
         {
-            mgBtn.onClick.AddListener(() => SceneManager.LoadScene(habitat.MinigameScene));
+            mgBtn.onClick.AddListener(() =>
+            {
+                MinigamePressed?.Invoke(habitat);
+                SceneManager.LoadScene(habitat.MinigameScene);
+            });
         }
+
+        CardShown?.Invoke(backBtn, inspBtn, mgBtn, habitat);
     }
 
     void ShowInspectBackButton()
@@ -236,11 +247,13 @@ public class HabitatInteractionController : MonoBehaviour
             DestroyCard();
             StartCoroutine(ReturnToCardFromInspect());
         });
+
+        InspectBackButtonShown?.Invoke(btn);
     }
 
     void DestroyCard()
     {
-        if (_cardCanvas != null) { Destroy(_cardCanvas); _cardCanvas = null; }
+        if (_cardCanvas != null) { Destroy(_cardCanvas); _cardCanvas = null; CardClosed?.Invoke(); }
     }
 
     Text MakeLabelSafe(Transform parent, string key, string fallback, int size, FontStyle style, Color color, Vector2 pos, Vector2 sz)

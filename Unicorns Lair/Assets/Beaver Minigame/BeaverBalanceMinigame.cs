@@ -312,7 +312,7 @@ public class BeaverBalanceMinigame : MonoBehaviour
             new Vector2(0f, -14f), new Vector2(1000f, 70f), 52, FontStyle.Bold, Color.white, ref _statusText);
 
         string instrKey = allowKeyboardDebug ? "minigame_instruction_pc" : "minigame_instruction_tablet";
-        MakeLabel(header.transform, SafeGet(instrKey, allowKeyboardDebug ? "Druk A / D om te kantelen" : "Kantel de tablet!"),
+        MakeLabel(header.transform, SafeGet(instrKey, allowKeyboardDebug ? "Kantel de tablet!" : "Kantel de tablet!"),
             new Vector2(0f, -86f), new Vector2(1000f, 44f), 32, FontStyle.Normal,
             new Color(0.80f, 0.92f, 1f), ref _instructionText);
 
@@ -367,7 +367,7 @@ public class BeaverBalanceMinigame : MonoBehaviour
         if (_instructionText != null)
         {
             string instrKey = allowKeyboardDebug ? "minigame_instruction_pc" : "minigame_instruction_tablet";
-            _instructionText.text = SafeGet(instrKey, allowKeyboardDebug ? "Druk A / D om te kantelen" : "Kantel de tablet!");
+            _instructionText.text = SafeGet(instrKey, allowKeyboardDebug ? "Kantel de tablet!" : "Kantel de tablet!");
         }
         if (_statusText != null && !_complete)
             _statusText.text = SafeGet("minigame_beaver_title", "Bever Balans!");

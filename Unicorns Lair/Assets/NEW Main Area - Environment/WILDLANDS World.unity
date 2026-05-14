@@ -22387,50 +22387,6 @@ MonoBehaviour:
   buttonAnchor: {fileID: 1814173356}
   mainCamera: {fileID: 0}
   midBuildChild: {fileID: 0}
---- !u!1 &1265956255
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1265956257}
-  - component: {fileID: 1265956258}
-  m_Layer: 0
-  m_Name: _TemporaryMiniGameManger
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1265956257
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1265956255}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.41228, y: 0.06, z: -15.04854}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1265956258
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1265956255}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e244ddfa2fd36a4099649a899ea0a8a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MinigameMenuManager
 --- !u!1001 &1270465476
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28018,6 +27974,62 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 07f98da4162c2b44d84aa9963825ddea, type: 3}
+--- !u!1 &1303785809
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1303785811}
+  - component: {fileID: 1303785810}
+  m_Layer: 0
+  m_Name: _TutorialManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1303785810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1303785809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2362233c3d9222e43b760243be0d8343, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TutorialManager
+  habitatOrder:
+  - beaver_habitat
+  - polarbear_habitat
+  - racoon_habitat
+  - prairiedog_habitat
+  - baboon_habitat
+  - hippo_habitat
+  tapIcon: {fileID: 1520866622, guid: bc0953893233fe64bbdd1ace03dcd99a, type: 3}
+  glowColor: {r: 1, g: 0.85, b: 0.2, a: 1}
+  glowGroundOffset: 0.05
+  inspectionPromptSeconds: 5
+  mainCamera: {fileID: 0}
+--- !u!4 &1303785811
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1303785809}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -19.7573, y: -28.71136, z: 42.60342}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1303924168
 GameObject:
   m_ObjectHideFlags: 0
@@ -30283,50 +30295,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 822840202362131498, guid: b8dc882531ce6724599cd0bfb0fa15a1, type: 3}
   m_PrefabInstance: {fileID: 1436195129}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1436641261
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1436641262}
-  - component: {fileID: 1436641263}
-  m_Layer: 0
-  m_Name: _BuildModeToggle
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1436641262
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1436641261}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -44.49833, y: -0, z: -3.63151}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1436641263
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1436641261}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: afcf316ff84fa3848b3cbcf1335728f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BuildModeToggle
 --- !u!1001 &1441186443
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -41131,7 +41099,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2097888147
 Transform:
   m_ObjectHideFlags: 0
@@ -42355,7 +42323,6 @@ SceneRoots:
   - {fileID: 901329051}
   - {fileID: 1943368540}
   - {fileID: 2097888147}
-  - {fileID: 1265956257}
   - {fileID: 187624064}
   - {fileID: 1129687375}
   - {fileID: 803590831}
@@ -42364,7 +42331,6 @@ SceneRoots:
   - {fileID: 103263994}
   - {fileID: 902700666}
   - {fileID: 1686389550}
-  - {fileID: 1436641262}
   - {fileID: 1566849613}
   - {fileID: 822968221}
   - {fileID: 4648119848722170947}
@@ -42373,3 +42339,4 @@ SceneRoots:
   - {fileID: 2085664833}
   - {fileID: 311046060}
   - {fileID: 253803582}
+  - {fileID: 1303785811}

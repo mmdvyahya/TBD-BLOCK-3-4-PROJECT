@@ -17,6 +17,7 @@ public class Habitat : MonoBehaviour
 
     public string HabitatId => habitatId;
     public int Cost => cost;
+    public Transform GetButtonAnchor() => buttonAnchor;
 
     [Header("Scene References")]
     [Tooltip("The 'Built' child object — disabled at start, enabled when build animation completes.")]
@@ -56,6 +57,7 @@ public class Habitat : MonoBehaviour
         GameStateManager.Instance.CoinsChanged += OnCoinsChanged;
         LanguageManager.Instance.LanguageChanged += OnLanguageChanged;
         BuildModeToggle.StateChanged += OnBuildModeChanged;
+        TutorialManager.UnlockChanged += OnTutorialUnlockChanged;
         ApplyBuildModeVisibility();
     }
 
@@ -64,14 +66,18 @@ public class Habitat : MonoBehaviour
         if (GameStateManager.Instance != null) GameStateManager.Instance.CoinsChanged -= OnCoinsChanged;
         if (LanguageManager.Instance != null) LanguageManager.Instance.LanguageChanged -= OnLanguageChanged;
         BuildModeToggle.StateChanged -= OnBuildModeChanged;
+        TutorialManager.UnlockChanged -= OnTutorialUnlockChanged;
     }
+
+    void OnTutorialUnlockChanged() => ApplyBuildModeVisibility();
 
     void OnBuildModeChanged() => ApplyBuildModeVisibility();
 
     void ApplyBuildModeVisibility()
     {
         if (_worldCanvas == null) return;
-        _worldCanvas.gameObject.SetActive(BuildModeToggle.IsEnabled && _state == HabitatState.NotPlaced);
+        bool tutorialOk = TutorialManager.Instance == null || TutorialManager.Instance.IsHabitatUnlocked(habitatId);
+        _worldCanvas.gameObject.SetActive(BuildModeToggle.IsEnabled && _state == HabitatState.NotPlaced && tutorialOk);
     }
 
     HabitatState DetermineInitialState()
