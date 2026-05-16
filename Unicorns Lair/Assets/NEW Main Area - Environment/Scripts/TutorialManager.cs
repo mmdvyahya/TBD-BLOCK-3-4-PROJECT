@@ -26,7 +26,12 @@ public class TutorialManager : MonoBehaviour
     {
         "beaver_habitat","polarbear_habitat","racoon_habitat","prairiedog_habitat","baboon_habitat","hippo_habitat",
     };
+    [Header("Mini Usability Test")]
+    [SerializeField] private bool showMiniTestAfterTutorial = true;
 
+    private GameObject _miniTestOverlay;
+    private int _miniTestQuestionIndex;
+    private int[] _miniTestAnswers;
     [Tooltip("Habitats listed here stay locked (no buy button) for the entire tutorial. They unlock once the tutorial completes. Use this for habitats present in the scene that should not be part of the guided sequence.")]
     [SerializeField] private string[] tutorialSkipHabitats;
 
@@ -298,15 +303,24 @@ public class TutorialManager : MonoBehaviour
         _currentStep++;
         PlayerPrefs.SetInt(PREF_STEP, _currentStep);
 
-        if (_currentStep >= habitatOrder.Length)
-        {
+        if(_currentStep >= habitatOrder.Length)
+{
             _tutorialFinished = true;
+
             ShowBanner(SafeGet("tutorial_complete", "Geweldig! Alle dieren hebben een thuis. Speel verder!"));
             StartCoroutine(HideBannerAfter(4f));
-            HidePointer(); HideGlow();
+
+            HidePointer();
+            HideGlow();
+
             ApplyUnlocks();
+
             PlayerPrefs.SetInt(PREF_SUB, (int)SubState.Complete);
             PlayerPrefs.Save();
+
+            if (showMiniTestAfterTutorial)
+                StartCoroutine(ShowMiniTestAfterDelay(1.5f));
+
             return;
         }
         ApplyUnlocks();
@@ -817,7 +831,172 @@ public class TutorialManager : MonoBehaviour
         yield return new WaitForSeconds(seconds);
         HideBanner();
     }
+    IEnumerator ShowMiniTestAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        ShowMiniUsabilityTest();
+    }
 
+    void ShowMiniUsabilityTest()
+    {
+        if (_miniTestOverlay != null)
+            return;
+
+        _miniTestQuestionIndex = 0;
+        _miniTestAnswers = new int[3];
+
+        _miniTestOverlay = new GameObject("MiniUsabilityTestOverlay");
+        _miniTestOverlay.transform.SetParent(_tutorialCanvas.transform, false);
+
+        var rt = _miniTestOverlay.AddComponent<RectTransform>();
+        rt.anchorMin = Vector2.zero;
+        rt.anchorMax = Vector2.one;
+        rt.offsetMin = Vector2.zero;
+        rt.offsetMax = Vector2.zero;
+
+        var bg = _miniTestOverlay.AddComponent<Image>();
+        bg.color = new Color(0f, 0f, 0f, 0.75f);
+
+        ShowMiniTestQuestion();
+    }
+
+    void ShowMiniTestQuestion()
+    {
+        foreach (Transform child in _miniTestOverlay.transform)
+            Destroy(child.gameObject);
+
+        string[] questions =
+        {
+        "Was the game easy to understand?",
+        "Was the game fun to play?",
+        "Would you like to play more?"
+    };
+
+        var card = new GameObject("QuestionCard");
+        card.transform.SetParent(_miniTestOverlay.transform, false);
+
+        var cardRt = card.AddComponent<RectTransform>();
+        cardRt.anchorMin = cardRt.anchorMax = cardRt.pivot = new Vector2(0.5f, 0.5f);
+        cardRt.anchoredPosition = Vector2.zero;
+        cardRt.sizeDelta = new Vector2(900f, 620f);
+
+        var cardImg = card.AddComponent<Image>();
+        cardImg.color = new Color(0.08f, 0.13f, 0.24f, 0.97f);
+
+        var titleObj = new GameObject("Title");
+        titleObj.transform.SetParent(card.transform, false);
+
+        var titleRt = titleObj.AddComponent<RectTransform>();
+        titleRt.anchorMin = new Vector2(0.5f, 1f);
+        titleRt.anchorMax = new Vector2(0.5f, 1f);
+        titleRt.pivot = new Vector2(0.5f, 1f);
+        titleRt.anchoredPosition = new Vector2(0f, -35f);
+        titleRt.sizeDelta = new Vector2(820f, 80f);
+
+        var title = titleObj.AddComponent<Text>();
+        title.font = GetFont();
+        title.fontSize = 42;
+        title.fontStyle = FontStyle.Bold;
+        title.alignment = TextAnchor.MiddleCenter;
+        title.color = Color.white;
+        title.text = "Question " + (_miniTestQuestionIndex + 1) + " / 3";
+
+        var qObj = new GameObject("QuestionText");
+        qObj.transform.SetParent(card.transform, false);
+
+        var qRt = qObj.AddComponent<RectTransform>();
+        qRt.anchorMin = new Vector2(0.5f, 1f);
+        qRt.anchorMax = new Vector2(0.5f, 1f);
+        qRt.pivot = new Vector2(0.5f, 1f);
+        qRt.anchoredPosition = new Vector2(0f, -140f);
+        qRt.sizeDelta = new Vector2(820f, 160f);
+
+        var qText = qObj.AddComponent<Text>();
+        qText.font = GetFont();
+        qText.fontSize = 44;
+        qText.fontStyle = FontStyle.Bold;
+        qText.alignment = TextAnchor.MiddleCenter;
+        qText.color = new Color(0.95f, 0.97f, 1f);
+        qText.text = questions[_miniTestQuestionIndex];
+
+        for (int i = 1; i <= 5; i++)
+        {
+            int score = i;
+
+            float x = -320f + (i - 1) * 160f;
+
+            var btn = MakeButton(
+                card.transform,
+                score.ToString(),
+                new Vector2(x, 150f),
+                new Vector2(120f, 120f),
+                new Color(0.18f, 0.55f, 0.95f)
+            );
+
+            btn.GetComponent<RectTransform>().anchorMin = new Vector2(0.5f, 0f);
+            btn.GetComponent<RectTransform>().anchorMax = new Vector2(0.5f, 0f);
+            btn.GetComponent<RectTransform>().pivot = new Vector2(0.5f, 0f);
+
+            btn.onClick.AddListener(() => AnswerMiniTest(score));
+        }
+
+        var hintObj = new GameObject("Hint");
+        hintObj.transform.SetParent(card.transform, false);
+
+        var hRt = hintObj.AddComponent<RectTransform>();
+        hRt.anchorMin = new Vector2(0.5f, 0f);
+        hRt.anchorMax = new Vector2(0.5f, 0f);
+        hRt.pivot = new Vector2(0.5f, 0f);
+        hRt.anchoredPosition = new Vector2(0f, 50f);
+        hRt.sizeDelta = new Vector2(820f, 70f);
+
+        var hint = hintObj.AddComponent<Text>();
+        hint.font = GetFont();
+        hint.fontSize = 28;
+        hint.alignment = TextAnchor.MiddleCenter;
+        hint.color = new Color(0.75f, 0.88f, 1f);
+        hint.text = "1 = not really     5 = very much";
+    }
+
+    void AnswerMiniTest(int score)
+    {
+        _miniTestAnswers[_miniTestQuestionIndex] = score;
+
+        PlaytestLogger.Instance?.LogSUSAnswer(_miniTestQuestionIndex + 1, score);
+
+        _miniTestQuestionIndex++;
+
+        if (_miniTestQuestionIndex >= _miniTestAnswers.Length)
+        {
+            CompleteMiniUsabilityTest();
+        }
+        else
+        {
+            ShowMiniTestQuestion();
+        }
+    }
+
+    void CompleteMiniUsabilityTest()
+    {
+        int rawScore = 0;
+
+        for (int i = 0; i < _miniTestAnswers.Length; i++)
+            rawScore += _miniTestAnswers[i];
+
+        float averageScore = rawScore / 3f;
+        float percentageScore = averageScore * 20f;
+
+        PlaytestLogger.Instance?.LogSUSScore(rawScore, percentageScore);
+        PlaytestLogger.Instance?.EndSessionProperly("Completed mini usability test after tutorial");
+
+        if (_miniTestOverlay != null)
+            Destroy(_miniTestOverlay);
+
+        _miniTestOverlay = null;
+
+        ShowBanner("Thank you for playing!");
+        StartCoroutine(HideBannerAfter(4f));
+    }
     Button MakeButton(Transform parent, string label, Vector2 pos, Vector2 size, Color color)
     {
         var obj = new GameObject("Btn");

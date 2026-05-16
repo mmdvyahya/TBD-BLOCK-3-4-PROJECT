@@ -47,6 +47,7 @@ public class PrairieDogPeekManager : MonoBehaviour
     private Text _instructionText;
     private Text _feedbackText;
     private GameObject _congratsCanvas;
+    private bool _complete;
 
     void Start()
     {
@@ -81,6 +82,7 @@ public class PrairieDogPeekManager : MonoBehaviour
 
     public void StartMinigame()
     {
+        _complete = false;
         _currentRound = 0;
         _correctCount = 0;
         _correctHoleIndex = -1;
@@ -154,7 +156,7 @@ public class PrairieDogPeekManager : MonoBehaviour
             var correctHole = holes[_correctHoleIndex];
             if (correctHole != null) yield return StartCoroutine(correctHole.PlayCorrectFeedback(popSpeed));
         }
-
+        PlaytestLogger.Instance?.LogMinigameRetry("PrairieDog");
         yield return new WaitForSeconds(feedbackDuration);
 
         if (correct)
@@ -180,6 +182,8 @@ public class PrairieDogPeekManager : MonoBehaviour
 
     void CompleteMinigame()
     {
+        _complete = true;
+        PlaytestLogger.Instance?.LogMinigameSuccess("PrairieDog");
         SetState(PrairieDogPeekState.Complete);
         DestroyMainUI();
         ShowCongrats();
@@ -352,7 +356,18 @@ public class PrairieDogPeekManager : MonoBehaviour
         SceneManager.LoadScene(returnSceneName);
     }
 
-    void ExitToMainArea() => SceneManager.LoadScene(returnSceneName);
+    void ExitToMainArea()
+    {
+        if (!_complete)
+        {
+            PlaytestLogger.Instance?.LogMinigameFail(
+                "PrairieDog",
+                "Player exited before completion"
+            );
+        }
+
+        SceneManager.LoadScene(returnSceneName);
+    }
 
     void DestroyMainUI()
     {

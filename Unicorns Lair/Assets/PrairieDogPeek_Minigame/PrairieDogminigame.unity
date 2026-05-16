@@ -6937,7 +6937,7 @@ MonoBehaviour:
   - {fileID: 302882675}
   - {fileID: 1612355540}
   - {fileID: 930244253}
-  roundsToWin: 6
+  roundsToWin: 4
   baseVisibleDuration: 2
   visibleDurationDecreasePerRound: 0.25
   minVisibleDuration: 0.25

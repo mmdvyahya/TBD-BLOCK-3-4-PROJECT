@@ -44,6 +44,8 @@ public class BeaverBalanceMinigame : MonoBehaviour
     private float _stableTimeLeft;
     private bool _isRunning;
     private bool _complete;
+    private bool _hasStartedBefore;
+
     private float _balancedZ;
     private float _halfRange;
     private Vector3 _initialStickPos;
@@ -75,6 +77,7 @@ public class BeaverBalanceMinigame : MonoBehaviour
             if (Keyboard.current.dKey.isPressed) inputTilt += keyboardTiltSpeed;
         }
 #endif
+
         if (useAccelerometer && Accelerometer.current != null)
         {
             float ax = Accelerometer.current.acceleration.ReadValue().x;
@@ -101,7 +104,10 @@ public class BeaverBalanceMinigame : MonoBehaviour
         }
 
         bool stable = Mathf.Abs(_currentAngle) <= balanceZoneDegrees;
-        if (stable) _stableTimeLeft -= Time.deltaTime;
+
+        if (stable)
+            _stableTimeLeft -= Time.deltaTime;
+
         _stableTimeLeft = Mathf.Max(0f, _stableTimeLeft);
 
         UpdateUI(stable);
@@ -113,6 +119,13 @@ public class BeaverBalanceMinigame : MonoBehaviour
     public void OpenMinigame()
     {
         if (_isRunning) return;
+
+        if (_hasStartedBefore)
+        {
+            PlaytestLogger.Instance?.LogMinigameRetry("BeaverBalance");
+        }
+
+        _hasStartedBefore = true;
 
         _balancedZ = (stickMaxLeftZ + stickMaxRightZ) * 0.5f;
         _halfRange = (stickMaxLeftZ - stickMaxRightZ) * 0.5f;
@@ -126,20 +139,39 @@ public class BeaverBalanceMinigame : MonoBehaviour
             _initialStickRot = stickObject.rotation;
         }
 
-        if (beaverObject != null) ShowRenderers(beaverObject);
-        if (stickObject != null) ShowRenderers(stickObject.gameObject);
+        if (beaverObject != null)
+            ShowRenderers(beaverObject);
+
+        if (stickObject != null)
+            ShowRenderers(stickObject.gameObject);
 
         BuildUI();
+
         _isRunning = true;
+
         UpdateUI(false);
     }
 
     public void CloseMinigame()
     {
+        if (!_complete)
+        {
+            PlaytestLogger.Instance?.LogMinigameFail(
+                "BeaverBalance",
+                "Player exited before completion"
+            );
+        }
+
         _isRunning = false;
-        if (beaverObject != null) HideRenderers(beaverObject);
-        if (stickObject != null) HideRenderers(stickObject.gameObject);
+
+        if (beaverObject != null)
+            HideRenderers(beaverObject);
+
+        if (stickObject != null)
+            HideRenderers(stickObject.gameObject);
+
         DestroyUI();
+
         SceneManager.LoadScene(returnSceneName);
     }
 
@@ -148,8 +180,13 @@ public class BeaverBalanceMinigame : MonoBehaviour
         _complete = true;
         _isRunning = false;
 
-        if (_statusText != null) _statusText.text = SafeGet("minigame_complete", "Gefeliciteerd!");
-        if (_instructionText != null) _instructionText.text = SafeGet("minigame_success_desc", "De bever heeft de stok in balans gehouden!");
+        PlaytestLogger.Instance?.LogMinigameSuccess("BeaverBalance");
+
+        if (_statusText != null)
+            _statusText.text = SafeGet("minigame_complete", "Gefeliciteerd!");
+
+        if (_instructionText != null)
+            _instructionText.text = SafeGet("minigame_success_desc", "De bever heeft de stok in balans gehouden!");
 
         yield return new WaitForSeconds(1.5f);
 
@@ -163,11 +200,14 @@ public class BeaverBalanceMinigame : MonoBehaviour
         var cv = cObj.AddComponent<Canvas>();
         cv.renderMode = RenderMode.ScreenSpaceOverlay;
         cv.sortingOrder = 25;
+
         var scaler = cObj.AddComponent<CanvasScaler>();
         scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
         scaler.referenceResolution = new Vector2(1080, 1920);
         scaler.matchWidthOrHeight = 0.5f;
+
         cObj.AddComponent<GraphicRaycaster>();
+
         EnsureEventSystem();
 
         var bg = cObj.AddComponent<Image>();
@@ -176,37 +216,50 @@ public class BeaverBalanceMinigame : MonoBehaviour
 
         var card = new GameObject("Card");
         card.transform.SetParent(cObj.transform, false);
+
         var cardRt = card.AddComponent<RectTransform>();
         cardRt.anchorMin = cardRt.anchorMax = cardRt.pivot = new Vector2(0.5f, 0.5f);
         cardRt.anchoredPosition = Vector2.zero;
         cardRt.sizeDelta = new Vector2(900f, 560f);
+
         var cardImg = card.AddComponent<Image>();
         cardImg.color = new Color(0.08f, 0.12f, 0.20f, 0.96f);
         cardImg.raycastTarget = false;
 
         var accentTop = new GameObject("AccentTop");
         accentTop.transform.SetParent(card.transform, false);
+
         var atRt = accentTop.AddComponent<RectTransform>();
-        atRt.anchorMin = new Vector2(0f, 1f); atRt.anchorMax = new Vector2(1f, 1f);
-        atRt.pivot = new Vector2(0.5f, 1f); atRt.anchoredPosition = Vector2.zero; atRt.sizeDelta = new Vector2(0f, 12f);
+        atRt.anchorMin = new Vector2(0f, 1f);
+        atRt.anchorMax = new Vector2(1f, 1f);
+        atRt.pivot = new Vector2(0.5f, 1f);
+        atRt.anchoredPosition = Vector2.zero;
+        atRt.sizeDelta = new Vector2(0f, 12f);
+
         accentTop.AddComponent<Image>().color = new Color(1f, 0.82f, 0.2f);
 
         MakeCongratsLabel(card.transform, "", new Vector2(0f, -50f), new Vector2(860f, 100f), 80, FontStyle.Normal, new Color(1f, 0.85f, 0.2f));
+
         MakeCongratsLabelLocalized(card.transform, "minigame_complete", "Gefeliciteerd!",
             new Vector2(0f, -155f), new Vector2(860f, 80f), 60, FontStyle.Bold, Color.white);
+
         MakeCongratsLabelLocalized(card.transform, "minigame_coins_earned", "Je hebt 10 munten verdiend!",
             new Vector2(0f, -250f), new Vector2(860f, 60f), 40, FontStyle.Normal, new Color(0.35f, 1f, 0.60f));
+
         MakeCongratsLabelLocalized(card.transform, "minigame_success_desc", "De bever heeft de stok in balans gehouden!",
             new Vector2(0f, -320f), new Vector2(860f, 50f), 28, FontStyle.Normal, new Color(0.75f, 0.88f, 1f));
 
         var continueBtn = new GameObject("ContinueBtn");
         continueBtn.transform.SetParent(card.transform, false);
+
         var cbrt = continueBtn.AddComponent<RectTransform>();
         cbrt.anchorMin = cbrt.anchorMax = cbrt.pivot = new Vector2(0.5f, 0f);
         cbrt.anchoredPosition = new Vector2(0f, 36f);
         cbrt.sizeDelta = new Vector2(500f, 120f);
+
         var cImg = continueBtn.AddComponent<Image>();
         cImg.color = new Color(0.12f, 0.68f, 0.34f);
+
         var cBtn = continueBtn.AddComponent<Button>();
         cBtn.targetGraphic = cImg;
         cBtn.colors = new ColorBlock
@@ -221,6 +274,7 @@ public class BeaverBalanceMinigame : MonoBehaviour
         };
 
         GameObject capturedCanvas = cObj;
+
         cBtn.onClick.AddListener(() =>
         {
             GameStateManager.Ensure();
@@ -231,15 +285,21 @@ public class BeaverBalanceMinigame : MonoBehaviour
 
         var clbl = new GameObject("Label");
         clbl.transform.SetParent(continueBtn.transform, false);
+
         var clrt = clbl.AddComponent<RectTransform>();
-        clrt.anchorMin = Vector2.zero; clrt.anchorMax = Vector2.one;
+        clrt.anchorMin = Vector2.zero;
+        clrt.anchorMax = Vector2.one;
         clrt.offsetMin = clrt.offsetMax = Vector2.zero;
+
         var ctxt = clbl.AddComponent<Text>();
         ctxt.text = SafeGet("btn_continue", "Doorgaan");
-        ctxt.font = GetFont(); ctxt.fontSize = 50;
+        ctxt.font = GetFont();
+        ctxt.fontSize = 50;
         ctxt.fontStyle = FontStyle.Bold;
         ctxt.alignment = TextAnchor.MiddleCenter;
-        ctxt.color = Color.white; ctxt.raycastTarget = false;
+        ctxt.color = Color.white;
+        ctxt.raycastTarget = false;
+
         var ctxtLoc = clbl.AddComponent<LocalizedText>();
         ctxtLoc.key = "btn_continue";
         ctxtLoc.Refresh();
@@ -250,13 +310,22 @@ public class BeaverBalanceMinigame : MonoBehaviour
     {
         var obj = new GameObject("Label");
         obj.transform.SetParent(parent, false);
+
         var rt = obj.AddComponent<RectTransform>();
-        rt.anchorMin = new Vector2(0.5f, 1f); rt.anchorMax = new Vector2(0.5f, 1f);
-        rt.pivot = new Vector2(0.5f, 1f); rt.anchoredPosition = pos; rt.sizeDelta = size;
+        rt.anchorMin = new Vector2(0.5f, 1f);
+        rt.anchorMax = new Vector2(0.5f, 1f);
+        rt.pivot = new Vector2(0.5f, 1f);
+        rt.anchoredPosition = pos;
+        rt.sizeDelta = size;
+
         var t = obj.AddComponent<Text>();
-        t.text = text; t.font = GetFont(); t.fontSize = fontSize;
-        t.fontStyle = style; t.color = color;
-        t.alignment = TextAnchor.MiddleCenter; t.raycastTarget = false;
+        t.text = text;
+        t.font = GetFont();
+        t.fontSize = fontSize;
+        t.fontStyle = style;
+        t.color = color;
+        t.alignment = TextAnchor.MiddleCenter;
+        t.raycastTarget = false;
     }
 
     void MakeCongratsLabelLocalized(Transform parent, string key, string fallback, Vector2 pos, Vector2 size,
@@ -264,13 +333,23 @@ public class BeaverBalanceMinigame : MonoBehaviour
     {
         var obj = new GameObject("Label");
         obj.transform.SetParent(parent, false);
+
         var rt = obj.AddComponent<RectTransform>();
-        rt.anchorMin = new Vector2(0.5f, 1f); rt.anchorMax = new Vector2(0.5f, 1f);
-        rt.pivot = new Vector2(0.5f, 1f); rt.anchoredPosition = pos; rt.sizeDelta = size;
+        rt.anchorMin = new Vector2(0.5f, 1f);
+        rt.anchorMax = new Vector2(0.5f, 1f);
+        rt.pivot = new Vector2(0.5f, 1f);
+        rt.anchoredPosition = pos;
+        rt.sizeDelta = size;
+
         var t = obj.AddComponent<Text>();
-        t.font = GetFont(); t.fontSize = fontSize; t.fontStyle = style; t.color = color;
-        t.alignment = TextAnchor.MiddleCenter; t.raycastTarget = false;
+        t.font = GetFont();
+        t.fontSize = fontSize;
+        t.fontStyle = style;
+        t.color = color;
+        t.alignment = TextAnchor.MiddleCenter;
+        t.raycastTarget = false;
         t.text = SafeGet(key, fallback);
+
         var loc = obj.AddComponent<LocalizedText>();
         loc.key = key;
         loc.Refresh();
@@ -280,60 +359,81 @@ public class BeaverBalanceMinigame : MonoBehaviour
     {
         var lm = LanguageManager.Instance;
         if (lm == null) return fallback;
+
         var result = lm.Get(key);
+
         return (result == $"[{key}]") ? fallback : result;
     }
 
     void BuildUI()
     {
         var cObj = new GameObject("MinigameCanvas");
+
         _uiCanvas = cObj.AddComponent<Canvas>();
         _uiCanvas.renderMode = RenderMode.ScreenSpaceOverlay;
         _uiCanvas.sortingOrder = 20;
+
         var scaler = cObj.AddComponent<CanvasScaler>();
         scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
         scaler.referenceResolution = new Vector2(1080, 1920);
         scaler.matchWidthOrHeight = 0.5f;
+
         cObj.AddComponent<GraphicRaycaster>();
 
         EnsureEventSystem();
         LanguageManager.Ensure();
+
         LanguageManager.Instance.LanguageChanged += RefreshStaticUI;
 
         var header = new GameObject("Header");
         header.transform.SetParent(cObj.transform, false);
+
         var hrt = header.AddComponent<RectTransform>();
-        hrt.anchorMin = new Vector2(0f, 1f); hrt.anchorMax = new Vector2(1f, 1f);
-        hrt.pivot = new Vector2(0.5f, 1f); hrt.anchoredPosition = Vector2.zero;
+        hrt.anchorMin = new Vector2(0f, 1f);
+        hrt.anchorMax = new Vector2(1f, 1f);
+        hrt.pivot = new Vector2(0.5f, 1f);
+        hrt.anchoredPosition = Vector2.zero;
         hrt.sizeDelta = new Vector2(0f, 140f);
+
         header.AddComponent<Image>().color = new Color(0.08f, 0.12f, 0.20f, 0.90f);
 
         MakeLabel(header.transform, SafeGet("minigame_beaver_title", "Bever Balans!"),
             new Vector2(0f, -14f), new Vector2(1000f, 70f), 52, FontStyle.Bold, Color.white, ref _statusText);
 
         string instrKey = allowKeyboardDebug ? "minigame_instruction_pc" : "minigame_instruction_tablet";
+
         MakeLabel(header.transform, SafeGet(instrKey, allowKeyboardDebug ? "Kantel de tablet!" : "Kantel de tablet!"),
             new Vector2(0f, -86f), new Vector2(1000f, 44f), 32, FontStyle.Normal,
             new Color(0.80f, 0.92f, 1f), ref _instructionText);
 
         var countdownBg = new GameObject("CountdownBg");
         countdownBg.transform.SetParent(cObj.transform, false);
+
         var cbrt = countdownBg.AddComponent<RectTransform>();
-        cbrt.anchorMin = new Vector2(0.5f, 0.5f); cbrt.anchorMax = new Vector2(0.5f, 0.5f);
-        cbrt.pivot = new Vector2(0.5f, 0.5f); cbrt.anchoredPosition = new Vector2(0f, 320f);
+        cbrt.anchorMin = new Vector2(0.5f, 0.5f);
+        cbrt.anchorMax = new Vector2(0.5f, 0.5f);
+        cbrt.pivot = new Vector2(0.5f, 0.5f);
+        cbrt.anchoredPosition = new Vector2(0f, 320f);
         cbrt.sizeDelta = new Vector2(440f, 110f);
+
         countdownBg.AddComponent<Image>().color = new Color(0f, 0f, 0f, 0.55f);
+
         MakeLabel(countdownBg.transform, "", Vector2.zero, new Vector2(420f, 100f), 58, FontStyle.Bold,
             Color.white, ref _countdownText);
 
         var stopBtn = new GameObject("StopBtn");
         stopBtn.transform.SetParent(cObj.transform, false);
+
         var sbrt = stopBtn.AddComponent<RectTransform>();
-        sbrt.anchorMin = new Vector2(0f, 0f); sbrt.anchorMax = new Vector2(0f, 0f);
-        sbrt.pivot = new Vector2(0f, 0f); sbrt.anchoredPosition = new Vector2(30f, 30f);
+        sbrt.anchorMin = new Vector2(0f, 0f);
+        sbrt.anchorMax = new Vector2(0f, 0f);
+        sbrt.pivot = new Vector2(0f, 0f);
+        sbrt.anchoredPosition = new Vector2(30f, 30f);
         sbrt.sizeDelta = new Vector2(240f, 110f);
+
         var sImg = stopBtn.AddComponent<Image>();
         sImg.color = new Color(0.55f, 0.18f, 0.18f);
+
         var sBtn = stopBtn.AddComponent<Button>();
         sBtn.targetGraphic = sImg;
         sBtn.colors = new ColorBlock
@@ -346,17 +446,25 @@ public class BeaverBalanceMinigame : MonoBehaviour
             colorMultiplier = 1f,
             fadeDuration = 0.08f
         };
+
         sBtn.onClick.AddListener(CloseMinigame);
 
         var sLbl = new GameObject("Label");
         sLbl.transform.SetParent(stopBtn.transform, false);
+
         var slrt = sLbl.AddComponent<RectTransform>();
-        slrt.anchorMin = Vector2.zero; slrt.anchorMax = Vector2.one;
+        slrt.anchorMin = Vector2.zero;
+        slrt.anchorMax = Vector2.one;
         slrt.offsetMin = slrt.offsetMax = Vector2.zero;
+
         var sTxt = sLbl.AddComponent<Text>();
-        sTxt.font = GetFont(); sTxt.fontSize = 42;
-        sTxt.fontStyle = FontStyle.Bold; sTxt.alignment = TextAnchor.MiddleCenter;
-        sTxt.color = Color.white; sTxt.raycastTarget = false;
+        sTxt.font = GetFont();
+        sTxt.fontSize = 42;
+        sTxt.fontStyle = FontStyle.Bold;
+        sTxt.alignment = TextAnchor.MiddleCenter;
+        sTxt.color = Color.white;
+        sTxt.raycastTarget = false;
+
         var stopLoc = sLbl.AddComponent<LocalizedText>();
         stopLoc.key = "btn_back";
         stopLoc.Refresh();
@@ -369,6 +477,7 @@ public class BeaverBalanceMinigame : MonoBehaviour
             string instrKey = allowKeyboardDebug ? "minigame_instruction_pc" : "minigame_instruction_tablet";
             _instructionText.text = SafeGet(instrKey, allowKeyboardDebug ? "Kantel de tablet!" : "Kantel de tablet!");
         }
+
         if (_statusText != null && !_complete)
             _statusText.text = SafeGet("minigame_beaver_title", "Bever Balans!");
     }
@@ -378,19 +487,30 @@ public class BeaverBalanceMinigame : MonoBehaviour
     {
         var obj = new GameObject("Label");
         obj.transform.SetParent(parent, false);
+
         var rt = obj.AddComponent<RectTransform>();
-        rt.anchorMin = new Vector2(0.5f, 1f); rt.anchorMax = new Vector2(0.5f, 1f);
-        rt.pivot = new Vector2(0.5f, 1f); rt.anchoredPosition = pos; rt.sizeDelta = size;
+        rt.anchorMin = new Vector2(0.5f, 1f);
+        rt.anchorMax = new Vector2(0.5f, 1f);
+        rt.pivot = new Vector2(0.5f, 1f);
+        rt.anchoredPosition = pos;
+        rt.sizeDelta = size;
+
         var t = obj.AddComponent<Text>();
-        t.text = text; t.font = GetFont(); t.fontSize = fontSize;
-        t.fontStyle = style; t.color = color;
-        t.alignment = TextAnchor.MiddleCenter; t.raycastTarget = false;
+        t.text = text;
+        t.font = GetFont();
+        t.fontSize = fontSize;
+        t.fontStyle = style;
+        t.color = color;
+        t.alignment = TextAnchor.MiddleCenter;
+        t.raycastTarget = false;
+
         refTarget = t;
     }
 
     void UpdateUI(bool stable)
     {
         if (_countdownText == null) return;
+
         _countdownText.text = _stableTimeLeft.ToString("F1") + "s";
         _countdownText.color = stable ? new Color(0.25f, 1f, 0.45f) : Color.white;
 
@@ -402,7 +522,12 @@ public class BeaverBalanceMinigame : MonoBehaviour
     {
         if (LanguageManager.Instance != null)
             LanguageManager.Instance.LanguageChanged -= RefreshStaticUI;
-        if (_uiCanvas != null) { Destroy(_uiCanvas.gameObject); _uiCanvas = null; }
+
+        if (_uiCanvas != null)
+        {
+            Destroy(_uiCanvas.gameObject);
+            _uiCanvas = null;
+        }
     }
 
     static void HideRenderers(GameObject obj)
@@ -420,17 +545,23 @@ public class BeaverBalanceMinigame : MonoBehaviour
     void EnsureEventSystem()
     {
         if (UnityEngine.EventSystems.EventSystem.current != null) return;
+
         var es = new GameObject("EventSystem");
         es.AddComponent<UnityEngine.EventSystems.EventSystem>();
         es.AddComponent<UnityEngine.InputSystem.UI.InputSystemUIInputModule>();
     }
 
     static Font _font;
+
     static Font GetFont()
     {
         if (_font != null) return _font;
+
         _font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
-        if (_font == null) _font = Font.CreateDynamicFontFromOSFont("Arial", 24);
+
+        if (_font == null)
+            _font = Font.CreateDynamicFontFromOSFont("Arial", 24);
+
         return _font;
     }
 }

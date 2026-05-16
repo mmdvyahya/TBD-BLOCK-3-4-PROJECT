@@ -27,7 +27,7 @@ public class BaboonSequenceManager : MonoBehaviour
     [SerializeField] private bool autoFindButtons = true;
 
     private BaboonSequenceState _state;
-    private readonly List<int> _sequence = new();
+    private readonly List<int> _sequence = new List<int>();
     private int _playerInputIndex;
 
     private Canvas _uiCanvas;
@@ -35,6 +35,9 @@ public class BaboonSequenceManager : MonoBehaviour
     private Text _instructionText;
     private Text _feedbackText;
     private GameObject _congratsCanvas;
+
+    private bool _hasStartedBefore;
+    private bool _complete;
 
     void Start()
     {
@@ -61,11 +64,22 @@ public class BaboonSequenceManager : MonoBehaviour
 
     public void StartMinigame()
     {
+        if (_hasStartedBefore)
+        {
+            PlaytestLogger.Instance?.LogMinigameRetry("BaboonSequence");
+        }
+
+        _hasStartedBefore = true;
+        _complete = false;
+
         _state = BaboonSequenceState.Demonstrating;
         _playerInputIndex = 0;
+
         GenerateSequence();
+
         SetFeedback("");
         SetButtonsInteractable(false);
+
         StartCoroutine(PlaySequence());
     }
 
@@ -78,19 +92,28 @@ public class BaboonSequenceManager : MonoBehaviour
     void GenerateSequence()
     {
         _sequence.Clear();
+
         int buttonCount = sequenceButtons.Length;
-        for (int i = 0; i < buttonCount; i++) _sequence.Add(i);
+
+        for (int i = 0; i < buttonCount; i++)
+            _sequence.Add(i);
+
         for (int i = 0; i < _sequence.Count; i++)
         {
             int rIdx = Random.Range(i, _sequence.Count);
-            (_sequence[i], _sequence[rIdx]) = (_sequence[rIdx], _sequence[i]);
+
+            int temp = _sequence[i];
+            _sequence[i] = _sequence[rIdx];
+            _sequence[rIdx] = temp;
         }
+
         sequenceLength = buttonCount;
     }
 
     IEnumerator PlaySequence()
     {
         _state = BaboonSequenceState.Demonstrating;
+
         SetButtonsInteractable(false);
         RefreshTextForState();
         SetFeedback("");
@@ -100,6 +123,7 @@ public class BaboonSequenceManager : MonoBehaviour
         for (int i = 0; i < _sequence.Count; i++)
         {
             int idx = _sequence[i];
+
             if (idx >= 0 && idx < sequenceButtons.Length && sequenceButtons[idx] != null)
             {
                 yield return StartCoroutine(sequenceButtons[idx].Flash());
@@ -110,6 +134,7 @@ public class BaboonSequenceManager : MonoBehaviour
 
         _playerInputIndex = 0;
         _state = BaboonSequenceState.PlayerTurn;
+
         RefreshTextForState();
         SetFeedback("");
         SetButtonsInteractable(true);
@@ -117,7 +142,9 @@ public class BaboonSequenceManager : MonoBehaviour
 
     public void NotifyButtonPressed(BaboonSequenceButton pressed)
     {
-        if (_state != BaboonSequenceState.PlayerTurn || pressed == null) return;
+        if (_state != BaboonSequenceState.PlayerTurn || pressed == null)
+            return;
+
         StartCoroutine(HandlePlayerPress(pressed));
     }
 
@@ -129,9 +156,11 @@ public class BaboonSequenceManager : MonoBehaviour
         yield return StartCoroutine(pressed.Flash());
 
         int expected = _sequence[_playerInputIndex];
+
         if (pressed.ButtonIndex == expected)
         {
             _playerInputIndex++;
+
             SetFeedback(SafeGet("minigame_baboon_correct", "Goed!"), new Color(0.4f, 1f, 0.5f));
             yield return StartCoroutine(BaboonHappyReaction());
 
@@ -150,15 +179,24 @@ public class BaboonSequenceManager : MonoBehaviour
             SetFeedback(SafeGet("minigame_baboon_wrong", "Probeer opnieuw! Kijk goed."), new Color(1f, 0.55f, 0.4f));
             yield return StartCoroutine(BaboonWrongReaction());
             yield return new WaitForSeconds(0.6f);
+
+            PlaytestLogger.Instance?.LogMinigameRetry("BaboonSequence");
+
             StartCoroutine(PlaySequence());
         }
     }
 
     void CompleteMinigame()
     {
+        _complete = true;
+
+        PlaytestLogger.Instance?.LogMinigameSuccess("BaboonSequence");
+
         _state = BaboonSequenceState.Complete;
+
         SetButtonsInteractable(false);
         StartCoroutine(BaboonCelebrate());
+
         DestroyMainUI();
         ShowCongrats();
     }
@@ -169,11 +207,13 @@ public class BaboonSequenceManager : MonoBehaviour
             _titleText.text = SafeGet("minigame_baboon_title", "Baviaan Volg het Patroon");
 
         if (_instructionText == null) return;
+
         switch (_state)
         {
             case BaboonSequenceState.Demonstrating:
                 _instructionText.text = SafeGet("minigame_baboon_watch", "Kijk naar de baviaan!");
                 break;
+
             case BaboonSequenceState.PlayerTurn:
                 _instructionText.text = SafeGet("minigame_baboon_your_turn", "Jouw beurt!");
                 break;
@@ -183,6 +223,7 @@ public class BaboonSequenceManager : MonoBehaviour
     void SetFeedback(string text, Color? color = null)
     {
         if (_feedbackText == null) return;
+
         _feedbackText.text = text;
         _feedbackText.color = color ?? Color.white;
     }
@@ -190,22 +231,30 @@ public class BaboonSequenceManager : MonoBehaviour
     void BuildUI()
     {
         var cObj = new GameObject("BaboonCanvas");
+
         _uiCanvas = cObj.AddComponent<Canvas>();
         _uiCanvas.renderMode = RenderMode.ScreenSpaceOverlay;
         _uiCanvas.sortingOrder = 20;
+
         var scaler = cObj.AddComponent<CanvasScaler>();
         scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
         scaler.referenceResolution = new Vector2(1080, 1920);
         scaler.matchWidthOrHeight = 0.5f;
+
         cObj.AddComponent<GraphicRaycaster>();
+
         EnsureEventSystem();
 
         var header = new GameObject("Header");
         header.transform.SetParent(cObj.transform, false);
+
         var hrt = header.AddComponent<RectTransform>();
-        hrt.anchorMin = new Vector2(0f, 1f); hrt.anchorMax = new Vector2(1f, 1f);
-        hrt.pivot = new Vector2(0.5f, 1f); hrt.anchoredPosition = Vector2.zero;
+        hrt.anchorMin = new Vector2(0f, 1f);
+        hrt.anchorMax = new Vector2(1f, 1f);
+        hrt.pivot = new Vector2(0.5f, 1f);
+        hrt.anchoredPosition = Vector2.zero;
         hrt.sizeDelta = new Vector2(0f, 230f);
+
         header.AddComponent<Image>().color = new Color(0.12f, 0.08f, 0.05f, 0.92f);
 
         MakeLabel(header.transform,
@@ -224,6 +273,7 @@ public class BaboonSequenceManager : MonoBehaviour
 
         var stopBtn = MakeButton(cObj.transform, SafeGet("btn_back", "Stop"),
             new Vector2(30f, 30f), new Vector2(240f, 110f), new Color(0.55f, 0.18f, 0.18f));
+
         stopBtn.onClick.AddListener(ExitToMainArea);
     }
 
@@ -231,14 +281,18 @@ public class BaboonSequenceManager : MonoBehaviour
     {
         var cObj = new GameObject("CongratsCanvas");
         _congratsCanvas = cObj;
+
         var cv = cObj.AddComponent<Canvas>();
         cv.renderMode = RenderMode.ScreenSpaceOverlay;
         cv.sortingOrder = 25;
+
         var scaler = cObj.AddComponent<CanvasScaler>();
         scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
         scaler.referenceResolution = new Vector2(1080, 1920);
         scaler.matchWidthOrHeight = 0.5f;
+
         cObj.AddComponent<GraphicRaycaster>();
+
         EnsureEventSystem();
 
         var bg = cObj.AddComponent<Image>();
@@ -247,19 +301,26 @@ public class BaboonSequenceManager : MonoBehaviour
 
         var card = new GameObject("Card");
         card.transform.SetParent(cObj.transform, false);
+
         var crt = card.AddComponent<RectTransform>();
         crt.anchorMin = crt.anchorMax = crt.pivot = new Vector2(0.5f, 0.5f);
         crt.anchoredPosition = Vector2.zero;
         crt.sizeDelta = new Vector2(900f, 580f);
         crt.localScale = Vector3.zero;
+
         var cImg = card.AddComponent<Image>();
         cImg.color = new Color(0.16f, 0.10f, 0.06f, 0.97f);
 
         var accent = new GameObject("Accent");
         accent.transform.SetParent(card.transform, false);
+
         var aRt = accent.AddComponent<RectTransform>();
-        aRt.anchorMin = new Vector2(0f, 1f); aRt.anchorMax = new Vector2(1f, 1f);
-        aRt.pivot = new Vector2(0.5f, 1f); aRt.anchoredPosition = Vector2.zero; aRt.sizeDelta = new Vector2(0f, 14f);
+        aRt.anchorMin = new Vector2(0f, 1f);
+        aRt.anchorMax = new Vector2(1f, 1f);
+        aRt.pivot = new Vector2(0.5f, 1f);
+        aRt.anchoredPosition = Vector2.zero;
+        aRt.sizeDelta = new Vector2(0f, 14f);
+
         accent.AddComponent<Image>().color = new Color(1f, 0.55f, 0.25f);
 
         MakeLabel(card.transform, SafeGet("minigame_complete", "Gefeliciteerd!"),
@@ -278,9 +339,11 @@ public class BaboonSequenceManager : MonoBehaviour
 
         var continueBtn = MakeButton(card.transform, SafeGet("btn_continue", "Doorgaan"),
             new Vector2(0f, 32f), new Vector2(500f, 110f), new Color(0.18f, 0.62f, 0.32f));
+
         continueBtn.GetComponent<RectTransform>().anchorMin = new Vector2(0.5f, 0f);
         continueBtn.GetComponent<RectTransform>().anchorMax = new Vector2(0.5f, 0f);
         continueBtn.GetComponent<RectTransform>().pivot = new Vector2(0.5f, 0f);
+
         continueBtn.onClick.AddListener(OnContinue);
 
         StartCoroutine(PopInCard(crt));
@@ -289,16 +352,24 @@ public class BaboonSequenceManager : MonoBehaviour
     IEnumerator PopInCard(RectTransform rt)
     {
         float t = 0f;
+
         while (t < 0.35f)
         {
             t += Time.deltaTime;
-            if (rt == null) yield break;
+
+            if (rt == null)
+                yield break;
+
             float p = t / 0.35f;
             float overshoot = 1f + Mathf.Sin(p * Mathf.PI) * 0.15f;
+
             rt.localScale = Vector3.one * Mathf.SmoothStep(0f, 1f, p) * overshoot;
+
             yield return null;
         }
-        if (rt != null) rt.localScale = Vector3.one;
+
+        if (rt != null)
+            rt.localScale = Vector3.one;
     }
 
     void OnContinue()
@@ -307,59 +378,88 @@ public class BaboonSequenceManager : MonoBehaviour
         SceneManager.LoadScene(returnSceneName);
     }
 
-    void ExitToMainArea() => SceneManager.LoadScene(returnSceneName);
+    void ExitToMainArea()
+    {
+        if (!_complete)
+        {
+            PlaytestLogger.Instance?.LogMinigameFail(
+                "BaboonSequence",
+                "Player exited before completion"
+            );
+        }
+
+        SceneManager.LoadScene(returnSceneName);
+    }
 
     void DestroyMainUI()
     {
-        if (_uiCanvas != null) Destroy(_uiCanvas.gameObject);
+        if (_uiCanvas != null)
+            Destroy(_uiCanvas.gameObject);
+
         _uiCanvas = null;
     }
 
     IEnumerator BaboonPressReaction()
     {
         if (baboonVisual == null) yield break;
+
         Vector3 baseScale = baboonVisual.localScale;
         baboonVisual.localScale = baseScale * 1.05f;
+
         yield return new WaitForSeconds(0.12f);
+
         baboonVisual.localScale = baseScale;
     }
 
     IEnumerator BaboonHappyReaction()
     {
         if (baboonVisual == null) yield break;
+
         Vector3 baseScale = baboonVisual.localScale;
         baboonVisual.localScale = baseScale * 1.08f;
+
         yield return new WaitForSeconds(0.16f);
+
         baboonVisual.localScale = baseScale;
     }
 
     IEnumerator BaboonWrongReaction()
     {
         if (baboonVisual == null) yield break;
+
         Vector3 basePos = baboonVisual.localPosition;
         float t = 0f;
+
         while (t < 0.35f)
         {
             t += Time.deltaTime;
+
             float x = Mathf.Sin(t * 35f) * 0.08f;
             baboonVisual.localPosition = basePos + new Vector3(x, 0f, 0f);
+
             yield return null;
         }
+
         baboonVisual.localPosition = basePos;
     }
 
     IEnumerator BaboonCelebrate()
     {
         if (baboonVisual == null) yield break;
+
         Vector3 baseScale = baboonVisual.localScale;
         float t = 0f;
+
         while (t < 1f)
         {
             t += Time.deltaTime;
+
             float s = 1f + Mathf.Sin(t * 25f) * 0.1f;
             baboonVisual.localScale = baseScale * s;
+
             yield return null;
         }
+
         baboonVisual.localScale = baseScale;
     }
 
@@ -373,12 +473,23 @@ public class BaboonSequenceManager : MonoBehaviour
     {
         var obj = new GameObject("Label");
         obj.transform.SetParent(parent, false);
+
         var rt = obj.AddComponent<RectTransform>();
-        rt.anchorMin = new Vector2(0.5f, 1f); rt.anchorMax = new Vector2(0.5f, 1f);
-        rt.pivot = new Vector2(0.5f, 1f); rt.anchoredPosition = pos; rt.sizeDelta = size;
+        rt.anchorMin = new Vector2(0.5f, 1f);
+        rt.anchorMax = new Vector2(0.5f, 1f);
+        rt.pivot = new Vector2(0.5f, 1f);
+        rt.anchoredPosition = pos;
+        rt.sizeDelta = size;
+
         var t = obj.AddComponent<Text>();
-        t.text = text; t.font = GetFont(); t.fontSize = fontSize; t.fontStyle = style;
-        t.alignment = TextAnchor.MiddleCenter; t.color = color; t.raycastTarget = false;
+        t.text = text;
+        t.font = GetFont();
+        t.fontSize = fontSize;
+        t.fontStyle = style;
+        t.alignment = TextAnchor.MiddleCenter;
+        t.color = color;
+        t.raycastTarget = false;
+
         refOut = t;
     }
 
@@ -386,12 +497,17 @@ public class BaboonSequenceManager : MonoBehaviour
     {
         var obj = new GameObject($"Btn_{label}");
         obj.transform.SetParent(parent, false);
+
         var rt = obj.AddComponent<RectTransform>();
-        rt.anchorMin = new Vector2(0f, 0f); rt.anchorMax = new Vector2(0f, 0f);
+        rt.anchorMin = new Vector2(0f, 0f);
+        rt.anchorMax = new Vector2(0f, 0f);
         rt.pivot = new Vector2(0f, 0f);
-        rt.anchoredPosition = pos; rt.sizeDelta = size;
+        rt.anchoredPosition = pos;
+        rt.sizeDelta = size;
+
         var img = obj.AddComponent<Image>();
         img.color = color;
+
         var btn = obj.AddComponent<Button>();
         btn.targetGraphic = img;
         btn.colors = new ColorBlock
@@ -404,39 +520,61 @@ public class BaboonSequenceManager : MonoBehaviour
             colorMultiplier = 1f,
             fadeDuration = 0.08f
         };
+
         var lObj = new GameObject("Label");
         lObj.transform.SetParent(obj.transform, false);
+
         var lrt = lObj.AddComponent<RectTransform>();
-        lrt.anchorMin = Vector2.zero; lrt.anchorMax = Vector2.one;
+        lrt.anchorMin = Vector2.zero;
+        lrt.anchorMax = Vector2.one;
         lrt.offsetMin = lrt.offsetMax = Vector2.zero;
+
         var t = lObj.AddComponent<Text>();
-        t.text = label; t.font = GetFont(); t.fontSize = 42; t.fontStyle = FontStyle.Bold;
-        t.alignment = TextAnchor.MiddleCenter; t.color = Color.white; t.raycastTarget = false;
+        t.text = label;
+        t.font = GetFont();
+        t.fontSize = 42;
+        t.fontStyle = FontStyle.Bold;
+        t.alignment = TextAnchor.MiddleCenter;
+        t.color = Color.white;
+        t.raycastTarget = false;
+
         return btn;
     }
 
     string SafeGet(string key, string fallback)
     {
         var lm = LanguageManager.Instance;
-        if (lm == null) return fallback;
+
+        if (lm == null)
+            return fallback;
+
         var result = lm.Get(key);
+
         return result == $"[{key}]" ? fallback : result;
     }
 
     void EnsureEventSystem()
     {
-        if (UnityEngine.EventSystems.EventSystem.current != null) return;
+        if (UnityEngine.EventSystems.EventSystem.current != null)
+            return;
+
         var es = new GameObject("EventSystem");
         es.AddComponent<UnityEngine.EventSystems.EventSystem>();
         es.AddComponent<UnityEngine.InputSystem.UI.InputSystemUIInputModule>();
     }
 
     static Font _font;
+
     static Font GetFont()
     {
-        if (_font != null) return _font;
+        if (_font != null)
+            return _font;
+
         _font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
-        if (_font == null) _font = Font.CreateDynamicFontFromOSFont("Arial", 24);
+
+        if (_font == null)
+            _font = Font.CreateDynamicFontFromOSFont("Arial", 24);
+
         return _font;
     }
 }

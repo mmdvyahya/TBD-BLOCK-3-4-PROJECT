@@ -49,7 +49,7 @@ public class PolarBearCoolingMinigame : MonoBehaviour
     private Text _percentText;
     private Text _statusText;
     private GameObject _congratsCanvas;
-
+    private bool _hasStartedBefore;
     void Start()
     {
         LanguageManager.Ensure();
@@ -246,11 +246,16 @@ public class PolarBearCoolingMinigame : MonoBehaviour
             _statusText.text = SafeGet(statusKey, fb);
             _statusText.color = _isBlowing ? new Color(0.7f, 1f, 1f) : new Color(0.85f, 0.95f, 1f);
         }
+        
+
+        _hasStartedBefore = true;
+        _completed = false;
     }
 
     IEnumerator CompleteSequence()
     {
         _completed = true;
+        PlaytestLogger.Instance?.LogMinigameSuccess("PolarBear");
         SetWindEmission(0f);
 
         if (successBurstParticles != null) successBurstParticles.Play();
@@ -375,9 +380,16 @@ public class PolarBearCoolingMinigame : MonoBehaviour
         GameStateManager.Instance.AddCoins(coinReward);
         SceneManager.LoadScene(returnSceneName);
     }
-
     void ExitToMainArea()
     {
+        if (!_completed)
+        {
+            PlaytestLogger.Instance?.LogMinigameFail(
+                "PolarBear",
+                "Player exited before completion"
+            );
+        }
+
         SceneManager.LoadScene(returnSceneName);
     }
 
