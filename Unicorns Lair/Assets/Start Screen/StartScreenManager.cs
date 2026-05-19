@@ -10,8 +10,8 @@ public class StartScreenManager : MonoBehaviour
     [SerializeField] private float irisStartAt = 0.72f;
     [SerializeField] private float irisDuration = 0.9f;
 
-    private static readonly Vector3 EndPos = new Vector3(-125.4f, 26.1f, 1070.5f);
-    private static readonly Quaternion EndRot = Quaternion.Euler(10.05f, 90.855f, 0f);
+    [SerializeField] private Vector3 EndPos = new Vector3(-125.4f, 26.1f, 1070.5f);
+    [SerializeField] private Quaternion EndRot = Quaternion.Euler(10.05f, 90.855f, 0f);
 
     private Camera _cam;
     private Canvas _canvas;
@@ -377,6 +377,11 @@ public class StartScreenManager : MonoBehaviour
     {
         if (_flying) return;
         _flying = true;
+
+        // Disable animator to prevent overriding transform changes during the fly sequence
+        var camAnimator = _cam.GetComponent<Animator>();
+        if (camAnimator != null) camAnimator.enabled = false;
+
         StartCoroutine(FlyAndWipe());
     }
 
