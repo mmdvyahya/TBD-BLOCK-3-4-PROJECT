@@ -14,6 +14,9 @@ public class BaboonSequenceButton : MonoBehaviour
     [SerializeField] private Color highlightColor = Color.yellow;
     [SerializeField] private float flashDuration = 0.35f;
 
+    [Header("Animation")]
+    public string animationTrigger;
+
     private BaboonSequenceManager manager;
 
     public int ButtonIndex => buttonIndex;

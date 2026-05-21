@@ -306,6 +306,10 @@ PrefabInstance:
       value: 58.099
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: e6d2c0924c35c144eb0f809a560ab103, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d009bf79113af3b4bafec5e23091da99, type: 2}
+    - target: {fileID: -7511558181221131132, guid: e6d2c0924c35c144eb0f809a560ab103, type: 3}
       propertyPath: 'm_Materials.Array.data[1]'
       value: 
       objectReference: {fileID: 2100000, guid: 8b36be9e802f10049a71a45872f8cb3b, type: 2}
@@ -412,6 +416,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 58.099
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: e6d2c0924c35c144eb0f809a560ab103, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d009bf79113af3b4bafec5e23091da99, type: 2}
     - target: {fileID: -7511558181221131132, guid: e6d2c0924c35c144eb0f809a560ab103, type: 3}
       propertyPath: 'm_Materials.Array.data[1]'
       value: 
@@ -1764,6 +1772,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 23.121
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 813a638a229907a4c819ed32231eb798, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 109d8d22917294c4abababbc38972e5a, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 813a638a229907a4c819ed32231eb798, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 713fd85045968364eb711908ecdece52, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 813a638a229907a4c819ed32231eb798, type: 3}
+      propertyPath: 'm_Materials.Array.data[2]'
+      value: 
+      objectReference: {fileID: 2100000, guid: eb74250c43a8b554f946e0dd196cdc7b, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 813a638a229907a4c819ed32231eb798, type: 3}
+      propertyPath: 'm_Materials.Array.data[3]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 109d8d22917294c4abababbc38972e5a, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 813a638a229907a4c819ed32231eb798, type: 3}
+      propertyPath: 'm_Materials.Array.data[4]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 109d8d22917294c4abababbc38972e5a, type: 2}
     - target: {fileID: 919132149155446097, guid: 813a638a229907a4c819ed32231eb798, type: 3}
       propertyPath: m_Name
       value: PrairieDogVisual
@@ -1843,6 +1871,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 49.687
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 813a638a229907a4c819ed32231eb798, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 109d8d22917294c4abababbc38972e5a, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 813a638a229907a4c819ed32231eb798, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 713fd85045968364eb711908ecdece52, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 813a638a229907a4c819ed32231eb798, type: 3}
+      propertyPath: 'm_Materials.Array.data[2]'
+      value: 
+      objectReference: {fileID: 2100000, guid: eb74250c43a8b554f946e0dd196cdc7b, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 813a638a229907a4c819ed32231eb798, type: 3}
+      propertyPath: 'm_Materials.Array.data[3]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 109d8d22917294c4abababbc38972e5a, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 813a638a229907a4c819ed32231eb798, type: 3}
+      propertyPath: 'm_Materials.Array.data[4]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 109d8d22917294c4abababbc38972e5a, type: 2}
     - target: {fileID: 919132149155446097, guid: 813a638a229907a4c819ed32231eb798, type: 3}
       propertyPath: m_Name
       value: PrairieDogVisual
@@ -2074,7 +2122,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 437603969}
-  - component: {fileID: 437603970}
   m_Layer: 3
   m_Name: Prairie Dog Habitat
   m_TagString: Untagged
@@ -2101,25 +2148,6 @@ Transform:
   - {fileID: 1966078053}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &437603970
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 437603968}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36ea50d1d43dd2d42b9d6162423954f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Habitat
-  habitatId: prairiedog_habitat
-  nameKey: prairiedog_habitat
-  cost: 100
-  builtChild: {fileID: 1222624580}
-  buttonAnchor: {fileID: 734692441}
-  mainCamera: {fileID: 0}
-  midBuildChild: {fileID: 0}
 --- !u!1 &465269738
 GameObject:
   m_ObjectHideFlags: 0
@@ -3258,6 +3286,10 @@ PrefabInstance:
       value: 58.099
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: e6d2c0924c35c144eb0f809a560ab103, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d009bf79113af3b4bafec5e23091da99, type: 2}
+    - target: {fileID: -7511558181221131132, guid: e6d2c0924c35c144eb0f809a560ab103, type: 3}
       propertyPath: 'm_Materials.Array.data[1]'
       value: 
       objectReference: {fileID: 2100000, guid: 8b36be9e802f10049a71a45872f8cb3b, type: 2}
@@ -3633,6 +3665,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 32.288
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 813a638a229907a4c819ed32231eb798, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 109d8d22917294c4abababbc38972e5a, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 813a638a229907a4c819ed32231eb798, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 713fd85045968364eb711908ecdece52, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 813a638a229907a4c819ed32231eb798, type: 3}
+      propertyPath: 'm_Materials.Array.data[2]'
+      value: 
+      objectReference: {fileID: 2100000, guid: eb74250c43a8b554f946e0dd196cdc7b, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 813a638a229907a4c819ed32231eb798, type: 3}
+      propertyPath: 'm_Materials.Array.data[3]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 109d8d22917294c4abababbc38972e5a, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 813a638a229907a4c819ed32231eb798, type: 3}
+      propertyPath: 'm_Materials.Array.data[4]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 109d8d22917294c4abababbc38972e5a, type: 2}
     - target: {fileID: 919132149155446097, guid: 813a638a229907a4c819ed32231eb798, type: 3}
       propertyPath: m_Name
       value: PrairieDogVisual
@@ -4998,6 +5050,10 @@ PrefabInstance:
       value: 58.099
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: e6d2c0924c35c144eb0f809a560ab103, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d009bf79113af3b4bafec5e23091da99, type: 2}
+    - target: {fileID: -7511558181221131132, guid: e6d2c0924c35c144eb0f809a560ab103, type: 3}
       propertyPath: 'm_Materials.Array.data[1]'
       value: 
       objectReference: {fileID: 2100000, guid: 8b36be9e802f10049a71a45872f8cb3b, type: 2}
@@ -5104,6 +5160,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 23.121
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 813a638a229907a4c819ed32231eb798, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 109d8d22917294c4abababbc38972e5a, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 813a638a229907a4c819ed32231eb798, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 713fd85045968364eb711908ecdece52, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 813a638a229907a4c819ed32231eb798, type: 3}
+      propertyPath: 'm_Materials.Array.data[2]'
+      value: 
+      objectReference: {fileID: 2100000, guid: eb74250c43a8b554f946e0dd196cdc7b, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 813a638a229907a4c819ed32231eb798, type: 3}
+      propertyPath: 'm_Materials.Array.data[3]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 109d8d22917294c4abababbc38972e5a, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 813a638a229907a4c819ed32231eb798, type: 3}
+      propertyPath: 'm_Materials.Array.data[4]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 109d8d22917294c4abababbc38972e5a, type: 2}
     - target: {fileID: 919132149155446097, guid: 813a638a229907a4c819ed32231eb798, type: 3}
       propertyPath: m_Name
       value: PrairieDogVisual
@@ -5722,6 +5798,10 @@ PrefabInstance:
       value: 58.099
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: e6d2c0924c35c144eb0f809a560ab103, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d009bf79113af3b4bafec5e23091da99, type: 2}
+    - target: {fileID: -7511558181221131132, guid: e6d2c0924c35c144eb0f809a560ab103, type: 3}
       propertyPath: 'm_Materials.Array.data[1]'
       value: 
       objectReference: {fileID: 2100000, guid: 8b36be9e802f10049a71a45872f8cb3b, type: 2}
@@ -5976,6 +6056,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 39.645
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 813a638a229907a4c819ed32231eb798, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 109d8d22917294c4abababbc38972e5a, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 813a638a229907a4c819ed32231eb798, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 713fd85045968364eb711908ecdece52, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 813a638a229907a4c819ed32231eb798, type: 3}
+      propertyPath: 'm_Materials.Array.data[2]'
+      value: 
+      objectReference: {fileID: 2100000, guid: eb74250c43a8b554f946e0dd196cdc7b, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 813a638a229907a4c819ed32231eb798, type: 3}
+      propertyPath: 'm_Materials.Array.data[3]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 109d8d22917294c4abababbc38972e5a, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 813a638a229907a4c819ed32231eb798, type: 3}
+      propertyPath: 'm_Materials.Array.data[4]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 109d8d22917294c4abababbc38972e5a, type: 2}
     - target: {fileID: 919132149155446097, guid: 813a638a229907a4c819ed32231eb798, type: 3}
       propertyPath: m_Name
       value: PrairieDogVisual
@@ -7171,6 +7271,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 32.288
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 813a638a229907a4c819ed32231eb798, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 109d8d22917294c4abababbc38972e5a, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 813a638a229907a4c819ed32231eb798, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 713fd85045968364eb711908ecdece52, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 813a638a229907a4c819ed32231eb798, type: 3}
+      propertyPath: 'm_Materials.Array.data[2]'
+      value: 
+      objectReference: {fileID: 2100000, guid: eb74250c43a8b554f946e0dd196cdc7b, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 813a638a229907a4c819ed32231eb798, type: 3}
+      propertyPath: 'm_Materials.Array.data[3]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 109d8d22917294c4abababbc38972e5a, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 813a638a229907a4c819ed32231eb798, type: 3}
+      propertyPath: 'm_Materials.Array.data[4]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 109d8d22917294c4abababbc38972e5a, type: 2}
     - target: {fileID: 919132149155446097, guid: 813a638a229907a4c819ed32231eb798, type: 3}
       propertyPath: m_Name
       value: PrairieDogVisual
@@ -8091,6 +8211,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 58.099
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: e6d2c0924c35c144eb0f809a560ab103, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d009bf79113af3b4bafec5e23091da99, type: 2}
     - target: {fileID: -7511558181221131132, guid: e6d2c0924c35c144eb0f809a560ab103, type: 3}
       propertyPath: 'm_Materials.Array.data[1]'
       value: 

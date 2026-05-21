@@ -11,11 +11,17 @@ public class BaboonSequenceManager : MonoBehaviour
     [Header("References")]
     [SerializeField] private BaboonSequenceButton[] sequenceButtons;
     [SerializeField] private Transform baboonVisual;
+    [SerializeField] private Animator baboonAnimator;
 
     [Header("Sequence Settings")]
     [SerializeField] private int sequenceLength = 3;
     [SerializeField] private float demonstrationDelay = 0.45f;
     [SerializeField] private float buttonGapDelay = 0.25f;
+    [SerializeField] private float buttonAnimationLeadTime = 0.12f;
+
+    [Header("Baboon Animations")]
+    [SerializeField] private string baboonWrongTrigger;
+    [SerializeField] private string baboonCelebrateTrigger;
 
     [Header("Reward")]
     [Tooltip("How many coins the player earns when they win.")]
@@ -126,6 +132,11 @@ public class BaboonSequenceManager : MonoBehaviour
 
             if (idx >= 0 && idx < sequenceButtons.Length && sequenceButtons[idx] != null)
             {
+                TriggerButtonAnimation(sequenceButtons[idx]);
+
+                if (buttonAnimationLeadTime > 0f)
+                    yield return new WaitForSeconds(buttonAnimationLeadTime);
+
                 yield return StartCoroutine(sequenceButtons[idx].Flash());
                 yield return StartCoroutine(BaboonPressReaction());
                 yield return new WaitForSeconds(buttonGapDelay);
@@ -145,6 +156,7 @@ public class BaboonSequenceManager : MonoBehaviour
         if (_state != BaboonSequenceState.PlayerTurn || pressed == null)
             return;
 
+        TriggerButtonAnimation(pressed);
         StartCoroutine(HandlePlayerPress(pressed));
     }
 
@@ -177,6 +189,7 @@ public class BaboonSequenceManager : MonoBehaviour
         else
         {
             SetFeedback(SafeGet("minigame_baboon_wrong", "Probeer opnieuw! Kijk goed."), new Color(1f, 0.55f, 0.4f));
+            TriggerBaboonAnimation(baboonWrongTrigger);
             yield return StartCoroutine(BaboonWrongReaction());
             yield return new WaitForSeconds(0.6f);
 
@@ -195,6 +208,7 @@ public class BaboonSequenceManager : MonoBehaviour
         _state = BaboonSequenceState.Complete;
 
         SetButtonsInteractable(false);
+        TriggerBaboonAnimation(baboonCelebrateTrigger);
         StartCoroutine(BaboonCelebrate());
 
         DestroyMainUI();
@@ -461,6 +475,26 @@ public class BaboonSequenceManager : MonoBehaviour
         }
 
         baboonVisual.localScale = baseScale;
+    }
+
+    void TriggerButtonAnimation(BaboonSequenceButton button)
+    {
+        if (baboonVisual == null || button == null)
+            return;
+
+        string trigger = button.animationTrigger;
+        if (string.IsNullOrWhiteSpace(trigger))
+            return;
+
+        baboonAnimator.SetTrigger(trigger);
+    }
+
+    void TriggerBaboonAnimation(string trigger)
+    {
+        if (baboonAnimator == null || string.IsNullOrWhiteSpace(trigger))
+            return;
+
+        baboonAnimator.SetTrigger(trigger);
     }
 
     void SetButtonsInteractable(bool value)
