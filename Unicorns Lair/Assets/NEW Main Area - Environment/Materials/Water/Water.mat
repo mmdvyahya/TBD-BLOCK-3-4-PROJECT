@@ -44,8 +44,8 @@ Material:
     m_Ints: []
     m_Floats:
     - _ColorMode: 0
-    - _CrestSharpness: 0.1
-    - _CrestSize: 0.1
+    - _CrestSharpness: 0
+    - _CrestSize: 0
     - _FadeDistance: 0.5
     - _FoamAmount: 0.2
     - _FoamDepth: 0.05

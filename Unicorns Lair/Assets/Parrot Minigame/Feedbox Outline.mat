@@ -7,12 +7,12 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Baboon Primary
+  m_Name: Feedbox Outline
   m_Shader: {fileID: 4800000, guid: 9d716a691a5ed7a4ba2de991efc6b197, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
-  - _CEL_MODE_SINGLE
+  - _CEL_MODE_NONE
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -93,7 +93,7 @@ Material:
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
     - _BumpScale: 1
-    - _CEL_MODE: 1
+    - _CEL_MODE: 0
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
     - _Cull: 2
@@ -102,7 +102,7 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _DstBlendAlpha: 0
-    - _Edge_Size_1: 0.157
+    - _Edge_Size_1: 0.05
     - _Edge_Size_2: 0.05
     - _EnvironmentReflections: 1
     - _GlossMapScale: 0
@@ -114,10 +114,9 @@ Material:
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005
-    - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _Self_Shading_Size_1: 0.458
+    - _Self_Shading_Size_1: 0.5
     - _Self_Shading_Size_2: 0.6
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
@@ -132,15 +131,15 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Base_Color: {r: 0.5754717, g: 0.5248835, b: 0.46417764, a: 1}
+    - _Base_Color: {r: 0.6901961, g: 0.2901961, b: 0.34509805, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Color_Shaded_1: {r: 0.5283019, g: 0.46822715, b: 0.41616234, a: 1}
-    - _Color_Shaded_2: {r: 1, g: 1, b: 1, a: 1}
+    - _Color_Shaded_1: {r: 0, g: 0, b: 0, a: 1}
+    - _Color_Shaded_2: {r: 0, g: 0, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
---- !u!114 &7437383661496795843
+--- !u!114 &87896723179297996
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}

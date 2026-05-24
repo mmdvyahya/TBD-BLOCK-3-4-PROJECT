@@ -106,7 +106,17 @@ AudioMixerController:
   m_SuspendThreshold: -80
   m_EnableSuspend: 1
   m_UpdateMode: 0
-  m_ExposedParameters: []
+  m_ExposedParameters:
+  - guid: bf27943fdc013614a84699930c5949d9
+    name: Ambience
+  - guid: b566c5040243c65409a1fba7938cec6c
+    name: Master
+  - guid: 75d0f7f8e2c8f744aa64861dd285202b
+    name: Music
+  - guid: 9b4851bea7dbe7d499671e110ce29a40
+    name: Sfx
+  - guid: 02c662d80af2be54c99809bd73c95d3b
+    name: Voice
   m_AudioMixerGroupViews:
   - guids:
     - 57c603bf7ea5e9044983224f5be5c115
@@ -239,7 +249,7 @@ AudioMixerGroupController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Ambient
+  m_Name: Ambience
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: d64f58313ed57db4aba844e7b8e5353a
   m_Children: []

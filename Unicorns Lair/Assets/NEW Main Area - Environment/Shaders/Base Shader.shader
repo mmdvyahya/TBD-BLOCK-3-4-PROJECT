@@ -122,9 +122,9 @@ Shader "WILDLANDS/Base Shader"
 
             float CelLayer(float ndotl, float size, float edge, float localized)
             {
-                float v = saturate(ndotl - size);
-                float smooth = smoothstep(0, edge, v);
-                return lerp(v, smooth, localized);
+                float angleDiff = saturate((ndotl * 0.5 + 0.5) - size);
+                float angleDiffTransition = smoothstep(0, edge, angleDiff);
+                return lerp(angleDiff, angleDiffTransition, localized);
             }
 
             half4 frag (Varyings i) : SV_Target
@@ -134,8 +134,8 @@ Shader "WILDLANDS/Base Shader"
                 Light mainLight = GetMainLight();
                 float3 lightDir = normalize(mainLight.direction);
 
-                float ndotl = saturate(dot(normal, lightDir));
-                ndotl = ndotl * 0.5 + 0.5;
+                float ndotl = dot(normal, lightDir); // no saturate
+                //ndotl = ndotl * 0.5 + 0.5;
 
                 float3 baseCol;
 

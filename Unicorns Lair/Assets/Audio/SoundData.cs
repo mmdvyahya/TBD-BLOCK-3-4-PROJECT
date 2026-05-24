@@ -1,0 +1,52 @@
+using UnityEngine;
+using UnityEngine.Audio;
+
+// A ScriptableObject that holds all data for an audio event
+[CreateAssetMenu(fileName = "NewSoundData", menuName = "Audio/Sound Data")]
+public class SoundData : ScriptableObject
+{
+    [Header("Clips")]
+    [Tooltip("Add multiple clips for random variation on each play.")]
+    public AudioClip[] clips;
+
+    [Header("Mixer routing")]
+    [Tooltip("Which AudioMixerGroup this sound routes through")]
+    public AudioMixerGroup mixerGroup;
+
+    [Header("Volume")]
+    [Range(0f, 1f)] public float volume = 1f;
+    [Tooltip("Random volume variation on each play.")]
+    [Range(0f, 0.5f)] public float volumeVariance = 0f;
+
+    [Header("Pitch")]
+    [Range(-3f, 3f)] public float pitch = 1f;
+    [Tooltip("Random pitch variation on each play.")]
+    [Range(0f, 1f)] public float pitchVariance = 0f;
+
+    [Header("Behaviour")]
+    public bool loop = false;
+    [Tooltip("If true, a new play call won't restart the sound if it's already playing.")]
+    public bool preventDuplicates = false;
+
+    [Header("Spatial")]
+    [Tooltip("0 = 2D, 1 = 3D. A value between 0 and 1 will blend between the two.")]
+    [Range(0f, 1f)] public float spatialBlend = 0f;
+
+    [Header("Spatial 3D settings")]
+    [Range(1f, 500f)] public float minDistance = 1f;
+    [Range(1f, 500f)] public float maxDistance = 50f;
+    public AudioRolloffMode rolloffMode = AudioRolloffMode.Linear;
+
+    // Returns a random clip from the array (or null if empty)
+    public AudioClip GetClip()
+    {
+        if (clips == null || clips.Length == 0) return null;
+        return clips[Random.Range(0, clips.Length)];
+    }
+
+    // Returns volume with optional random variance applied
+    public float GetVolume() => Mathf.Clamp01(volume + Random.Range(-volumeVariance, volumeVariance));
+
+    // Returns pitch with optional random variance applied
+    public float GetPitch() => pitch + Random.Range(-pitchVariance, pitchVariance);
+}
