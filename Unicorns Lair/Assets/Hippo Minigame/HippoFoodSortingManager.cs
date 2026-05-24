@@ -15,6 +15,11 @@ public class HippoFoodSortingManager : MonoBehaviour
         [Tooltip("Optional. Localization key for this food's display name. If empty, foodName is shown literally.")]
         public string localizationKey;
         public FoodCategory correctCategory;
+        [Tooltip("Optional. A 3D model prefab to spawn for this food (e.g. a watermelon model). If set, this is used instead of the generic prefab + color.")]
+        public GameObject foodPrefab;
+        [Tooltip("Optional per-item size. 0 = use the manager's global Target Item Size. Set a value here only if this one model needs to be bigger/smaller than the rest.")]
+        public float sizeOverride = 0f;
+        [Tooltip("Only used when no Food Prefab is assigned (the generic fallback sphere is tinted with this color).")]
         public Color displayColor = Color.white;
     }
 
@@ -25,6 +30,7 @@ public class HippoFoodSortingManager : MonoBehaviour
     [SerializeField] private Transform itemSpawnPoint;
     [SerializeField] private Transform approvedZone;
     [SerializeField] private Transform notSuitableZone;
+    [Tooltip("Fallback prefab used for any food item that has no Food Prefab assigned. Typically a simple sphere with a HippoFoodItemVisual.")]
     [SerializeField] private GameObject foodItemPrefab;
     [SerializeField] private Transform hippoVisual;
 
@@ -45,6 +51,13 @@ public class HippoFoodSortingManager : MonoBehaviour
     [Header("Settings")]
     [SerializeField] private float moveDuration = 0.45f;
     [SerializeField] private float nextItemDelay = 0.35f;
+    [Tooltip("Show a kid-friendly 'How to Play' explanation before the game starts.")]
+    [SerializeField] private bool showHowToPlay = true;
+
+    [Header("Item Size")]
+    [Tooltip("Scale every spawned food so its largest dimension equals this many world units. Keeps each model's aspect ratio (uniform scale). Lower this if items look too big.")]
+    [SerializeField] private bool normalizeItemSize = true;
+    [SerializeField] private float targetItemSize = 1.5f;
 
     [Header("Reward")]
     [Tooltip("How many coins the player earns when they win.")]
@@ -62,7 +75,10 @@ public class HippoFoodSortingManager : MonoBehaviour
     private Text _instructionText;
     private Text _foodNameText;
     private Text _feedbackText;
+    private Text _leftZoneLabel;
+    private Text _rightZoneLabel;
     private GameObject _congratsCanvas;
+    private GameObject _howToCanvas;
 
     void Start()
     {
@@ -72,7 +88,9 @@ public class HippoFoodSortingManager : MonoBehaviour
         if (swipeInput == null) swipeInput = FindFirstObjectByType<HippoSwipeInput>();
 
         BuildUI();
-        StartMinigame();
+
+        if (showHowToPlay) ShowHowToPlay();
+        else StartMinigame();
 
         LanguageManager.Instance.LanguageChanged += OnLanguageChanged;
     }
@@ -125,13 +143,54 @@ public class HippoFoodSortingManager : MonoBehaviour
         _currentFoodData = foodItems[_currentItemIndex];
 
         if (_currentFoodObject != null) Destroy(_currentFoodObject);
-        _currentFoodObject = Instantiate(foodItemPrefab, itemSpawnPoint.position, Quaternion.identity);
 
-        var visual = _currentFoodObject.GetComponent<HippoFoodItemVisual>();
-        if (visual != null) visual.SetColor(_currentFoodData.displayColor);
+        if (_currentFoodData.foodPrefab != null)
+        {
+            _currentFoodObject = Instantiate(
+                _currentFoodData.foodPrefab,
+                itemSpawnPoint.position,
+                _currentFoodData.foodPrefab.transform.rotation);
+        }
+        else
+        {
+            _currentFoodObject = Instantiate(foodItemPrefab, itemSpawnPoint.position, Quaternion.identity);
+
+            var visual = _currentFoodObject.GetComponent<HippoFoodItemVisual>();
+            if (visual != null) visual.SetColor(_currentFoodData.displayColor);
+        }
+
+        if (normalizeItemSize)
+        {
+            float target = _currentFoodData.sizeOverride > 0f ? _currentFoodData.sizeOverride : targetItemSize;
+            NormalizeItemSize(_currentFoodObject, target);
+        }
 
         SetFoodName(GetFoodDisplayName(_currentFoodData));
         _state = SortingState.WaitingForSwipe;
+    }
+
+    void NormalizeItemSize(GameObject obj, float targetSize)
+    {
+        if (obj == null || targetSize <= 0f) return;
+
+        var renderers = obj.GetComponentsInChildren<Renderer>();
+        if (renderers.Length == 0) return;
+
+        // Measure unrotated so the bounding box matches the model, not its tilted AABB.
+        Quaternion originalRot = obj.transform.rotation;
+        obj.transform.rotation = Quaternion.identity;
+
+        Bounds b = renderers[0].bounds;
+        for (int i = 1; i < renderers.Length; i++)
+            b.Encapsulate(renderers[i].bounds);
+
+        obj.transform.rotation = originalRot;
+
+        float largest = Mathf.Max(b.size.x, b.size.y, b.size.z);
+        if (largest <= 0.0001f) return;
+
+        float factor = targetSize / largest;
+        obj.transform.localScale *= factor;
     }
 
     void SortCurrentItem(FoodCategory chosen)
@@ -194,7 +253,9 @@ public class HippoFoodSortingManager : MonoBehaviour
     void RefreshStaticTexts()
     {
         if (_titleText != null) _titleText.text = SafeGet("minigame_hippo_title", "Nijlpaard Eten Sorteren");
-        if (_instructionText != null) _instructionText.text = SafeGet("minigame_hippo_instruction", "Swipe links = Lekker  |  Swipe rechts = Niet lekker");
+        if (_instructionText != null) _instructionText.text = SafeGet("minigame_hippo_instruction", "Veeg naar links = Lekker  |  Veeg naar rechts = Niet lekker");
+        if (_leftZoneLabel != null) _leftZoneLabel.text = "\u2190 " + SafeGet("minigame_hippo_zone_good", "Lekker!");
+        if (_rightZoneLabel != null) _rightZoneLabel.text = SafeGet("minigame_hippo_zone_bad", "Niet lekker") + " \u2192";
     }
 
     void BuildUI()
@@ -224,7 +285,7 @@ public class HippoFoodSortingManager : MonoBehaviour
             new Color(0.85f, 0.7f, 1f), out _titleText);
 
         MakeLabel(header.transform,
-            SafeGet("minigame_hippo_instruction", "Swipe links = Lekker  |  Swipe rechts = Niet lekker"),
+            SafeGet("minigame_hippo_instruction", "Veeg naar links = Lekker  |  Veeg naar rechts = Niet lekker"),
             new Vector2(0f, -100f), new Vector2(1000f, 60f), 28, FontStyle.Normal,
             new Color(0.95f, 0.88f, 1f), out _instructionText);
 
@@ -251,9 +312,124 @@ public class HippoFoodSortingManager : MonoBehaviour
         _foodNameText.alignment = TextAnchor.MiddleCenter;
         _foodNameText.gameObject.AddComponent<Outline>().effectColor = new Color(0f, 0f, 0f, 0.7f);
 
+        var leftZone = new GameObject("LeftZoneLabel");
+        leftZone.transform.SetParent(cObj.transform, false);
+        var lzRt = leftZone.AddComponent<RectTransform>();
+        lzRt.anchorMin = new Vector2(0f, 0.5f); lzRt.anchorMax = new Vector2(0f, 0.5f);
+        lzRt.pivot = new Vector2(0f, 0.5f);
+        lzRt.anchoredPosition = new Vector2(30f, 120f);
+        lzRt.sizeDelta = new Vector2(360f, 90f);
+        var lzImg = leftZone.AddComponent<Image>();
+        lzImg.color = new Color(0.16f, 0.55f, 0.24f, 0.85f);
+        lzImg.raycastTarget = false;
+        MakeLabel(leftZone.transform, "\u2190 " + SafeGet("minigame_hippo_zone_good", "Lekker!"),
+            Vector2.zero, new Vector2(340f, 80f), 40, FontStyle.Bold, Color.white, out _leftZoneLabel);
+        var lzlRt = _leftZoneLabel.rectTransform;
+        lzlRt.anchorMin = Vector2.zero; lzlRt.anchorMax = Vector2.one;
+        lzlRt.offsetMin = lzlRt.offsetMax = Vector2.zero; lzlRt.pivot = new Vector2(0.5f, 0.5f);
+        _leftZoneLabel.alignment = TextAnchor.MiddleCenter;
+
+        var rightZone = new GameObject("RightZoneLabel");
+        rightZone.transform.SetParent(cObj.transform, false);
+        var rzRt = rightZone.AddComponent<RectTransform>();
+        rzRt.anchorMin = new Vector2(1f, 0.5f); rzRt.anchorMax = new Vector2(1f, 0.5f);
+        rzRt.pivot = new Vector2(1f, 0.5f);
+        rzRt.anchoredPosition = new Vector2(-30f, 120f);
+        rzRt.sizeDelta = new Vector2(360f, 90f);
+        var rzImg = rightZone.AddComponent<Image>();
+        rzImg.color = new Color(0.62f, 0.20f, 0.20f, 0.85f);
+        rzImg.raycastTarget = false;
+        MakeLabel(rightZone.transform, SafeGet("minigame_hippo_zone_bad", "Niet lekker") + " \u2192",
+            Vector2.zero, new Vector2(340f, 80f), 40, FontStyle.Bold, Color.white, out _rightZoneLabel);
+        var rzlRt = _rightZoneLabel.rectTransform;
+        rzlRt.anchorMin = Vector2.zero; rzlRt.anchorMax = Vector2.one;
+        rzlRt.offsetMin = rzlRt.offsetMax = Vector2.zero; rzlRt.pivot = new Vector2(0.5f, 0.5f);
+        _rightZoneLabel.alignment = TextAnchor.MiddleCenter;
+
         var stopBtn = MakeButton(cObj.transform, SafeGet("btn_back", "Stop"),
             new Vector2(30f, 30f), new Vector2(240f, 110f), new Color(0.55f, 0.18f, 0.18f));
         stopBtn.onClick.AddListener(ExitToMainArea);
+    }
+
+    void ShowHowToPlay()
+    {
+        var cObj = new GameObject("HowToCanvas");
+        _howToCanvas = cObj;
+        var cv = cObj.AddComponent<Canvas>();
+        cv.renderMode = RenderMode.ScreenSpaceOverlay;
+        cv.sortingOrder = 24;
+        var scaler = cObj.AddComponent<CanvasScaler>();
+        scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
+        scaler.referenceResolution = new Vector2(1080, 1920);
+        scaler.matchWidthOrHeight = 0.5f;
+        cObj.AddComponent<GraphicRaycaster>();
+        EnsureEventSystem();
+
+        var bg = cObj.AddComponent<Image>();
+        bg.color = new Color(0f, 0f, 0f, 0.78f);
+
+        var card = new GameObject("Card");
+        card.transform.SetParent(cObj.transform, false);
+        var crt = card.AddComponent<RectTransform>();
+        crt.anchorMin = crt.anchorMax = crt.pivot = new Vector2(0.5f, 0.5f);
+        crt.anchoredPosition = Vector2.zero;
+        crt.sizeDelta = new Vector2(920f, 720f);
+        crt.localScale = Vector3.zero;
+        var cImg = card.AddComponent<Image>();
+        cImg.color = new Color(0.12f, 0.08f, 0.16f, 0.98f);
+
+        var accent = new GameObject("Accent");
+        accent.transform.SetParent(card.transform, false);
+        var aRt = accent.AddComponent<RectTransform>();
+        aRt.anchorMin = new Vector2(0f, 1f); aRt.anchorMax = new Vector2(1f, 1f);
+        aRt.pivot = new Vector2(0.5f, 1f); aRt.anchoredPosition = Vector2.zero; aRt.sizeDelta = new Vector2(0f, 14f);
+        accent.AddComponent<Image>().color = new Color(0.85f, 0.55f, 1f);
+
+        MakeLabel(card.transform, SafeGet("minigame_hippo_howto_title", "Hoe speel je?"),
+            new Vector2(0f, -40f), new Vector2(840f, 80f), 54, FontStyle.Bold, new Color(0.9f, 0.78f, 1f), out _);
+
+        MakeLabel(card.transform,
+            SafeGet("minigame_hippo_howto_intro", "Het nijlpaard heeft honger! Sommig eten is gezond, en sommig eten is niet goed voor nijlpaarden."),
+            new Vector2(0f, -150f), new Vector2(820f, 120f), 30, FontStyle.Normal, new Color(0.95f, 0.9f, 1f), out _);
+
+        var leftRow = new GameObject("LeftRow");
+        leftRow.transform.SetParent(card.transform, false);
+        var lrRt = leftRow.AddComponent<RectTransform>();
+        lrRt.anchorMin = new Vector2(0.5f, 1f); lrRt.anchorMax = new Vector2(0.5f, 1f);
+        lrRt.pivot = new Vector2(0.5f, 1f); lrRt.anchoredPosition = new Vector2(0f, -300f); lrRt.sizeDelta = new Vector2(820f, 90f);
+        leftRow.AddComponent<Image>().color = new Color(0.16f, 0.55f, 0.24f, 0.85f);
+        MakeLabel(leftRow.transform,
+            "\u2190  " + SafeGet("minigame_hippo_howto_left", "Veeg naar LINKS voor eten dat goed is voor het nijlpaard."),
+            Vector2.zero, new Vector2(780f, 80f), 28, FontStyle.Bold, Color.white, out var leftTxt);
+        var ltRt = leftTxt.rectTransform; ltRt.anchorMin = Vector2.zero; ltRt.anchorMax = Vector2.one;
+        ltRt.offsetMin = new Vector2(20f, 0f); ltRt.offsetMax = new Vector2(-20f, 0f); ltRt.pivot = new Vector2(0.5f, 0.5f);
+        leftTxt.alignment = TextAnchor.MiddleLeft;
+
+        var rightRow = new GameObject("RightRow");
+        rightRow.transform.SetParent(card.transform, false);
+        var rrRt = rightRow.AddComponent<RectTransform>();
+        rrRt.anchorMin = new Vector2(0.5f, 1f); rrRt.anchorMax = new Vector2(0.5f, 1f);
+        rrRt.pivot = new Vector2(0.5f, 1f); rrRt.anchoredPosition = new Vector2(0f, -410f); rrRt.sizeDelta = new Vector2(820f, 90f);
+        rightRow.AddComponent<Image>().color = new Color(0.62f, 0.20f, 0.20f, 0.85f);
+        MakeLabel(rightRow.transform,
+            SafeGet("minigame_hippo_howto_right", "Veeg naar RECHTS voor eten dat NIET goed is.") + "  \u2192",
+            Vector2.zero, new Vector2(780f, 80f), 28, FontStyle.Bold, Color.white, out var rightTxt);
+        var rtRt = rightTxt.rectTransform; rtRt.anchorMin = Vector2.zero; rtRt.anchorMax = Vector2.one;
+        rtRt.offsetMin = new Vector2(20f, 0f); rtRt.offsetMax = new Vector2(-20f, 0f); rtRt.pivot = new Vector2(0.5f, 0.5f);
+        rightTxt.alignment = TextAnchor.MiddleRight;
+
+        var startBtn = MakeButton(card.transform, SafeGet("btn_lets_go", "Laten we beginnen!"),
+            new Vector2(0f, 36f), new Vector2(520f, 120f), new Color(0.18f, 0.62f, 0.32f));
+        var sbRt = startBtn.GetComponent<RectTransform>();
+        sbRt.anchorMin = new Vector2(0.5f, 0f); sbRt.anchorMax = new Vector2(0.5f, 0f); sbRt.pivot = new Vector2(0.5f, 0f);
+        startBtn.onClick.AddListener(() =>
+        {
+            if (_howToCanvas != null) Destroy(_howToCanvas);
+            _howToCanvas = null;
+            StartMinigame();
+        });
+
+        StartCoroutine(PopInCard(crt));
     }
 
     void ShowCongrats()

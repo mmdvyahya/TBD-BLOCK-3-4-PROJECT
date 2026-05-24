@@ -961,6 +961,190 @@ public class LanguageManager : MonoBehaviour
                 [Language.Deutsch] = "Toll! Alle Tiere haben ein Zuhause. Spiel weiter!",
                 [Language.English] = "Amazing! All animals have a home. Keep playing!",
             },
+            ["minigame_hippo_howto_title"] = new()
+            {
+                [Language.Nederlands] = "Hoe speel je?",
+                [Language.Deutsch] = "So wird gespielt",
+                [Language.English] = "How to Play",
+            },
+            ["minigame_hippo_howto_intro"] = new()
+            {
+                [Language.Nederlands] = "Het nijlpaard heeft honger! Sommig eten is gezond, en sommig eten is niet goed voor nijlpaarden.",
+                [Language.Deutsch] = "Das Nilpferd hat Hunger! Manches Essen ist gesund, und manches ist nicht gut für Nilpferde.",
+                [Language.English] = "The hippo is hungry! Some food is healthy, and some is not good for hippos.",
+            },
+            ["minigame_hippo_howto_left"] = new()
+            {
+                [Language.Nederlands] = "Veeg naar LINKS voor eten dat goed is voor het nijlpaard.",
+                [Language.Deutsch] = "Wisch nach LINKS für Essen, das gut für das Nilpferd ist.",
+                [Language.English] = "Swipe LEFT for food that is good for the hippo.",
+            },
+            ["minigame_hippo_howto_right"] = new()
+            {
+                [Language.Nederlands] = "Veeg naar RECHTS voor eten dat NIET goed is.",
+                [Language.Deutsch] = "Wisch nach RECHTS für Essen, das NICHT gut ist.",
+                [Language.English] = "Swipe RIGHT for food that is NOT good.",
+            },
+            ["minigame_hippo_zone_good"] = new()
+            {
+                [Language.Nederlands] = "Lekker!",
+                [Language.Deutsch] = "Lecker!",
+                [Language.English] = "Yummy!",
+            },
+            ["minigame_hippo_zone_bad"] = new()
+            {
+                [Language.Nederlands] = "Niet lekker",
+                [Language.Deutsch] = "Nicht lecker",
+                [Language.English] = "Not good",
+            },
+            ["minigame_hippo_instruction"] = new()
+            {
+                [Language.Nederlands] = "Veeg naar links = Lekker  |  Veeg naar rechts = Niet lekker",
+                [Language.Deutsch] = "Links wischen = Lecker  |  Rechts wischen = Nicht lecker",
+                [Language.English] = "Swipe left = Yummy  |  Swipe right = Not good",
+            },
+            // === PARROT — inspection card (animal name / description / fun fact) ===
+
+            ["parrot_name"] = new()
+            {
+                [Language.Nederlands] = "Papegaai",
+                [Language.Deutsch] = "Papagei",
+                [Language.English] = "Parrot",
+            },
+            ["parrot_desc"] = new()
+            {
+                [Language.Nederlands] = "De papegaai is het kleurrijkste en kletsigste dier van Wildlands. Hij houdt van klimmen, kraken en kletsen!",
+                [Language.Deutsch] = "Der Papagei ist das bunteste und plapprigste Tier in Wildlands. Er liebt es zu klettern, zu knacken und zu plappern!",
+                [Language.English] = "The parrot is the most colorful and chattiest animal in Wildlands. It loves to climb, crack nuts, and chatter away!",
+            },
+            ["parrot_fact"] = new()
+            {
+                [Language.Nederlands] = "Wist je dat sommige papegaaien woorden kunnen nadoen die mensen zeggen? Misschien leren ze zelfs jouw naam!",
+                [Language.Deutsch] = "Wusstest du, dass manche Papageien Wörter nachmachen können, die Menschen sagen? Vielleicht lernen sie sogar deinen Namen!",
+                [Language.English] = "Did you know some parrots can copy the words people say? They might even learn your name!",
+            },
+
+            // === PARROT — buy button (short habitat name) ===
+
+            ["habitat_parrot_name"] = new()
+            {
+                [Language.Nederlands] = "Papegaai",
+                [Language.Deutsch] = "Papagei",
+                [Language.English] = "Parrot",
+            },
+            ["minigame_parrot_title"] = new()
+            {
+                [Language.Nederlands] = "Papegaai Voeren",
+                [Language.Deutsch] = "Papagei füttern",
+                [Language.English] = "Parrot Feeding",
+            },
+            ["minigame_parrot_instruction"] = new()
+            {
+                [Language.Nederlands] = "Kantel om zaadjes te strooien!",
+                [Language.Deutsch] = "Kipp das Tablet, um Körner zu streuen!",
+                [Language.English] = "Tilt to pour seeds!",
+            },
+            ["minigame_parrot_pour"] = new()
+            {
+                [Language.Nederlands] = "Strooien!",
+                [Language.Deutsch] = "Streuen!",
+                [Language.English] = "Pouring!",
+            },
+            ["minigame_parrot_no_seeds"] = new()
+            {
+                [Language.Nederlands] = "Geen zaadjes meer!",
+                [Language.Deutsch] = "Keine Körner mehr!",
+                [Language.English] = "No seeds left!",
+            },
+            ["minigame_parrot_checking"] = new()
+            {
+                [Language.Nederlands] = "Zaadjes tellen...",
+                [Language.Deutsch] = "Körner werden gezählt...",
+                [Language.English] = "Counting seeds...",
+            },
+            ["minigame_parrot_retry_aim"] = new()
+            {
+                [Language.Nederlands] = "Probeer opnieuw! Mik op de bak!",
+                [Language.Deutsch] = "Versuch's nochmal! Ziel auf die Schale!",
+                [Language.English] = "Try again! Aim for the tray!",
+            },
+            ["minigame_parrot_retry_tilt"] = new()
+            {
+                [Language.Nederlands] = "Probeer opnieuw! Kantel de tablet!",
+                [Language.Deutsch] = "Versuch's nochmal! Kipp das Tablet!",
+                [Language.English] = "Try again! Tilt the tablet!",
+            },
+            ["minigame_parrot_howto_title"] = new()
+            {
+                [Language.Nederlands] = "Hoe speel je?",
+                [Language.Deutsch] = "So wird gespielt",
+                [Language.English] = "How to Play",
+            },
+            ["minigame_parrot_howto_intro"] = new()
+            {
+                [Language.Nederlands] = "De papegaai heeft honger! Vul de bak met lekkere zaadjes.",
+                [Language.Deutsch] = "Der Papagei hat Hunger! Füll die Schale mit leckeren Körnern.",
+                [Language.English] = "The parrot is hungry! Fill the tray with tasty seeds.",
+            },
+            ["minigame_parrot_howto_line1"] = new()
+            {
+                [Language.Nederlands] = "Kantel je tablet om zaadjes uit de zak te strooien.",
+                [Language.Deutsch] = "Kipp dein Tablet, um Körner aus dem Sack zu streuen.",
+                [Language.English] = "Tilt your tablet to pour seeds from the sack.",
+            },
+            ["minigame_parrot_howto_line2"] = new()
+            {
+                [Language.Nederlands] = "Mik de zaadjes in de bak eronder om hem te vullen!",
+                [Language.Deutsch] = "Ziel die Körner in die Schale darunter, um sie zu füllen!",
+                [Language.English] = "Aim the seeds into the tray below to fill it up!",
+            },
+            ["minigame_parrot_success_title"] = new()
+            {
+                [Language.Nederlands] = "Lekkere zaadjes!",
+                [Language.Deutsch] = "Leckere Körner!",
+                [Language.English] = "Tasty seeds!",
+            },
+            ["minigame_parrot_success_desc"] = new()
+            {
+                [Language.Nederlands] = "De buik van de papegaai is vol en blij!",
+                [Language.Deutsch] = "Der Bauch des Papageis ist voll und glücklich!",
+                [Language.English] = "The parrot's tummy is full and happy!",
+            },
+            ["minigame_parrot_aim"] = new()
+            {
+                [Language.Nederlands] = "Mik op de bak!",
+                [Language.Deutsch] = "Ziel auf die Schale!",
+                [Language.English] = "Aim for the tray!",
+            },
+            // === OTTER — inspection card (animal name / description / fun fact) ===
+
+            ["otter_name"] = new()
+            {
+                [Language.Nederlands] = "Otter",
+                [Language.Deutsch] = "Otter",
+                [Language.English] = "Otter",
+            },
+            ["otter_desc"] = new()
+            {
+                [Language.Nederlands] = "De otter is het speelste dier van Wildlands.",
+                [Language.Deutsch] = "Der Otter ist das verspielteste Tier in Wildlands.",
+                [Language.English] = "The otter is the most playful animal in Wildlands.",
+            },
+            ["otter_fact"] = new()
+            {
+                [Language.Nederlands] = "Wist je dat otters elkaars pootjes vasthouden als ze slapen?",
+                [Language.Deutsch] = "Wusstest du, dass Otter sich beim Schlafen an den Pfoten halten?",
+                [Language.English] = "Did you know otters hold hands while they sleep?",
+            },
+
+            // === OTTER — buy button (short habitat name) ===
+
+            ["habitat_otter_name"] = new()
+            {
+                [Language.Nederlands] = "Otter",
+                [Language.Deutsch] = "Otter",
+                [Language.English] = "Otter",
+            },
         };
 
     void Awake()
