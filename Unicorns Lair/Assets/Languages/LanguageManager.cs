@@ -1003,8 +1003,6 @@ public class LanguageManager : MonoBehaviour
                 [Language.Deutsch] = "Links wischen = Lecker  |  Rechts wischen = Nicht lecker",
                 [Language.English] = "Swipe left = Yummy  |  Swipe right = Not good",
             },
-            // === PARROT — inspection card (animal name / description / fun fact) ===
-
             ["parrot_name"] = new()
             {
                 [Language.Nederlands] = "Papegaai",
@@ -1023,8 +1021,6 @@ public class LanguageManager : MonoBehaviour
                 [Language.Deutsch] = "Wusstest du, dass manche Papageien Wörter nachmachen können, die Menschen sagen? Vielleicht lernen sie sogar deinen Namen!",
                 [Language.English] = "Did you know some parrots can copy the words people say? They might even learn your name!",
             },
-
-            // === PARROT — buy button (short habitat name) ===
 
             ["habitat_parrot_name"] = new()
             {
