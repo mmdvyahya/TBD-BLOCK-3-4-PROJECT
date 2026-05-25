@@ -1136,14 +1136,203 @@ public class LanguageManager : MonoBehaviour
                 [Language.Deutsch] = "Wusstest du, dass Otter sich beim Schlafen an den Pfoten halten?",
                 [Language.English] = "Did you know otters hold hands while they sleep?",
             },
-
-            // === OTTER — buy button (short habitat name) ===
-
             ["habitat_otter_name"] = new()
             {
                 [Language.Nederlands] = "Otter",
                 [Language.Deutsch] = "Otter",
                 [Language.English] = "Otter",
+            },
+            ["minigame_raccoon_title"] = new()
+            {
+                [Language.Nederlands] = "Draai de Pot Open!",
+                [Language.Deutsch] = "Dreh das Glas auf!",
+                [Language.English] = "Open the Jar!",
+            },
+            ["minigame_raccoon_instruction"] = new()
+            {
+                [Language.Nederlands] = "Draai de tablet heen en weer om de pot te openen!",
+                [Language.Deutsch] = "Dreh das Tablet hin und her, um das Glas zu öffnen!",
+                [Language.English] = "Twist the tablet back and forth to open the jar!",
+            },
+            ["minigame_raccoon_howto_title"] = new()
+            {
+                [Language.Nederlands] = "Hoe speel je?",
+                [Language.Deutsch] = "So wird gespielt",
+                [Language.English] = "How to Play",
+            },
+            ["minigame_raccoon_howto_intro"] = new()
+            {
+                [Language.Nederlands] = "De wasbeer heeft een pot met snoepjes gevonden, maar de deksel zit muurvast!",
+                [Language.Deutsch] = "Der Waschbär hat ein Glas mit Leckerlis gefunden, aber der Deckel klemmt total!",
+                [Language.English] = "The raccoon found a jar of treats, but the lid is stuck tight!",
+            },
+            ["minigame_raccoon_howto_line1"] = new()
+            {
+                [Language.Nederlands] = "Draai de tablet een kant op, en dan de andere kant.",
+                [Language.Deutsch] = "Dreh das Tablet erst in die eine, dann in die andere Richtung.",
+                [Language.English] = "Twist the tablet one way, then the other.",
+            },
+            ["minigame_raccoon_howto_line2"] = new()
+            {
+                [Language.Nederlands] = "Blijf heen en weer draaien tot de deksel eraf ploft!",
+                [Language.Deutsch] = "Dreh weiter hin und her, bis der Deckel abspringt!",
+                [Language.English] = "Keep twisting until the lid pops off!",
+            },
+            ["minigame_raccoon_success_title"] = new()
+            {
+                [Language.Nederlands] = "Lekkere snoepjes!",
+                [Language.Deutsch] = "Leckere Leckerlis!",
+                [Language.English] = "Tasty treats!",
+            },
+            ["minigame_raccoon_success_desc"] = new()
+            {
+                [Language.Nederlands] = "De wasbeer heeft de pot opengekregen!",
+                [Language.Deutsch] = "Der Waschbär hat das Glas aufbekommen!",
+                [Language.English] = "The raccoon got the jar open!",
+            },
+            ["minigame_otter_title"] = new()
+            {
+                [Language.Nederlands] = "Kraak de Schelp!",
+                [Language.Deutsch] = "Knack die Muschel!",
+                [Language.English] = "Crack the Shell!",
+            },
+            ["minigame_otter_instruction"] = new()
+            {
+                [Language.Nederlands] = "Schud de tablet om de schelp te kraken!",
+                [Language.Deutsch] = "Schüttel das Tablet, um die Muschel zu knacken!",
+                [Language.English] = "Shake the tablet to crack the shell open!",
+            },
+            ["minigame_otter_howto_title"] = new()
+            {
+                [Language.Nederlands] = "Hoe speel je?",
+                [Language.Deutsch] = "So wird gespielt",
+                [Language.English] = "How to Play",
+            },
+            ["minigame_otter_howto_intro"] = new()
+            {
+                [Language.Nederlands] = "De otter heeft een schelp met een lekker hapje erin gevonden, maar hij zit potdicht!",
+                [Language.Deutsch] = "Der Otter hat eine Muschel mit einem leckeren Happen darin gefunden, aber sie ist fest verschlossen!",
+                [Language.English] = "The otter found a shell with a tasty snack inside, but it's shut tight!",
+            },
+            ["minigame_otter_howto_line1"] = new()
+            {
+                [Language.Nederlands] = "Schud de tablet om de schelp te kraken.",
+                [Language.Deutsch] = "Schüttel das Tablet, um die Muschel zu knacken.",
+                [Language.English] = "Shake the tablet to crack the shell.",
+            },
+            ["minigame_otter_howto_line2"] = new()
+            {
+                [Language.Nederlands] = "Blijf schudden tot de schelp openbreekt!",
+                [Language.Deutsch] = "Schüttel weiter, bis die Muschel aufbricht!",
+                [Language.English] = "Keep shaking until it breaks open!",
+            },
+            ["minigame_otter_success_title"] = new()
+            {
+                [Language.Nederlands] = "Smikkelen maar!",
+                [Language.Deutsch] = "Schmaus-Zeit!",
+                [Language.English] = "Snack time!",
+            },
+            ["minigame_otter_success_desc"] = new()
+            {
+                [Language.Nederlands] = "De otter heeft de schelp gekraakt!",
+                [Language.Deutsch] = "Der Otter hat die Muschel geknackt!",
+                [Language.English] = "The otter cracked the shell open!",
+            },
+            ["minigame_beaver_howto_title"] = new()
+            {
+                [Language.Nederlands] = "Hoe speel je?",
+                [Language.Deutsch] = "So wird gespielt",
+                [Language.English] = "How to Play",
+            },
+            ["minigame_beaver_howto_intro"] = new()
+            {
+                [Language.Nederlands] = "De bever balanceert een stok. Help hem om hem recht te houden!",
+                [Language.Deutsch] = "Der Biber balanciert einen Stock. Hilf ihm, ihn gerade zu halten!",
+                [Language.English] = "The beaver is balancing a stick. Help him keep it steady!",
+            },
+            ["minigame_beaver_howto_line1"] = new()
+            {
+                [Language.Nederlands] = "Kantel de tablet zachtjes naar links en rechts.",
+                [Language.Deutsch] = "Kipp das Tablet sanft nach links und rechts.",
+                [Language.English] = "Tilt the tablet gently left and right.",
+            },
+            ["minigame_beaver_howto_line2"] = new()
+            {
+                [Language.Nederlands] = "Houd de stok in het midden tot de tijd op is!",
+                [Language.Deutsch] = "Halt den Stock in der Mitte, bis die Zeit um ist!",
+                [Language.English] = "Keep the stick centered until the time runs out!",
+            },
+            ["minigame_polarbear_howto_title"] = new()
+            {
+                [Language.Nederlands] = "Hoe speel je?",
+                [Language.Deutsch] = "So wird gespielt",
+                [Language.English] = "How to Play",
+            },
+            ["minigame_polarbear_howto_intro"] = new()
+            {
+                [Language.Nederlands] = "De ijsbeer heeft het veel te warm! Help hem afkoelen.",
+                [Language.Deutsch] = "Dem Eisbären ist viel zu heiß! Hilf ihm, sich abzukühlen.",
+                [Language.English] = "The polar bear is far too hot! Help him cool down.",
+            },
+            ["minigame_polarbear_howto_line1"] = new()
+            {
+                [Language.Nederlands] = "Blaas in de microfoon van je tablet, net als een koude wind.",
+                [Language.Deutsch] = "Blas in das Mikrofon deines Tablets, wie ein kalter Wind.",
+                [Language.English] = "Blow into your tablet's microphone, like a cold wind.",
+            },
+            ["minigame_polarbear_howto_line2"] = new()
+            {
+                [Language.Nederlands] = "Blijf blazen tot de ijsbeer helemaal is afgekoeld!",
+                [Language.Deutsch] = "Blas weiter, bis der Eisbär ganz abgekühlt ist!",
+                [Language.English] = "Keep blowing until the polar bear is all cooled down!",
+            },
+            ["minigame_baboon_howto_title"] = new()
+            {
+                [Language.Nederlands] = "Hoe speel je?",
+                [Language.Deutsch] = "So wird gespielt",
+                [Language.English] = "How to Play",
+            },
+            ["minigame_baboon_howto_intro"] = new()
+            {
+                [Language.Nederlands] = "De baviaan laat een patroon van lichtjes zien. Kun jij het nadoen?",
+                [Language.Deutsch] = "Der Pavian zeigt ein Muster aus Lichtern. Kannst du es nachmachen?",
+                [Language.English] = "The baboon shows a pattern of lights. Can you copy it?",
+            },
+            ["minigame_baboon_howto_line1"] = new()
+            {
+                [Language.Nederlands] = "Kijk goed welke knoppen oplichten, en in welke volgorde.",
+                [Language.Deutsch] = "Schau genau, welche Knöpfe aufleuchten und in welcher Reihenfolge.",
+                [Language.English] = "Watch which buttons light up, and in what order.",
+            },
+            ["minigame_baboon_howto_line2"] = new()
+            {
+                [Language.Nederlands] = "Tik de knoppen daarna in precies dezelfde volgorde!",
+                [Language.Deutsch] = "Tippe die Knöpfe danach in genau derselben Reihenfolge!",
+                [Language.English] = "Then tap the buttons back in the exact same order!",
+            },
+            ["minigame_prairiedog_howto_title"] = new()
+            {
+                [Language.Nederlands] = "Hoe speel je?",
+                [Language.Deutsch] = "So wird gespielt",
+                [Language.English] = "How to Play",
+            },
+            ["minigame_prairiedog_howto_intro"] = new()
+            {
+                [Language.Nederlands] = "De prairiehonden verstoppen zich in hun holen. Kun jij ze vinden?",
+                [Language.Deutsch] = "Die Präriehunde verstecken sich in ihren Höhlen. Kannst du sie finden?",
+                [Language.English] = "The prairie dogs are hiding in their holes. Can you find them?",
+            },
+            ["minigame_prairiedog_howto_line1"] = new()
+            {
+                [Language.Nederlands] = "Schud de tablet en kijk goed welk hol de prairiehond kiest.",
+                [Language.Deutsch] = "Schüttel das Tablet und schau genau, welche Höhle der Präriehund wählt.",
+                [Language.English] = "Shake the tablet and watch which hole the prairie dog picks.",
+            },
+            ["minigame_prairiedog_howto_line2"] = new()
+            {
+                [Language.Nederlands] = "Tik daarna op het juiste hol om hem te vinden!",
+                [Language.Deutsch] = "Tippe danach auf die richtige Höhle, um ihn zu finden!",
+                [Language.English] = "Then tap the right hole to find him!",
             },
         };
 

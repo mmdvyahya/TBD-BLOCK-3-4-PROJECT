@@ -40,6 +40,10 @@ public class BeaverBalanceMinigame : MonoBehaviour
     [SerializeField] private float accelerometerMultiplier = 35f;
     [SerializeField] private float accelerometerDeadZone = 0.05f;
 
+    [Header("Settings")]
+    [Tooltip("Show a kid-friendly 'How to Play' explanation before the game starts.")]
+    [SerializeField] private bool showHowToPlay = true;
+
     private float _currentAngle;
     private float _stableTimeLeft;
     private bool _isRunning;
@@ -55,13 +59,17 @@ public class BeaverBalanceMinigame : MonoBehaviour
     private Text _countdownText;
     private Text _instructionText;
     private Text _statusText;
+    private GameObject _howToCanvas;
 
     void Start()
     {
         if (Accelerometer.current != null)
             InputSystem.EnableDevice(Accelerometer.current);
 
-        OpenMinigame();
+        LanguageManager.Ensure();
+
+        if (showHowToPlay) ShowHowToPlay();
+        else OpenMinigame();
     }
 
     void Update()
@@ -363,6 +371,142 @@ public class BeaverBalanceMinigame : MonoBehaviour
         var result = lm.Get(key);
 
         return (result == $"[{key}]") ? fallback : result;
+    }
+
+    void ShowHowToPlay()
+    {
+        var cObj = new GameObject("HowToCanvas");
+        _howToCanvas = cObj;
+        var cv = cObj.AddComponent<Canvas>();
+        cv.renderMode = RenderMode.ScreenSpaceOverlay;
+        cv.sortingOrder = 24;
+        var scaler = cObj.AddComponent<CanvasScaler>();
+        scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
+        scaler.referenceResolution = new Vector2(1080, 1920);
+        scaler.matchWidthOrHeight = 0.5f;
+        cObj.AddComponent<GraphicRaycaster>();
+        EnsureEventSystem();
+
+        var bg = cObj.AddComponent<Image>();
+        bg.color = new Color(0f, 0f, 0f, 0.78f);
+
+        var card = new GameObject("Card");
+        card.transform.SetParent(cObj.transform, false);
+        var crt = card.AddComponent<RectTransform>();
+        crt.anchorMin = crt.anchorMax = crt.pivot = new Vector2(0.5f, 0.5f);
+        crt.anchoredPosition = Vector2.zero;
+        crt.sizeDelta = new Vector2(920f, 700f);
+        crt.localScale = Vector3.zero;
+        var cImg = card.AddComponent<Image>();
+        cImg.color = new Color(0.16f, 0.09f, 0.04f, 0.98f);
+
+        var accent = new GameObject("Accent");
+        accent.transform.SetParent(card.transform, false);
+        var aRt = accent.AddComponent<RectTransform>();
+        aRt.anchorMin = new Vector2(0f, 1f); aRt.anchorMax = new Vector2(1f, 1f);
+        aRt.pivot = new Vector2(0.5f, 1f); aRt.anchoredPosition = Vector2.zero; aRt.sizeDelta = new Vector2(0f, 14f);
+        accent.AddComponent<Image>().color = new Color(0.76f, 0.52f, 0.22f);
+
+        MakeHowToLabel(card.transform, SafeGet("minigame_beaver_howto_title", "Hoe speel je?"),
+            new Vector2(0f, -40f), new Vector2(840f, 80f), 54, FontStyle.Bold, new Color(1f, 0.85f, 0.55f));
+
+        MakeHowToLabel(card.transform,
+            SafeGet("minigame_beaver_howto_intro", "De bever balanceert een stok. Help hem om hem recht te houden!"),
+            new Vector2(0f, -150f), new Vector2(820f, 120f), 30, FontStyle.Normal, new Color(1f, 0.96f, 0.9f));
+
+        MakeHowToRow(card.transform, -300f,
+            SafeGet("minigame_beaver_howto_line1", "Kantel de tablet zachtjes naar links en rechts."));
+        MakeHowToRow(card.transform, -410f,
+            SafeGet("minigame_beaver_howto_line2", "Houd de stok in het midden tot de tijd op is!"));
+
+        var startBtn = MakeHowToButton(card.transform, SafeGet("btn_lets_go", "Laten we beginnen!"),
+            new Vector2(0f, 36f), new Vector2(520f, 120f), new Color(0.18f, 0.62f, 0.32f));
+        startBtn.onClick.AddListener(() =>
+        {
+            if (_howToCanvas != null) Destroy(_howToCanvas);
+            _howToCanvas = null;
+            OpenMinigame();
+        });
+
+        StartCoroutine(PopInCard(crt));
+    }
+
+    IEnumerator PopInCard(RectTransform rt)
+    {
+        float t = 0f;
+        while (t < 0.35f)
+        {
+            t += Time.deltaTime;
+            if (rt == null) yield break;
+            float p = t / 0.35f;
+            float overshoot = 1f + Mathf.Sin(p * Mathf.PI) * 0.15f;
+            rt.localScale = Vector3.one * Mathf.SmoothStep(0f, 1f, p) * overshoot;
+            yield return null;
+        }
+        if (rt != null) rt.localScale = Vector3.one;
+    }
+
+    void MakeHowToLabel(Transform parent, string text, Vector2 pos, Vector2 size, int fontSize, FontStyle style, Color color)
+    {
+        var obj = new GameObject("Label");
+        obj.transform.SetParent(parent, false);
+        var rt = obj.AddComponent<RectTransform>();
+        rt.anchorMin = new Vector2(0.5f, 1f); rt.anchorMax = new Vector2(0.5f, 1f);
+        rt.pivot = new Vector2(0.5f, 1f); rt.anchoredPosition = pos; rt.sizeDelta = size;
+        var t = obj.AddComponent<Text>();
+        t.text = text; t.font = GetFont(); t.fontSize = fontSize; t.fontStyle = style;
+        t.alignment = TextAnchor.MiddleCenter; t.color = color; t.raycastTarget = false;
+    }
+
+    void MakeHowToRow(Transform parent, float y, string text)
+    {
+        var row = new GameObject("Row");
+        row.transform.SetParent(parent, false);
+        var rRt = row.AddComponent<RectTransform>();
+        rRt.anchorMin = new Vector2(0.5f, 1f); rRt.anchorMax = new Vector2(0.5f, 1f);
+        rRt.pivot = new Vector2(0.5f, 1f); rRt.anchoredPosition = new Vector2(0f, y); rRt.sizeDelta = new Vector2(820f, 90f);
+        row.AddComponent<Image>().color = new Color(0.40f, 0.28f, 0.14f, 0.85f);
+
+        var lObj = new GameObject("Label");
+        lObj.transform.SetParent(row.transform, false);
+        var lrt = lObj.AddComponent<RectTransform>();
+        lrt.anchorMin = Vector2.zero; lrt.anchorMax = Vector2.one;
+        lrt.offsetMin = new Vector2(20f, 0f); lrt.offsetMax = new Vector2(-20f, 0f);
+        var t = lObj.AddComponent<Text>();
+        t.text = text; t.font = GetFont(); t.fontSize = 28; t.fontStyle = FontStyle.Bold;
+        t.alignment = TextAnchor.MiddleCenter; t.color = Color.white; t.raycastTarget = false;
+    }
+
+    Button MakeHowToButton(Transform parent, string label, Vector2 pos, Vector2 size, Color color)
+    {
+        var obj = new GameObject("Btn");
+        obj.transform.SetParent(parent, false);
+        var rt = obj.AddComponent<RectTransform>();
+        rt.anchorMin = new Vector2(0.5f, 0f); rt.anchorMax = new Vector2(0.5f, 0f); rt.pivot = new Vector2(0.5f, 0f);
+        rt.anchoredPosition = pos; rt.sizeDelta = size;
+        var img = obj.AddComponent<Image>();
+        img.color = color;
+        var btn = obj.AddComponent<Button>();
+        btn.targetGraphic = img;
+        btn.colors = new ColorBlock
+        {
+            normalColor = color,
+            highlightedColor = color * 1.2f,
+            pressedColor = color * 0.7f,
+            selectedColor = color,
+            disabledColor = new Color(0.3f, 0.3f, 0.3f, 0.5f),
+            colorMultiplier = 1f,
+            fadeDuration = 0.08f
+        };
+        var lObj = new GameObject("Label");
+        lObj.transform.SetParent(obj.transform, false);
+        var lrt = lObj.AddComponent<RectTransform>();
+        lrt.anchorMin = Vector2.zero; lrt.anchorMax = Vector2.one;
+        lrt.offsetMin = lrt.offsetMax = Vector2.zero;
+        var t = lObj.AddComponent<Text>();
+        t.text = label; t.font = GetFont(); t.fontSize = 42; t.fontStyle = FontStyle.Bold;
+        t.alignment = TextAnchor.MiddleCenter; t.color = Color.white; t.raycastTarget = false;
+        return btn;
     }
 
     void BuildUI()

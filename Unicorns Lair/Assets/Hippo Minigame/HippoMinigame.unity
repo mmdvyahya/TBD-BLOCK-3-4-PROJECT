@@ -3385,7 +3385,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 798693289}
-  - component: {fileID: 798693291}
   - component: {fileID: 798693290}
   m_Layer: 0
   m_Name: Built
@@ -3431,27 +3430,6 @@ MonoBehaviour:
   habitatCamView: {fileID: 0}
   inspectionCenter: {fileID: 183939941}
   minigameScene: HippoMinigame
---- !u!65 &798693291
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 798693288}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 38.370216, y: 1, z: 15.751227}
-  m_Center: {x: -4.2275734, y: 0, z: -1.6259437}
 --- !u!1 &806201210
 GameObject:
   m_ObjectHideFlags: 0
@@ -5553,7 +5531,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1264999703}
-  - component: {fileID: 1264999704}
   m_Layer: 0
   m_Name: Hippo Habitat
   m_TagString: Untagged
@@ -5580,25 +5557,6 @@ Transform:
   - {fileID: 183939941}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1264999704
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1264999702}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36ea50d1d43dd2d42b9d6162423954f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Habitat
-  habitatId: hippo_habitat
-  nameKey: hippo_name
-  cost: 100
-  builtChild: {fileID: 798693288}
-  buttonAnchor: {fileID: 1814173356}
-  mainCamera: {fileID: 0}
-  midBuildChild: {fileID: 0}
 --- !u!1001 &1270465476
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7378,7 +7336,7 @@ MonoBehaviour:
   - foodName: Watermelon
     localizationKey: food_watermelon
     correctCategory: 0
-    foodPrefab: {fileID: 919132149155446097, guid: ea4e5a8f4cfe04e428982dc6fe8e35af, type: 3}
+    foodPrefab: {fileID: 919132149155446097, guid: 904478b719e04dc47882cd763f1eb126, type: 3}
     sizeOverride: 0
     displayColor: {r: 0.2, g: 0.8, b: 0.3, a: 1}
   - foodName: Apples
@@ -7390,7 +7348,7 @@ MonoBehaviour:
   - foodName: Candy
     localizationKey: food_candy
     correctCategory: 1
-    foodPrefab: {fileID: 919132149155446097, guid: 67b9e480e9f3b3147a279191dd299b54, type: 3}
+    foodPrefab: {fileID: 919132149155446097, guid: b7e2cfcb099c35043b154ae329963ed4, type: 3}
     sizeOverride: 0
     displayColor: {r: 0.95, g: 0.3, b: 0.75, a: 1}
   - foodName: Cabbage

@@ -37,6 +37,13 @@ public class PrairieDogPeekManager : MonoBehaviour
     [Header("Debug")]
     [SerializeField] private bool autoFindHoles = true;
 
+    [Header("Settings")]
+    [Tooltip("Show a kid-friendly 'How to Play' explanation before the game starts.")]
+    [SerializeField] private bool showHowToPlay = true;
+
+    private GameObject _howToCanvas;
+    private bool _started;
+
     private PrairieDogPeekState _state;
     private int _correctHoleIndex = -1;
     private int _currentRound = 0;
@@ -60,7 +67,9 @@ public class PrairieDogPeekManager : MonoBehaviour
 
         InitializeHoles();
         BuildUI();
-        StartMinigame();
+
+        if (showHowToPlay) ShowHowToPlay();
+        else StartMinigame();
 
         LanguageManager.Instance.LanguageChanged += OnLanguageChanged;
     }
@@ -75,6 +84,7 @@ public class PrairieDogPeekManager : MonoBehaviour
 
     void Update()
     {
+        if (!_started) return;
         if (_state != PrairieDogPeekState.WaitingForShake) return;
         if (shakeInput != null && shakeInput.WasShakeDetectedThisFrame)
             StartCoroutine(RevealSequence());
@@ -82,6 +92,7 @@ public class PrairieDogPeekManager : MonoBehaviour
 
     public void StartMinigame()
     {
+        _started = true;
         _complete = false;
         _currentRound = 0;
         _correctCount = 0;
@@ -233,6 +244,85 @@ public class PrairieDogPeekManager : MonoBehaviour
         _feedbackText.text = text;
         if (color.HasValue) _feedbackText.color = color.Value;
         else _feedbackText.color = new Color(1f, 1f, 1f);
+    }
+
+    void ShowHowToPlay()
+    {
+        var cObj = new GameObject("HowToCanvas");
+        _howToCanvas = cObj;
+        var cv = cObj.AddComponent<Canvas>();
+        cv.renderMode = RenderMode.ScreenSpaceOverlay;
+        cv.sortingOrder = 24;
+        var scaler = cObj.AddComponent<CanvasScaler>();
+        scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
+        scaler.referenceResolution = new Vector2(1080, 1920);
+        scaler.matchWidthOrHeight = 0.5f;
+        cObj.AddComponent<GraphicRaycaster>();
+        EnsureEventSystem();
+
+        var bg = cObj.AddComponent<Image>();
+        bg.color = new Color(0f, 0f, 0f, 0.78f);
+
+        var card = new GameObject("Card");
+        card.transform.SetParent(cObj.transform, false);
+        var crt = card.AddComponent<RectTransform>();
+        crt.anchorMin = crt.anchorMax = crt.pivot = new Vector2(0.5f, 0.5f);
+        crt.anchoredPosition = Vector2.zero;
+        crt.sizeDelta = new Vector2(920f, 700f);
+        crt.localScale = Vector3.zero;
+        var cImg = card.AddComponent<Image>();
+        cImg.color = new Color(0.16f, 0.12f, 0.06f, 0.98f);
+
+        var accent = new GameObject("Accent");
+        accent.transform.SetParent(card.transform, false);
+        var aRt = accent.AddComponent<RectTransform>();
+        aRt.anchorMin = new Vector2(0f, 1f); aRt.anchorMax = new Vector2(1f, 1f);
+        aRt.pivot = new Vector2(0.5f, 1f); aRt.anchoredPosition = Vector2.zero; aRt.sizeDelta = new Vector2(0f, 14f);
+        accent.AddComponent<Image>().color = new Color(0.93f, 0.72f, 0.32f);
+
+        MakeLabel(card.transform, SafeGet("minigame_prairiedog_howto_title", "Hoe speel je?"),
+            new Vector2(0f, -40f), new Vector2(840f, 80f), 54, FontStyle.Bold, new Color(1f, 0.85f, 0.5f), out _);
+
+        MakeLabel(card.transform,
+            SafeGet("minigame_prairiedog_howto_intro", "De prairiehonden verstoppen zich in hun holen. Kun jij ze vinden?"),
+            new Vector2(0f, -150f), new Vector2(820f, 120f), 30, FontStyle.Normal, new Color(1f, 0.96f, 0.9f), out _);
+
+        MakeHowToRow(card.transform, -300f,
+            SafeGet("minigame_prairiedog_howto_line1", "Schud de tablet en kijk goed welk hol de prairiehond kiest."));
+        MakeHowToRow(card.transform, -410f,
+            SafeGet("minigame_prairiedog_howto_line2", "Tik daarna op het juiste hol om hem te vinden!"));
+
+        var startBtn = MakeButton(card.transform, SafeGet("btn_lets_go", "Laten we beginnen!"),
+            new Vector2(0f, 36f), new Vector2(520f, 120f), new Color(0.18f, 0.62f, 0.32f));
+        var sbRt = startBtn.GetComponent<RectTransform>();
+        sbRt.anchorMin = new Vector2(0.5f, 0f); sbRt.anchorMax = new Vector2(0.5f, 0f); sbRt.pivot = new Vector2(0.5f, 0f);
+        startBtn.onClick.AddListener(() =>
+        {
+            if (_howToCanvas != null) Destroy(_howToCanvas);
+            _howToCanvas = null;
+            StartMinigame();
+        });
+
+        StartCoroutine(PopInCard(crt));
+    }
+
+    void MakeHowToRow(Transform parent, float y, string text)
+    {
+        var row = new GameObject("Row");
+        row.transform.SetParent(parent, false);
+        var rRt = row.AddComponent<RectTransform>();
+        rRt.anchorMin = new Vector2(0.5f, 1f); rRt.anchorMax = new Vector2(0.5f, 1f);
+        rRt.pivot = new Vector2(0.5f, 1f); rRt.anchoredPosition = new Vector2(0f, y); rRt.sizeDelta = new Vector2(820f, 90f);
+        row.AddComponent<Image>().color = new Color(0.42f, 0.30f, 0.12f, 0.85f);
+
+        var lObj = new GameObject("Label");
+        lObj.transform.SetParent(row.transform, false);
+        var lrt = lObj.AddComponent<RectTransform>();
+        lrt.anchorMin = Vector2.zero; lrt.anchorMax = Vector2.one;
+        lrt.offsetMin = new Vector2(20f, 0f); lrt.offsetMax = new Vector2(-20f, 0f);
+        var t = lObj.AddComponent<Text>();
+        t.text = text; t.font = GetFont(); t.fontSize = 28; t.fontStyle = FontStyle.Bold;
+        t.alignment = TextAnchor.MiddleCenter; t.color = Color.white; t.raycastTarget = false;
     }
 
     void BuildUI()

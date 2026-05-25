@@ -47,6 +47,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Raccon Minigame/Racoon minigame.unity
     guid: aa977a701107f784e81ec90d028a8719
+  - enabled: 1
+    path: Assets/Otter Minigame/Otter  Minigame.unity
+    guid: 453f4ba7344953b43bb6e3b4e828ad16
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

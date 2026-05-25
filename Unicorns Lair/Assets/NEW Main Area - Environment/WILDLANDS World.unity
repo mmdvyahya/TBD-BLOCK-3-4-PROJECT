@@ -14965,7 +14965,7 @@ MonoBehaviour:
   educationalFactKey: otter_fact
   habitatCamView: {fileID: 515722399}
   inspectionCenter: {fileID: 1453389948}
-  minigameScene: 
+  minigameScene: Otter  Minigame
 --- !u!65 &576812404
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17922,7 +17922,7 @@ MonoBehaviour:
   educationalFactKey: racoon_fact
   habitatCamView: {fileID: 103263994}
   inspectionCenter: {fileID: 1446715757}
-  minigameScene: 
+  minigameScene: Racoon minigame
 --- !u!65 &732957129
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -21039,6 +21039,14 @@ PrefabInstance:
     - target: {fileID: 2755178852986116439, guid: b4ca144a7c6d88044939afb52ed70193, type: 3}
       propertyPath: m_Name
       value: SceneMusicController
+      objectReference: {fileID: 0}
+    - target: {fileID: 2755178852986116439, guid: b4ca144a7c6d88044939afb52ed70193, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6617922229583528568, guid: b4ca144a7c6d88044939afb52ed70193, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6617922229583528568, guid: b4ca144a7c6d88044939afb52ed70193, type: 3}
       propertyPath: musicData
@@ -29159,6 +29167,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1328142561}
     m_Modifications:
+    - target: {fileID: 424650922553652034, guid: 29bc3276577e8e2488592578eb0d3c1d, type: 3}
+      propertyPath: m_Name
+      value: Waterfall
+      objectReference: {fileID: 0}
+    - target: {fileID: 424650922553652034, guid: 29bc3276577e8e2488592578eb0d3c1d, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 424650922553652034, guid: 29bc3276577e8e2488592578eb0d3c1d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1058197956092127736, guid: 29bc3276577e8e2488592578eb0d3c1d, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.12666139
@@ -29215,17 +29235,13 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 73becb3e616145549b515a6a96ea709a, type: 2}
-    - target: {fileID: 424650922553652034, guid: 29bc3276577e8e2488592578eb0d3c1d, type: 3}
-      propertyPath: m_Name
-      value: Waterfall
-      objectReference: {fileID: 0}
-    - target: {fileID: 424650922553652034, guid: 29bc3276577e8e2488592578eb0d3c1d, type: 3}
-      propertyPath: m_Layer
+    - target: {fileID: 5168901173510215684, guid: 29bc3276577e8e2488592578eb0d3c1d, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 424650922553652034, guid: 29bc3276577e8e2488592578eb0d3c1d, type: 3}
+    - target: {fileID: 8586000444213995973, guid: 29bc3276577e8e2488592578eb0d3c1d, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -31479,6 +31495,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 947592210}
     m_Modifications:
+    - target: {fileID: 424650922553652034, guid: 29bc3276577e8e2488592578eb0d3c1d, type: 3}
+      propertyPath: m_Name
+      value: Waterfall
+      objectReference: {fileID: 0}
+    - target: {fileID: 424650922553652034, guid: 29bc3276577e8e2488592578eb0d3c1d, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1058197956092127736, guid: 29bc3276577e8e2488592578eb0d3c1d, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.26065648
@@ -31535,12 +31559,12 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 73becb3e616145549b515a6a96ea709a, type: 2}
-    - target: {fileID: 424650922553652034, guid: 29bc3276577e8e2488592578eb0d3c1d, type: 3}
-      propertyPath: m_Name
-      value: Waterfall
+    - target: {fileID: 5168901173510215684, guid: 29bc3276577e8e2488592578eb0d3c1d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 424650922553652034, guid: 29bc3276577e8e2488592578eb0d3c1d, type: 3}
-      propertyPath: m_Layer
+    - target: {fileID: 8586000444213995973, guid: 29bc3276577e8e2488592578eb0d3c1d, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

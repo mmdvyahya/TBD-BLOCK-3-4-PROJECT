@@ -12,9 +12,9 @@ public class PolarBearCoolingMinigame : MonoBehaviour
     [SerializeField] private Camera mainCamera;
 
     [Header("Particle Systems (optional)")]
-    [Tooltip("Wind particles that emit when blowing — assign a ParticleSystem in the scene, or leave empty.")]
+    [Tooltip("Wind particles that emit when blowing - assign a ParticleSystem in the scene, or leave empty.")]
     [SerializeField] private ParticleSystem windParticles;
-    [Tooltip("Burst particles played when minigame completes — assign a ParticleSystem in the scene, or leave empty.")]
+    [Tooltip("Burst particles played when minigame completes - assign a ParticleSystem in the scene, or leave empty.")]
     [SerializeField] private ParticleSystem successBurstParticles;
     [Tooltip("Optional ambient frost particles that always emit, intensifies as bear cools.")]
     [SerializeField] private ParticleSystem frostParticles;
@@ -34,8 +34,13 @@ public class PolarBearCoolingMinigame : MonoBehaviour
     [SerializeField] private int coinReward = 10;
     [SerializeField] private string returnSceneName = "MainArea";
 
+    [Header("Settings")]
+    [Tooltip("Show a kid-friendly 'How to Play' explanation before the game starts.")]
+    [SerializeField] private bool showHowToPlay = true;
+
     private float _coolingProgress;
     private bool _completed;
+    private bool _started;
     private bool _isBlowing;
     private Material _polarBearMaterial;
     private Color _originalColor;
@@ -49,6 +54,7 @@ public class PolarBearCoolingMinigame : MonoBehaviour
     private Text _percentText;
     private Text _statusText;
     private GameObject _congratsCanvas;
+    private GameObject _howToCanvas;
     private bool _hasStartedBefore;
     void Start()
     {
@@ -70,7 +76,7 @@ public class PolarBearCoolingMinigame : MonoBehaviour
             else _colorProperty = null;
 
             if (_colorProperty != null) _originalColor = _polarBearMaterial.GetColor(_colorProperty);
-            else Debug.LogWarning($"[PolarBearCoolingMinigame] Shader '{_polarBearMaterial.shader.name}' has no recognized color property — skipping color tint.");
+            else Debug.LogWarning($"[PolarBearCoolingMinigame] Shader '{_polarBearMaterial.shader.name}' has no recognized color property - skipping color tint.");
         }
         if (polarBearTransform != null) _polarBearOriginPos = polarBearTransform.position;
         if (mainCamera != null) _cameraOriginPos = mainCamera.transform.position;
@@ -80,6 +86,9 @@ public class PolarBearCoolingMinigame : MonoBehaviour
 
         BuildUI();
         UpdateUI();
+
+        if (showHowToPlay) ShowHowToPlay();
+        else _started = true;
 
         LanguageManager.Instance.LanguageChanged += OnLanguageChanged;
     }
@@ -94,7 +103,7 @@ public class PolarBearCoolingMinigame : MonoBehaviour
 
     void Update()
     {
-        if (_completed) return;
+        if (!_started || _completed) return;
 
         _isBlowing = microphoneInput != null && microphoneInput.WasBlowDetectedThisFrame;
 
@@ -161,6 +170,85 @@ public class PolarBearCoolingMinigame : MonoBehaviour
         var em = frostParticles.emission;
         em.rateOverTime = rate;
         if (!frostParticles.isPlaying) frostParticles.Play();
+    }
+
+    void ShowHowToPlay()
+    {
+        var cObj = new GameObject("HowToCanvas");
+        _howToCanvas = cObj;
+        var cv = cObj.AddComponent<Canvas>();
+        cv.renderMode = RenderMode.ScreenSpaceOverlay;
+        cv.sortingOrder = 24;
+        var scaler = cObj.AddComponent<CanvasScaler>();
+        scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
+        scaler.referenceResolution = new Vector2(1080, 1920);
+        scaler.matchWidthOrHeight = 0.5f;
+        cObj.AddComponent<GraphicRaycaster>();
+        EnsureEventSystem();
+
+        var bg = cObj.AddComponent<Image>();
+        bg.color = new Color(0f, 0f, 0f, 0.78f);
+
+        var card = new GameObject("Card");
+        card.transform.SetParent(cObj.transform, false);
+        var crt = card.AddComponent<RectTransform>();
+        crt.anchorMin = crt.anchorMax = crt.pivot = new Vector2(0.5f, 0.5f);
+        crt.anchoredPosition = Vector2.zero;
+        crt.sizeDelta = new Vector2(920f, 700f);
+        crt.localScale = Vector3.zero;
+        var cImg = card.AddComponent<Image>();
+        cImg.color = new Color(0.07f, 0.12f, 0.20f, 0.98f);
+
+        var accent = new GameObject("Accent");
+        accent.transform.SetParent(card.transform, false);
+        var aRt = accent.AddComponent<RectTransform>();
+        aRt.anchorMin = new Vector2(0f, 1f); aRt.anchorMax = new Vector2(1f, 1f);
+        aRt.pivot = new Vector2(0.5f, 1f); aRt.anchoredPosition = Vector2.zero; aRt.sizeDelta = new Vector2(0f, 14f);
+        accent.AddComponent<Image>().color = new Color(0.45f, 0.8f, 1f);
+
+        MakeLabel(card.transform, SafeGet("minigame_polarbear_howto_title", "Hoe speel je?"),
+            new Vector2(0f, -40f), new Vector2(840f, 80f), 54, FontStyle.Bold, new Color(0.7f, 0.92f, 1f), out _);
+
+        MakeLabel(card.transform,
+            SafeGet("minigame_polarbear_howto_intro", "De ijsbeer heeft het veel te warm! Help hem afkoelen."),
+            new Vector2(0f, -150f), new Vector2(820f, 120f), 30, FontStyle.Normal, new Color(0.92f, 0.97f, 1f), out _);
+
+        MakeHowToRow(card.transform, -300f,
+            SafeGet("minigame_polarbear_howto_line1", "Blaas in de microfoon van je tablet, net als een koude wind."));
+        MakeHowToRow(card.transform, -410f,
+            SafeGet("minigame_polarbear_howto_line2", "Blijf blazen tot de ijsbeer helemaal is afgekoeld!"));
+
+        var startBtn = MakeButton(card.transform, SafeGet("btn_lets_go", "Laten we beginnen!"),
+            new Vector2(0f, 36f), new Vector2(520f, 120f), new Color(0.18f, 0.62f, 0.32f));
+        var sbRt = startBtn.GetComponent<RectTransform>();
+        sbRt.anchorMin = new Vector2(0.5f, 0f); sbRt.anchorMax = new Vector2(0.5f, 0f); sbRt.pivot = new Vector2(0.5f, 0f);
+        startBtn.onClick.AddListener(() =>
+        {
+            if (_howToCanvas != null) Destroy(_howToCanvas);
+            _howToCanvas = null;
+            _started = true;
+        });
+
+        StartCoroutine(PopInCard(crt));
+    }
+
+    void MakeHowToRow(Transform parent, float y, string text)
+    {
+        var row = new GameObject("Row");
+        row.transform.SetParent(parent, false);
+        var rRt = row.AddComponent<RectTransform>();
+        rRt.anchorMin = new Vector2(0.5f, 1f); rRt.anchorMax = new Vector2(0.5f, 1f);
+        rRt.pivot = new Vector2(0.5f, 1f); rRt.anchoredPosition = new Vector2(0f, y); rRt.sizeDelta = new Vector2(820f, 90f);
+        row.AddComponent<Image>().color = new Color(0.16f, 0.34f, 0.52f, 0.85f);
+
+        var lObj = new GameObject("Label");
+        lObj.transform.SetParent(row.transform, false);
+        var lrt = lObj.AddComponent<RectTransform>();
+        lrt.anchorMin = Vector2.zero; lrt.anchorMax = Vector2.one;
+        lrt.offsetMin = new Vector2(20f, 0f); lrt.offsetMax = new Vector2(-20f, 0f);
+        var t = lObj.AddComponent<Text>();
+        t.text = text; t.font = GetFont(); t.fontSize = 28; t.fontStyle = FontStyle.Bold;
+        t.alignment = TextAnchor.MiddleCenter; t.color = Color.white; t.raycastTarget = false;
     }
 
     void BuildUI()
@@ -246,7 +334,7 @@ public class PolarBearCoolingMinigame : MonoBehaviour
             _statusText.text = SafeGet(statusKey, fb);
             _statusText.color = _isBlowing ? new Color(0.7f, 1f, 1f) : new Color(0.85f, 0.95f, 1f);
         }
-        
+
 
         _hasStartedBefore = true;
         _completed = false;
