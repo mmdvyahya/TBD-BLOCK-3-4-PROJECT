@@ -858,51 +858,45 @@ public class LanguageManager : MonoBehaviour
             },
             ["intro_dlg_0"] = new()
             {
-                [Language.Nederlands] = "Hé daar, kleine ontdekker!",
-                [Language.Deutsch] = "Hallo da, kleiner Entdecker!",
-                [Language.English] = "Hey there, little explorer!",
+                [Language.Nederlands] = "Hé, hallo daar, ontdekker!",
+                [Language.Deutsch] = "Na, hallo da, Entdecker!",
+                [Language.English] = "Well, hello there, explorer!",
             },
             ["intro_dlg_1"] = new()
             {
-                [Language.Nederlands] = "Welkom in Wildlands... gelukkig ben jij er!",
-                [Language.Deutsch] = "Willkommen in Wildlands... zum Glück bist du da!",
-                [Language.English] = "Welcome to Wildlands... lucky you're here!",
+                [Language.Nederlands] = "Welkom in Wildlands, wat fijn dat je er bent!",
+                [Language.Deutsch] = "Willkommen in Wildlands, schön, dass du da bist!",
+                [Language.English] = "Welcome to Wildlands, I'm so glad you're here!",
             },
             ["intro_dlg_2"] = new()
             {
-                [Language.Nederlands] = "Oh nee, we hebben jouw hulp echt nodig!",
-                [Language.Deutsch] = "Oh nein, wir brauchen deine Hilfe wirklich!",
-                [Language.English] = "Oh no, we really need your help!",
+                [Language.Nederlands] = "Weet je, we kunnen jouw hulp goed gebruiken. Onze dierentuin heeft namelijk nog geen verblijven…",
+                [Language.Deutsch] = "Weißt du, wir brauchen wirklich deine Hilfe. Unser Zoo hat nämlich noch keine Gehege…",
+                [Language.English] = "You see, we really need your help. Right now our zoo doesn't have any habitats yet…",
             },
             ["intro_dlg_3"] = new()
             {
-                [Language.Nederlands] = "De dieren hebben nog geen plek om te wonen...",
-                [Language.Deutsch] = "Die Tiere haben noch keinen Platz zum Wohnen...",
-                [Language.English] = "The animals don't have anywhere to live yet...",
+                [Language.Nederlands] = "…en daardoor hebben de dieren nog geen fijne plek om te wonen.",
+                [Language.Deutsch] = "…und deshalb haben die Tiere noch kein gemütliches Zuhause.",
+                [Language.English] = "…so the animals have nowhere cozy to live.",
             },
             ["intro_dlg_4"] = new()
             {
-                [Language.Nederlands] = "Help jij ons om een dierentuin voor ze te bouwen?",
-                [Language.Deutsch] = "Hilfst du uns, einen Zoo für sie zu bauen?",
-                [Language.English] = "Will you help us build a zoo for them?",
+                [Language.Nederlands] = "Help jij ons om voor ieder dier een huis te bouwen?",
+                [Language.Deutsch] = "Hilfst du uns, für jedes Tier ein Zuhause zu bauen?",
+                [Language.English] = "Will you help us build a home for every one of them?",
             },
             ["intro_dlg_5"] = new()
             {
-                [Language.Nederlands] = "Speel leuke minigames met de dieren om munten te verdienen!",
-                [Language.Deutsch] = "Spiele lustige Minispiele mit den Tieren, um Münzen zu verdienen!",
-                [Language.English] = "Play fun minigames with the animals to earn coins!",
+                [Language.Nederlands] = "Zo werkt het: je verdient munten door de minigame van elk dier te spelen.",
+                [Language.Deutsch] = "So funktioniert's: Du verdienst Münzen, indem du die Minispiele der Tiere spielst.",
+                [Language.English] = "Here's the trick: you earn coins by playing each animal's minigame.",
             },
             ["intro_dlg_6"] = new()
             {
-                [Language.Nederlands] = "Bouw met die munten gloednieuwe verblijven!",
-                [Language.Deutsch] = "Bau mit diesen Münzen brandneue Gehege!",
-                [Language.English] = "Use those coins to build brand-new habitats!",
-            },
-            ["intro_dlg_7"] = new()
-            {
-                [Language.Nederlands] = "Klaar om de allerbeste dierenheld te worden? Tik om te beginnen!",
-                [Language.Deutsch] = "Bereit, der allerbeste Tier-Held zu werden? Tippe los!",
-                [Language.English] = "Ready to become the greatest animal hero? Tap to start!",
+                [Language.Nederlands] = "Met die munten bouw je daarna hun verblijf. Makkelijk toch?",
+                [Language.Deutsch] = "Mit diesen Münzen baust du dann ihr Gehege. Ganz einfach!",
+                [Language.English] = "Then you spend those coins to build their habitat. Easy!",
             },
 
             // Tutorial Banners

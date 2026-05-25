@@ -7368,7 +7368,7 @@ MonoBehaviour:
   showHowToPlay: 1
   normalizeItemSize: 1
   targetItemSize: 1.5
-  coinReward: 10
+  coinReward: 100
   returnSceneName: WILDLANDS world
 --- !u!4 &1518487836
 Transform:

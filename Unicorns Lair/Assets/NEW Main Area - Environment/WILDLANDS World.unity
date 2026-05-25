@@ -5762,8 +5762,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 21.604664, y: 1, z: 19.872309}
-  m_Center: {x: 2.4302006, y: 0, z: -1.7155428}
+  m_Size: {x: 23.994781, y: 2.1769023, z: 19.872309}
+  m_Center: {x: 1.2351418, y: 0.5884512, z: -1.7155428}
 --- !u!1 &257856987
 GameObject:
   m_ObjectHideFlags: 0
@@ -26643,7 +26643,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Habitat
   habitatId: racoon_habitat
   nameKey: racoon_name
-  cost: 0
+  cost: 100
   builtChild: {fileID: 732957126}
   buttonAnchor: {fileID: 976256391}
   mainCamera: {fileID: 0}
@@ -29280,12 +29280,14 @@ MonoBehaviour:
   habitatOrder:
   - beaver_habitat
   - polarbear_habitat
-  - prairiedog_habitat
   - baboon_habitat
-  showMiniTestAfterTutorial: 1
-  tutorialSkipHabitats:
-  - racoon_habitat
+  - prairiedog_habitat
   - hippo_habitat
+  - parrot_habitat
+  - otter_habitat
+  - racoon_habitat
+  showMiniTestAfterTutorial: 1
+  tutorialSkipHabitats: []
   tapIcon: {fileID: 1520866622, guid: bc0953893233fe64bbdd1ace03dcd99a, type: 3}
   glowColor: {r: 1, g: 0.85, b: 0.2, a: 1}
   glowGroundOffset: 0.05
@@ -29296,9 +29298,9 @@ MonoBehaviour:
   charsPerSecond: 38
   introDialogue:
   - localizationKey: intro_dlg_0
-    fallbackText: "H\xE9 daar, kleine ontdekker!"
+    fallbackText: "H\xE9, hallo daar, ontdekker!"
   - localizationKey: intro_dlg_1
-    fallbackText: Welkom in Wildlands... gelukkig ben jij er!
+    fallbackText: Welkom in Wildlands, wat fijn dat je er bent!
   - localizationKey: intro_dlg_2
     fallbackText: Oh nee, we hebben jouw hulp echt nodig!
   - localizationKey: intro_dlg_3
@@ -29309,8 +29311,6 @@ MonoBehaviour:
     fallbackText: Speel leuke minigames met de dieren om munten te verdienen!
   - localizationKey: intro_dlg_6
     fallbackText: Bouw met die munten gloednieuwe verblijven!
-  - localizationKey: intro_dlg_7
-    fallbackText: Klaar om de allerbeste dierenheld te worden? Tik om te beginnen!
 --- !u!4 &1303785811
 Transform:
   m_ObjectHideFlags: 0
@@ -40065,7 +40065,7 @@ Transform:
   m_GameObject: {fileID: 1814173355}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -14.93, y: 0, z: -2.58}
+  m_LocalPosition: {x: -14.93, y: 2.48, z: -2.58}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
