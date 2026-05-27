@@ -46,15 +46,14 @@ public class AnimalTimedAnimation : MonoBehaviour
     {
         isPlayingTimedAnimation = true;
 
-        animator.CrossFade(timedAnimationStateName, transitionTime);
+        animator.CrossFade(timedAnimationStateName, transitionTime, 0, 0f);
 
         yield return null;
         yield return new WaitForSeconds(transitionTime);
 
-        AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
-        float animationLength = stateInfo.length;
+        float length = animator.GetCurrentAnimatorStateInfo(0).length;
 
-        yield return new WaitForSeconds(animationLength);
+        yield return new WaitForSeconds(length);
 
         animator.CrossFade(idleStateName, transitionTime);
 
