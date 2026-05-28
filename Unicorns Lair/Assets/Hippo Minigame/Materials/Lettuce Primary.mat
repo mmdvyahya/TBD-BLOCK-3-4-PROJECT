@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-2063478814673226066
+--- !u!114 &-6803200140377106291
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,12 +20,12 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Melon
+  m_Name: Lettuce Primary
   m_Shader: {fileID: 4800000, guid: 9d716a691a5ed7a4ba2de991efc6b197, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
-  - _CEL_MODE_NONE
+  - _CEL_MODE_SINGLE
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -39,7 +39,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _Albedo:
-        m_Texture: {fileID: 2800000, guid: 7a468577cf393fa4ca7c79a1de378890, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseMap:
@@ -106,7 +106,7 @@ Material:
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
     - _BumpScale: 1
-    - _CEL_MODE: 0
+    - _CEL_MODE: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
     - _Cull: 2
@@ -115,7 +115,7 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _DstBlendAlpha: 0
-    - _Edge_Size_1: 0.05
+    - _Edge_Size_1: 0.161
     - _Edge_Size_2: 0.05
     - _EnvironmentReflections: 1
     - _GlossMapScale: 0
@@ -129,7 +129,7 @@ Material:
     - _Parallax: 0.005
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _Self_Shading_Size_1: 0.5
+    - _Self_Shading_Size_1: 0.312
     - _Self_Shading_Size_2: 0.6
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
@@ -144,9 +144,9 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Base_Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Base_Color: {r: 0.6666667, g: 0.7411765, b: 0.40784314, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Color_Shaded_1: {r: 0, g: 0, b: 0, a: 1}
+    - _Color_Shaded_1: {r: 0.5411765, g: 0.6392157, b: 0.33333334, a: 1}
     - _Color_Shaded_2: {r: 0, g: 0, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
