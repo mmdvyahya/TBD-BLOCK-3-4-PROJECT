@@ -205,6 +205,83 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 737257187606748849, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
   m_PrefabInstance: {fileID: 8322429}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &22578409
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 503741501907114632, guid: b4ca144a7c6d88044939afb52ed70193, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 503741501907114632, guid: b4ca144a7c6d88044939afb52ed70193, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 503741501907114632, guid: b4ca144a7c6d88044939afb52ed70193, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 503741501907114632, guid: b4ca144a7c6d88044939afb52ed70193, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 503741501907114632, guid: b4ca144a7c6d88044939afb52ed70193, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 503741501907114632, guid: b4ca144a7c6d88044939afb52ed70193, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 503741501907114632, guid: b4ca144a7c6d88044939afb52ed70193, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 503741501907114632, guid: b4ca144a7c6d88044939afb52ed70193, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 503741501907114632, guid: b4ca144a7c6d88044939afb52ed70193, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 503741501907114632, guid: b4ca144a7c6d88044939afb52ed70193, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2755178852986116439, guid: b4ca144a7c6d88044939afb52ed70193, type: 3}
+      propertyPath: m_Name
+      value: SceneMusicController
+      objectReference: {fileID: 0}
+    - target: {fileID: 2755178852986116439, guid: b4ca144a7c6d88044939afb52ed70193, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6617922229583528568, guid: b4ca144a7c6d88044939afb52ed70193, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6617922229583528568, guid: b4ca144a7c6d88044939afb52ed70193, type: 3}
+      propertyPath: musicData
+      value: 
+      objectReference: {fileID: 11400000, guid: 8189e7c4a569aaa4da8baaad57649da4, type: 2}
+    - target: {fileID: 6617922229583528568, guid: b4ca144a7c6d88044939afb52ed70193, type: 3}
+      propertyPath: soundData
+      value: 
+      objectReference: {fileID: 11400000, guid: 8189e7c4a569aaa4da8baaad57649da4, type: 2}
+    - target: {fileID: 6617922229583528568, guid: b4ca144a7c6d88044939afb52ed70193, type: 3}
+      propertyPath: fadeDuration
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b4ca144a7c6d88044939afb52ed70193, type: 3}
 --- !u!1001 &23315004
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11787,6 +11864,7 @@ MonoBehaviour:
   celebrationZoomDuration: 0.6
   coinReward: 100
   returnSceneName: WILDLANDS World
+  showHowToPlay: 1
 --- !u!4 &437013457
 Transform:
   m_ObjectHideFlags: 0
@@ -26358,6 +26436,7 @@ GameObject:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 22578409}
   - {fileID: 1860465842}
   - {fileID: 1994654728}
   - {fileID: 1303924169}

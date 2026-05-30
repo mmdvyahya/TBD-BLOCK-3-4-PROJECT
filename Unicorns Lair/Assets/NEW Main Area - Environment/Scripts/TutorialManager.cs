@@ -57,6 +57,8 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private string speakerNameFallback = "Boswachter";
     [Tooltip("Characters per second typed out.")]
     [SerializeField] private float charsPerSecond = 38f;
+    [Tooltip("Shared voice sequence asset that plays on every new intro dialogue line.")]
+    [SerializeField] private SoundData introDialogueSoundData;
     [SerializeField]
     private DialogueLine[] introDialogue = new DialogueLine[]
     {
@@ -687,7 +689,16 @@ public class TutorialManager : MonoBehaviour
     void StartTypingCurrentLine()
     {
         if (_typeCoroutine != null) StopCoroutine(_typeCoroutine);
+        PlayIntroVoiceLine();
         _typeCoroutine = StartCoroutine(TypeLine(_dialogueIndex));
+    }
+
+    void PlayIntroVoiceLine()
+    {
+        if (introDialogueSoundData == null || SoundManager.Instance == null) return;
+
+        SoundManager.Instance.FadeOut(introDialogueSoundData, 0.1f);
+        SoundManager.Instance.Play(introDialogueSoundData);
     }
 
     IEnumerator TypeLine(int index)

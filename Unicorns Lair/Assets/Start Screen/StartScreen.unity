@@ -4474,10 +4474,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::VolumeSettings
   mixer: {fileID: 24100000, guid: 6ee5bd016cb09514ea38d5c2ce6d67e2, type: 2}
   masterParameter: Master
+  masterDefault: 50
   musicParameter: Music
+  musicDefault: 100
   sfxParameter: Sfx
+  sfxDefault: 100
   voiceParameter: Voice
+  voiceDefault: 100
   ambienceParameter: Ambience
+  ambienceDefault: 100
 --- !u!4 &860042213
 Transform:
   m_ObjectHideFlags: 0
@@ -8657,6 +8662,10 @@ PrefabInstance:
       propertyPath: musicData
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 6617922229583528568, guid: b4ca144a7c6d88044939afb52ed70193, type: 3}
+      propertyPath: soundData
+      value: 
+      objectReference: {fileID: 11400000, guid: 0da32ec2e58505f44aa36ad375c05ded, type: 2}
     - target: {fileID: 6617922229583528568, guid: b4ca144a7c6d88044939afb52ed70193, type: 3}
       propertyPath: fadeDuration
       value: 0
@@ -13203,6 +13212,7 @@ GameObject:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 1654014583}
   - {fileID: 380465338}
   - {fileID: 549760260}
   - {fileID: 1227338685}
@@ -13215,6 +13225,5 @@ SceneRoots:
   - {fileID: 380733284}
   - {fileID: 1204247029}
   - {fileID: 3032508279653634339}
-  - {fileID: 1654014583}
   - {fileID: 4167355987111038364}
   - {fileID: 860042213}

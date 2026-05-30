@@ -5,9 +5,22 @@ using UnityEngine.Audio;
 [CreateAssetMenu(fileName = "NewSoundData", menuName = "Audio/Sound Data")]
 public class SoundData : ScriptableObject
 {
+    public enum ClipPlayMode { Random, Sequential, RandomNoRepeat }
+
     [Header("Clips")]
     [Tooltip("Add multiple clips for random variation on each play.")]
     public AudioClip[] clips;
+    public ClipPlayMode playMode = ClipPlayMode.Random;
+
+    int index = 0;
+    int lastIndex = -1;
+
+    // Reset the sequence so it starts fresh each time the asset is enabled
+    void OnEnable()
+    {
+        index = 0;
+        lastIndex = -1;
+    }
 
     [Header("Mixer routing")]
     [Tooltip("Which AudioMixerGroup this sound routes through")]
@@ -25,7 +38,7 @@ public class SoundData : ScriptableObject
 
     [Header("Behaviour")]
     public bool loop = false;
-    [Tooltip("If true, a new play call won't restart the sound if it's already playing.")]
+    [Tooltip("If true, a new play call won't restart the sound if it's already playing. Using WAV files is recommended for this feature.")]
     public bool preventDuplicates = false;
 
     [Header("Spatial")]
@@ -41,7 +54,25 @@ public class SoundData : ScriptableObject
     public AudioClip GetClip()
     {
         if (clips == null || clips.Length == 0) return null;
-        return clips[Random.Range(0, clips.Length)];
+        if (clips.Length == 1) return clips[0];
+
+        switch (playMode)
+        {
+            case ClipPlayMode.Sequential: // Plays clips in order
+                var clip = clips[index];
+                index = (index + 1) % clips.Length;
+                return clip;
+
+            case ClipPlayMode.RandomNoRepeat: // Plays clips randomly but won't repeat the same clip twice in a row
+                int next;
+                do { next = Random.Range(0, clips.Length); }
+                while (next == lastIndex && clips.Length > 1);
+                lastIndex = next;
+                return clips[next];
+
+            default: // Random
+                return clips[Random.Range(0, clips.Length)];
+        }
     }
 
     // Returns volume with optional random variance applied

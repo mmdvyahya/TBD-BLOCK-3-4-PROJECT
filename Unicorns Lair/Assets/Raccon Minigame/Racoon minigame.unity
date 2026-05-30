@@ -18,8 +18,8 @@ RenderSettings:
   m_FogColor: {r: 0.6784314, g: 0.83921576, b: 0.87843144, a: 1}
   m_FogMode: 1
   m_FogDensity: 0.01
-  m_LinearFogStart: 15
-  m_LinearFogEnd: 200
+  m_LinearFogStart: 10
+  m_LinearFogEnd: 50
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
@@ -5329,7 +5329,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -12416,6 +12416,83 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5566359858545930202, guid: 617cf380f10c48a409585e08ef187279, type: 3}
   m_PrefabInstance: {fileID: 2036311430}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2064708530
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 503741501907114632, guid: b4ca144a7c6d88044939afb52ed70193, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 503741501907114632, guid: b4ca144a7c6d88044939afb52ed70193, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 503741501907114632, guid: b4ca144a7c6d88044939afb52ed70193, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 503741501907114632, guid: b4ca144a7c6d88044939afb52ed70193, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 503741501907114632, guid: b4ca144a7c6d88044939afb52ed70193, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 503741501907114632, guid: b4ca144a7c6d88044939afb52ed70193, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 503741501907114632, guid: b4ca144a7c6d88044939afb52ed70193, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 503741501907114632, guid: b4ca144a7c6d88044939afb52ed70193, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 503741501907114632, guid: b4ca144a7c6d88044939afb52ed70193, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 503741501907114632, guid: b4ca144a7c6d88044939afb52ed70193, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2755178852986116439, guid: b4ca144a7c6d88044939afb52ed70193, type: 3}
+      propertyPath: m_Name
+      value: SceneMusicController
+      objectReference: {fileID: 0}
+    - target: {fileID: 2755178852986116439, guid: b4ca144a7c6d88044939afb52ed70193, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6617922229583528568, guid: b4ca144a7c6d88044939afb52ed70193, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6617922229583528568, guid: b4ca144a7c6d88044939afb52ed70193, type: 3}
+      propertyPath: musicData
+      value: 
+      objectReference: {fileID: 11400000, guid: 8189e7c4a569aaa4da8baaad57649da4, type: 2}
+    - target: {fileID: 6617922229583528568, guid: b4ca144a7c6d88044939afb52ed70193, type: 3}
+      propertyPath: soundData
+      value: 
+      objectReference: {fileID: 11400000, guid: 8189e7c4a569aaa4da8baaad57649da4, type: 2}
+    - target: {fileID: 6617922229583528568, guid: b4ca144a7c6d88044939afb52ed70193, type: 3}
+      propertyPath: fadeDuration
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b4ca144a7c6d88044939afb52ed70193, type: 3}
 --- !u!1001 &2066497552
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12909,6 +12986,7 @@ PrefabInstance:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 2064708530}
   - {fileID: 1860465842}
   - {fileID: 1994654728}
   - {fileID: 1303924169}

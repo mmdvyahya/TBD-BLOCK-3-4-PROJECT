@@ -3148,6 +3148,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5676759397104717457, guid: daedb8d1e23d5af45aad1d142c5d545c, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 09c6e71606959994eb43aea77e6549bf, type: 2}
+    - target: {fileID: 5676759397104717457, guid: daedb8d1e23d5af45aad1d142c5d545c, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 1553d8c12bb22eb4fb129afa5064022f, type: 2}
+    - target: {fileID: 6180938599427878724, guid: daedb8d1e23d5af45aad1d142c5d545c, type: 3}
+      propertyPath: m_Name
+      value: Jungle Tree (1)
+      objectReference: {fileID: 0}
     - target: {fileID: 6813042733600896510, guid: daedb8d1e23d5af45aad1d142c5d545c, type: 3}
       propertyPath: m_LocalScale.x
       value: 3.7931
@@ -3199,18 +3211,6 @@ PrefabInstance:
     - target: {fileID: 6813042733600896510, guid: daedb8d1e23d5af45aad1d142c5d545c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5676759397104717457, guid: daedb8d1e23d5af45aad1d142c5d545c, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 09c6e71606959994eb43aea77e6549bf, type: 2}
-    - target: {fileID: 5676759397104717457, guid: daedb8d1e23d5af45aad1d142c5d545c, type: 3}
-      propertyPath: 'm_Materials.Array.data[1]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 1553d8c12bb22eb4fb129afa5064022f, type: 2}
-    - target: {fileID: 6180938599427878724, guid: daedb8d1e23d5af45aad1d142c5d545c, type: 3}
-      propertyPath: m_Name
-      value: Jungle Tree (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -13223,6 +13223,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5676759397104717457, guid: daedb8d1e23d5af45aad1d142c5d545c, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 09c6e71606959994eb43aea77e6549bf, type: 2}
+    - target: {fileID: 5676759397104717457, guid: daedb8d1e23d5af45aad1d142c5d545c, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 1553d8c12bb22eb4fb129afa5064022f, type: 2}
+    - target: {fileID: 6180938599427878724, guid: daedb8d1e23d5af45aad1d142c5d545c, type: 3}
+      propertyPath: m_Name
+      value: Jungle Tree (2)
+      objectReference: {fileID: 0}
     - target: {fileID: 6813042733600896510, guid: daedb8d1e23d5af45aad1d142c5d545c, type: 3}
       propertyPath: m_LocalScale.x
       value: 2.6196666
@@ -13274,18 +13286,6 @@ PrefabInstance:
     - target: {fileID: 6813042733600896510, guid: daedb8d1e23d5af45aad1d142c5d545c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5676759397104717457, guid: daedb8d1e23d5af45aad1d142c5d545c, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 09c6e71606959994eb43aea77e6549bf, type: 2}
-    - target: {fileID: 5676759397104717457, guid: daedb8d1e23d5af45aad1d142c5d545c, type: 3}
-      propertyPath: 'm_Materials.Array.data[1]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 1553d8c12bb22eb4fb129afa5064022f, type: 2}
-    - target: {fileID: 6180938599427878724, guid: daedb8d1e23d5af45aad1d142c5d545c, type: 3}
-      propertyPath: m_Name
-      value: Jungle Tree (2)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

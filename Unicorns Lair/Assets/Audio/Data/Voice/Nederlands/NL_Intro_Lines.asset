@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c78abb296699c84f8462c27c68afdf0, type: 3}
+  m_Name: NL_Intro_Lines
+  m_EditorClassIdentifier: Assembly-CSharp::SoundData
+  clips:
+  - {fileID: 8300000, guid: 84f85dabf4c103d43a7a3dce99919d4b, type: 3}
+  - {fileID: 8300000, guid: 6a39891353d22c845a65b3463dbf2ec8, type: 3}
+  - {fileID: 8300000, guid: 9b0ff3fc6ac599947b14f61e83cca57a, type: 3}
+  - {fileID: 8300000, guid: 67e382f9ed1e4b44a9a50d2f0172fe98, type: 3}
+  - {fileID: 8300000, guid: 2de9b22e298cc794eab5f424cf4a33c8, type: 3}
+  - {fileID: 8300000, guid: fdf99907ed128f646a716efbec1fb511, type: 3}
+  - {fileID: 8300000, guid: 09b21474d36116c429d240fd8a6984ef, type: 3}
+  playMode: 1
+  mixerGroup: {fileID: -1723648475596354334, guid: 6ee5bd016cb09514ea38d5c2ce6d67e2, type: 2}
+  volume: 1
+  volumeVariance: 0
+  pitch: 1
+  pitchVariance: 0
+  loop: 0
+  preventDuplicates: 1
+  spatialBlend: 0
+  minDistance: 1
+  maxDistance: 50
+  rolloffMode: 1

@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: Music_World
   m_EditorClassIdentifier: Assembly-CSharp::SoundData
   clips:
-  - {fileID: 8300000, guid: b49fa178274d9e1418ab4f898dda6cd6, type: 3}
+  - {fileID: 8300000, guid: 54a64602312ed0b428b2f1af9e7ce8ba, type: 3}
+  playMode: 0
   mixerGroup: {fileID: 6404521444401886528, guid: 6ee5bd016cb09514ea38d5c2ce6d67e2, type: 2}
-  volume: 0.41
+  volume: 1
   volumeVariance: 0
   pitch: 1
   pitchVariance: 0
