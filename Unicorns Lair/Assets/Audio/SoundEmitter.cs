@@ -14,14 +14,19 @@ public class SoundEmitter : MonoBehaviour
 
     public void Play()
     {
+        if (soundData == null || SoundManager.Instance == null) return; // Prevents errors in case SoundManager is missing from the scene
+
         if (use3DPosition)
             SoundManager.Instance.Play(soundData, transform.position);
         else
             SoundManager.Instance.Play(soundData);
     }
 
-    public void Stop() => SoundManager.Instance.Stop(soundData);
-
+    public void Stop()
+    {
+        if (soundData == null || SoundManager.Instance == null) return; // Prevents errors in case SoundManager is missing from the scene
+        SoundManager.Instance.Stop(soundData);
+    }
     void OnDrawGizmosSelected()
     {
         if (soundData == null || soundData.spatialBlend == 0f) return;
