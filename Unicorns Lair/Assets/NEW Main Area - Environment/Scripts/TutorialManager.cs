@@ -72,7 +72,14 @@ public class TutorialManager : MonoBehaviour
     [Tooltip("Characters per second typed out.")]
     [SerializeField] private float charsPerSecond = 38f;
     [Tooltip("Shared voice sequence asset that plays on every new intro dialogue line.")]
+    [Header("Dialogue Voice Lines")]
     [SerializeField] private SoundData introDialogueSoundData;
+    [SerializeField] private SoundData welcomeBackSoundData;
+    [SerializeField] private SoundData tutorialCompleteSoundData;
+    [SerializeField] private SoundData randomFactSoundData;
+    private SoundData _activeVoiceSound;
+    private int _activeVoiceClipIndex = -1;
+
     [SerializeField]
     private DialogueLine[] introDialogue = new DialogueLine[]
     {
@@ -167,7 +174,7 @@ public class TutorialManager : MonoBehaviour
             ApplyUnlocks();
             HidePointer();
             HideBanner();
-            ShowDialogue(introDialogue, OnIntroDialogueComplete);
+            ShowDialogue(introDialogue, OnIntroDialogueComplete, introDialogueSoundData);
         }
         else
         {
@@ -176,7 +183,9 @@ public class TutorialManager : MonoBehaviour
                 _welcomedThisSession = true;
                 HidePointer();
                 HideBanner();
-                ShowDialogue(GetWelcomeBackDialogue(), ResumeFromState);
+                var options = GetWelcomeBackDialogue();
+                int index = Random.Range(0, options.Length);
+                ShowDialogue(new DialogueLine[] { options[index] }, ResumeFromState, welcomeBackSoundData, index);
             }
             else ResumeFromState();
         }
@@ -334,7 +343,8 @@ public class TutorialManager : MonoBehaviour
                 HidePointer();
                 HideGlow();
                 StopPulsing();
-                ShowDialogue(dlg, () => EnterSubState(SubState.WaitingForInspect));
+                SoundData animalSound = GetAnimalSoundData(habitatOrder[_currentStep]);
+                ShowDialogue(dlg, () => EnterSubState(SubState.WaitingForInspect), animalSound);
             }
             else EnterSubState(SubState.WaitingForInspect);
         }
@@ -380,7 +390,7 @@ public class TutorialManager : MonoBehaviour
             PlayerPrefs.SetInt(PREF_SUB, (int)SubState.Complete);
             PlayerPrefs.Save();
 
-            ShowDialogue(GetTutorialCompleteDialogue(), OnTutorialCompleteDialogueDone);
+            ShowDialogue(GetTutorialCompleteDialogue(), OnTutorialCompleteDialogueDone, tutorialCompleteSoundData);
 
             return;
         }
@@ -633,8 +643,11 @@ public class TutorialManager : MonoBehaviour
         if (_pointerObj != null) _pointerObj.SetActive(false);
     }
 
-    void ShowDialogue(DialogueLine[] lines, System.Action onComplete)
+    void ShowDialogue(DialogueLine[] lines, System.Action onComplete, SoundData voiceSound = null, int clipIndex = -1)
     {
+        _activeVoiceSound = voiceSound;
+        _activeVoiceClipIndex = clipIndex;
+
         if (lines == null || lines.Length == 0)
         {
             onComplete?.Invoke();
@@ -768,16 +781,21 @@ public class TutorialManager : MonoBehaviour
     void StartTypingCurrentLine()
     {
         if (_typeCoroutine != null) StopCoroutine(_typeCoroutine);
-        PlayIntroVoiceLine();
+        PlayVoiceLine(_activeVoiceSound);
         _typeCoroutine = StartCoroutine(TypeLine(_dialogueIndex));
     }
 
-    void PlayIntroVoiceLine()
+    void PlayVoiceLine(SoundData data)
     {
-        if (introDialogueSoundData == null || SoundManager.Instance == null) return;
+        if (data == null || SoundManager.Instance == null) return;
+        SoundManager.Instance.Stop(data);
 
-        SoundManager.Instance.FadeOut(introDialogueSoundData, 0.1f);
-        SoundManager.Instance.Play(introDialogueSoundData);
+        if (_activeVoiceClipIndex >= 0)
+            SoundManager.Instance.PlayClipAt(data, _activeVoiceClipIndex);
+        else
+            SoundManager.Instance.Play(data);
+
+        _activeVoiceClipIndex = -1;
     }
 
     IEnumerator TypeLine(int index)
@@ -910,6 +928,35 @@ public class TutorialManager : MonoBehaviour
         ResumeFromState();
     }
 
+    [Header("Animal Dialogue Voice Lines")]
+    [SerializeField] private SoundData beaverDialogueSoundData;
+    [SerializeField] private SoundData polarBearDialogueSoundData;
+    [SerializeField] private SoundData raccoonDialogueSoundData;
+    [SerializeField] private SoundData prairieDogDialogueSoundData;
+    [SerializeField] private SoundData baboonDialogueSoundData;
+    [SerializeField] private SoundData hippoDialogueSoundData;
+
+    SoundData GetAnimalSoundData(string habitatId)
+    {
+        switch (habitatId)
+        {
+            case "beaver_habitat":    
+                return beaverDialogueSoundData;
+            case "polarbear_habitat": 
+                return polarBearDialogueSoundData;
+            case "racoon_habitat":    
+                return raccoonDialogueSoundData;
+            case "prairiedog_habitat":
+                return prairieDogDialogueSoundData;
+            case "baboon_habitat":    
+                return baboonDialogueSoundData;
+            case "hippo_habitat":     
+                return hippoDialogueSoundData;
+            default: 
+                return null;
+        }
+    }
+
     DialogueLine[] GetAnimalDialogue(string habitatId)
     {
         string meetKey, factKey, meetFb, factFb;
@@ -995,14 +1042,13 @@ public class TutorialManager : MonoBehaviour
 
     DialogueLine[] GetWelcomeBackDialogue()
     {
-        var options = new DialogueLine[]
+        return new DialogueLine[]
         {
             new DialogueLine { localizationKey = "welcome_back_0", fallbackText = "Welkom terug, ontdekker! De dieren hebben je gemist." },
             new DialogueLine { localizationKey = "welcome_back_1", fallbackText = "Welkom terug! Kijk eens hoe ver onze dierentuin al is gekomen. Daar mag je trots op zijn!" },
             new DialogueLine { localizationKey = "welcome_back_2", fallbackText = "Welkom terug! Neem rustig de tijd om even rond te kijken." },
             new DialogueLine { localizationKey = "welcome_back_3", fallbackText = "Welkom terug! Wanneer je er klaar voor bent, is er altijd nog een verblijf om te bouwen." },
         };
-        return new DialogueLine[] { options[Random.Range(0, options.Length)] };
     }
 
     bool CanShowRandomFact()
@@ -1023,8 +1069,8 @@ public class TutorialManager : MonoBehaviour
         EnsureFactBank();
         if (_factBank == null || _factBank.Length == 0) { _factTimer = factMaxInterval; return; }
 
-        var line = _factBank[Random.Range(0, _factBank.Length)];
-        ShowDialogue(new DialogueLine[] { line }, ScheduleNextFact);
+        int index = Random.Range(0, _factBank.Length);
+        ShowDialogue(new DialogueLine[] { _factBank[index] }, ScheduleNextFact, randomFactSoundData, index);
     }
 
     void EnsureFactBank()

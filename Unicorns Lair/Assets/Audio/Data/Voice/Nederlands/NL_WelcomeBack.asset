@@ -10,17 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1c78abb296699c84f8462c27c68afdf0, type: 3}
-  m_Name: NL_Intro_Lines
+  m_Name: NL_WelcomeBack
   m_EditorClassIdentifier: Assembly-CSharp::SoundData
   clips:
-  - {fileID: 8300000, guid: 84f85dabf4c103d43a7a3dce99919d4b, type: 3}
-  - {fileID: 8300000, guid: 6a39891353d22c845a65b3463dbf2ec8, type: 3}
-  - {fileID: 8300000, guid: 9b0ff3fc6ac599947b14f61e83cca57a, type: 3}
-  - {fileID: 8300000, guid: 67e382f9ed1e4b44a9a50d2f0172fe98, type: 3}
-  - {fileID: 8300000, guid: 2de9b22e298cc794eab5f424cf4a33c8, type: 3}
-  - {fileID: 8300000, guid: fdf99907ed128f646a716efbec1fb511, type: 3}
-  - {fileID: 8300000, guid: 09b21474d36116c429d240fd8a6984ef, type: 3}
-  playMode: 1
+  - {fileID: 8300000, guid: 860656519f61cc24f837549aa77c5b43, type: 3}
+  - {fileID: 8300000, guid: 1ebe2ecad360c0e48abe56c0bddb7ca0, type: 3}
+  - {fileID: 8300000, guid: 38a08dc38e3a39b479f596d6fcb60b7a, type: 3}
+  - {fileID: 8300000, guid: e765589e3175f3d4692acd4e868dd09d, type: 3}
+  playMode: 0
   mixerGroup: {fileID: -1723648475596354334, guid: 6ee5bd016cb09514ea38d5c2ce6d67e2, type: 2}
   volume: 1
   volumeVariance: 0

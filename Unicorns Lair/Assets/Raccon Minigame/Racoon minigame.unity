@@ -3746,7 +3746,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 098dad53cd3a25b4d8402d672c9fa96f, type: 3}
       propertyPath: 'm_Materials.Array.data[1]'
       value: 
-      objectReference: {fileID: 2100000, guid: 569504cf00e6b4941b8fbd64f1627fbd, type: 2}
+      objectReference: {fileID: 2100000, guid: 8d93166a9823c734eb95965727d6ed1f, type: 2}
     - target: {fileID: 919132149155446097, guid: 098dad53cd3a25b4d8402d672c9fa96f, type: 3}
       propertyPath: m_Name
       value: Jam jar bottem (jar)
@@ -12490,7 +12490,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2755178852986116439, guid: b4ca144a7c6d88044939afb52ed70193, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6617922229583528568, guid: b4ca144a7c6d88044939afb52ed70193, type: 3}
       propertyPath: m_Enabled

@@ -72,6 +72,44 @@ public class SoundManager : MonoBehaviour
         }
     }
 
+    // Play a specific clip by index, used when the caller needs to match a random choice
+    public void PlayClipAt(SoundData data, int clipIndex, Vector3? position = null)
+    {
+        if (data == null) return;
+        if (clipIndex < 0 || clipIndex >= data.clips.Length) return;
+
+        if (data.preventDuplicates && playingSounds.Contains(data)) return;
+
+        AudioClip clip = data.clips[clipIndex];
+        if (clip == null) return;
+
+        AudioSource source = GetAvailableSource();
+        if (source == null) return;
+
+        source.clip = clip;
+        source.outputAudioMixerGroup = data.mixerGroup;
+        source.volume = data.GetVolume();
+        source.pitch = data.GetPitch();
+        source.loop = data.loop;
+        source.spatialBlend = data.spatialBlend;
+        source.minDistance = data.minDistance;
+        source.maxDistance = data.maxDistance;
+        source.rolloffMode = data.rolloffMode;
+
+        if (position.HasValue)
+            source.transform.position = position.Value;
+
+        source.Play();
+        playingSounds.Add(data);
+        playingSources[data] = source;
+
+        if (!data.loop)
+        {
+            var coroutine = StartCoroutine(ReleaseAfter(data, source, clip.length));
+            releaseCoroutines[data] = coroutine;
+        }
+    }
+
     // Stop a currently playing sound immediately
     public void Stop(SoundData data)
     {

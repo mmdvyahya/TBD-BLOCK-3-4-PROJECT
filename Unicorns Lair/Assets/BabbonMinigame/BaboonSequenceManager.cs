@@ -566,14 +566,11 @@ public class BaboonSequenceManager : MonoBehaviour
 
     void TriggerButtonAnimation(BaboonSequenceButton button)
     {
-        if (baboonVisual == null || button == null)
+        // Prevents errors if parameters aren't set up correctly
+        if (baboonVisual == null || button == null || string.IsNullOrWhiteSpace(button.animationTrigger))
             return;
 
-        string trigger = button.animationTrigger;
-        if (string.IsNullOrWhiteSpace(trigger))
-            return;
-
-        baboonAnimator.SetTrigger(trigger);
+        baboonAnimator.SetTrigger(button.animationTrigger);
     }
 
     void TriggerBaboonAnimation(string trigger)
