@@ -29,6 +29,20 @@ public class TutorialManager : MonoBehaviour
     [Header("Mini Usability Test")]
     [SerializeField] private bool showMiniTestAfterTutorial = true;
 
+    [Header("Random Animal Facts")]
+    [Tooltip("After the tutorial is complete, the zookeeper pops in with a random fact now and then.")]
+    [SerializeField] private bool enableRandomFacts = true;
+    [Tooltip("Seconds to wait before the first random fact (and after each return to the zoo).")]
+    [SerializeField] private float firstFactDelay = 25f;
+    [SerializeField] private float factMinInterval = 35f;
+    [SerializeField] private float factMaxInterval = 70f;
+
+    [Header("Welcome Back")]
+    [Tooltip("When the game is reopened with an existing save, the zookeeper greets the player with a random welcome-back line.")]
+    [SerializeField] private bool enableWelcomeBack = true;
+
+    private static bool _welcomedThisSession;
+
     private GameObject _miniTestOverlay;
     private int _miniTestQuestionIndex;
     private int[] _miniTestAnswers;
@@ -83,12 +97,17 @@ public class TutorialManager : MonoBehaviour
     private GameObject _continueIndicator;
     private Coroutine _typeCoroutine;
     private Coroutine _indicatorPulseCoroutine;
+    private DialogueLine[] _activeDialogue;
+    private System.Action _onDialogueComplete;
 
     private int _currentStep;
     private bool _hasSeenIntro;
     private bool _tutorialFinished;
     private SubState _sub;
     private float _inspectTimer;
+    private float _factTimer = -1f;
+    private bool _cardOpen;
+    private DialogueLine[] _factBank;
 
     private Canvas _tutorialCanvas;
     private GameObject _bannerObj;
@@ -135,6 +154,7 @@ public class TutorialManager : MonoBehaviour
         ApplyUnlocks();
 
         GameStateManager.Instance.ItemBuilt += OnItemBuilt;
+        GameStateManager.Instance.ItemBought += OnItemBought;
         LanguageManager.Instance.LanguageChanged += OnLanguageChanged;
         HabitatInteractionController.CardShown += OnCardShown;
         HabitatInteractionController.CardClosed += OnCardClosed;
@@ -147,14 +167,27 @@ public class TutorialManager : MonoBehaviour
             ApplyUnlocks();
             HidePointer();
             HideBanner();
-            ShowIntroDialogue();
+            ShowDialogue(introDialogue, OnIntroDialogueComplete);
         }
-        else ResumeFromState();
+        else
+        {
+            if (enableWelcomeBack && !_welcomedThisSession)
+            {
+                _welcomedThisSession = true;
+                HidePointer();
+                HideBanner();
+                ShowDialogue(GetWelcomeBackDialogue(), ResumeFromState);
+            }
+            else ResumeFromState();
+        }
+
+        if (_tutorialFinished && enableRandomFacts) _factTimer = firstFactDelay;
     }
 
     void OnDestroy()
     {
         if (GameStateManager.Instance != null) GameStateManager.Instance.ItemBuilt -= OnItemBuilt;
+        if (GameStateManager.Instance != null) GameStateManager.Instance.ItemBought -= OnItemBought;
         if (LanguageManager.Instance != null) LanguageManager.Instance.LanguageChanged -= OnLanguageChanged;
         HabitatInteractionController.CardShown -= OnCardShown;
         HabitatInteractionController.CardClosed -= OnCardClosed;
@@ -191,7 +224,12 @@ public class TutorialManager : MonoBehaviour
         switch (_sub)
         {
             case SubState.WaitingForBuy: EnterSubState(SubState.WaitingForBuy); break;
-            case SubState.Building: EnterSubState(SubState.WaitingForBuy); break;
+            case SubState.Building:
+                if (GameStateManager.Instance.IsBuilt(habitatOrder[_currentStep]))
+                    EnterSubState(SubState.WaitingForTap);
+                else
+                    EnterSubState(SubState.Building);
+                break;
             case SubState.WaitingForTap: EnterSubState(SubState.WaitingForTap); break;
             default: EnterSubState(SubState.WaitingForTap); break;
         }
@@ -218,13 +256,13 @@ public class TutorialManager : MonoBehaviour
                 if (habitat != null) _pointerTarget = habitat.GetButtonAnchor();
                 ShowPointer(useTapIcon: false);
                 ShowBanner(_currentStep == 0
-                    ? SafeGet("tutorial_first_buy", "Tik op de groene knop om je eerste verblijf te bouwen!")
-                    : SafeGet("tutorial_next_buy", "Goed gedaan! Bouw nu het volgende verblijf!"));
+                    ? SafeGet("tutorial_first_buy", "Tik op de groene knop om je allereerste verblijf te bouwen!")
+                    : SafeGet("tutorial_next_buy", "Geweldig! Laten we een huis bouwen voor het volgende dier!"));
                 break;
 
             case SubState.Building:
                 HidePointer();
-                ShowBanner(SafeGet("tutorial_building", "Even wachten... je verblijf wordt gebouwd!"));
+                ShowBanner(SafeGet("tutorial_building", "Daar komt 'ie... je verblijf wordt gebouwd!"));
                 break;
 
             case SubState.WaitingForTap:
@@ -234,33 +272,42 @@ public class TutorialManager : MonoBehaviour
                     SpawnGlowAroundHabitat(habitat);
                 }
                 ShowPointer(useTapIcon: true);
-                ShowBanner(SafeGet("tutorial_tap_habitat", "Tik op het verblijf om het dier te ontmoeten!"));
+                ShowBanner(SafeGet("tutorial_tap_habitat", "Tik nu op het verblijf om je nieuwe dier te ontmoeten!"));
                 break;
 
             case SubState.WaitingForInspect:
                 HidePointer();
-                ShowBanner(SafeGet("tutorial_press_inspect", "Druk op Inspecteren om rond te kijken!"));
+                ShowBanner(SafeGet("tutorial_press_inspect", "Druk op de knop Inspecteren om alles van dichtbij te bekijken!"));
                 StartPulsing(_pulsingCardInspect);
                 break;
 
             case SubState.Inspecting:
                 HidePointer();
-                ShowBanner(SafeGet("tutorial_inspecting", "Kijk goed rond! Kantel de tablet of gebruik WASD."));
+                ShowBanner(SafeGet("tutorial_inspecting", "Kijk maar goed rond! Kantel je tablet om overal naar te kijken."));
                 _inspectTimer = inspectionPromptSeconds;
                 break;
 
             case SubState.WaitingForBack:
                 HidePointer();
-                ShowBanner(SafeGet("tutorial_press_back", "Druk op Terug om verder te gaan!"));
+                ShowBanner(SafeGet("tutorial_press_back", "Klaar met kijken? Druk op de knop Terug om verder te gaan!"));
                 StartPulsing(_pulsingInspectBack);
                 break;
 
             case SubState.WaitingForMinigame:
                 HidePointer();
-                ShowBanner(SafeGet("tutorial_press_minigame", "Speel een minigame om munten te verdienen!"));
+                ShowBanner(SafeGet("tutorial_press_minigame", "Speel nu de minigame om munten te verdienen!"));
                 StartPulsing(_pulsingCardMinigame);
                 break;
         }
+    }
+
+    void OnItemBought(string itemId)
+    {
+        if (_tutorialFinished) return;
+        if (_currentStep >= habitatOrder.Length) return;
+        if (habitatOrder[_currentStep] != itemId) return;
+        if (_sub != SubState.WaitingForBuy) return;
+        EnterSubState(SubState.Building);
     }
 
     void OnItemBuilt(string itemId)
@@ -273,16 +320,30 @@ public class TutorialManager : MonoBehaviour
 
     void OnCardShown(Button back, Button inspect, Button minigame, InspectableHabitat habitat)
     {
+        _cardOpen = true;
         _pulsingCardBack = back;
         _pulsingCardInspect = inspect;
         _pulsingCardMinigame = minigame;
 
-        if (_sub == SubState.WaitingForTap) EnterSubState(SubState.WaitingForInspect);
+        if (_sub == SubState.WaitingForTap)
+        {
+            var dlg = (_currentStep < habitatOrder.Length) ? GetAnimalDialogue(habitatOrder[_currentStep]) : null;
+            if (dlg != null && dlg.Length > 0)
+            {
+                HideBanner();
+                HidePointer();
+                HideGlow();
+                StopPulsing();
+                ShowDialogue(dlg, () => EnterSubState(SubState.WaitingForInspect));
+            }
+            else EnterSubState(SubState.WaitingForInspect);
+        }
         else if (_sub == SubState.WaitingForBack) EnterSubState(SubState.WaitingForMinigame);
     }
 
     void OnCardClosed()
     {
+        _cardOpen = false;
         _pulsingCardBack = _pulsingCardInspect = _pulsingCardMinigame = null;
         StopPulsing();
     }
@@ -305,23 +366,21 @@ public class TutorialManager : MonoBehaviour
         _currentStep++;
         PlayerPrefs.SetInt(PREF_STEP, _currentStep);
 
-        if(_currentStep >= habitatOrder.Length)
-{
+        if (_currentStep >= habitatOrder.Length)
+        {
             _tutorialFinished = true;
-
-            ShowBanner(SafeGet("tutorial_complete", "Geweldig! Alle dieren hebben een thuis. Speel verder!"));
-            StartCoroutine(HideBannerAfter(4f));
 
             HidePointer();
             HideGlow();
+            HideBanner();
+            StopPulsing();
 
             ApplyUnlocks();
 
             PlayerPrefs.SetInt(PREF_SUB, (int)SubState.Complete);
             PlayerPrefs.Save();
 
-            if (showMiniTestAfterTutorial)
-                StartCoroutine(ShowMiniTestAfterDelay(1.5f));
+            ShowDialogue(GetTutorialCompleteDialogue(), OnTutorialCompleteDialogueDone);
 
             return;
         }
@@ -331,6 +390,16 @@ public class TutorialManager : MonoBehaviour
 
     void Update()
     {
+        if (_tutorialFinished && enableRandomFacts && _factTimer > 0f)
+        {
+            _factTimer -= Time.deltaTime;
+            if (_factTimer <= 0f)
+            {
+                if (CanShowRandomFact()) ShowRandomFact();
+                else _factTimer = 5f;
+            }
+        }
+
         if (_sub == SubState.Inspecting && _inspectTimer > 0f)
         {
             _inspectTimer -= Time.deltaTime;
@@ -564,11 +633,21 @@ public class TutorialManager : MonoBehaviour
         if (_pointerObj != null) _pointerObj.SetActive(false);
     }
 
-    void ShowIntroDialogue()
+    void ShowDialogue(DialogueLine[] lines, System.Action onComplete)
     {
+        if (lines == null || lines.Length == 0)
+        {
+            onComplete?.Invoke();
+            return;
+        }
+
+        _activeDialogue = lines;
+        _onDialogueComplete = onComplete;
         _dialogueIndex = 0;
         _typing = false;
         _skipTyping = false;
+
+        if (_dialogueOverlay != null) Destroy(_dialogueOverlay);
 
         _dialogueOverlay = new GameObject("IntroDialogueOverlay");
         _dialogueOverlay.transform.SetParent(_tutorialCanvas.transform, false);
@@ -703,12 +782,12 @@ public class TutorialManager : MonoBehaviour
 
     IEnumerator TypeLine(int index)
     {
-        if (index < 0 || index >= introDialogue.Length) yield break;
+        if (index < 0 || index >= _activeDialogue.Length) yield break;
         HideContinueIndicator();
         _typing = true;
         _skipTyping = false;
 
-        var line = introDialogue[index];
+        var line = _activeDialogue[index];
         string content = !string.IsNullOrEmpty(line.localizationKey)
             ? SafeGet(line.localizationKey, line.fallbackText)
             : line.fallbackText;
@@ -741,9 +820,9 @@ public class TutorialManager : MonoBehaviour
     void AdvanceDialogue()
     {
         _dialogueIndex++;
-        if (_dialogueIndex >= introDialogue.Length)
+        if (_dialogueIndex >= _activeDialogue.Length)
         {
-            StartCoroutine(CloseIntroDialogue());
+            StartCoroutine(CloseDialogue());
         }
         else
         {
@@ -781,7 +860,7 @@ public class TutorialManager : MonoBehaviour
         }
     }
 
-    IEnumerator CloseIntroDialogue()
+    IEnumerator CloseDialogue()
     {
         if (_typeCoroutine != null) StopCoroutine(_typeCoroutine);
         HideContinueIndicator();
@@ -814,6 +893,14 @@ public class TutorialManager : MonoBehaviour
         _dialogueSpeaker = null;
         _continueIndicator = null;
 
+        var done = _onDialogueComplete;
+        _onDialogueComplete = null;
+        _activeDialogue = null;
+        done?.Invoke();
+    }
+
+    void OnIntroDialogueComplete()
+    {
         PlayerPrefs.SetInt(PREF_INTRO, 1);
         PlayerPrefs.Save();
         _hasSeenIntro = true;
@@ -821,6 +908,163 @@ public class TutorialManager : MonoBehaviour
 
         ApplyUnlocks();
         ResumeFromState();
+    }
+
+    DialogueLine[] GetAnimalDialogue(string habitatId)
+    {
+        string meetKey, factKey, meetFb, factFb;
+
+        switch (habitatId)
+        {
+            case "beaver_habitat":
+                meetKey = "tutorial_meet_beaver";
+                meetFb = "Zeg hallo tegen onze bever! Bevers zijn de echte bouwmeesters van de natuur, net als jij vandaag!";
+                factKey = "tutorial_fact_beaver";
+                factFb = "De voortanden van een bever blijven altijd groeien, dus knaagt hij de hele dag op hout om ze precies goed te houden.";
+                break;
+            case "polarbear_habitat":
+                meetKey = "tutorial_meet_polarbear";
+                meetFb = "Brrr! Maak kennis met onze ijsbeer. Hij houdt meer van de kou dan wie dan ook in de hele dierentuin.";
+                factKey = "tutorial_fact_polarbear";
+                factFb = "De vacht van een ijsbeer lijkt wit, maar is eigenlijk doorzichtig! Daaronder is zijn huid zwart.";
+                break;
+            case "racoon_habitat":
+                meetKey = "tutorial_meet_raccoon";
+                meetFb = "Hier zijn onze slimme wasberen. Let goed op je snacks als die in de buurt zijn!";
+                factKey = "tutorial_fact_raccoon";
+                factFb = "Wasberen dopen hun eten graag in water voordat ze het opeten, bijna alsof ze het wassen.";
+                break;
+            case "prairiedog_habitat":
+                meetKey = "tutorial_meet_prairiedog";
+                meetFb = "Plop! Daar is onze prairiehond. Laat de naam je niet voor de gek houden, het is helemaal geen hond!";
+                factKey = "tutorial_fact_prairiedog";
+                factFb = "Prairiehonden zijn eigenlijk een soort eekhoorn, en ze wonen in enorme ondergrondse steden vol tunnels.";
+                break;
+            case "baboon_habitat":
+                meetKey = "tutorial_meet_baboon";
+                meetFb = "Maak kennis met onze bavianen! Zij zijn een van de slimste dieren in de hele dierentuin.";
+                factKey = "tutorial_fact_baboon";
+                factFb = "Bavianen leven in grote families die troepen heten, en ze praten met elkaar met geluiden en gekke gezichten.";
+                break;
+            case "hippo_habitat":
+                meetKey = "tutorial_meet_hippo";
+                meetFb = "Plons! Daar komt ons nijlpaard. Hij blijft graag lekker koel in het water.";
+                factKey = "tutorial_fact_hippo";
+                factFb = "Een nijlpaard kan wel vijf hele minuten zijn adem onder water inhouden!";
+                break;
+            case "parrot_habitat":
+                meetKey = "tutorial_meet_parrot";
+                meetFb = "En hier is onze papegaai, het kletsende dier van Wildlands!";
+                factKey = "tutorial_fact_parrot";
+                factFb = "Sommige papegaaien kunnen de woorden die mensen zeggen nadoen. Misschien leren ze zelfs jouw naam!";
+                break;
+            case "otter_habitat":
+                meetKey = "tutorial_meet_otter";
+                meetFb = "Hier is onze speelse otter! Otters houden van spetteren, glijden en de hele dag spelen.";
+                factKey = "tutorial_fact_otter";
+                factFb = "Otters houden elkaars pootjes vast als ze slapen, zodat ze niet van elkaar wegdrijven!";
+                break;
+            default:
+                return null;
+        }
+
+        return new DialogueLine[]
+        {
+            new DialogueLine { localizationKey = meetKey, fallbackText = meetFb },
+            new DialogueLine { localizationKey = factKey, fallbackText = factFb },
+        };
+    }
+
+    DialogueLine[] GetTutorialCompleteDialogue()
+    {
+        return new DialogueLine[]
+        {
+            new DialogueLine { localizationKey = "tutorial_done_0", fallbackText = "Het is je gelukt, ontdekker! Nu heeft elk dier een heerlijk thuis." },
+            new DialogueLine { localizationKey = "tutorial_done_1", fallbackText = "Wildlands zit vol leven, allemaal dankzij jou. De dieren zullen het nooit vergeten!" },
+            new DialogueLine { localizationKey = "tutorial_done_2", fallbackText = "De dierentuin is van jou om van te genieten. Kom je vrienden gerust opzoeken, en blijf nieuwsgierig!" },
+        };
+    }
+
+    void OnTutorialCompleteDialogueDone()
+    {
+        if (showMiniTestAfterTutorial)
+            StartCoroutine(ShowMiniTestAfterDelay(0.5f));
+
+        if (enableRandomFacts) _factTimer = firstFactDelay;
+    }
+
+    DialogueLine[] GetWelcomeBackDialogue()
+    {
+        var options = new DialogueLine[]
+        {
+            new DialogueLine { localizationKey = "welcome_back_0", fallbackText = "Welkom terug, ontdekker! De dieren hebben je gemist." },
+            new DialogueLine { localizationKey = "welcome_back_1", fallbackText = "Welkom terug! Kijk eens hoe ver onze dierentuin al is gekomen. Daar mag je trots op zijn!" },
+            new DialogueLine { localizationKey = "welcome_back_2", fallbackText = "Welkom terug! Neem rustig de tijd om even rond te kijken." },
+            new DialogueLine { localizationKey = "welcome_back_3", fallbackText = "Welkom terug! Wanneer je er klaar voor bent, is er altijd nog een verblijf om te bouwen." },
+        };
+        return new DialogueLine[] { options[Random.Range(0, options.Length)] };
+    }
+
+    bool CanShowRandomFact()
+    {
+        return _dialogueOverlay == null
+            && _miniTestOverlay == null
+            && !_cardOpen
+            && !_introActive;
+    }
+
+    void ScheduleNextFact()
+    {
+        _factTimer = Random.Range(factMinInterval, factMaxInterval);
+    }
+
+    void ShowRandomFact()
+    {
+        EnsureFactBank();
+        if (_factBank == null || _factBank.Length == 0) { _factTimer = factMaxInterval; return; }
+
+        var line = _factBank[Random.Range(0, _factBank.Length)];
+        ShowDialogue(new DialogueLine[] { line }, ScheduleNextFact);
+    }
+
+    void EnsureFactBank()
+    {
+        if (_factBank != null) return;
+
+        _factBank = new DialogueLine[]
+        {
+            new DialogueLine { localizationKey = "rfact_beaver_0", fallbackText = "Wist je dat de tanden van een bever oranje zijn? Die kleur komt door ijzer, en dat maakt ze supersterk." },
+            new DialogueLine { localizationKey = "rfact_beaver_1", fallbackText = "Wist je dat bevers wel 15 minuten lang hun adem onder water kunnen inhouden? Dat is hartstikke lang!" },
+            new DialogueLine { localizationKey = "rfact_beaver_2", fallbackText = "Een bever slaat met zijn platte staart op het water, met een grote PLONS, om zijn familie voor gevaar te waarschuwen." },
+
+            new DialogueLine { localizationKey = "rfact_polarbear_0", fallbackText = "Wist je dat een ijsbeer een zeehond kan ruiken van meer dan een kilometer ver weg? Wat een neus!" },
+            new DialogueLine { localizationKey = "rfact_polarbear_1", fallbackText = "IJsberen zijn geweldige zwemmers en kunnen urenlang doorzwemmen zonder te stoppen." },
+            new DialogueLine { localizationKey = "rfact_polarbear_2", fallbackText = "Wist je dat een ijsbeerbaby een welp heet? Bij de geboorte is hij ongeveer zo groot als een cavia!" },
+
+            new DialogueLine { localizationKey = "rfact_raccoon_0", fallbackText = "Wist je dat de pootjes van een wasbeer zo handig zijn dat ze bijna als kleine handjes werken?" },
+            new DialogueLine { localizationKey = "rfact_raccoon_1", fallbackText = "De donkere vacht rond de ogen van een wasbeer lijkt net een klein maskertje." },
+            new DialogueLine { localizationKey = "rfact_raccoon_2", fallbackText = "Wist je dat wasberen meestal 's nachts wakker zijn? Zulke dieren noemen we nachtdieren." },
+
+            new DialogueLine { localizationKey = "rfact_prairiedog_0", fallbackText = "Wist je dat prairiehonden elkaar begroeten met iets dat net op een kusje lijkt?" },
+            new DialogueLine { localizationKey = "rfact_prairiedog_1", fallbackText = "Prairiehonden hebben verschillende geluiden voor verschillend gevaar: een blafje voor een havik, een ander voor een coyote." },
+            new DialogueLine { localizationKey = "rfact_prairiedog_2", fallbackText = "Wist je dat hun ondergrondse steden wel honderden tunnels kunnen hebben? Net een gigantisch doolhof!" },
+
+            new DialogueLine { localizationKey = "rfact_baboon_0", fallbackText = "Wist je dat bavianen elkaar schoonhouden door voorzichtig door elkaars vacht te kammen?" },
+            new DialogueLine { localizationKey = "rfact_baboon_1", fallbackText = "Bavianen zijn echte probleemoplossers en kunnen zelfs simpele puzzels uitvogelen." },
+            new DialogueLine { localizationKey = "rfact_baboon_2", fallbackText = "Een baviaan loopt op alle vier zijn poten, maar kan rechtop gaan staan om rond te kijken." },
+
+            new DialogueLine { localizationKey = "rfact_hippo_0", fallbackText = "Wist je dat een nijlpaard zijn eigen roze zonnebrand maakt? Zijn huid geeft een speciale olie af die de zon tegenhoudt." },
+            new DialogueLine { localizationKey = "rfact_hippo_1", fallbackText = "Hoewel nijlpaarden enorm groot zijn, kunnen ze verrassend snel rennen op het land." },
+            new DialogueLine { localizationKey = "rfact_hippo_2", fallbackText = "Wist je dat een nijlpaardbaby onder water melk kan drinken bij zijn moeder? Wat een knappe truc!" },
+
+            new DialogueLine { localizationKey = "rfact_otter_0", fallbackText = "Wist je dat otters elkaars pootjes vasthouden als ze slapen? Zo drijven ze in het water niet uit elkaar!" },
+            new DialogueLine { localizationKey = "rfact_otter_1", fallbackText = "Een otter heeft een speciaal zakje van huid onder zijn arm om zijn lievelingssteentje veilig te bewaren." },
+            new DialogueLine { localizationKey = "rfact_otter_2", fallbackText = "Wist je dat otters de dikste vacht van alle dieren hebben? Wel een miljoen haartjes op een klein plekje!" },
+
+            new DialogueLine { localizationKey = "rfact_parrot_0", fallbackText = "Wist je dat sommige papegaaien meer dan 50 jaar oud kunnen worden? Dat is langer dan een hond of een kat!" },
+            new DialogueLine { localizationKey = "rfact_parrot_1", fallbackText = "Papegaaien gebruiken hun sterke snavel als gereedschap om harde noten open te kraken." },
+            new DialogueLine { localizationKey = "rfact_parrot_2", fallbackText = "Een papegaai heeft twee tenen die naar voren wijzen en twee naar achteren, perfect om aan takken vast te houden." },
+        };
     }
 
     void OnLanguageChanged() { EnterSubState(_sub); }

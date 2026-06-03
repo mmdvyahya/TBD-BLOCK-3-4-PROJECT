@@ -788,59 +788,60 @@ public class LanguageManager : MonoBehaviour
                 [Language.Deutsch] = "Los geht's!",
                 [Language.English] = "Let's go!",
             },
+            // Tutorial Dialog
             ["tutorial_first_buy"] = new()
             {
-                [Language.Nederlands] = "Tik op de groene knop om je eerste verblijf te bouwen!",
-                [Language.Deutsch] = "Tippe auf den grünen Knopf, um dein erstes Gehege zu bauen!",
-                [Language.English] = "Tap the green button to build your first habitat!",
-            },
-            ["tutorial_next_buy"] = new()
-            {
-                [Language.Nederlands] = "Goed gedaan! Bouw nu het volgende verblijf!",
-                [Language.Deutsch] = "Gut gemacht! Bau jetzt das nächste Gehege!",
-                [Language.English] = "Great job! Now build the next habitat!",
-            },
-            ["tutorial_complete"] = new()
-            {
-                [Language.Nederlands] = "Geweldig! Alle dieren hebben een thuis. Speel verder!",
-                [Language.Deutsch] = "Toll! Alle Tiere haben ein Zuhause. Spiel weiter!",
-                [Language.English] = "Amazing! All animals have a home. Keep playing!",
+                [Language.Nederlands] = "Tik op de groene knop om je allereerste verblijf te bouwen!",
+                [Language.Deutsch] = "Tippe auf den grünen Knopf, um dein allererstes Gehege zu bauen!",
+                [Language.English] = "Tap the green button to build your very first habitat!",
             },
             ["tutorial_building"] = new()
             {
-                [Language.Nederlands] = "Even wachten... je verblijf wordt gebouwd!",
-                [Language.Deutsch] = "Einen Moment... dein Gehege wird gebaut!",
-                [Language.English] = "Hold on... your habitat is being built!",
+                [Language.Nederlands] = "Daar komt 'ie... je verblijf wordt gebouwd!",
+                [Language.Deutsch] = "Da kommt es schon... dein Gehege wird gebaut!",
+                [Language.English] = "Here it comes... your habitat is being built!",
             },
             ["tutorial_tap_habitat"] = new()
             {
-                [Language.Nederlands] = "Tik op het verblijf om het dier te ontmoeten!",
-                [Language.Deutsch] = "Tippe auf das Gehege, um das Tier zu treffen!",
-                [Language.English] = "Tap the habitat to meet the animal!",
+                [Language.Nederlands] = "Tik nu op het verblijf om je nieuwe dier te ontmoeten!",
+                [Language.Deutsch] = "Tippe jetzt auf das Gehege, um dein neues Tier kennenzulernen!",
+                [Language.English] = "Now tap the habitat to go and meet your new animal!",
             },
             ["tutorial_press_inspect"] = new()
             {
-                [Language.Nederlands] = "Druk op Inspecteren om rond te kijken!",
-                [Language.Deutsch] = "Drück auf Erkunden, um dich umzusehen!",
-                [Language.English] = "Press Inspect to look around!",
+                [Language.Nederlands] = "Druk op de knop Inspecteren om alles van dichtbij te bekijken!",
+                [Language.Deutsch] = "Drück auf den Knopf Untersuchen, um alles aus der Nähe zu sehen!",
+                [Language.English] = "Press the Inspect button to get a closer look!",
             },
             ["tutorial_inspecting"] = new()
             {
-                [Language.Nederlands] = "Kijk goed rond! Kantel de tablet of gebruik WASD.",
-                [Language.Deutsch] = "Sieh dich gut um! Neig das Tablet oder benutze WASD.",
-                [Language.English] = "Have a good look around! Tilt the tablet or use WASD.",
+                [Language.Nederlands] = "Kijk maar goed rond! Kantel je tablet om overal naar te kijken.",
+                [Language.Deutsch] = "Schau dich ruhig um! Neig dein Tablet, um überall hinzuschauen.",
+                [Language.English] = "Have a good look! Tilt your tablet to look all around.",
             },
             ["tutorial_press_back"] = new()
             {
-                [Language.Nederlands] = "Druk op Terug om verder te gaan!",
-                [Language.Deutsch] = "Drück auf Zurück, um weiterzumachen!",
-                [Language.English] = "Press Back to continue!",
+                [Language.Nederlands] = "Klaar met kijken? Druk op de knop Terug om verder te gaan!",
+                [Language.Deutsch] = "Fertig mit Schauen? Drück auf den Knopf Zurück, um weiterzumachen!",
+                [Language.English] = "All done looking? Press the back button to keep going!",
             },
             ["tutorial_press_minigame"] = new()
             {
-                [Language.Nederlands] = "Speel een minigame om munten te verdienen!",
-                [Language.Deutsch] = "Spiel ein Minispiel, um Münzen zu verdienen!",
-                [Language.English] = "Play a minigame to earn coins!",
+                [Language.Nederlands] = "Speel nu de minigame om munten te verdienen!",
+                [Language.Deutsch] = "Spiel jetzt das Minispiel, um Münzen zu verdienen!",
+                [Language.English] = "Now play the minigame to earn some coins!",
+            },
+            ["tutorial_next_buy"] = new()
+            {
+                [Language.Nederlands] = "Geweldig! Laten we een huis bouwen voor het volgende dier!",
+                [Language.Deutsch] = "Wunderbar! Lass uns ein Zuhause für das nächste Tier bauen!",
+                [Language.English] = "Wonderful! Let's build a home for the next animal!",
+            },
+            ["tutorial_complete"] = new()
+            {
+                [Language.Nederlands] = "Het is je gelukt! Nu heeft elk dier een huis. De dierentuin is van jou om te ontdekken!",
+                [Language.Deutsch] = "Du hast es geschafft! Jetzt hat jedes Tier ein Zuhause. Der Zoo gehört dir zum Entdecken!",
+                [Language.English] = "You did it! Every animal has a home now. The zoo is yours to explore!",
             },
             // Intro Dialog
 
@@ -897,63 +898,6 @@ public class LanguageManager : MonoBehaviour
                 [Language.Nederlands] = "Met die munten bouw je daarna hun verblijf. Makkelijk toch?",
                 [Language.Deutsch] = "Mit diesen Münzen baust du dann ihr Gehege. Ganz einfach!",
                 [Language.English] = "Then you spend those coins to build their habitat. Easy!",
-            },
-
-            // Tutorial Banners
-
-            ["tutorial_first_buy"] = new()
-            {
-                [Language.Nederlands] = "Tik op de groene knop om je eerste verblijf te bouwen!",
-                [Language.Deutsch] = "Tippe auf den grünen Knopf, um dein erstes Gehege zu bauen!",
-                [Language.English] = "Tap the green button to build your first habitat!",
-            },
-            ["tutorial_next_buy"] = new()
-            {
-                [Language.Nederlands] = "Goed gedaan! Bouw nu het volgende verblijf!",
-                [Language.Deutsch] = "Gut gemacht! Bau jetzt das nächste Gehege!",
-                [Language.English] = "Great job! Now build the next habitat!",
-            },
-            ["tutorial_building"] = new()
-            {
-                [Language.Nederlands] = "Even wachten... je verblijf wordt gebouwd!",
-                [Language.Deutsch] = "Einen Moment... dein Gehege wird gebaut!",
-                [Language.English] = "Hold on... your habitat is being built!",
-            },
-            ["tutorial_tap_habitat"] = new()
-            {
-                [Language.Nederlands] = "Tik op het verblijf om het dier te ontmoeten!",
-                [Language.Deutsch] = "Tippe auf das Gehege, um das Tier zu treffen!",
-                [Language.English] = "Tap the habitat to meet the animal!",
-            },
-            ["tutorial_press_inspect"] = new()
-            {
-                [Language.Nederlands] = "Druk op Inspecteren om rond te kijken!",
-                [Language.Deutsch] = "Drück auf Erkunden, um dich umzusehen!",
-                [Language.English] = "Press Inspect to look around!",
-            },
-            ["tutorial_inspecting"] = new()
-            {
-                [Language.Nederlands] = "Kijk goed rond! Kantel de tablet of gebruik WASD.",
-                [Language.Deutsch] = "Sieh dich gut um! Neig das Tablet oder benutze WASD.",
-                [Language.English] = "Have a good look around! Tilt the tablet or use WASD.",
-            },
-            ["tutorial_press_back"] = new()
-            {
-                [Language.Nederlands] = "Druk op Terug om verder te gaan!",
-                [Language.Deutsch] = "Drück auf Zurück, um weiterzumachen!",
-                [Language.English] = "Press Back to continue!",
-            },
-            ["tutorial_press_minigame"] = new()
-            {
-                [Language.Nederlands] = "Speel een minigame om munten te verdienen!",
-                [Language.Deutsch] = "Spiel ein Minispiel, um Münzen zu verdienen!",
-                [Language.English] = "Play a minigame to earn coins!",
-            },
-            ["tutorial_complete"] = new()
-            {
-                [Language.Nederlands] = "Geweldig! Alle dieren hebben een thuis. Speel verder!",
-                [Language.Deutsch] = "Toll! Alle Tiere haben ein Zuhause. Spiel weiter!",
-                [Language.English] = "Amazing! All animals have a home. Keep playing!",
             },
             ["minigame_hippo_howto_title"] = new()
             {
@@ -1323,6 +1267,288 @@ public class LanguageManager : MonoBehaviour
                 [Language.Nederlands] = "Tik daarna op het juiste hol om hem te vinden!",
                 [Language.Deutsch] = "Tippe danach auf die richtige Höhle, um ihn zu finden!",
                 [Language.English] = "Then tap the right hole to find him!",
+            },
+            ["tutorial_meet_beaver"] = new()
+            {
+                [Language.Nederlands] = "Zeg hallo tegen onze bever! Bevers zijn de echte bouwmeesters van de natuur, net als jij vandaag!",
+                [Language.Deutsch] = "Sag mal Hallo zu unserem Biber! Biber sind die echten Baumeister der Natur, genau wie du heute!",
+                [Language.English] = "Say hello to our beaver! Beavers are nature's master builders, just like you today!",
+            },
+            ["tutorial_fact_beaver"] = new()
+            {
+                [Language.Nederlands] = "De voortanden van een bever blijven altijd groeien, dus knaagt hij de hele dag op hout om ze precies goed te houden.",
+                [Language.Deutsch] = "Die Vorderzähne eines Bibers hören nie auf zu wachsen, deshalb knabbert er den ganzen Tag an Holz, damit sie genau richtig bleiben.",
+                [Language.English] = "A beaver's front teeth never stop growing, so it chews on wood all day to keep them just right.",
+            },
+            ["tutorial_meet_polarbear"] = new()
+            {
+                [Language.Nederlands] = "Brrr! Maak kennis met onze ijsbeer. Hij houdt meer van de kou dan wie dan ook in de hele dierentuin.",
+                [Language.Deutsch] = "Brrr! Lern unseren Eisbären kennen. Er mag die Kälte lieber als alle anderen im ganzen Zoo.",
+                [Language.English] = "Brrr! Meet our polar bear. They love the cold more than anyone in the whole zoo.",
+            },
+            ["tutorial_fact_polarbear"] = new()
+            {
+                [Language.Nederlands] = "De vacht van een ijsbeer lijkt wit, maar is eigenlijk doorzichtig! Daaronder is zijn huid zwart.",
+                [Language.Deutsch] = "Das Fell eines Eisbären sieht weiß aus, ist aber eigentlich durchsichtig! Darunter ist seine Haut schwarz.",
+                [Language.English] = "A polar bear's fur looks white, but it's really see-through! Underneath, its skin is black.",
+            },
+            ["tutorial_meet_raccoon"] = new()
+            {
+                [Language.Nederlands] = "Hier zijn onze slimme wasberen. Let goed op je snacks als die in de buurt zijn!",
+                [Language.Deutsch] = "Hier sind unsere schlauen Waschbären. Pass gut auf deine Snacks auf, wenn die in der Nähe sind!",
+                [Language.English] = "Here's our clever little raccoons. Watch your snacks around these ones!",
+            },
+            ["tutorial_fact_raccoon"] = new()
+            {
+                [Language.Nederlands] = "Wasberen dopen hun eten graag in water voordat ze het opeten, bijna alsof ze het wassen.",
+                [Language.Deutsch] = "Waschbären tunken ihr Essen gern ins Wasser, bevor sie es fressen, fast so, als würden sie es waschen.",
+                [Language.English] = "Raccoons love to dip their food in water before they eat, almost like they're washing it.",
+            },
+            ["tutorial_meet_prairiedog"] = new()
+            {
+                [Language.Nederlands] = "Plop! Daar is onze prairiehond. Laat de naam je niet voor de gek houden, het is helemaal geen hond!",
+                [Language.Deutsch] = "Plopp! Da ist unser Präriehund. Lass dich vom Namen nicht täuschen, das ist überhaupt kein Hund!",
+                [Language.English] = "Pop! There's our prairie dog. Don't let the name fool you, it's not a dog at all!",
+            },
+            ["tutorial_fact_prairiedog"] = new()
+            {
+                [Language.Nederlands] = "Prairiehonden zijn eigenlijk een soort eekhoorn, en ze wonen in enorme ondergrondse steden vol tunnels.",
+                [Language.Deutsch] = "Präriehunde sind eigentlich eine Art Eichhörnchen, und sie wohnen in riesigen unterirdischen Städten voller Tunnel.",
+                [Language.English] = "Prairie dogs are actually a kind of squirrel, and they live in huge underground towns full of tunnels.",
+            },
+            ["tutorial_meet_baboon"] = new()
+            {
+                [Language.Nederlands] = "Maak kennis met onze bavianen! Zij zijn een van de slimste dieren in de hele dierentuin.",
+                [Language.Deutsch] = "Lern unsere Paviane kennen! Sie sind eins der schlausten Tiere im ganzen Zoo.",
+                [Language.English] = "Meet our baboons! They are one of the smartest animals in the whole zoo.",
+            },
+            ["tutorial_fact_baboon"] = new()
+            {
+                [Language.Nederlands] = "Bavianen leven in grote families die troepen heten, en ze praten met elkaar met geluiden en gekke gezichten.",
+                [Language.Deutsch] = "Paviane leben in großen Familien, die man Horden nennt, und sie reden miteinander mit Lauten und lustigen Gesichtern.",
+                [Language.English] = "Baboons live in big family groups called troops, and they talk to each other with sounds and funny faces.",
+            },
+            ["tutorial_meet_hippo"] = new()
+            {
+                [Language.Nederlands] = "Plons! Daar komt ons nijlpaard. Hij blijft graag lekker koel in het water.",
+                [Language.Deutsch] = "Platsch! Da kommt unser Nilpferd. Es bleibt gern schön kühl im Wasser.",
+                [Language.English] = "Splash! Here comes our hippo. He likes to keep nice and cool in the water.",
+            },
+            ["tutorial_fact_hippo"] = new()
+            {
+                [Language.Nederlands] = "Een nijlpaard kan wel vijf hele minuten zijn adem onder water inhouden!",
+                [Language.Deutsch] = "Ein Nilpferd kann etwa fünf ganze Minuten lang unter Wasser die Luft anhalten!",
+                [Language.English] = "A hippo can hold its breath underwater for about five whole minutes!",
+            },
+            ["tutorial_meet_parrot"] = new()
+            {
+                [Language.Nederlands] = "En hier is onze papegaai, het kletsende dier van Wildlands!",
+                [Language.Deutsch] = "Und hier ist unser Papagei, das plapprigste Tier in Wildlands!",
+                [Language.English] = "And here's our parrot, the chattiest animal in Wildlands!",
+            },
+            ["tutorial_fact_parrot"] = new()
+            {
+                [Language.Nederlands] = "Sommige papegaaien kunnen de woorden die mensen zeggen nadoen. Misschien leren ze zelfs jouw naam!",
+                [Language.Deutsch] = "Manche Papageien können die Wörter nachmachen, die Menschen sagen. Vielleicht lernen sie sogar deinen Namen!",
+                [Language.English] = "Some parrots can copy the words people say. They might even learn your name!",
+            },
+            ["tutorial_meet_otter"] = new()
+            {
+                [Language.Nederlands] = "Hier is onze speelse otter! Otters houden van spetteren, glijden en de hele dag spelen.",
+                [Language.Deutsch] = "Hier ist unser verspielter Otter! Otter lieben es, zu plantschen, zu rutschen und den ganzen Tag zu spielen.",
+                [Language.English] = "Here's our playful otter! Otters love to splash, slide, and play all day long.",
+            },
+            ["tutorial_fact_otter"] = new()
+            {
+                [Language.Nederlands] = "Otters houden elkaars pootjes vast als ze slapen, zodat ze niet van elkaar wegdrijven!",
+                [Language.Deutsch] = "Otter halten sich beim Schlafen an den Pfoten, damit sie nicht voneinander wegtreiben!",
+                [Language.English] = "Otters hold hands while they sleep so they don't float away from each other!",
+            },
+            ["rfact_beaver_0"] = new()
+            {
+                [Language.Nederlands] = "Wist je dat de tanden van een bever oranje zijn? Die kleur komt door ijzer, en dat maakt ze supersterk.",
+                [Language.Deutsch] = "Wusstest du, dass die Zähne eines Bibers orange sind? Diese Farbe kommt vom Eisen, und das macht sie superstark.",
+                [Language.English] = "Did you know a beaver's teeth are orange? That color comes from iron, which makes them super strong.",
+            },
+            ["rfact_beaver_1"] = new()
+            {
+                [Language.Nederlands] = "Wist je dat bevers wel 15 minuten lang hun adem onder water kunnen inhouden? Dat is hartstikke lang!",
+                [Language.Deutsch] = "Wusstest du, dass Biber bis zu 15 Minuten lang unter Wasser die Luft anhalten können? Das ist richtig lang!",
+                [Language.English] = "Did you know beavers can hold their breath underwater for up to 15 minutes? That's a long time!",
+            },
+            ["rfact_beaver_2"] = new()
+            {
+                [Language.Nederlands] = "Een bever slaat met zijn platte staart op het water, met een grote PLONS, om zijn familie voor gevaar te waarschuwen.",
+                [Language.Deutsch] = "Ein Biber schlägt mit seinem flachen Schwanz aufs Wasser, mit einem großen PLATSCH, um seine Familie vor Gefahr zu warnen.",
+                [Language.English] = "A beaver slaps its flat tail on the water with a big SPLASH to warn its family of danger.",
+            },
+            ["rfact_polarbear_0"] = new()
+            {
+                [Language.Nederlands] = "Wist je dat een ijsbeer een zeehond kan ruiken van meer dan een kilometer ver weg? Wat een neus!",
+                [Language.Deutsch] = "Wusstest du, dass ein Eisbär eine Robbe aus mehr als einem Kilometer Entfernung riechen kann? Was für eine Nase!",
+                [Language.English] = "Did you know a polar bear can smell a seal from over a kilometer away? What a nose!",
+            },
+            ["rfact_polarbear_1"] = new()
+            {
+                [Language.Nederlands] = "IJsberen zijn geweldige zwemmers en kunnen urenlang doorzwemmen zonder te stoppen.",
+                [Language.Deutsch] = "Eisbären sind tolle Schwimmer und können stundenlang schwimmen, ohne anzuhalten.",
+                [Language.English] = "Polar bears are amazing swimmers and can paddle for hours without stopping.",
+            },
+            ["rfact_polarbear_2"] = new()
+            {
+                [Language.Nederlands] = "Wist je dat een ijsbeerbaby een welp heet? Bij de geboorte is hij ongeveer zo groot als een cavia!",
+                [Language.Deutsch] = "Wusstest du, dass ein Eisbärbaby Jungtier heißt? Bei der Geburt ist es ungefähr so groß wie ein Meerschweinchen!",
+                [Language.English] = "Did you know a baby polar bear is called a cub? It's about the size of a guinea pig when it's born!",
+            },
+            ["rfact_raccoon_0"] = new()
+            {
+                [Language.Nederlands] = "Wist je dat de pootjes van een wasbeer zo handig zijn dat ze bijna als kleine handjes werken?",
+                [Language.Deutsch] = "Wusstest du, dass die Pfoten eines Waschbären so geschickt sind, dass sie fast wie kleine Hände funktionieren?",
+                [Language.English] = "Did you know a raccoon's paws are so clever they work almost like tiny hands?",
+            },
+            ["rfact_raccoon_1"] = new()
+            {
+                [Language.Nederlands] = "De donkere vacht rond de ogen van een wasbeer lijkt net een klein maskertje.",
+                [Language.Deutsch] = "Das dunkle Fell rund um die Augen eines Waschbären sieht aus wie eine kleine Maske.",
+                [Language.English] = "The dark fur around a raccoon's eyes looks just like a little mask.",
+            },
+            ["rfact_raccoon_2"] = new()
+            {
+                [Language.Nederlands] = "Wist je dat wasberen meestal 's nachts wakker zijn? Zulke dieren noemen we nachtdieren.",
+                [Language.Deutsch] = "Wusstest du, dass Waschbären meistens nachts wach sind? Solche Tiere nennen wir nachtaktiv.",
+                [Language.English] = "Did you know raccoons are mostly awake at night? We call animals like that nocturnal.",
+            },
+            ["rfact_prairiedog_0"] = new()
+            {
+                [Language.Nederlands] = "Wist je dat prairiehonden elkaar begroeten met iets dat net op een kusje lijkt?",
+                [Language.Deutsch] = "Wusstest du, dass Präriehunde sich mit etwas begrüßen, das aussieht wie ein kleines Küsschen?",
+                [Language.English] = "Did you know prairie dogs greet each other with something that looks just like a little kiss?",
+            },
+            ["rfact_prairiedog_1"] = new()
+            {
+                [Language.Nederlands] = "Prairiehonden hebben verschillende geluiden voor verschillend gevaar: een blafje voor een havik, een ander voor een coyote.",
+                [Language.Deutsch] = "Präriehunde haben verschiedene Laute für verschiedene Gefahren: ein Bellen für einen Falken, ein anderes für einen Kojoten.",
+                [Language.English] = "Prairie dogs have different sounds for different dangers, one bark for a hawk, another for a coyote.",
+            },
+            ["rfact_prairiedog_2"] = new()
+            {
+                [Language.Nederlands] = "Wist je dat hun ondergrondse steden wel honderden tunnels kunnen hebben? Net een gigantisch doolhof!",
+                [Language.Deutsch] = "Wusstest du, dass ihre unterirdischen Städte Hunderte von Tunneln haben können? Wie ein riesiges Labyrinth!",
+                [Language.English] = "Did you know their underground towns can have hundreds of tunnels? Like a giant maze!",
+            },
+            ["rfact_baboon_0"] = new()
+            {
+                [Language.Nederlands] = "Wist je dat bavianen elkaar schoonhouden door voorzichtig door elkaars vacht te kammen?",
+                [Language.Deutsch] = "Wusstest du, dass Paviane sich gegenseitig sauber halten, indem sie behutsam durch das Fell des anderen kämmen?",
+                [Language.English] = "Did you know baboons keep each other clean by gently brushing through one another's fur?",
+            },
+            ["rfact_baboon_1"] = new()
+            {
+                [Language.Nederlands] = "Bavianen zijn echte probleemoplossers en kunnen zelfs simpele puzzels uitvogelen.",
+                [Language.Deutsch] = "Paviane sind echte Problemlöser und können sogar einfache Rätsel knacken.",
+                [Language.English] = "Baboons are great problem-solvers and can even figure out simple puzzles.",
+            },
+            ["rfact_baboon_2"] = new()
+            {
+                [Language.Nederlands] = "Een baviaan loopt op alle vier zijn poten, maar kan rechtop gaan staan om rond te kijken.",
+                [Language.Deutsch] = "Ein Pavian läuft auf allen vier Beinen, kann sich aber aufrichten, um sich umzuschauen.",
+                [Language.English] = "A baboon walks on all four legs, but it can stand up tall to look around.",
+            },
+            ["rfact_hippo_0"] = new()
+            {
+                [Language.Nederlands] = "Wist je dat een nijlpaard zijn eigen roze zonnebrand maakt? Zijn huid geeft een speciale olie af die de zon tegenhoudt.",
+                [Language.Deutsch] = "Wusstest du, dass ein Nilpferd seine eigene rosa Sonnencreme macht? Seine Haut gibt ein besonderes Öl ab, das die Sonne abhält.",
+                [Language.English] = "Did you know a hippo makes its own pinkish sunscreen? Its skin oozes a special oil to block the sun.",
+            },
+            ["rfact_hippo_1"] = new()
+            {
+                [Language.Nederlands] = "Hoewel nijlpaarden enorm groot zijn, kunnen ze verrassend snel rennen op het land.",
+                [Language.Deutsch] = "Obwohl Nilpferde riesig sind, können sie an Land überraschend schnell rennen.",
+                [Language.English] = "Even though hippos are huge, they can run surprisingly fast on land.",
+            },
+            ["rfact_hippo_2"] = new()
+            {
+                [Language.Nederlands] = "Wist je dat een nijlpaardbaby onder water melk kan drinken bij zijn moeder? Wat een knappe truc!",
+                [Language.Deutsch] = "Wusstest du, dass ein Nilpferdbaby unter Wasser Milch bei seiner Mama trinken kann? Das ist mal ein cleverer Trick!",
+                [Language.English] = "Did you know a baby hippo can drink its mother's milk underwater? Now that's a clever trick!",
+            },
+            ["rfact_otter_0"] = new()
+            {
+                [Language.Nederlands] = "Wist je dat otters elkaars pootjes vasthouden als ze slapen? Zo drijven ze in het water niet uit elkaar!",
+                [Language.Deutsch] = "Wusstest du, dass Otter sich beim Schlafen an den Pfoten halten? So treiben sie im Wasser nicht auseinander!",
+                [Language.English] = "Did you know otters hold hands while they sleep? That way they don't drift apart in the water!",
+            },
+            ["rfact_otter_1"] = new()
+            {
+                [Language.Nederlands] = "Een otter heeft een speciaal zakje van huid onder zijn arm om zijn lievelingssteentje veilig te bewaren.",
+                [Language.Deutsch] = "Ein Otter hat eine besondere Hauttasche unter dem Arm, um seinen Lieblingsstein sicher aufzubewahren.",
+                [Language.English] = "An otter has a special pocket of skin under its arm to keep its favorite rock safe.",
+            },
+            ["rfact_otter_2"] = new()
+            {
+                [Language.Nederlands] = "Wist je dat otters de dikste vacht van alle dieren hebben? Wel een miljoen haartjes op een klein plekje!",
+                [Language.Deutsch] = "Wusstest du, dass Otter das dichteste Fell aller Tiere haben? Bis zu eine Million Härchen auf einem einzigen kleinen Fleck!",
+                [Language.English] = "Did you know otters have the thickest fur of any animal? Up to a million hairs in one tiny patch!",
+            },
+            ["rfact_parrot_0"] = new()
+            {
+                [Language.Nederlands] = "Wist je dat sommige papegaaien meer dan 50 jaar oud kunnen worden? Dat is langer dan een hond of een kat!",
+                [Language.Deutsch] = "Wusstest du, dass manche Papageien über 50 Jahre alt werden können? Das ist länger als ein Hund oder eine Katze!",
+                [Language.English] = "Did you know some parrots can live for more than 50 years? Longer than a dog or a cat!",
+            },
+            ["rfact_parrot_1"] = new()
+            {
+                [Language.Nederlands] = "Papegaaien gebruiken hun sterke snavel als gereedschap om harde noten open te kraken.",
+                [Language.Deutsch] = "Papageien benutzen ihren starken Schnabel wie ein Werkzeug, um harte Nüsse zu knacken.",
+                [Language.English] = "Parrots use their strong beaks like a tool to crack open hard nuts.",
+            },
+            ["rfact_parrot_2"] = new()
+            {
+                [Language.Nederlands] = "Een papegaai heeft twee tenen die naar voren wijzen en twee naar achteren, perfect om aan takken vast te houden.",
+                [Language.Deutsch] = "Ein Papagei hat zwei Zehen, die nach vorne zeigen, und zwei nach hinten, perfekt zum Festhalten an Ästen.",
+                [Language.English] = "A parrot has two toes pointing forward and two pointing back, perfect for gripping branches.",
+            },
+            ["welcome_back_0"] = new()
+            {
+                [Language.Nederlands] = "Welkom terug, ontdekker! De dieren hebben je gemist.",
+                [Language.Deutsch] = "Willkommen zurück, Entdecker! Die Tiere haben dich vermisst.",
+                [Language.English] = "Welcome back, explorer! The animals missed you.",
+            },
+            ["welcome_back_1"] = new()
+            {
+                [Language.Nederlands] = "Welkom terug! Kijk eens hoe ver onze dierentuin al is gekomen. Daar mag je trots op zijn!",
+                [Language.Deutsch] = "Willkommen zurück! Schau mal, wie weit unser Zoo schon gekommen ist. Darauf darfst du stolz sein!",
+                [Language.English] = "Welcome back! Look how far our zoo has come. You should be proud!",
+            },
+            ["welcome_back_2"] = new()
+            {
+                [Language.Nederlands] = "Welkom terug! Neem rustig de tijd om even rond te kijken.",
+                [Language.Deutsch] = "Willkommen zurück! Lass dir ruhig Zeit und schau dich um.",
+                [Language.English] = "Welcome back! Take your time and look around.",
+            },
+            ["welcome_back_3"] = new()
+            {
+                [Language.Nederlands] = "Welkom terug! Wanneer je er klaar voor bent, is er altijd nog een verblijf om te bouwen.",
+                [Language.Deutsch] = "Willkommen zurück! Wann immer du bereit bist, gibt es noch ein Gehege zu bauen.",
+                [Language.English] = "Welcome back! Whenever you're ready, there's always another habitat to build.",
+            },
+            ["tutorial_done_0"] = new()
+            {
+                [Language.Nederlands] = "Het is je gelukt, ontdekker! Nu heeft elk dier een heerlijk thuis.",
+                [Language.Deutsch] = "Du hast es geschafft, Entdecker! Jetzt hat jedes Tier ein wunderbares Zuhause.",
+                [Language.English] = "You did it, explorer! Every single animal has a wonderful home now.",
+            },
+            ["tutorial_done_1"] = new()
+            {
+                [Language.Nederlands] = "Wildlands zit vol leven, allemaal dankzij jou. De dieren zullen het nooit vergeten!",
+                [Language.Deutsch] = "Wildlands steckt voller Leben, alles dank dir. Die Tiere werden es nie vergessen!",
+                [Language.English] = "Wildlands is full of life, all thanks to you. The animals will never forget it!",
+            },
+            ["tutorial_done_2"] = new()
+            {
+                [Language.Nederlands] = "De dierentuin is van jou om van te genieten. Kom je vrienden gerust opzoeken, en blijf nieuwsgierig!",
+                [Language.Deutsch] = "Der Zoo gehört dir zum Genießen. Besuch deine Freunde, wann immer du willst, und bleib neugierig!",
+                [Language.English] = "The zoo is yours to enjoy. Visit your friends anytime and keep being curious!",
             },
         };
 

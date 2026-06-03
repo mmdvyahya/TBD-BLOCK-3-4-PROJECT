@@ -57,6 +57,15 @@ public class HabitatBuilder : MonoBehaviour
 
         yield return StartCoroutine(Phase_CloudCover(center, radius));
         yield return StartCoroutine(Phase_Building(center, radius));
+
+        // The habitat is finished now, while the clouds still fully cover it.
+        // Swap to the built model and make it visible UNDERNEATH the clouds, so
+        // that when Phase_Reveal parts the clouds they uncover an already-built habitat.
+        GameStateManager.Ensure();
+        GameStateManager.Instance.NotifyItemBuilt(itemId);
+        BuildComplete?.Invoke(itemId);
+        ShowAll();
+
         yield return StartCoroutine(Phase_Reveal(center, radius));
 
         yield return StartCoroutine(ShowContinueButton());
@@ -64,10 +73,6 @@ public class HabitatBuilder : MonoBehaviour
         CleanupUI();
         transform.localScale = _originalScale;
         ShowAll();
-
-        GameStateManager.Ensure();
-        GameStateManager.Instance.NotifyItemBuilt(itemId);
-        BuildComplete?.Invoke(itemId);
     }
 
     IEnumerator Phase_CloudCover(Vector3 center, float radius)
