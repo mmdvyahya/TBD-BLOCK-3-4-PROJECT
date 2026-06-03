@@ -8,6 +8,8 @@ public class SceneMusicController : MonoBehaviour
 
     void Start()
     {
+        if (MusicManager.Instance == null) return; // Prevents errors in case MusicManager is missing from the scene
+
         if (soundData != null)
             MusicManager.Instance.Play(soundData, fadeDuration);
         else
