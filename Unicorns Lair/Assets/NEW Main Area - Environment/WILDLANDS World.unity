@@ -22023,7 +22023,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 2366e6482947ae040b43392b309d8b7a, type: 2}
     - target: {fileID: 919132149155446097, guid: 220deca34771597428c7a3e80bc1319c, type: 3}
       propertyPath: m_Name
-      value: Beaver2
+      value: Beaver
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 220deca34771597428c7a3e80bc1319c, type: 3}
       propertyPath: m_Layer

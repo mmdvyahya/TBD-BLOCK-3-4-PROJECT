@@ -70,10 +70,34 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 136f3c244a2073b429e84fd707fb2a72, type: 2}
     - target: {fileID: 919132149155446097, guid: a024fda1aa139e64ba883312b67601fd, type: 3}
       propertyPath: m_Name
-      value: Tree
+      value: Pine Tree_1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a024fda1aa139e64ba883312b67601fd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8997904136377927520}
   m_SourcePrefab: {fileID: 100100000, guid: a024fda1aa139e64ba883312b67601fd, type: 3}
+--- !u!1 &4861350178741744783 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: a024fda1aa139e64ba883312b67601fd, type: 3}
+  m_PrefabInstance: {fileID: 5744224685221202398}
+  m_PrefabAsset: {fileID: 0}
+--- !u!208 &8997904136377927520
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4861350178741744783}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 2.1520002, y: 5.7510004, z: 2.135}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 4.221, z: 0.127}
+  m_TimeToStationary: 0.5
