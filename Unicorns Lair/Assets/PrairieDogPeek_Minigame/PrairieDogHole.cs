@@ -20,6 +20,8 @@ public class PrairieDogHole : MonoBehaviour
     private Vector3 dogVisibleLocalPos;
     private Vector3 holeOriginalLocalPos;
 
+    private bool canBeHit;
+
     public int HoleIndex => holeIndex;
 
     private void Awake()
@@ -33,6 +35,8 @@ public class PrairieDogHole : MonoBehaviour
 
         if (holeVisual != null)
             holeOriginalLocalPos = holeVisual.localPosition;
+
+        canBeHit = false;
     }
 
     public void Initialize(PrairieDogPeekManager owner, int index)
@@ -41,19 +45,42 @@ public class PrairieDogHole : MonoBehaviour
         holeIndex = index;
         HideDogInstant();
     }
+
     public void NotifyPressedFromRaycast()
     {
+        if (!canBeHit)
+            return;
+
+        canBeHit = false;
         manager?.NotifyHolePressed(this);
     }
 
     public IEnumerator PlayReveal(float visibleDuration, float popSpeed)
     {
+        canBeHit = false;
+
         if (prairieDogVisual != null)
         {
             prairieDogVisual.gameObject.SetActive(true);
-            yield return StartCoroutine(MoveDog(dogHiddenLocalPos, dogVisibleLocalPos, popSpeed));
+
+            yield return StartCoroutine(
+                MoveDog(
+                    dogHiddenLocalPos,
+                    dogVisibleLocalPos,
+                    popSpeed));
+            
+            canBeHit = true;
+
             yield return new WaitForSeconds(visibleDuration);
-            yield return StartCoroutine(MoveDog(dogVisibleLocalPos, dogHiddenLocalPos, popSpeed));
+            
+            canBeHit = false;
+
+            yield return StartCoroutine(
+                MoveDog(
+                    dogVisibleLocalPos,
+                    dogHiddenLocalPos,
+                    popSpeed));
+
             prairieDogVisual.gameObject.SetActive(false);
         }
     }
@@ -63,8 +90,15 @@ public class PrairieDogHole : MonoBehaviour
         if (prairieDogVisual == null)
             yield break;
 
+        canBeHit = false;
+
         prairieDogVisual.gameObject.SetActive(true);
-        yield return StartCoroutine(MoveDog(dogHiddenLocalPos, dogVisibleLocalPos, popSpeed));
+
+        yield return StartCoroutine(
+            MoveDog(
+                dogHiddenLocalPos,
+                dogVisibleLocalPos,
+                popSpeed));
 
         Vector3 baseScale = prairieDogVisual.localScale;
         float t = 0f;
@@ -78,8 +112,15 @@ public class PrairieDogHole : MonoBehaviour
         }
 
         prairieDogVisual.localScale = baseScale;
+
         yield return new WaitForSeconds(0.5f);
-        yield return StartCoroutine(MoveDog(dogVisibleLocalPos, dogHiddenLocalPos, popSpeed));
+
+        yield return StartCoroutine(
+            MoveDog(
+                dogVisibleLocalPos,
+                dogHiddenLocalPos,
+                popSpeed));
+
         prairieDogVisual.gameObject.SetActive(false);
     }
 
@@ -89,8 +130,11 @@ public class PrairieDogHole : MonoBehaviour
             yield break;
 
         Vector3 baseScale = holeVisual.localScale;
+
         holeVisual.localScale = baseScale * 1.15f;
+
         yield return new WaitForSeconds(0.15f);
+
         holeVisual.localScale = baseScale;
     }
 
@@ -104,8 +148,12 @@ public class PrairieDogHole : MonoBehaviour
         while (t < shakeDuration)
         {
             t += Time.deltaTime;
+
             float x = Mathf.Sin(t * 40f) * shakeAmount;
-            holeVisual.localPosition = holeOriginalLocalPos + new Vector3(x, 0f, 0f);
+
+            holeVisual.localPosition =
+                holeOriginalLocalPos + new Vector3(x, 0f, 0f);
+
             yield return null;
         }
 
@@ -119,15 +167,55 @@ public class PrairieDogHole : MonoBehaviour
         while (t < 1f)
         {
             t += Time.deltaTime * speed;
-            prairieDogVisual.localPosition = Vector3.Lerp(from, to, Mathf.SmoothStep(0f, 1f, t));
+
+            prairieDogVisual.localPosition =
+                Vector3.Lerp(
+                    from,
+                    to,
+                    Mathf.SmoothStep(0f, 1f, t));
+
             yield return null;
         }
 
         prairieDogVisual.localPosition = to;
     }
+    public IEnumerator PopDogUp(float popSpeed)
+    {
+        canBeHit = false;
 
+        if (prairieDogVisual == null)
+            yield break;
+
+        prairieDogVisual.gameObject.SetActive(true);
+
+        yield return StartCoroutine(
+            MoveDog(
+                dogHiddenLocalPos,
+                dogVisibleLocalPos,
+                popSpeed));
+
+        canBeHit = true;
+    }
+
+    public IEnumerator HideDogDown(float popSpeed)
+    {
+        canBeHit = false;
+
+        if (prairieDogVisual == null)
+            yield break;
+
+        yield return StartCoroutine(
+            MoveDog(
+                dogVisibleLocalPos,
+                dogHiddenLocalPos,
+                popSpeed));
+
+        prairieDogVisual.gameObject.SetActive(false);
+    }
     public void HideDogInstant()
     {
+        canBeHit = false;
+
         if (prairieDogVisual == null)
             return;
 

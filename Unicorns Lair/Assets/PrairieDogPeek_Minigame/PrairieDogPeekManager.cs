@@ -117,18 +117,40 @@ public class PrairieDogPeekManager : MonoBehaviour
             _correctHoleIndex = Random.Range(0, holes.Length);
 
         int running = 0;
+
         foreach (var h in holes)
         {
             if (h == null) continue;
+
             running++;
             StartCoroutine(ShakeHoleAndCount(h, () => running--));
         }
-        while (running > 0) yield return null;
+
+        while (running > 0)
+            yield return null;
 
         var correctHole = holes[_correctHoleIndex];
-        if (correctHole != null) yield return StartCoroutine(correctHole.PlayReveal(CurrentVisibleDuration(), popSpeed));
+
+        if (correctHole == null)
+        {
+            SetState(PrairieDogPeekState.WaitingForShake);
+            yield break;
+        }
+
+        yield return StartCoroutine(correctHole.PopDogUp(popSpeed));
 
         SetState(PrairieDogPeekState.WaitingForChoice);
+
+        yield return new WaitForSeconds(CurrentVisibleDuration());
+
+        if (_state == PrairieDogPeekState.WaitingForChoice)
+        {
+            yield return StartCoroutine(correctHole.HideDogDown(popSpeed));
+
+            _correctHoleIndex = -1;
+            SetFeedback("");
+            SetState(PrairieDogPeekState.WaitingForShake);
+        }
     }
 
     IEnumerator ShakeHoleAndCount(PrairieDogHole hole, System.Action onDone)
