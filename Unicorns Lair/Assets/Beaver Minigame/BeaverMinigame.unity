@@ -4572,6 +4572,38 @@ MonoBehaviour:
   accelerometerMultiplier: 35
   accelerometerDeadZone: 0.05
   showHowToPlay: 1
+  backButtonSprite: {fileID: 21300000, guid: d76915df8d38e924fa6ae0c026573ed5, type: 3}
+  backButtonPos: {x: 30, y: 30}
+  backButtonSize: {x: 240, y: 110}
+  congratsPanelSprite: {fileID: 21300000, guid: 5316b07a7e3645841b9b06658adf138d, type: 3}
+  congratsPanelPos: {x: 0, y: 0}
+  congratsPanelSize: {x: 900, y: 560}
+  congratsPanelOpacity: 1
+  continueButtonSprite: {fileID: 21300000, guid: 91ded178435fa19479e20fd68ead797b, type: 3}
+  continueButtonPos: {x: 0, y: -75}
+  continueButtonSize: {x: 2000, y: 440}
+  howToImages:
+  - {fileID: 21300000, guid: d566c80d65840714897bbc69e2ec68a6, type: 3}
+  - {fileID: 21300000, guid: daec2b36a0d9575498108752c701c4a2, type: 3}
+  howToImagePos: {x: 0, y: 0}
+  howToImageSize: {x: 1000, y: 1000}
+  howToTextPos: {x: 0, y: 75}
+  howToTextSize: {x: 900, y: 240}
+  howToTextFontSize: 34
+  howToTextColor: {r: 1, g: 1, b: 1, a: 1}
+  howToTextAlignment: 1
+  howToTextPadLeft: 30
+  howToTextPadRight: 30
+  howToTextPadTop: 10
+  howToTextPadBottom: 10
+  howToTapPos: {x: 0, y: -190}
+  howToTapSize: {x: 440, y: 50}
+  howToTapFontSize: 40
+  howToTapColor: {r: 1, g: 1, b: 1, a: 1}
+  letsGoButtonSprite: {fileID: 21300000, guid: 02f4a7fb9a1e0254ba347b15209979a8, type: 3}
+  letsGoButtonPos: {x: 0, y: -400}
+  letsGoButtonSize: {x: 480, y: 170}
+  howToDimOpacity: 0.85
 --- !u!1001 &696568326
 PrefabInstance:
   m_ObjectHideFlags: 0

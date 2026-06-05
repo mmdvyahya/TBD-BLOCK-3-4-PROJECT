@@ -9990,6 +9990,38 @@ MonoBehaviour:
   moveDuration: 0.45
   nextItemDelay: 0.35
   showHowToPlay: 1
+  backButtonSprite: {fileID: 21300000, guid: a68b5c5f0b08e7c4dadf2264f9ce2d96, type: 3}
+  backButtonPos: {x: 30, y: 30}
+  backButtonSize: {x: 240, y: 110}
+  congratsPanelSprite: {fileID: 21300000, guid: 80cc8aa47b3b27d4f8a3f36d673969ab, type: 3}
+  congratsPanelPos: {x: 0, y: 0}
+  congratsPanelSize: {x: 900, y: 580}
+  congratsPanelOpacity: 1
+  continueButtonSprite: {fileID: 21300000, guid: 51a4595bb26163249b92ddbcd4c1970a, type: 3}
+  continueButtonPos: {x: 0, y: -75}
+  continueButtonSize: {x: 2000, y: 440}
+  howToImages:
+  - {fileID: 21300000, guid: ed133848bf76b5c4ab74eaa165137fb4, type: 3}
+  - {fileID: 21300000, guid: ef0bbfaad6b02944cb868d6bd8e3b8a2, type: 3}
+  howToImagePos: {x: 0, y: 0}
+  howToImageSize: {x: 1000, y: 1000}
+  howToTextPos: {x: 0, y: 75}
+  howToTextSize: {x: 900, y: 240}
+  howToTextFontSize: 34
+  howToTextColor: {r: 1, g: 1, b: 1, a: 1}
+  howToTextAlignment: 1
+  howToTextPadLeft: 30
+  howToTextPadRight: 30
+  howToTextPadTop: 10
+  howToTextPadBottom: 10
+  howToTapPos: {x: 0, y: -190}
+  howToTapSize: {x: 440, y: 50}
+  howToTapFontSize: 26
+  howToTapColor: {r: 1, g: 1, b: 1, a: 1}
+  letsGoButtonSprite: {fileID: 21300000, guid: 7e35fc928b64722439cf80a4ef152c0b, type: 3}
+  letsGoButtonPos: {x: 0, y: -400}
+  letsGoButtonSize: {x: 480, y: 170}
+  howToDimOpacity: 0.85
   normalizeItemSize: 1
   targetItemSize: 1.5
   coinReward: 100

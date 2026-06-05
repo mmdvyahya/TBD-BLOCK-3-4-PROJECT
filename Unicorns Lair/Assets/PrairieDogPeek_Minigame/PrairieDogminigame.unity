@@ -7047,6 +7047,39 @@ MonoBehaviour:
   returnSceneName: WILDLANDS world
   autoFindHoles: 0
   showHowToPlay: 1
+  backButtonSprite: {fileID: 21300000, guid: 234c71cba22a0c0498e669ce693ab781, type: 3}
+  backButtonPos: {x: 30, y: 30}
+  backButtonSize: {x: 240, y: 110}
+  congratsPanelSprite: {fileID: 21300000, guid: 6fd76223cf33f4a4f8e58afa602eb2d6, type: 3}
+  congratsPanelPos: {x: 0, y: 0}
+  congratsPanelSize: {x: 900, y: 580}
+  congratsPanelOpacity: 1
+  continueButtonSprite: {fileID: 21300000, guid: fcf8a4fa16996b344bc559dd06d95ae9, type: 3}
+  continueButtonPos: {x: 0, y: -75}
+  continueButtonSize: {x: 2000, y: 440}
+  howToImages:
+  - {fileID: 21300000, guid: 7c26acf756f0727409e15a1b1aa4166f, type: 3}
+  - {fileID: 21300000, guid: fb698ede0b021dc49b9470a455371ea9, type: 3}
+  - {fileID: 21300000, guid: 1a8ca0c10eedfd44b8eb179ee879dd27, type: 3}
+  howToImagePos: {x: 0, y: 0}
+  howToImageSize: {x: 1000, y: 1000}
+  howToTextPos: {x: 0, y: 75}
+  howToTextSize: {x: 900, y: 240}
+  howToTextFontSize: 34
+  howToTextColor: {r: 1, g: 1, b: 1, a: 1}
+  howToTextAlignment: 1
+  howToTextPadLeft: 30
+  howToTextPadRight: 30
+  howToTextPadTop: 10
+  howToTextPadBottom: 10
+  howToTapPos: {x: 0, y: -190}
+  howToTapSize: {x: 440, y: 50}
+  howToTapFontSize: 26
+  howToTapColor: {r: 1, g: 1, b: 1, a: 1}
+  letsGoButtonSprite: {fileID: 21300000, guid: a077affb4ae85bb448bac1b4c94e1c8b, type: 3}
+  letsGoButtonPos: {x: 0, y: -400}
+  letsGoButtonSize: {x: 480, y: 170}
+  howToDimOpacity: 0.85
 --- !u!4 &1476169025
 Transform:
   m_ObjectHideFlags: 0

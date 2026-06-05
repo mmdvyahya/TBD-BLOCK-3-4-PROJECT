@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
@@ -44,6 +44,55 @@ public class BeaverBalanceMinigame : MonoBehaviour
     [Tooltip("Show a kid-friendly 'How to Play' explanation before the game starts.")]
     [SerializeField] private bool showHowToPlay = true;
 
+    [Header("Back Button (PNG)")]
+    [SerializeField] private Sprite backButtonSprite;
+    [SerializeField] private Vector2 backButtonPos = new Vector2(30f, 30f);
+    [SerializeField] private Vector2 backButtonSize = new Vector2(240f, 110f);
+
+    [Header("Congrats Panel (PNG)")]
+    [SerializeField] private Sprite congratsPanelSprite;
+    [SerializeField] private Vector2 congratsPanelPos = new Vector2(0f, 0f);
+    [SerializeField] private Vector2 congratsPanelSize = new Vector2(900f, 560f);
+    [Range(0f, 1f)]
+    [SerializeField] private float congratsPanelOpacity = 1f;
+
+    [Header("Continue Button (PNG)")]
+    [SerializeField] private Sprite continueButtonSprite;
+    [SerializeField] private Vector2 continueButtonPos = new Vector2(0f, 36f);
+    [SerializeField] private Vector2 continueButtonSize = new Vector2(500f, 120f);
+
+    [Header("How To Play - Images")]
+    [Tooltip("Instructional PNGs shown per line. The image swaps as lines advance. If fewer images than lines, the last image is reused.")]
+    [SerializeField] private Sprite[] howToImages;
+    [SerializeField] private Vector2 howToImagePos = new Vector2(0f, 180f);
+    [SerializeField] private Vector2 howToImageSize = new Vector2(820f, 820f);
+
+    [Header("How To Play - Text")]
+    [SerializeField] private Vector2 howToTextPos = new Vector2(0f, -560f);
+    [SerializeField] private Vector2 howToTextSize = new Vector2(900f, 240f);
+    [SerializeField] private int howToTextFontSize = 34;
+    [SerializeField] private Color howToTextColor = Color.white;
+    [SerializeField] private TextAnchor howToTextAlignment = TextAnchor.UpperCenter;
+    [SerializeField] private float howToTextPadLeft = 30f;
+    [SerializeField] private float howToTextPadRight = 30f;
+    [SerializeField] private float howToTextPadTop = 10f;
+    [SerializeField] private float howToTextPadBottom = 10f;
+
+    [Header("How To Play - Tap To Continue")]
+    [SerializeField] private Vector2 howToTapPos = new Vector2(0f, -740f);
+    [SerializeField] private Vector2 howToTapSize = new Vector2(440f, 50f);
+    [SerializeField] private int howToTapFontSize = 26;
+    [SerializeField] private Color howToTapColor = new Color(1f, 0.9f, 0.5f);
+
+    [Header("How To Play - Lets Go Button (PNG)")]
+    [SerializeField] private Sprite letsGoButtonSprite;
+    [SerializeField] private Vector2 letsGoButtonPos = new Vector2(0f, -760f);
+    [SerializeField] private Vector2 letsGoButtonSize = new Vector2(480f, 170f);
+
+    [Header("How To Play - Background")]
+    [Range(0f, 1f)]
+    [SerializeField] private float howToDimOpacity = 0.78f;
+
     private float _currentAngle;
     private float _stableTimeLeft;
     private bool _isRunning;
@@ -60,6 +109,14 @@ public class BeaverBalanceMinigame : MonoBehaviour
     private Text _instructionText;
     private Text _statusText;
     private GameObject _howToCanvas;
+
+    private (string key, string fallback)[] _htLines;
+    private int _htPage;
+    private int _htLineCount;
+    private Text _htText;
+    private Image _htImage;
+    private GameObject _htTapIndicator;
+    private Button _htLetsGoBtn;
 
     void Start()
     {
@@ -227,11 +284,18 @@ public class BeaverBalanceMinigame : MonoBehaviour
 
         var cardRt = card.AddComponent<RectTransform>();
         cardRt.anchorMin = cardRt.anchorMax = cardRt.pivot = new Vector2(0.5f, 0.5f);
-        cardRt.anchoredPosition = Vector2.zero;
-        cardRt.sizeDelta = new Vector2(900f, 560f);
+        cardRt.anchoredPosition = congratsPanelPos;
+        cardRt.sizeDelta = congratsPanelSize;
 
         var cardImg = card.AddComponent<Image>();
-        cardImg.color = new Color(0.08f, 0.12f, 0.20f, 0.96f);
+        if (congratsPanelSprite != null)
+        {
+            cardImg.sprite = congratsPanelSprite;
+            cardImg.type = Image.Type.Simple;
+            cardImg.preserveAspect = false;
+            cardImg.color = new Color(1f, 1f, 1f, congratsPanelOpacity);
+        }
+        else cardImg.color = new Color(0.08f, 0.12f, 0.20f, 0.96f);
         cardImg.raycastTarget = false;
 
         var accentTop = new GameObject("AccentTop");
@@ -246,36 +310,49 @@ public class BeaverBalanceMinigame : MonoBehaviour
 
         accentTop.AddComponent<Image>().color = new Color(1f, 0.82f, 0.2f);
 
-        MakeCongratsLabel(card.transform, "", new Vector2(0f, -50f), new Vector2(860f, 100f), 80, FontStyle.Normal, new Color(1f, 0.85f, 0.2f));
+        MakeCongratsLabel(card.transform, "", new Vector2(0f, -50f), new Vector2(860f, 100f), 80, FontStyle.Normal, Color.white);
 
         MakeCongratsLabelLocalized(card.transform, "minigame_complete", "Gefeliciteerd!",
             new Vector2(0f, -155f), new Vector2(860f, 80f), 60, FontStyle.Bold, Color.white);
 
         MakeCongratsLabelLocalized(card.transform, "minigame_coins_earned", "Je hebt 10 munten verdiend!",
-            new Vector2(0f, -250f), new Vector2(860f, 60f), 40, FontStyle.Normal, new Color(0.35f, 1f, 0.60f));
+            new Vector2(0f, -250f), new Vector2(860f, 60f), 40, FontStyle.Normal, Color.white);
 
         MakeCongratsLabelLocalized(card.transform, "minigame_success_desc", "De bever heeft de stok in balans gehouden!",
-            new Vector2(0f, -320f), new Vector2(860f, 50f), 28, FontStyle.Normal, new Color(0.75f, 0.88f, 1f));
+            new Vector2(0f, -320f), new Vector2(860f, 50f), 28, FontStyle.Normal, Color.white);
 
         var continueBtn = new GameObject("ContinueBtn");
         continueBtn.transform.SetParent(card.transform, false);
 
         var cbrt = continueBtn.AddComponent<RectTransform>();
         cbrt.anchorMin = cbrt.anchorMax = cbrt.pivot = new Vector2(0.5f, 0f);
-        cbrt.anchoredPosition = new Vector2(0f, 36f);
-        cbrt.sizeDelta = new Vector2(500f, 120f);
+        cbrt.anchoredPosition = continueButtonPos;
+        cbrt.sizeDelta = continueButtonSize;
 
         var cImg = continueBtn.AddComponent<Image>();
-        cImg.color = new Color(0.12f, 0.68f, 0.34f);
+        Color cBase;
+        if (continueButtonSprite != null)
+        {
+            cImg.sprite = continueButtonSprite;
+            cImg.type = Image.Type.Simple;
+            cImg.preserveAspect = true;
+            cImg.color = Color.white;
+            cBase = Color.white;
+        }
+        else
+        {
+            cBase = new Color(0.12f, 0.68f, 0.34f);
+            cImg.color = cBase;
+        }
 
         var cBtn = continueBtn.AddComponent<Button>();
         cBtn.targetGraphic = cImg;
         cBtn.colors = new ColorBlock
         {
-            normalColor = new Color(0.12f, 0.68f, 0.34f),
-            highlightedColor = new Color(0.20f, 0.85f, 0.46f),
-            pressedColor = new Color(0.07f, 0.46f, 0.22f),
-            selectedColor = new Color(0.12f, 0.68f, 0.34f),
+            normalColor = cBase,
+            highlightedColor = cBase * 1.12f,
+            pressedColor = cBase * 0.8f,
+            selectedColor = cBase,
             disabledColor = new Color(0.35f, 0.35f, 0.35f),
             colorMultiplier = 1f,
             fadeDuration = 0.08f
@@ -387,48 +464,120 @@ public class BeaverBalanceMinigame : MonoBehaviour
         cObj.AddComponent<GraphicRaycaster>();
         EnsureEventSystem();
 
+        // Full-screen dim that also captures taps to advance to the next line.
         var bg = cObj.AddComponent<Image>();
-        bg.color = new Color(0f, 0f, 0f, 0.78f);
+        bg.color = new Color(0f, 0f, 0f, howToDimOpacity);
+        var dimBtn = cObj.AddComponent<Button>();
+        dimBtn.transition = Selectable.Transition.None;
+        dimBtn.targetGraphic = bg;
+        dimBtn.onClick.AddListener(AdvanceHowTo);
 
-        var card = new GameObject("Card");
-        card.transform.SetParent(cObj.transform, false);
-        var crt = card.AddComponent<RectTransform>();
-        crt.anchorMin = crt.anchorMax = crt.pivot = new Vector2(0.5f, 0.5f);
-        crt.anchoredPosition = Vector2.zero;
-        crt.sizeDelta = new Vector2(920f, 700f);
-        crt.localScale = Vector3.zero;
-        var cImg = card.AddComponent<Image>();
-        cImg.color = new Color(0.16f, 0.09f, 0.04f, 0.98f);
+        // Instructional image (swaps per line)
+        var imgObj = new GameObject("HowToImage");
+        imgObj.transform.SetParent(cObj.transform, false);
+        var iRt = imgObj.AddComponent<RectTransform>();
+        iRt.anchorMin = iRt.anchorMax = iRt.pivot = new Vector2(0.5f, 0.5f);
+        iRt.anchoredPosition = howToImagePos; iRt.sizeDelta = howToImageSize;
+        _htImage = imgObj.AddComponent<Image>();
+        _htImage.raycastTarget = false;
+        _htImage.preserveAspect = true;
 
-        var accent = new GameObject("Accent");
-        accent.transform.SetParent(card.transform, false);
-        var aRt = accent.AddComponent<RectTransform>();
-        aRt.anchorMin = new Vector2(0f, 1f); aRt.anchorMax = new Vector2(1f, 1f);
-        aRt.pivot = new Vector2(0.5f, 1f); aRt.anchoredPosition = Vector2.zero; aRt.sizeDelta = new Vector2(0f, 14f);
-        accent.AddComponent<Image>().color = new Color(0.76f, 0.52f, 0.22f);
+        // Text box (taps pass through to the dim behind it)
+        var txtObj = new GameObject("HowToTextBox");
+        txtObj.transform.SetParent(cObj.transform, false);
+        var tRt = txtObj.AddComponent<RectTransform>();
+        tRt.anchorMin = tRt.anchorMax = tRt.pivot = new Vector2(0.5f, 0.5f);
+        tRt.anchoredPosition = howToTextPos; tRt.sizeDelta = howToTextSize;
 
-        MakeHowToLabel(card.transform, SafeGet("minigame_beaver_howto_title", "Hoe speel je?"),
-            new Vector2(0f, -40f), new Vector2(840f, 80f), 54, FontStyle.Bold, new Color(1f, 0.85f, 0.55f));
+        var txtInner = new GameObject("Text");
+        txtInner.transform.SetParent(txtObj.transform, false);
+        var tiRt = txtInner.AddComponent<RectTransform>();
+        tiRt.anchorMin = Vector2.zero; tiRt.anchorMax = Vector2.one;
+        tiRt.offsetMin = new Vector2(howToTextPadLeft, howToTextPadBottom);
+        tiRt.offsetMax = new Vector2(-howToTextPadRight, -howToTextPadTop);
+        _htText = txtInner.AddComponent<Text>();
+        _htText.font = GetFont();
+        _htText.fontSize = howToTextFontSize;
+        _htText.fontStyle = FontStyle.Bold;
+        _htText.alignment = howToTextAlignment;
+        _htText.color = howToTextColor;
+        _htText.raycastTarget = false;
+        _htText.horizontalOverflow = HorizontalWrapMode.Wrap;
+        _htText.verticalOverflow = VerticalWrapMode.Overflow;
 
-        MakeHowToLabel(card.transform,
-            SafeGet("minigame_beaver_howto_intro", "De bever balanceert een stok. Help hem om hem recht te houden!"),
-            new Vector2(0f, -150f), new Vector2(820f, 120f), 30, FontStyle.Normal, new Color(1f, 0.96f, 0.9f));
+        // Tap-to-continue indicator
+        var tapObj = new GameObject("TapToContinue");
+        tapObj.transform.SetParent(cObj.transform, false);
+        var tapRt = tapObj.AddComponent<RectTransform>();
+        tapRt.anchorMin = tapRt.anchorMax = tapRt.pivot = new Vector2(0.5f, 0.5f);
+        tapRt.anchoredPosition = howToTapPos; tapRt.sizeDelta = howToTapSize;
+        var tapTxt = tapObj.AddComponent<Text>();
+        tapTxt.font = GetFont(); tapTxt.fontSize = howToTapFontSize; tapTxt.fontStyle = FontStyle.Bold;
+        tapTxt.alignment = TextAnchor.MiddleCenter;
+        tapTxt.color = howToTapColor;
+        tapTxt.raycastTarget = false;
+        tapTxt.text = SafeGet("intro_tap_continue", "Tik om verder ▶");
+        _htTapIndicator = tapObj;
 
-        MakeHowToRow(card.transform, -300f,
-            SafeGet("minigame_beaver_howto_line1", "Kantel de tablet zachtjes naar links en rechts."));
-        MakeHowToRow(card.transform, -410f,
-            SafeGet("minigame_beaver_howto_line2", "Houd de stok in het midden tot de tijd op is!"));
-
-        var startBtn = MakeHowToButton(card.transform, SafeGet("btn_lets_go", "Laten we beginnen!"),
-            new Vector2(0f, 36f), new Vector2(520f, 120f), new Color(0.18f, 0.62f, 0.32f));
-        startBtn.onClick.AddListener(() =>
+        // "Laten we beginnen!" PNG button (shown on the last line)
+        var lgObj = new GameObject("LetsGoButton");
+        lgObj.transform.SetParent(cObj.transform, false);
+        var lgRt = lgObj.AddComponent<RectTransform>();
+        lgRt.anchorMin = lgRt.anchorMax = lgRt.pivot = new Vector2(0.5f, 0.5f);
+        lgRt.anchoredPosition = letsGoButtonPos; lgRt.sizeDelta = letsGoButtonSize;
+        var lgImg = lgObj.AddComponent<Image>();
+        lgImg.sprite = letsGoButtonSprite;
+        lgImg.color = Color.white;
+        lgImg.preserveAspect = true;
+        _htLetsGoBtn = lgObj.AddComponent<Button>();
+        _htLetsGoBtn.targetGraphic = lgImg;
+        _htLetsGoBtn.onClick.AddListener(() =>
         {
             if (_howToCanvas != null) Destroy(_howToCanvas);
             _howToCanvas = null;
             OpenMinigame();
         });
+        lgObj.SetActive(false);
 
-        StartCoroutine(PopInCard(crt));
+        _htLines = new (string, string)[]
+        {
+            ("minigame_beaver_howto_intro", "De bever balanceert een stok. Help hem om hem recht te houden!"),
+            ("minigame_beaver_howto_line1", "Kantel de tablet zachtjes naar links en rechts."),
+            ("minigame_beaver_howto_line2", "Houd de stok in het midden tot de tijd op is!"),
+        };
+        _htLineCount = _htLines.Length;
+        _htPage = 0;
+
+        ShowHowToPage(0);
+    }
+
+    void AdvanceHowTo()
+    {
+        if (_htLines == null) return;
+        if (_htPage >= _htLineCount - 1) return; // on last line, must press the Lets Go button
+        ShowHowToPage(_htPage + 1);
+    }
+
+    void ShowHowToPage(int index)
+    {
+        if (_htLines == null || _htLineCount == 0) return;
+        _htPage = Mathf.Clamp(index, 0, _htLineCount - 1);
+
+        if (_htText != null)
+            _htText.text = SafeGet(_htLines[_htPage].key, _htLines[_htPage].fallback);
+
+        if (_htImage != null)
+        {
+            Sprite sp = (howToImages != null && howToImages.Length > 0)
+                ? howToImages[Mathf.Min(_htPage, howToImages.Length - 1)]
+                : null;
+            _htImage.sprite = sp;
+            _htImage.enabled = sp != null;
+        }
+
+        bool last = _htPage >= _htLineCount - 1;
+        if (_htTapIndicator != null) _htTapIndicator.SetActive(!last);
+        if (_htLetsGoBtn != null) _htLetsGoBtn.gameObject.SetActive(last);
     }
 
     IEnumerator PopInCard(RectTransform rt)
@@ -572,46 +721,39 @@ public class BeaverBalanceMinigame : MonoBehaviour
         sbrt.anchorMin = new Vector2(0f, 0f);
         sbrt.anchorMax = new Vector2(0f, 0f);
         sbrt.pivot = new Vector2(0f, 0f);
-        sbrt.anchoredPosition = new Vector2(30f, 30f);
-        sbrt.sizeDelta = new Vector2(240f, 110f);
+        sbrt.anchoredPosition = backButtonPos;
+        sbrt.sizeDelta = backButtonSize;
 
         var sImg = stopBtn.AddComponent<Image>();
-        sImg.color = new Color(0.55f, 0.18f, 0.18f);
+        Color sBase;
+        if (backButtonSprite != null)
+        {
+            sImg.sprite = backButtonSprite;
+            sImg.type = Image.Type.Simple;
+            sImg.preserveAspect = true;
+            sImg.color = Color.white;
+            sBase = Color.white;
+        }
+        else
+        {
+            sBase = new Color(0.55f, 0.18f, 0.18f);
+            sImg.color = sBase;
+        }
 
         var sBtn = stopBtn.AddComponent<Button>();
         sBtn.targetGraphic = sImg;
         sBtn.colors = new ColorBlock
         {
-            normalColor = new Color(0.55f, 0.18f, 0.18f),
-            highlightedColor = new Color(0.72f, 0.25f, 0.25f),
-            pressedColor = new Color(0.38f, 0.10f, 0.10f),
-            selectedColor = new Color(0.55f, 0.18f, 0.18f),
+            normalColor = sBase,
+            highlightedColor = sBase * 1.12f,
+            pressedColor = sBase * 0.8f,
+            selectedColor = sBase,
             disabledColor = new Color(0.3f, 0.3f, 0.3f),
             colorMultiplier = 1f,
             fadeDuration = 0.08f
         };
 
         sBtn.onClick.AddListener(CloseMinigame);
-
-        var sLbl = new GameObject("Label");
-        sLbl.transform.SetParent(stopBtn.transform, false);
-
-        var slrt = sLbl.AddComponent<RectTransform>();
-        slrt.anchorMin = Vector2.zero;
-        slrt.anchorMax = Vector2.one;
-        slrt.offsetMin = slrt.offsetMax = Vector2.zero;
-
-        var sTxt = sLbl.AddComponent<Text>();
-        sTxt.font = GetFont();
-        sTxt.fontSize = 42;
-        sTxt.fontStyle = FontStyle.Bold;
-        sTxt.alignment = TextAnchor.MiddleCenter;
-        sTxt.color = Color.white;
-        sTxt.raycastTarget = false;
-
-        var stopLoc = sLbl.AddComponent<LocalizedText>();
-        stopLoc.key = "btn_back";
-        stopLoc.Refresh();
     }
 
     void RefreshStaticUI()

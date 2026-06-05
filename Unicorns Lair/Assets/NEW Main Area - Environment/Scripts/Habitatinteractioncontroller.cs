@@ -14,6 +14,22 @@ public class HabitatInteractionController : MonoBehaviour
     [SerializeField] private Camera mainCamera;
     [SerializeField] private HabitatInspectionManager inspectionManager;
 
+    [Header("Button Icons (SVG sprites)")]
+    [Tooltip("Assign the imported BACK.svg sprite. Used for the card's back button and the inspect back button.")]
+    [SerializeField] private Sprite backSprite;
+    [Tooltip("Assign the imported INSPECT.svg sprite.")]
+    [SerializeField] private Sprite inspectSprite;
+    [Tooltip("Assign the imported PLAY.svg sprite. Used for the minigame button.")]
+    [SerializeField] private Sprite playSprite;
+
+    [Header("Button Layout")]
+    [Tooltip("Height of each icon button in reference pixels. Width is derived from each sprite so aspect ratio is kept. Increase to make the buttons bigger.")]
+    [SerializeField] private float buttonHeight = 150f;
+    [Tooltip("Gap between buttons in the row. Decrease to bring them closer together.")]
+    [SerializeField] private float buttonSpacing = 20f;
+    [Tooltip("Bottom-left position of the button row (and of the inspect back button).")]
+    [SerializeField] private Vector2 buttonRowOrigin = new Vector2(30f, 30f);
+
     [Header("Tuning")]
     [SerializeField] private float cameraMoveDuration = 1.1f;
     [SerializeField] private float cameraReturnDuration = 1.0f;
@@ -185,16 +201,21 @@ public class HabitatInteractionController : MonoBehaviour
             if (LanguageManager.Instance != null) LanguageManager.Instance.LanguageChanged -= refresh;
         };
 
-        string backText = SafeGet(LanguageManager.Instance, "btn_back", "Terug");
-        string inspText = SafeGet(LanguageManager.Instance, "btn_inspect", "Inspecteren");
-        string mgText = SafeGet(LanguageManager.Instance, "btn_minigame", "Minigame");
+        float rowX = buttonRowOrigin.x;
+        float rowY = buttonRowOrigin.y;
 
-        var backBtn = MakeButton(canvasObj.transform, backText, new Vector2(30f, 30f), new Vector2(220f, 120f), new Color(0.55f, 0.18f, 0.18f));
-        var inspBtn = MakeButton(canvasObj.transform, inspText, new Vector2(265f, 30f), new Vector2(340f, 120f), new Color(0.12f, 0.48f, 0.78f));
+        var backBtn = MakeIconButton(canvasObj.transform, backSprite, new Vector2(rowX, rowY), buttonHeight, out float wBack);
+        rowX += wBack + buttonSpacing;
+
+        var inspBtn = MakeIconButton(canvasObj.transform, inspectSprite, new Vector2(rowX, rowY), buttonHeight, out float wInsp);
+        rowX += wInsp + buttonSpacing;
 
         Button mgBtn = null;
         if (habitat.HasMinigame)
-            mgBtn = MakeButton(canvasObj.transform, mgText, new Vector2(620f, 30f), new Vector2(320f, 120f), new Color(0.55f, 0.18f, 0.65f));
+        {
+            mgBtn = MakeIconButton(canvasObj.transform, playSprite, new Vector2(rowX, rowY), buttonHeight, out float wMg);
+            rowX += wMg + buttonSpacing;
+        }
 
         backBtn.onClick.AddListener(CloseHabitat);
 
@@ -238,8 +259,7 @@ public class HabitatInteractionController : MonoBehaviour
         canvasObj.AddComponent<GraphicRaycaster>();
         EnsureEventSystem();
 
-        string backText = SafeGet(LanguageManager.Instance, "btn_back", "Terug");
-        var btn = MakeButton(canvasObj.transform, backText, new Vector2(30f, 30f), new Vector2(260f, 120f), new Color(0.55f, 0.18f, 0.18f));
+        var btn = MakeIconButton(canvasObj.transform, backSprite, buttonRowOrigin, buttonHeight, out _);
         btn.interactable = true;
         btn.onClick.AddListener(() =>
         {
@@ -268,6 +288,43 @@ public class HabitatInteractionController : MonoBehaviour
         t.font = GetFont(); t.fontSize = size; t.fontStyle = style;
         t.alignment = TextAnchor.MiddleCenter; t.color = color; t.raycastTarget = false;
         return t;
+    }
+
+    Button MakeIconButton(Transform parent, Sprite sprite, Vector2 pos, float height, out float width)
+    {
+        float aspect = (sprite != null && sprite.rect.height > 0.01f)
+            ? sprite.rect.width / sprite.rect.height
+            : 1f;
+        width = height * aspect;
+
+        var obj = new GameObject("IconBtn");
+        obj.transform.SetParent(parent, false);
+        var rt = obj.AddComponent<RectTransform>();
+        rt.anchorMin = rt.anchorMax = new Vector2(0f, 0f);
+        rt.pivot = new Vector2(0f, 0f);
+        rt.anchoredPosition = pos;
+        rt.sizeDelta = new Vector2(width, height);
+
+        var img = obj.AddComponent<Image>();
+        img.sprite = sprite;
+        img.type = Image.Type.Simple;
+        img.preserveAspect = true;
+        img.color = Color.white;
+
+        var btn = obj.AddComponent<Button>();
+        btn.targetGraphic = img;
+        btn.colors = new ColorBlock
+        {
+            normalColor = Color.white,
+            highlightedColor = new Color(0.88f, 0.88f, 0.88f),
+            pressedColor = new Color(0.72f, 0.72f, 0.72f),
+            selectedColor = Color.white,
+            disabledColor = new Color(0.5f, 0.5f, 0.5f, 0.5f),
+            colorMultiplier = 1f,
+            fadeDuration = 0.08f
+        };
+
+        return btn;
     }
 
     Button MakeButton(Transform parent, string label, Vector2 pos, Vector2 size, Color color)

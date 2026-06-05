@@ -12250,6 +12250,38 @@ MonoBehaviour:
   twistsNeeded: 3
   finishDelay: 1.2
   showHowToPlay: 1
+  backButtonSprite: {fileID: 21300000, guid: 0f3c2eac9ff96ac4f9ff187d8a99ca3c, type: 3}
+  backButtonPos: {x: 30, y: 30}
+  backButtonSize: {x: 240, y: 110}
+  congratsPanelSprite: {fileID: 21300000, guid: a9d3dcd34c42f544f87dedc7f1881beb, type: 3}
+  congratsPanelPos: {x: 0, y: 0}
+  congratsPanelSize: {x: 900, y: 580}
+  congratsPanelOpacity: 1
+  continueButtonSprite: {fileID: 21300000, guid: abd2aa9ea8976864dba7751afdb19cc3, type: 3}
+  continueButtonPos: {x: 0, y: -75}
+  continueButtonSize: {x: 2000, y: 440}
+  howToImages:
+  - {fileID: 21300000, guid: bc89efdc350b0eb478b5782aefc81f59, type: 3}
+  - {fileID: 21300000, guid: 38d11784885a20e43a54dca3ec4951cf, type: 3}
+  howToImagePos: {x: 0, y: 0}
+  howToImageSize: {x: 1000, y: 1000}
+  howToTextPos: {x: 0, y: 75}
+  howToTextSize: {x: 900, y: 240}
+  howToTextFontSize: 34
+  howToTextColor: {r: 1, g: 1, b: 1, a: 1}
+  howToTextAlignment: 1
+  howToTextPadLeft: 30
+  howToTextPadRight: 30
+  howToTextPadTop: 10
+  howToTextPadBottom: 10
+  howToTapPos: {x: 0, y: -190}
+  howToTapSize: {x: 440, y: 50}
+  howToTapFontSize: 40
+  howToTapColor: {r: 1, g: 1, b: 1, a: 1}
+  letsGoButtonSprite: {fileID: 21300000, guid: d48ee3682de701e4a842404d6048daa8, type: 3}
+  letsGoButtonPos: {x: 0, y: -400}
+  letsGoButtonSize: {x: 480, y: 170}
+  howToDimOpacity: 0.85
   coinReward: 100
   returnSceneName: WILDLANDS world
   useGyroscope: 1

@@ -23,6 +23,55 @@ public class OtterShellBreakMinigame : MonoBehaviour
     [Tooltip("Show a kid-friendly 'How to Play' explanation before the game starts.")]
     [SerializeField] private bool showHowToPlay = true;
 
+    [Header("Back Button (PNG)")]
+    [SerializeField] private Sprite backButtonSprite;
+    [SerializeField] private Vector2 backButtonPos = new Vector2(30f, 30f);
+    [SerializeField] private Vector2 backButtonSize = new Vector2(240f, 110f);
+
+    [Header("Congrats Panel (PNG)")]
+    [SerializeField] private Sprite congratsPanelSprite;
+    [SerializeField] private Vector2 congratsPanelPos = new Vector2(0f, 0f);
+    [SerializeField] private Vector2 congratsPanelSize = new Vector2(900f, 580f);
+    [Range(0f, 1f)]
+    [SerializeField] private float congratsPanelOpacity = 1f;
+
+    [Header("Continue Button (PNG)")]
+    [SerializeField] private Sprite continueButtonSprite;
+    [SerializeField] private Vector2 continueButtonPos = new Vector2(0f, 32f);
+    [SerializeField] private Vector2 continueButtonSize = new Vector2(500f, 110f);
+
+    [Header("How To Play - Images")]
+    [Tooltip("Instructional PNGs shown per line. The image swaps as lines advance. If fewer images than lines, the last image is reused.")]
+    [SerializeField] private Sprite[] howToImages;
+    [SerializeField] private Vector2 howToImagePos = new Vector2(0f, 180f);
+    [SerializeField] private Vector2 howToImageSize = new Vector2(820f, 820f);
+
+    [Header("How To Play - Text")]
+    [SerializeField] private Vector2 howToTextPos = new Vector2(0f, -560f);
+    [SerializeField] private Vector2 howToTextSize = new Vector2(900f, 240f);
+    [SerializeField] private int howToTextFontSize = 34;
+    [SerializeField] private Color howToTextColor = Color.white;
+    [SerializeField] private TextAnchor howToTextAlignment = TextAnchor.UpperCenter;
+    [SerializeField] private float howToTextPadLeft = 30f;
+    [SerializeField] private float howToTextPadRight = 30f;
+    [SerializeField] private float howToTextPadTop = 10f;
+    [SerializeField] private float howToTextPadBottom = 10f;
+
+    [Header("How To Play - Tap To Continue")]
+    [SerializeField] private Vector2 howToTapPos = new Vector2(0f, -740f);
+    [SerializeField] private Vector2 howToTapSize = new Vector2(440f, 50f);
+    [SerializeField] private int howToTapFontSize = 26;
+    [SerializeField] private Color howToTapColor = new Color(1f, 0.9f, 0.5f);
+
+    [Header("How To Play - Lets Go Button (PNG)")]
+    [SerializeField] private Sprite letsGoButtonSprite;
+    [SerializeField] private Vector2 letsGoButtonPos = new Vector2(0f, -760f);
+    [SerializeField] private Vector2 letsGoButtonSize = new Vector2(480f, 170f);
+
+    [Header("How To Play - Background")]
+    [Range(0f, 1f)]
+    [SerializeField] private float howToDimOpacity = 0.78f;
+
     [Header("Reward")]
     [Tooltip("How many coins the player earns when they win.")]
     [SerializeField] private int coinReward = 10;
@@ -61,6 +110,13 @@ public class OtterShellBreakMinigame : MonoBehaviour
     private Text _titleText;
     private Text _hintText;
     private GameObject _howToCanvas;
+    private (string key, string fallback)[] _htLines;
+    private int _htPage;
+    private int _htLineCount;
+    private Text _htText;
+    private Image _htImage;
+    private GameObject _htTapIndicator;
+    private Button _htLetsGoBtn;
     private GameObject _congratsCanvas;
     private Image[] _pips;
 
@@ -312,8 +368,7 @@ public class OtterShellBreakMinigame : MonoBehaviour
             _pips[i] = img;
         }
 
-        var stopBtn = MakeButton(cObj.transform, SafeGet("btn_back", "Stop"),
-            new Vector2(30f, 30f), new Vector2(240f, 110f), new Color(0.55f, 0.18f, 0.18f));
+        var stopBtn = MakeSpriteButton(cObj.transform, backButtonSprite, null, backButtonPos, backButtonSize);
         stopBtn.onClick.AddListener(ExitToMainArea);
     }
 
@@ -332,70 +387,114 @@ public class OtterShellBreakMinigame : MonoBehaviour
         EnsureEventSystem();
 
         var bg = cObj.AddComponent<Image>();
-        bg.color = new Color(0f, 0f, 0f, 0.78f);
+        bg.color = new Color(0f, 0f, 0f, howToDimOpacity);
+        var dimBtn = cObj.AddComponent<Button>();
+        dimBtn.transition = Selectable.Transition.None;
+        dimBtn.targetGraphic = bg;
+        dimBtn.onClick.AddListener(AdvanceHowTo);
 
-        var card = new GameObject("Card");
-        card.transform.SetParent(cObj.transform, false);
-        var crt = card.AddComponent<RectTransform>();
-        crt.anchorMin = crt.anchorMax = crt.pivot = new Vector2(0.5f, 0.5f);
-        crt.anchoredPosition = Vector2.zero;
-        crt.sizeDelta = new Vector2(920f, 700f);
-        crt.localScale = Vector3.zero;
-        var cImg = card.AddComponent<Image>();
-        cImg.color = new Color(0.08f, 0.14f, 0.18f, 0.98f);
+        var imgObj = new GameObject("HowToImage");
+        imgObj.transform.SetParent(cObj.transform, false);
+        var iRt = imgObj.AddComponent<RectTransform>();
+        iRt.anchorMin = iRt.anchorMax = iRt.pivot = new Vector2(0.5f, 0.5f);
+        iRt.anchoredPosition = howToImagePos; iRt.sizeDelta = howToImageSize;
+        _htImage = imgObj.AddComponent<Image>();
+        _htImage.raycastTarget = false;
+        _htImage.preserveAspect = true;
 
-        var accent = new GameObject("Accent");
-        accent.transform.SetParent(card.transform, false);
-        var aRt = accent.AddComponent<RectTransform>();
-        aRt.anchorMin = new Vector2(0f, 1f); aRt.anchorMax = new Vector2(1f, 1f);
-        aRt.pivot = new Vector2(0.5f, 1f); aRt.anchoredPosition = Vector2.zero; aRt.sizeDelta = new Vector2(0f, 14f);
-        accent.AddComponent<Image>().color = new Color(0.35f, 0.75f, 0.95f);
+        var txtObj = new GameObject("HowToTextBox");
+        txtObj.transform.SetParent(cObj.transform, false);
+        var tRt = txtObj.AddComponent<RectTransform>();
+        tRt.anchorMin = tRt.anchorMax = tRt.pivot = new Vector2(0.5f, 0.5f);
+        tRt.anchoredPosition = howToTextPos; tRt.sizeDelta = howToTextSize;
 
-        MakeLabel(card.transform, SafeGet("minigame_otter_howto_title", "Hoe speel je?"),
-            new Vector2(0f, -40f), new Vector2(840f, 80f), 54, FontStyle.Bold, new Color(0.6f, 0.9f, 1f), out _);
+        var txtInner = new GameObject("Text");
+        txtInner.transform.SetParent(txtObj.transform, false);
+        var tiRt = txtInner.AddComponent<RectTransform>();
+        tiRt.anchorMin = Vector2.zero; tiRt.anchorMax = Vector2.one;
+        tiRt.offsetMin = new Vector2(howToTextPadLeft, howToTextPadBottom);
+        tiRt.offsetMax = new Vector2(-howToTextPadRight, -howToTextPadTop);
+        _htText = txtInner.AddComponent<Text>();
+        _htText.font = GetFont();
+        _htText.fontSize = howToTextFontSize;
+        _htText.fontStyle = FontStyle.Bold;
+        _htText.alignment = howToTextAlignment;
+        _htText.color = howToTextColor;
+        _htText.raycastTarget = false;
+        _htText.horizontalOverflow = HorizontalWrapMode.Wrap;
+        _htText.verticalOverflow = VerticalWrapMode.Overflow;
 
-        MakeLabel(card.transform,
-            SafeGet("minigame_otter_howto_intro", "De otter heeft een schelp met een lekker hapje erin gevonden, maar hij zit potdicht!"),
-            new Vector2(0f, -150f), new Vector2(820f, 120f), 30, FontStyle.Normal, new Color(0.92f, 0.97f, 1f), out _);
+        var tapObj = new GameObject("TapToContinue");
+        tapObj.transform.SetParent(cObj.transform, false);
+        var tapRt = tapObj.AddComponent<RectTransform>();
+        tapRt.anchorMin = tapRt.anchorMax = tapRt.pivot = new Vector2(0.5f, 0.5f);
+        tapRt.anchoredPosition = howToTapPos; tapRt.sizeDelta = howToTapSize;
+        var tapTxt = tapObj.AddComponent<Text>();
+        tapTxt.font = GetFont(); tapTxt.fontSize = howToTapFontSize; tapTxt.fontStyle = FontStyle.Bold;
+        tapTxt.alignment = TextAnchor.MiddleCenter;
+        tapTxt.color = howToTapColor;
+        tapTxt.raycastTarget = false;
+        tapTxt.text = SafeGet("intro_tap_continue", "Tik om verder \u25B6");
+        _htTapIndicator = tapObj;
 
-        var row1 = new GameObject("Line1");
-        row1.transform.SetParent(card.transform, false);
-        var r1Rt = row1.AddComponent<RectTransform>();
-        r1Rt.anchorMin = new Vector2(0.5f, 1f); r1Rt.anchorMax = new Vector2(0.5f, 1f);
-        r1Rt.pivot = new Vector2(0.5f, 1f); r1Rt.anchoredPosition = new Vector2(0f, -300f); r1Rt.sizeDelta = new Vector2(820f, 90f);
-        row1.AddComponent<Image>().color = new Color(0.16f, 0.34f, 0.46f, 0.85f);
-        MakeLabel(row1.transform,
-            SafeGet("minigame_otter_howto_line1", "Schud de tablet om de schelp te kraken."),
-            Vector2.zero, new Vector2(780f, 80f), 28, FontStyle.Bold, Color.white, out var l1);
-        var l1Rt = l1.rectTransform; l1Rt.anchorMin = Vector2.zero; l1Rt.anchorMax = Vector2.one;
-        l1Rt.offsetMin = new Vector2(20f, 0f); l1Rt.offsetMax = new Vector2(-20f, 0f); l1Rt.pivot = new Vector2(0.5f, 0.5f);
-        l1.alignment = TextAnchor.MiddleCenter;
-
-        var row2 = new GameObject("Line2");
-        row2.transform.SetParent(card.transform, false);
-        var r2Rt = row2.AddComponent<RectTransform>();
-        r2Rt.anchorMin = new Vector2(0.5f, 1f); r2Rt.anchorMax = new Vector2(0.5f, 1f);
-        r2Rt.pivot = new Vector2(0.5f, 1f); r2Rt.anchoredPosition = new Vector2(0f, -410f); r2Rt.sizeDelta = new Vector2(820f, 90f);
-        row2.AddComponent<Image>().color = new Color(0.16f, 0.34f, 0.46f, 0.85f);
-        MakeLabel(row2.transform,
-            SafeGet("minigame_otter_howto_line2", "Blijf schudden tot de schelp openbreekt!"),
-            Vector2.zero, new Vector2(780f, 80f), 28, FontStyle.Bold, Color.white, out var l2);
-        var l2Rt = l2.rectTransform; l2Rt.anchorMin = Vector2.zero; l2Rt.anchorMax = Vector2.one;
-        l2Rt.offsetMin = new Vector2(20f, 0f); l2Rt.offsetMax = new Vector2(-20f, 0f); l2Rt.pivot = new Vector2(0.5f, 0.5f);
-        l2.alignment = TextAnchor.MiddleCenter;
-
-        var startBtn = MakeButton(card.transform, SafeGet("btn_lets_go", "Laten we beginnen!"),
-            new Vector2(0f, 36f), new Vector2(520f, 120f), new Color(0.18f, 0.62f, 0.32f));
-        var sbRt = startBtn.GetComponent<RectTransform>();
-        sbRt.anchorMin = new Vector2(0.5f, 0f); sbRt.anchorMax = new Vector2(0.5f, 0f); sbRt.pivot = new Vector2(0.5f, 0f);
-        startBtn.onClick.AddListener(() =>
+        var lgObj = new GameObject("LetsGoButton");
+        lgObj.transform.SetParent(cObj.transform, false);
+        var lgRt = lgObj.AddComponent<RectTransform>();
+        lgRt.anchorMin = lgRt.anchorMax = lgRt.pivot = new Vector2(0.5f, 0.5f);
+        lgRt.anchoredPosition = letsGoButtonPos; lgRt.sizeDelta = letsGoButtonSize;
+        var lgImg = lgObj.AddComponent<Image>();
+        lgImg.sprite = letsGoButtonSprite;
+        lgImg.color = Color.white;
+        lgImg.preserveAspect = true;
+        _htLetsGoBtn = lgObj.AddComponent<Button>();
+        _htLetsGoBtn.targetGraphic = lgImg;
+        _htLetsGoBtn.onClick.AddListener(() =>
         {
             if (_howToCanvas != null) Destroy(_howToCanvas);
             _howToCanvas = null;
             StartMinigame();
         });
+        lgObj.SetActive(false);
 
-        StartCoroutine(PopInCard(crt));
+        _htLines = new (string, string)[]
+        {
+            ("minigame_otter_howto_intro", "De otter heeft een schelp met een lekker hapje erin gevonden, maar hij zit potdicht!"),
+            ("minigame_otter_howto_line1", "Schud de tablet om de schelp te kraken."),
+            ("minigame_otter_howto_line2", "Blijf schudden tot de schelp openbreekt!"),
+        };
+        _htLineCount = _htLines.Length;
+        _htPage = 0;
+
+        ShowHowToPage(0);
+    }
+
+    private void AdvanceHowTo()
+    {
+        if (_htLines == null) return;
+        if (_htPage >= _htLineCount - 1) return;
+        ShowHowToPage(_htPage + 1);
+    }
+
+    private void ShowHowToPage(int index)
+    {
+        if (_htLines == null || _htLineCount == 0) return;
+        _htPage = Mathf.Clamp(index, 0, _htLineCount - 1);
+
+        if (_htText != null)
+            _htText.text = SafeGet(_htLines[_htPage].key, _htLines[_htPage].fallback);
+
+        if (_htImage != null)
+        {
+            Sprite sp = (howToImages != null && howToImages.Length > 0)
+                ? howToImages[Mathf.Min(_htPage, howToImages.Length - 1)]
+                : null;
+            _htImage.sprite = sp;
+            _htImage.enabled = sp != null;
+        }
+
+        bool last = _htPage >= _htLineCount - 1;
+        if (_htTapIndicator != null) _htTapIndicator.SetActive(!last);
+        if (_htLetsGoBtn != null) _htLetsGoBtn.gameObject.SetActive(last);
     }
 
     private void ShowCongrats()
@@ -420,11 +519,18 @@ public class OtterShellBreakMinigame : MonoBehaviour
         card.transform.SetParent(cObj.transform, false);
         var crt = card.AddComponent<RectTransform>();
         crt.anchorMin = crt.anchorMax = crt.pivot = new Vector2(0.5f, 0.5f);
-        crt.anchoredPosition = Vector2.zero;
-        crt.sizeDelta = new Vector2(900f, 580f);
+        crt.anchoredPosition = congratsPanelPos;
+        crt.sizeDelta = congratsPanelSize;
         crt.localScale = Vector3.zero;
         var cImg = card.AddComponent<Image>();
-        cImg.color = new Color(0.08f, 0.14f, 0.18f, 0.97f);
+        if (congratsPanelSprite != null)
+        {
+            cImg.sprite = congratsPanelSprite;
+            cImg.type = Image.Type.Simple;
+            cImg.preserveAspect = false;
+            cImg.color = new Color(1f, 1f, 1f, congratsPanelOpacity);
+        }
+        else cImg.color = new Color(0.14f, 0.11f, 0.07f, 0.97f);
 
         var accent = new GameObject("Accent");
         accent.transform.SetParent(card.transform, false);
@@ -437,18 +543,17 @@ public class OtterShellBreakMinigame : MonoBehaviour
             new Vector2(0f, -55f), new Vector2(840f, 80f), 56, FontStyle.Bold, Color.white, out _);
 
         MakeLabel(card.transform, SafeGet("minigame_otter_success_title", "Smikkelen maar!"),
-            new Vector2(0f, -150f), new Vector2(840f, 60f), 36, FontStyle.Normal, new Color(0.6f, 0.9f, 1f), out _);
+            new Vector2(0f, -150f), new Vector2(840f, 60f), 36, FontStyle.Normal, Color.white, out _);
 
         MakeLabel(card.transform,
             SafeGet("minigame_coins_earned", $"Je hebt {coinReward} munten verdiend!"),
-            new Vector2(0f, -240f), new Vector2(840f, 60f), 38, FontStyle.Normal, new Color(0.35f, 1f, 0.55f), out _);
+            new Vector2(0f, -240f), new Vector2(840f, 60f), 38, FontStyle.Normal, Color.white, out _);
 
         MakeLabel(card.transform,
             SafeGet("minigame_otter_success_desc", "De otter heeft de schelp gekraakt!"),
-            new Vector2(0f, -310f), new Vector2(840f, 50f), 26, FontStyle.Normal, new Color(0.92f, 0.97f, 1f), out _);
+            new Vector2(0f, -310f), new Vector2(840f, 50f), 26, FontStyle.Normal, Color.white, out _);
 
-        var continueBtn = MakeButton(card.transform, SafeGet("btn_continue", "Doorgaan"),
-            new Vector2(0f, 32f), new Vector2(500f, 110f), new Color(0.18f, 0.62f, 0.32f));
+        var continueBtn = MakeSpriteButton(card.transform, continueButtonSprite, SafeGet("btn_continue", "Doorgaan"), continueButtonPos, continueButtonSize);
         var cbRt = continueBtn.GetComponent<RectTransform>();
         cbRt.anchorMin = new Vector2(0.5f, 0f); cbRt.anchorMax = new Vector2(0.5f, 0f); cbRt.pivot = new Vector2(0.5f, 0f);
         continueBtn.onClick.AddListener(OnContinue);
@@ -496,6 +601,58 @@ public class OtterShellBreakMinigame : MonoBehaviour
         t.text = text; t.font = GetFont(); t.fontSize = fontSize; t.fontStyle = style;
         t.alignment = TextAnchor.MiddleCenter; t.color = color; t.raycastTarget = false;
         refOut = t;
+    }
+
+    private Button MakeSpriteButton(Transform parent, Sprite sprite, string label, Vector2 pos, Vector2 size)
+    {
+        var obj = new GameObject("SpriteBtn");
+        obj.transform.SetParent(parent, false);
+        var rt = obj.AddComponent<RectTransform>();
+        rt.anchorMin = new Vector2(0f, 0f); rt.anchorMax = new Vector2(0f, 0f); rt.pivot = new Vector2(0f, 0f);
+        rt.anchoredPosition = pos; rt.sizeDelta = size;
+
+        var img = obj.AddComponent<Image>();
+        Color baseCol;
+        if (sprite != null)
+        {
+            img.sprite = sprite;
+            img.type = Image.Type.Simple;
+            img.preserveAspect = true;
+            img.color = Color.white;
+            baseCol = Color.white;
+        }
+        else
+        {
+            baseCol = new Color(0.3f, 0.3f, 0.3f, 0.95f);
+            img.color = baseCol;
+        }
+
+        var btn = obj.AddComponent<Button>();
+        btn.targetGraphic = img;
+        btn.colors = new ColorBlock
+        {
+            normalColor = baseCol,
+            highlightedColor = baseCol * 1.12f,
+            pressedColor = baseCol * 0.8f,
+            selectedColor = baseCol,
+            disabledColor = new Color(0.3f, 0.3f, 0.3f, 0.5f),
+            colorMultiplier = 1f,
+            fadeDuration = 0.08f
+        };
+
+        if (!string.IsNullOrEmpty(label))
+        {
+            var lObj = new GameObject("Label");
+            lObj.transform.SetParent(obj.transform, false);
+            var lrt = lObj.AddComponent<RectTransform>();
+            lrt.anchorMin = Vector2.zero; lrt.anchorMax = Vector2.one;
+            lrt.offsetMin = lrt.offsetMax = Vector2.zero;
+            var t = lObj.AddComponent<Text>();
+            t.text = label; t.font = GetFont(); t.fontSize = 42; t.fontStyle = FontStyle.Bold;
+            t.alignment = TextAnchor.MiddleCenter; t.color = Color.white; t.raycastTarget = false;
+        }
+
+        return btn;
     }
 
     private Button MakeButton(Transform parent, string label, Vector2 pos, Vector2 size, Color color)

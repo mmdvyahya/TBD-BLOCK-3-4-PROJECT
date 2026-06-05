@@ -3556,6 +3556,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MainAreaManager
   mainCamera: {fileID: 0}
+  coinBackgroundSprite: {fileID: 21300000, guid: 6fe39a01e429e4447996b0d43c523a02, type: 3}
+  coinBackgroundOpacity: 1
+  coinPanelPosition: {x: 20, y: 20}
+  coinPanelSize: {x: 480, y: 190}
+  coinTextSize: 48
+  coinTextAlignment: 4
+  coinTextColor: {r: 1, g: 1, b: 1, a: 1}
+  coinTextPadLeft: 20
+  coinTextPadRight: 20
+  coinTextPadTop: 0
+  coinTextPadBottom: 15
 --- !u!4 &187624064
 Transform:
   m_ObjectHideFlags: 0
@@ -22197,22 +22208,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1293463583}
     m_Modifications:
-    - target: {fileID: -7511558181221131132, guid: 220deca34771597428c7a3e80bc1319c, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 2812508ac65a2954ab8fc99ae0d09493, type: 2}
-    - target: {fileID: -7511558181221131132, guid: 220deca34771597428c7a3e80bc1319c, type: 3}
-      propertyPath: 'm_Materials.Array.data[1]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 36969dc4873322a40841ef5319b57632, type: 2}
-    - target: {fileID: -7511558181221131132, guid: 220deca34771597428c7a3e80bc1319c, type: 3}
-      propertyPath: 'm_Materials.Array.data[2]'
-      value: 
-      objectReference: {fileID: 2100000, guid: cd25466e9d953d3468ca2f47dc93908e, type: 2}
-    - target: {fileID: -7511558181221131132, guid: 220deca34771597428c7a3e80bc1319c, type: 3}
-      propertyPath: 'm_Materials.Array.data[3]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 2366e6482947ae040b43392b309d8b7a, type: 2}
     - target: {fileID: 1188191722613822518, guid: 3ef109322e53bee43a319de140356f1d, type: 3}
       propertyPath: m_Name
       value: Beaver
@@ -22277,6 +22272,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 220deca34771597428c7a3e80bc1319c, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 2812508ac65a2954ab8fc99ae0d09493, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 220deca34771597428c7a3e80bc1319c, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 36969dc4873322a40841ef5319b57632, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 220deca34771597428c7a3e80bc1319c, type: 3}
+      propertyPath: 'm_Materials.Array.data[2]'
+      value: 
+      objectReference: {fileID: 2100000, guid: cd25466e9d953d3468ca2f47dc93908e, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 220deca34771597428c7a3e80bc1319c, type: 3}
+      propertyPath: 'm_Materials.Array.data[3]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 2366e6482947ae040b43392b309d8b7a, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -24811,6 +24822,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HabitatInteractionController
   mainCamera: {fileID: 0}
   inspectionManager: {fileID: 1129687373}
+  backSprite: {fileID: 21300000, guid: ccb745f8acc502d42bf0711202571684, type: 3}
+  inspectSprite: {fileID: 21300000, guid: 15bd035aafdccb349aa3a9b0d96ea6f1, type: 3}
+  playSprite: {fileID: 21300000, guid: 618a3a3907651634e8272dc5129de3cd, type: 3}
+  buttonHeight: 175
+  buttonSpacing: 20
+  buttonRowOrigin: {x: 30, y: 30}
   cameraMoveDuration: 1.1
   cameraReturnDuration: 1
 --- !u!4 &1129687375
@@ -29928,10 +29945,26 @@ MonoBehaviour:
   tapIcon: {fileID: 1520866622, guid: bc0953893233fe64bbdd1ace03dcd99a, type: 3}
   glowColor: {r: 1, g: 0.85, b: 0.2, a: 1}
   glowGroundOffset: 0.05
+  pointerSprite: {fileID: 21300000, guid: b80555f8972c13e4bbe78b86da3d443b, type: 3}
+  pointerSize: {x: 140, y: 140}
+  pointerYOffset: 110
+  pointerBobAmount: 18
+  pointerPulseAmount: 0.08
   inspectionPromptSeconds: 5
   mainCamera: {fileID: 0}
   speakerNameKey: intro_speaker
   speakerNameFallback: Boswachter
+  dialogueBoxSprite: {fileID: 21300000, guid: eff4b33e2b823c54e90820991531edd5, type: 3}
+  dialogueBoxSize: {x: 1000, y: 480}
+  dialogueBoxOpacity: 1
+  textPadLeft: 100
+  textPadRight: 120
+  textPadTop: 150
+  textPadBottom: 110
+  tapIndicatorAnchor: {x: 1, y: 0}
+  tapIndicatorPosition: {x: -50, y: 18}
+  tapIndicatorSize: {x: 280, y: 44}
+  tapIndicatorAlignment: 1
   charsPerSecond: 38
   introDialogueSoundData: {fileID: 11400000, guid: f14ca0109ed83fc45b28ced53ab5c853, type: 2}
   welcomeBackSoundData: {fileID: 11400000, guid: 3b61d8fef8ed409499962a2675c51eac, type: 2}
@@ -40943,22 +40976,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 199286317}
     m_Modifications:
-    - target: {fileID: -7511558181221131132, guid: 220deca34771597428c7a3e80bc1319c, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 2812508ac65a2954ab8fc99ae0d09493, type: 2}
-    - target: {fileID: -7511558181221131132, guid: 220deca34771597428c7a3e80bc1319c, type: 3}
-      propertyPath: 'm_Materials.Array.data[1]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 36969dc4873322a40841ef5319b57632, type: 2}
-    - target: {fileID: -7511558181221131132, guid: 220deca34771597428c7a3e80bc1319c, type: 3}
-      propertyPath: 'm_Materials.Array.data[2]'
-      value: 
-      objectReference: {fileID: 2100000, guid: cd25466e9d953d3468ca2f47dc93908e, type: 2}
-    - target: {fileID: -7511558181221131132, guid: 220deca34771597428c7a3e80bc1319c, type: 3}
-      propertyPath: 'm_Materials.Array.data[3]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 2366e6482947ae040b43392b309d8b7a, type: 2}
     - target: {fileID: 1188191722613822518, guid: 3ef109322e53bee43a319de140356f1d, type: 3}
       propertyPath: m_Name
       value: Beaver (1)
@@ -41023,6 +41040,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 220deca34771597428c7a3e80bc1319c, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 2812508ac65a2954ab8fc99ae0d09493, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 220deca34771597428c7a3e80bc1319c, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 36969dc4873322a40841ef5319b57632, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 220deca34771597428c7a3e80bc1319c, type: 3}
+      propertyPath: 'm_Materials.Array.data[2]'
+      value: 
+      objectReference: {fileID: 2100000, guid: cd25466e9d953d3468ca2f47dc93908e, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 220deca34771597428c7a3e80bc1319c, type: 3}
+      propertyPath: 'm_Materials.Array.data[3]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 2366e6482947ae040b43392b309d8b7a, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

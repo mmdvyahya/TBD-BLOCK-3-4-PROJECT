@@ -26,6 +26,10 @@ public class TutorialManager : MonoBehaviour
     {
         "beaver_habitat","polarbear_habitat","racoon_habitat","prairiedog_habitat","baboon_habitat","hippo_habitat",
     };
+    [Tooltip("The build order is fully randomized each new playthrough. The shuffled order is saved so it stays consistent if the game is reopened mid-tutorial.")]
+    [SerializeField] private bool randomizeBuildOrder = true;
+    [Tooltip("After the FIRST habitat, the tutorial skips the inspect/minigame steps. The next build button simply appears once the player has at least this many coins.")]
+    [SerializeField] private int coinsToUnlockNext = 100;
     [Header("Mini Usability Test")]
     [SerializeField] private bool showMiniTestAfterTutorial = true;
 
@@ -54,6 +58,18 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private Sprite tapIcon;
     [SerializeField] private Color glowColor = new Color(1f, 0.85f, 0.2f);
     [SerializeField] private float glowGroundOffset = 0.05f;
+
+    [Header("Tutorial Pointer (Buy/Build marker)")]
+    [Tooltip("PNG used as the bouncing marker over the buy/build button. Replaces the yellow triangle. If empty, the triangle is shown.")]
+    [SerializeField] private Sprite pointerSprite;
+    [Tooltip("Size of the pointer marker in reference pixels.")]
+    [SerializeField] private Vector2 pointerSize = new Vector2(140f, 140f);
+    [Tooltip("How far above the target the pointer floats.")]
+    [SerializeField] private float pointerYOffset = 110f;
+    [Tooltip("How much the pointer bobs up and down.")]
+    [SerializeField] private float pointerBobAmount = 18f;
+    [Tooltip("How much the pointer pulses in size (0 = no pulse).")]
+    [SerializeField] private float pointerPulseAmount = 0.08f;
     [SerializeField] private float inspectionPromptSeconds = 5f;
 
     [Header("Camera")]
@@ -69,6 +85,33 @@ public class TutorialManager : MonoBehaviour
     [Header("Intro Dialogue")]
     [SerializeField] private string speakerNameKey = "intro_speaker";
     [SerializeField] private string speakerNameFallback = "Boswachter";
+
+    [Header("Dialogue Box Background")]
+    [Tooltip("Optional PNG used as the dialogue box background. If set, the speaker name tag and accent strips are hidden (your PNG provides them). If empty, the generated box is used.")]
+    [SerializeField] private Sprite dialogueBoxSprite;
+    [Tooltip("Size of the dialogue box in reference pixels. Match this to your PNG's aspect ratio so it isn't stretched.")]
+    [SerializeField] private Vector2 dialogueBoxSize = new Vector2(1000f, 480f);
+    [Tooltip("Transparency of the PNG background. 1 = fully opaque, 0 = fully transparent.")]
+    [Range(0f, 1f)]
+    [SerializeField] private float dialogueBoxOpacity = 1f;
+
+    [Header("Dialogue Text Layout")]
+    [Tooltip("Padding from the LEFT edge of the box to where text starts.")]
+    [SerializeField] private float textPadLeft = 48f;
+    [Tooltip("Padding from the RIGHT edge of the box to where text ends.")]
+    [SerializeField] private float textPadRight = 48f;
+    [Tooltip("Padding from the TOP of the box. Increase this to lower the text.")]
+    [SerializeField] private float textPadTop = 50f;
+    [Tooltip("Padding from the BOTTOM of the box.")]
+    [SerializeField] private float textPadBottom = 90f;
+
+    [Header("Tap-To-Continue Indicator")]
+    [Tooltip("Anchor/pivot inside the box (0,0 = bottom-left, 1,1 = top-right, 0.5,0 = bottom-center).")]
+    [SerializeField] private Vector2 tapIndicatorAnchor = new Vector2(1f, 0f);
+    [Tooltip("Offset from that anchor, in reference pixels.")]
+    [SerializeField] private Vector2 tapIndicatorPosition = new Vector2(-30f, 18f);
+    [SerializeField] private Vector2 tapIndicatorSize = new Vector2(280f, 44f);
+    [SerializeField] private TextAnchor tapIndicatorAlignment = TextAnchor.MiddleRight;
     [Tooltip("Characters per second typed out.")]
     [SerializeField] private float charsPerSecond = 38f;
     [Tooltip("Shared voice sequence asset that plays on every new intro dialogue line.")]
@@ -122,6 +165,7 @@ public class TutorialManager : MonoBehaviour
     private GameObject _pointerObj;
     private RectTransform _pointerRt;
     private Image _pointerImage;
+    private Image _pointerMarkerImage;
     private Text _pointerFallbackText;
     private Transform _pointerTarget;
     private GameObject _habitatGlowObj;
@@ -138,6 +182,7 @@ public class TutorialManager : MonoBehaviour
     const string PREF_INTRO = "tutorial_intro_seen";
     const string PREF_SUB = "tutorial_substate";
     const string PREF_COINS = "tutorial_coins_before_minigame";
+    const string PREF_ORDER = "tutorial_order";
 
     void Awake()
     {
@@ -152,6 +197,8 @@ public class TutorialManager : MonoBehaviour
         LanguageManager.Ensure();
         GameStateManager.Ensure();
 
+        LoadOrShuffleOrder();
+
         _currentStep = PlayerPrefs.GetInt(PREF_STEP, 0);
         _hasSeenIntro = PlayerPrefs.GetInt(PREF_INTRO, 0) == 1;
         _sub = (SubState)PlayerPrefs.GetInt(PREF_SUB, (int)SubState.WaitingForBuy);
@@ -162,6 +209,7 @@ public class TutorialManager : MonoBehaviour
 
         GameStateManager.Instance.ItemBuilt += OnItemBuilt;
         GameStateManager.Instance.ItemBought += OnItemBought;
+        GameStateManager.Instance.CoinsChanged += OnCoinsChanged;
         LanguageManager.Instance.LanguageChanged += OnLanguageChanged;
         HabitatInteractionController.CardShown += OnCardShown;
         HabitatInteractionController.CardClosed += OnCardClosed;
@@ -197,12 +245,66 @@ public class TutorialManager : MonoBehaviour
     {
         if (GameStateManager.Instance != null) GameStateManager.Instance.ItemBuilt -= OnItemBuilt;
         if (GameStateManager.Instance != null) GameStateManager.Instance.ItemBought -= OnItemBought;
+        if (GameStateManager.Instance != null) GameStateManager.Instance.CoinsChanged -= OnCoinsChanged;
         if (LanguageManager.Instance != null) LanguageManager.Instance.LanguageChanged -= OnLanguageChanged;
         HabitatInteractionController.CardShown -= OnCardShown;
         HabitatInteractionController.CardClosed -= OnCardClosed;
         HabitatInteractionController.InspectBackButtonShown -= OnInspectBackShown;
         HabitatInteractionController.MinigamePressed -= OnMinigamePressed;
         if (Instance == this) Instance = null;
+    }
+
+    void LoadOrShuffleOrder()
+    {
+        if (!randomizeBuildOrder) return;
+        if (habitatOrder == null || habitatOrder.Length == 0) return;
+
+        string saved = PlayerPrefs.GetString(PREF_ORDER, "");
+        if (!string.IsNullOrEmpty(saved))
+        {
+            var parts = saved.Split(',');
+            if (parts.Length == habitatOrder.Length && SameSet(parts, habitatOrder))
+            {
+                habitatOrder = parts;
+                return;
+            }
+        }
+
+        // Fisher-Yates shuffle of a copy, then persist so the order is stable across reloads.
+        var arr = (string[])habitatOrder.Clone();
+        for (int i = arr.Length - 1; i > 0; i--)
+        {
+            int j = Random.Range(0, i + 1);
+            (arr[i], arr[j]) = (arr[j], arr[i]);
+        }
+        habitatOrder = arr;
+        PlayerPrefs.SetString(PREF_ORDER, string.Join(",", habitatOrder));
+        PlayerPrefs.Save();
+    }
+
+    static bool SameSet(string[] a, string[] b)
+    {
+        if (a.Length != b.Length) return false;
+        var listB = new System.Collections.Generic.List<string>(b);
+        foreach (var s in a)
+        {
+            if (!listB.Remove(s)) return false;
+        }
+        return listB.Count == 0;
+    }
+
+    bool HasCoinsForNext()
+    {
+        return GameStateManager.Instance != null && GameStateManager.Instance.Coins >= coinsToUnlockNext;
+    }
+
+    void OnCoinsChanged(int amount)
+    {
+        if (_tutorialFinished) return;
+        if (_currentStep == 0) return;                 // first habitat uses the full guided flow
+        if (_sub != SubState.WaitingForBuy) return;    // only refresh while waiting to build the next one
+        ApplyUnlocks();                                // show/hide the buy button for the new coin total
+        EnterSubState(SubState.WaitingForBuy);         // refresh pointer + banner
     }
 
     public bool IsHabitatUnlocked(string habitatId)
@@ -213,7 +315,11 @@ public class TutorialManager : MonoBehaviour
             return false;
         int idx = System.Array.IndexOf(habitatOrder, habitatId);
         if (idx < 0) return true;
-        return idx <= _currentStep;
+        if (idx < _currentStep) return true;   // already built / past steps stay unlocked
+        if (idx > _currentStep) return false;  // future steps locked
+        // current step:
+        if (_currentStep == 0) return true;    // first habitat is always available
+        return HasCoinsForNext();              // later habitats unlock only once the player has enough coins
     }
 
     void ApplyUnlocks() => UnlockChanged?.Invoke();
@@ -227,6 +333,16 @@ public class TutorialManager : MonoBehaviour
             int coinsBefore = PlayerPrefs.GetInt(PREF_COINS, GameStateManager.Instance.Coins);
             if (GameStateManager.Instance.Coins > coinsBefore) { AdvanceToNextHabitatStep(); return; }
             EnterSubState(SubState.WaitingForTap);
+            return;
+        }
+
+        // Habitats after the first skip the tap/inspect/minigame steps entirely.
+        if (_currentStep >= 1)
+        {
+            bool built = GameStateManager.Instance.IsBuilt(habitatOrder[_currentStep]);
+            if (_sub == SubState.Building && !built) EnterSubState(SubState.Building);
+            else if (_sub == SubState.Building && built) AdvanceToNextHabitatStep();
+            else EnterSubState(SubState.WaitingForBuy);
             return;
         }
 
@@ -262,11 +378,23 @@ public class TutorialManager : MonoBehaviour
         switch (next)
         {
             case SubState.WaitingForBuy:
-                if (habitat != null) _pointerTarget = habitat.GetButtonAnchor();
-                ShowPointer(useTapIcon: false);
-                ShowBanner(_currentStep == 0
-                    ? SafeGet("tutorial_first_buy", "Tik op de groene knop om je allereerste verblijf te bouwen!")
-                    : SafeGet("tutorial_next_buy", "Geweldig! Laten we een huis bouwen voor het volgende dier!"));
+                if (_currentStep == 0)
+                {
+                    if (habitat != null) _pointerTarget = habitat.GetButtonAnchor();
+                    ShowPointer(useTapIcon: false);
+                    ShowBanner(SafeGet("tutorial_first_buy", "Tik op de groene knop om je allereerste verblijf te bouwen!"));
+                }
+                else if (HasCoinsForNext())
+                {
+                    if (habitat != null) _pointerTarget = habitat.GetButtonAnchor();
+                    ShowPointer(useTapIcon: false);
+                    ShowBanner(SafeGet("tutorial_next_buy", "Geweldig! Laten we een huis bouwen voor het volgende dier!"));
+                }
+                else
+                {
+                    HidePointer();
+                    ShowBanner(SafeGet("tutorial_earn_coins", "Speel minigames om munten te verdienen. Als je er genoeg hebt, kun je het volgende verblijf bouwen!"));
+                }
                 break;
 
             case SubState.Building:
@@ -324,7 +452,10 @@ public class TutorialManager : MonoBehaviour
         if (_tutorialFinished) return;
         if (_currentStep >= habitatOrder.Length) return;
         if (habitatOrder[_currentStep] != itemId) return;
-        EnterSubState(SubState.WaitingForTap);
+        if (_currentStep == 0)
+            EnterSubState(SubState.WaitingForTap);   // first habitat: full guided flow
+        else
+            AdvanceToNextHabitatStep();              // later habitats: no tap/inspect/minigame
     }
 
     void OnCardShown(Button back, Button inspect, Button minigame, InspectableHabitat habitat)
@@ -367,6 +498,7 @@ public class TutorialManager : MonoBehaviour
     void OnMinigamePressed(InspectableHabitat habitat)
     {
         if (_tutorialFinished) return;
+        if (_currentStep != 0) return;   // only the first habitat drives the minigame tutorial step
         PlayerPrefs.SetInt(PREF_COINS, GameStateManager.Instance.Coins);
         EnterSubState(SubState.WaitingForMinigameReturn);
     }
@@ -428,10 +560,10 @@ public class TutorialManager : MonoBehaviour
                     _pointerObj.SetActive(true);
                     var canvasRt = _tutorialCanvas.GetComponent<RectTransform>();
                     RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasRt, screen, null, out Vector2 local);
-                    float bob = Mathf.Sin(Time.time * 4f) * 18f;
-                    local.y += 110f + bob;
+                    float bob = Mathf.Sin(Time.time * 4f) * pointerBobAmount;
+                    local.y += pointerYOffset + bob;
                     _pointerRt.anchoredPosition = local;
-                    float pulse = 1f + Mathf.Sin(Time.time * 5f) * 0.08f;
+                    float pulse = 1f + Mathf.Sin(Time.time * 5f) * pointerPulseAmount;
                     _pointerRt.localScale = Vector3.one * pulse;
                 }
             }
@@ -599,7 +731,7 @@ public class TutorialManager : MonoBehaviour
         _pointerObj.transform.SetParent(cObj.transform, false);
         _pointerRt = _pointerObj.AddComponent<RectTransform>();
         _pointerRt.anchorMin = _pointerRt.anchorMax = _pointerRt.pivot = new Vector2(0.5f, 0.5f);
-        _pointerRt.sizeDelta = new Vector2(140f, 140f);
+        _pointerRt.sizeDelta = pointerSize;
 
         _pointerFallbackText = _pointerObj.AddComponent<Text>();
         _pointerFallbackText.text = "▼";
@@ -611,6 +743,21 @@ public class TutorialManager : MonoBehaviour
         var pOutline = _pointerObj.AddComponent<Outline>();
         pOutline.effectColor = new Color(0f, 0f, 0f, 0.85f);
         pOutline.effectDistance = new Vector2(3f, -3f);
+
+        if (pointerSprite != null)
+        {
+            var markerObj = new GameObject("PointerMarkerImage");
+            markerObj.transform.SetParent(_pointerObj.transform, false);
+            var mrt = markerObj.AddComponent<RectTransform>();
+            mrt.anchorMin = Vector2.zero; mrt.anchorMax = Vector2.one;
+            mrt.offsetMin = mrt.offsetMax = Vector2.zero;
+            _pointerMarkerImage = markerObj.AddComponent<Image>();
+            _pointerMarkerImage.sprite = pointerSprite;
+            _pointerMarkerImage.color = Color.white;
+            _pointerMarkerImage.raycastTarget = false;
+            _pointerMarkerImage.preserveAspect = true;
+            _pointerMarkerImage.enabled = false;
+        }
 
         if (tapIcon != null)
         {
@@ -633,9 +780,13 @@ public class TutorialManager : MonoBehaviour
     {
         if (_pointerObj == null) return;
         _pointerObj.SetActive(true);
-        bool hasIcon = _pointerImage != null;
-        if (_pointerImage != null) _pointerImage.enabled = useTapIcon && hasIcon;
-        if (_pointerFallbackText != null) _pointerFallbackText.enabled = !(useTapIcon && hasIcon);
+
+        bool showTap = useTapIcon && _pointerImage != null;
+        bool showMarker = !useTapIcon && _pointerMarkerImage != null;
+
+        if (_pointerImage != null) _pointerImage.enabled = showTap;
+        if (_pointerMarkerImage != null) _pointerMarkerImage.enabled = showMarker;
+        if (_pointerFallbackText != null) _pointerFallbackText.enabled = !showTap && !showMarker;
     }
 
     void HidePointer()
@@ -681,55 +832,69 @@ public class TutorialManager : MonoBehaviour
         brt.anchorMin = new Vector2(0.5f, 0f); brt.anchorMax = new Vector2(0.5f, 0f);
         brt.pivot = new Vector2(0.5f, 0f);
         brt.anchoredPosition = new Vector2(0f, 100f);
-        brt.sizeDelta = new Vector2(1000f, 480f);
+        brt.sizeDelta = dialogueBoxSize;
         var bImg = _dialogueBox.AddComponent<Image>();
-        bImg.color = new Color(0.08f, 0.13f, 0.24f, 0.97f);
         bImg.raycastTarget = false;
 
-        var accentTop = new GameObject("AccentTop");
-        accentTop.transform.SetParent(_dialogueBox.transform, false);
-        var atRt = accentTop.AddComponent<RectTransform>();
-        atRt.anchorMin = new Vector2(0f, 1f); atRt.anchorMax = new Vector2(1f, 1f);
-        atRt.pivot = new Vector2(0.5f, 1f); atRt.anchoredPosition = Vector2.zero; atRt.sizeDelta = new Vector2(0f, 10f);
-        accentTop.AddComponent<Image>().color = new Color(0.3f, 0.75f, 1f);
+        bool usePng = dialogueBoxSprite != null;
 
-        var accentLeft = new GameObject("AccentLeft");
-        accentLeft.transform.SetParent(_dialogueBox.transform, false);
-        var alRt = accentLeft.AddComponent<RectTransform>();
-        alRt.anchorMin = new Vector2(0f, 0f); alRt.anchorMax = new Vector2(0f, 1f);
-        alRt.pivot = new Vector2(0f, 0.5f); alRt.anchoredPosition = Vector2.zero; alRt.sizeDelta = new Vector2(8f, 0f);
-        accentLeft.AddComponent<Image>().color = new Color(0.3f, 0.75f, 1f);
+        if (usePng)
+        {
+            bImg.sprite = dialogueBoxSprite;
+            bImg.type = Image.Type.Simple;
+            bImg.preserveAspect = false;
+            bImg.color = new Color(1f, 1f, 1f, dialogueBoxOpacity);
+        }
+        else
+        {
+            bImg.color = new Color(0.08f, 0.13f, 0.24f, 0.97f);
 
-        var nameTag = new GameObject("SpeakerTag");
-        nameTag.transform.SetParent(_dialogueBox.transform, false);
-        var ntRt = nameTag.AddComponent<RectTransform>();
-        ntRt.anchorMin = new Vector2(0f, 1f); ntRt.anchorMax = new Vector2(0f, 1f);
-        ntRt.pivot = new Vector2(0f, 0f);
-        ntRt.anchoredPosition = new Vector2(36f, 6f);
-        ntRt.sizeDelta = new Vector2(320f, 70f);
-        var ntImg = nameTag.AddComponent<Image>();
-        ntImg.color = new Color(0.3f, 0.75f, 1f);
-        ntImg.raycastTarget = false;
+            var accentTop = new GameObject("AccentTop");
+            accentTop.transform.SetParent(_dialogueBox.transform, false);
+            var atRt = accentTop.AddComponent<RectTransform>();
+            atRt.anchorMin = new Vector2(0f, 1f); atRt.anchorMax = new Vector2(1f, 1f);
+            atRt.pivot = new Vector2(0.5f, 1f); atRt.anchoredPosition = Vector2.zero; atRt.sizeDelta = new Vector2(0f, 10f);
+            accentTop.AddComponent<Image>().color = new Color(0.3f, 0.75f, 1f);
 
-        var nameTxtObj = new GameObject("Text");
-        nameTxtObj.transform.SetParent(nameTag.transform, false);
-        var nameTxtRt = nameTxtObj.AddComponent<RectTransform>();
-        nameTxtRt.anchorMin = Vector2.zero; nameTxtRt.anchorMax = Vector2.one;
-        nameTxtRt.offsetMin = new Vector2(18f, 0f); nameTxtRt.offsetMax = new Vector2(-18f, 0f);
-        _dialogueSpeaker = nameTxtObj.AddComponent<Text>();
-        _dialogueSpeaker.text = SafeGet(speakerNameKey, speakerNameFallback);
-        _dialogueSpeaker.font = GetFont();
-        _dialogueSpeaker.fontSize = 36;
-        _dialogueSpeaker.fontStyle = FontStyle.Bold;
-        _dialogueSpeaker.alignment = TextAnchor.MiddleLeft;
-        _dialogueSpeaker.color = new Color(0.08f, 0.13f, 0.24f);
-        _dialogueSpeaker.raycastTarget = false;
+            var accentLeft = new GameObject("AccentLeft");
+            accentLeft.transform.SetParent(_dialogueBox.transform, false);
+            var alRt = accentLeft.AddComponent<RectTransform>();
+            alRt.anchorMin = new Vector2(0f, 0f); alRt.anchorMax = new Vector2(0f, 1f);
+            alRt.pivot = new Vector2(0f, 0.5f); alRt.anchoredPosition = Vector2.zero; alRt.sizeDelta = new Vector2(8f, 0f);
+            accentLeft.AddComponent<Image>().color = new Color(0.3f, 0.75f, 1f);
+
+            var nameTag = new GameObject("SpeakerTag");
+            nameTag.transform.SetParent(_dialogueBox.transform, false);
+            var ntRt = nameTag.AddComponent<RectTransform>();
+            ntRt.anchorMin = new Vector2(0f, 1f); ntRt.anchorMax = new Vector2(0f, 1f);
+            ntRt.pivot = new Vector2(0f, 0f);
+            ntRt.anchoredPosition = new Vector2(36f, 6f);
+            ntRt.sizeDelta = new Vector2(320f, 70f);
+            var ntImg = nameTag.AddComponent<Image>();
+            ntImg.color = new Color(0.3f, 0.75f, 1f);
+            ntImg.raycastTarget = false;
+
+            var nameTxtObj = new GameObject("Text");
+            nameTxtObj.transform.SetParent(nameTag.transform, false);
+            var nameTxtRt = nameTxtObj.AddComponent<RectTransform>();
+            nameTxtRt.anchorMin = Vector2.zero; nameTxtRt.anchorMax = Vector2.one;
+            nameTxtRt.offsetMin = new Vector2(18f, 0f); nameTxtRt.offsetMax = new Vector2(-18f, 0f);
+            _dialogueSpeaker = nameTxtObj.AddComponent<Text>();
+            _dialogueSpeaker.text = SafeGet(speakerNameKey, speakerNameFallback);
+            _dialogueSpeaker.font = GetFont();
+            _dialogueSpeaker.fontSize = 36;
+            _dialogueSpeaker.fontStyle = FontStyle.Bold;
+            _dialogueSpeaker.alignment = TextAnchor.MiddleLeft;
+            _dialogueSpeaker.color = new Color(0.08f, 0.13f, 0.24f);
+            _dialogueSpeaker.raycastTarget = false;
+        }
 
         var txtObj = new GameObject("DialogueText");
         txtObj.transform.SetParent(_dialogueBox.transform, false);
         var txtRt = txtObj.AddComponent<RectTransform>();
         txtRt.anchorMin = new Vector2(0f, 0f); txtRt.anchorMax = new Vector2(1f, 1f);
-        txtRt.offsetMin = new Vector2(48f, 90f); txtRt.offsetMax = new Vector2(-48f, -50f);
+        txtRt.offsetMin = new Vector2(textPadLeft, textPadBottom);
+        txtRt.offsetMax = new Vector2(-textPadRight, -textPadTop);
         _dialogueText = txtObj.AddComponent<Text>();
         _dialogueText.text = "";
         _dialogueText.font = GetFont();
@@ -745,14 +910,13 @@ public class TutorialManager : MonoBehaviour
         _continueIndicator = new GameObject("ContinueIndicator");
         _continueIndicator.transform.SetParent(_dialogueBox.transform, false);
         var ciRt = _continueIndicator.AddComponent<RectTransform>();
-        ciRt.anchorMin = new Vector2(1f, 0f); ciRt.anchorMax = new Vector2(1f, 0f);
-        ciRt.pivot = new Vector2(1f, 0f);
-        ciRt.anchoredPosition = new Vector2(-30f, 18f);
-        ciRt.sizeDelta = new Vector2(280f, 44f);
+        ciRt.anchorMin = ciRt.anchorMax = ciRt.pivot = tapIndicatorAnchor;
+        ciRt.anchoredPosition = tapIndicatorPosition;
+        ciRt.sizeDelta = tapIndicatorSize;
         var ciTxt = _continueIndicator.AddComponent<Text>();
         ciTxt.text = SafeGet("intro_tap_continue", "Tik om verder ▶");
         ciTxt.font = GetFont(); ciTxt.fontSize = 24; ciTxt.fontStyle = FontStyle.Bold;
-        ciTxt.alignment = TextAnchor.MiddleRight;
+        ciTxt.alignment = tapIndicatorAlignment;
         ciTxt.color = new Color(0.3f, 0.75f, 1f);
         ciTxt.raycastTarget = false;
         _continueIndicator.SetActive(false);
@@ -940,19 +1104,19 @@ public class TutorialManager : MonoBehaviour
     {
         switch (habitatId)
         {
-            case "beaver_habitat":    
+            case "beaver_habitat":
                 return beaverDialogueSoundData;
-            case "polarbear_habitat": 
+            case "polarbear_habitat":
                 return polarBearDialogueSoundData;
-            case "racoon_habitat":    
+            case "racoon_habitat":
                 return raccoonDialogueSoundData;
             case "prairiedog_habitat":
                 return prairieDogDialogueSoundData;
-            case "baboon_habitat":    
+            case "baboon_habitat":
                 return baboonDialogueSoundData;
-            case "hippo_habitat":     
+            case "hippo_habitat":
                 return hippoDialogueSoundData;
-            default: 
+            default:
                 return null;
         }
     }
