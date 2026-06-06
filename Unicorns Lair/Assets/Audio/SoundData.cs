@@ -8,7 +8,7 @@ public class SoundData : ScriptableObject
     public enum ClipPlayMode { Random, Sequential, RandomNoRepeat }
 
     [Header("Clips")]
-    [Tooltip("Add multiple clips for random variation on each play.")]
+    [Tooltip("Add multiple clips to influence the playmode.")]
     public AudioClip[] clips;
     public ClipPlayMode playMode = ClipPlayMode.Random;
 
@@ -37,8 +37,9 @@ public class SoundData : ScriptableObject
     [Range(0f, 1f)] public float pitchVariance = 0f;
 
     [Header("Behaviour")]
+    [Tooltip("If true, the sound will loop. Using WAV files is recommended for this feature.")]
     public bool loop = false;
-    [Tooltip("If true, a new play call won't restart the sound if it's already playing. Using WAV files is recommended for this feature.")]
+    [Tooltip("If true, a new play call won't restart the sound if it's already playing.")]
     public bool preventDuplicates = false;
 
     [Header("Spatial")]

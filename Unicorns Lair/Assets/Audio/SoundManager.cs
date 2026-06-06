@@ -13,7 +13,7 @@ public class SoundManager : MonoBehaviour
     List<AudioSource> pool = new List<AudioSource>();
 
     HashSet<SoundData> playingSounds = new HashSet<SoundData>(); // Tracks which SoundData assets are currently playing to support preventDuplicates
-    Dictionary<SoundData, AudioSource> playingSources = new Dictionary<SoundData, AudioSource>(); // Maps each SoundData to the source currently playing it
+    Dictionary<SoundData, List<AudioSource>> playingSources = new Dictionary<SoundData, List<AudioSource>>(); // Maps each SoundData to all sources currently playing it
     Dictionary<SoundData, Coroutine> releaseCoroutines = new Dictionary<SoundData, Coroutine>(); // Tracks release coroutines so they can be cancelled on Stop
 
     void Awake()
@@ -62,7 +62,9 @@ public class SoundManager : MonoBehaviour
 
         source.Play();
         playingSounds.Add(data);
-        playingSources[data] = source;
+        if (!playingSources.ContainsKey(data))
+            playingSources[data] = new List<AudioSource>();
+        playingSources[data].Add(source);
 
         // If not looping, release the source back to the pool after the clip ends
         if (!data.loop)
@@ -101,7 +103,9 @@ public class SoundManager : MonoBehaviour
 
         source.Play();
         playingSounds.Add(data);
-        playingSources[data] = source;
+        if (!playingSources.ContainsKey(data))
+            playingSources[data] = new List<AudioSource>();
+        playingSources[data].Add(source);
 
         if (!data.loop)
         {
@@ -113,7 +117,7 @@ public class SoundManager : MonoBehaviour
     // Stop a currently playing sound immediately
     public void Stop(SoundData data)
     {
-        if (playingSources.TryGetValue(data, out AudioSource source))
+        if (playingSources.TryGetValue(data, out List<AudioSource> sources))
         {
             // Cancel the release coroutine so it can't interfere with future sounds
             if (releaseCoroutines.TryGetValue(data, out Coroutine coroutine))
@@ -122,7 +126,10 @@ public class SoundManager : MonoBehaviour
                 releaseCoroutines.Remove(data);
             }
 
-            source.Stop();
+            // Stop all sources playing this SoundData
+            foreach (var source in sources)
+                source.Stop();
+            
             playingSources.Remove(data);
             playingSounds.Remove(data);
         }
@@ -131,7 +138,7 @@ public class SoundManager : MonoBehaviour
     // Fade out and stop a currently playing sound
     public void FadeOut(SoundData data, float duration = 0.1f)
     {
-        if (playingSources.TryGetValue(data, out AudioSource source))
+        if (playingSources.TryGetValue(data, out List<AudioSource> sources))
         {
             // Cancel the release coroutine so it can't interfere
             if (releaseCoroutines.TryGetValue(data, out Coroutine coroutine))
@@ -143,7 +150,9 @@ public class SoundManager : MonoBehaviour
             playingSounds.Remove(data);
             playingSources.Remove(data);
 
-            StartCoroutine(FadeOutCoroutine(source, duration));
+            // Fade out all sources playing this SoundData
+            foreach (var source in sources)
+                StartCoroutine(FadeOutCoroutine(source, duration));
         }
     }
 
@@ -176,8 +185,17 @@ public class SoundManager : MonoBehaviour
     IEnumerator ReleaseAfter(SoundData data, AudioSource source, float duration)
     {
         yield return new WaitForSeconds(duration);
-        playingSounds.Remove(data);
-        playingSources.Remove(data);
+        
+        if (playingSources.TryGetValue(data, out List<AudioSource> sources))
+        {
+            sources.Remove(source);
+            if (sources.Count == 0)
+            {
+                playingSources.Remove(data);
+                playingSounds.Remove(data);
+            }
+        }
+        
         releaseCoroutines.Remove(data);
         source.Stop();
     }

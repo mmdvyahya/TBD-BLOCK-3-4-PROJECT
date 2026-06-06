@@ -32,6 +32,7 @@ public class SoundEmitter : MonoBehaviour
         if (soundData == null || SoundManager.Instance == null) return; // Prevents errors in case SoundManager is missing from the scene
         SoundManager.Instance.Stop(soundData);
     }
+
     void OnDrawGizmosSelected()
     {
         if (soundData == null || soundData.spatialBlend == 0f) return;
