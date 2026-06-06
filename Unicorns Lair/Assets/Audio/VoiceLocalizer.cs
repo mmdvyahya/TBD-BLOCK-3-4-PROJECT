@@ -14,7 +14,7 @@ public static class VoiceLocalizer
     {
         var data = Resolve(localized);
         if (data == null || SoundManager.Instance == null) return;
-        SoundManager.Instance.Stop(data);
+        SoundManager.Instance.FadeOut(data);
         if (clipIndex >= 0) SoundManager.Instance.PlayClipAt(data, clipIndex);
         else SoundManager.Instance.Play(data);
     }

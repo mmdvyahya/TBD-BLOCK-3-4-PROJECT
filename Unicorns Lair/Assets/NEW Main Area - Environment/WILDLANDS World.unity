@@ -30017,7 +30017,8 @@ MonoBehaviour:
     fallbackText: Speel leuke minigames met de dieren om munten te verdienen!
   - localizationKey: intro_dlg_6
     fallbackText: Bouw met die munten gloednieuwe verblijven!
-  tutorialWaitingForBuyLocalized: {fileID: 11400000, guid: dd5358f6b3e02f144bf179bf564f0141, type: 2}
+  tutorialWaitingForBuyLocalizedFirst: {fileID: 11400000, guid: dd5358f6b3e02f144bf179bf564f0141, type: 2}
+  tutorialWaitingForBuyLocalizedSecond: {fileID: 11400000, guid: bf9153e6c9611684c972833ac576e04a, type: 2}
   tutorialBuildingLocalized: {fileID: 11400000, guid: 458369e376b72c44da1944d1c71831bb, type: 2}
   tutorialWaitingForTapLocalized: {fileID: 11400000, guid: e1d5ca3dc85c3ff42ae508b2ac5fba18, type: 2}
   tutorialWaitingForInspectLocalized: {fileID: 11400000, guid: f10ab13e3bf061543b37756395d78c8e, type: 2}
