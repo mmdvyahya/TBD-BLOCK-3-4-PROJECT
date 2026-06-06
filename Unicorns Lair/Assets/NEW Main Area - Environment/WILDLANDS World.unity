@@ -7300,9 +7300,6 @@ MonoBehaviour:
   dayLightColor: {r: 1, g: 1, b: 1, a: 1}
   sunsetLightColor: {r: 1, g: 0.9254902, b: 0.85490197, a: 1}
   nightLightColor: {r: 0.56078434, g: 0.5647059, b: 0.80784315, a: 1}
-  daySkyColor: {r: 0.55, g: 0.82, b: 1, a: 1}
-  sunsetSkyColor: {r: 1, g: 0.45, b: 0.25, a: 1}
-  nightSkyColor: {r: 0.03, g: 0.05, b: 0.12, a: 1}
 --- !u!4 &311046060
 Transform:
   m_ObjectHideFlags: 0
@@ -22208,6 +22205,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1293463583}
     m_Modifications:
+    - target: {fileID: -7511558181221131132, guid: 220deca34771597428c7a3e80bc1319c, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 2812508ac65a2954ab8fc99ae0d09493, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 220deca34771597428c7a3e80bc1319c, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 36969dc4873322a40841ef5319b57632, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 220deca34771597428c7a3e80bc1319c, type: 3}
+      propertyPath: 'm_Materials.Array.data[2]'
+      value: 
+      objectReference: {fileID: 2100000, guid: cd25466e9d953d3468ca2f47dc93908e, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 220deca34771597428c7a3e80bc1319c, type: 3}
+      propertyPath: 'm_Materials.Array.data[3]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 2366e6482947ae040b43392b309d8b7a, type: 2}
     - target: {fileID: 1188191722613822518, guid: 3ef109322e53bee43a319de140356f1d, type: 3}
       propertyPath: m_Name
       value: Beaver
@@ -22272,22 +22285,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -7511558181221131132, guid: 220deca34771597428c7a3e80bc1319c, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 2812508ac65a2954ab8fc99ae0d09493, type: 2}
-    - target: {fileID: -7511558181221131132, guid: 220deca34771597428c7a3e80bc1319c, type: 3}
-      propertyPath: 'm_Materials.Array.data[1]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 36969dc4873322a40841ef5319b57632, type: 2}
-    - target: {fileID: -7511558181221131132, guid: 220deca34771597428c7a3e80bc1319c, type: 3}
-      propertyPath: 'm_Materials.Array.data[2]'
-      value: 
-      objectReference: {fileID: 2100000, guid: cd25466e9d953d3468ca2f47dc93908e, type: 2}
-    - target: {fileID: -7511558181221131132, guid: 220deca34771597428c7a3e80bc1319c, type: 3}
-      propertyPath: 'm_Materials.Array.data[3]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 2366e6482947ae040b43392b309d8b7a, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -29935,6 +29932,8 @@ MonoBehaviour:
   - parrot_habitat
   - otter_habitat
   - racoon_habitat
+  randomizeBuildOrder: 1
+  coinsToUnlockNext: 100
   showMiniTestAfterTutorial: 1
   enableRandomFacts: 1
   firstFactDelay: 10
@@ -29966,10 +29965,10 @@ MonoBehaviour:
   tapIndicatorSize: {x: 280, y: 44}
   tapIndicatorAlignment: 1
   charsPerSecond: 38
-  introDialogueSoundData: {fileID: 11400000, guid: f14ca0109ed83fc45b28ced53ab5c853, type: 2}
-  welcomeBackSoundData: {fileID: 11400000, guid: 3b61d8fef8ed409499962a2675c51eac, type: 2}
-  tutorialCompleteSoundData: {fileID: 0}
-  randomFactSoundData: {fileID: 11400000, guid: 1e77c67040e4766498668c0728e31635, type: 2}
+  introDialogueLocalized: {fileID: 11400000, guid: 3bdf1f83b1ca8a3439b4eb1368b1a544, type: 2}
+  welcomeBackLocalized: {fileID: 11400000, guid: d282ab1fb245d964e84f367a6e7806c5, type: 2}
+  tutorialCompleteLocalized: {fileID: 11400000, guid: 4de6c2db353993d458e248dcbfc76a8d, type: 2}
+  randomFactLocalized: {fileID: 11400000, guid: 72673b8ae2e762040a902f3f4a18f9c7, type: 2}
   introDialogue:
   - localizationKey: intro_dlg_0
     fallbackText: "H\xE9, hallo daar, ontdekker!"
@@ -29985,12 +29984,21 @@ MonoBehaviour:
     fallbackText: Speel leuke minigames met de dieren om munten te verdienen!
   - localizationKey: intro_dlg_6
     fallbackText: Bouw met die munten gloednieuwe verblijven!
-  beaverDialogueSoundData: {fileID: 0}
-  polarBearDialogueSoundData: {fileID: 0}
-  raccoonDialogueSoundData: {fileID: 0}
-  prairieDogDialogueSoundData: {fileID: 0}
-  baboonDialogueSoundData: {fileID: 0}
-  hippoDialogueSoundData: {fileID: 0}
+  tutorialWaitingForBuyLocalized: {fileID: 11400000, guid: dd5358f6b3e02f144bf179bf564f0141, type: 2}
+  tutorialBuildingLocalized: {fileID: 11400000, guid: 458369e376b72c44da1944d1c71831bb, type: 2}
+  tutorialWaitingForTapLocalized: {fileID: 11400000, guid: e1d5ca3dc85c3ff42ae508b2ac5fba18, type: 2}
+  tutorialWaitingForInspectLocalized: {fileID: 11400000, guid: f10ab13e3bf061543b37756395d78c8e, type: 2}
+  tutorialInspectingLocalized: {fileID: 11400000, guid: e87ef508e6a868949970ffd7c3bddc5c, type: 2}
+  tutorialPressBackLocalized: {fileID: 11400000, guid: 06aba38002b83934386c0f256cae0029, type: 2}
+  tutorialPressMinigameLocalized: {fileID: 11400000, guid: c1a783a2573222e4f841c5c3c44b9f51, type: 2}
+  beaverDialogueLocalized: {fileID: 11400000, guid: 2a23af269b3132843b0e00a75611e0db, type: 2}
+  polarBearDialogueLocalized: {fileID: 11400000, guid: e0c4fd1fe6d50f44abc02fa0eb696b3d, type: 2}
+  raccoonDialogueLocalized: {fileID: 11400000, guid: 4b2bd34c2a5f01843922bae0cbbc647a, type: 2}
+  prairieDogDialogueLocalized: {fileID: 11400000, guid: d4c7311eada19624d82479bcafc750bc, type: 2}
+  baboonDialogueLocalized: {fileID: 11400000, guid: a9ff46c586cc4b649a0666343b0cb6f6, type: 2}
+  hippoDialogueLocalized: {fileID: 11400000, guid: b03ab6fab68f39c4085f6ca1e9ae4282, type: 2}
+  parrotDialogueLocalized: {fileID: 11400000, guid: 3a684a7db25f31d4b92a6806683a5b97, type: 2}
+  otterDialogueLocalized: {fileID: 11400000, guid: f7497459909a78a4f995eeef49371e57, type: 2}
 --- !u!4 &1303785811
 Transform:
   m_ObjectHideFlags: 0
@@ -40976,6 +40984,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 199286317}
     m_Modifications:
+    - target: {fileID: -7511558181221131132, guid: 220deca34771597428c7a3e80bc1319c, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 2812508ac65a2954ab8fc99ae0d09493, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 220deca34771597428c7a3e80bc1319c, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 36969dc4873322a40841ef5319b57632, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 220deca34771597428c7a3e80bc1319c, type: 3}
+      propertyPath: 'm_Materials.Array.data[2]'
+      value: 
+      objectReference: {fileID: 2100000, guid: cd25466e9d953d3468ca2f47dc93908e, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 220deca34771597428c7a3e80bc1319c, type: 3}
+      propertyPath: 'm_Materials.Array.data[3]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 2366e6482947ae040b43392b309d8b7a, type: 2}
     - target: {fileID: 1188191722613822518, guid: 3ef109322e53bee43a319de140356f1d, type: 3}
       propertyPath: m_Name
       value: Beaver (1)
@@ -41040,22 +41064,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -7511558181221131132, guid: 220deca34771597428c7a3e80bc1319c, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 2812508ac65a2954ab8fc99ae0d09493, type: 2}
-    - target: {fileID: -7511558181221131132, guid: 220deca34771597428c7a3e80bc1319c, type: 3}
-      propertyPath: 'm_Materials.Array.data[1]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 36969dc4873322a40841ef5319b57632, type: 2}
-    - target: {fileID: -7511558181221131132, guid: 220deca34771597428c7a3e80bc1319c, type: 3}
-      propertyPath: 'm_Materials.Array.data[2]'
-      value: 
-      objectReference: {fileID: 2100000, guid: cd25466e9d953d3468ca2f47dc93908e, type: 2}
-    - target: {fileID: -7511558181221131132, guid: 220deca34771597428c7a3e80bc1319c, type: 3}
-      propertyPath: 'm_Materials.Array.data[3]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 2366e6482947ae040b43392b309d8b7a, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

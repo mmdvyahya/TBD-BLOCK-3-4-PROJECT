@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c78abb296699c84f8462c27c68afdf0, type: 3}
+  m_Name: EN_Facts
+  m_EditorClassIdentifier: Assembly-CSharp::SoundData
+  clips:
+  - {fileID: 8300000, guid: a5fe18489eeb3394aa428ea7c72069a5, type: 3}
+  - {fileID: 8300000, guid: 51d316773f27d4b4a83468e377094257, type: 3}
+  - {fileID: 8300000, guid: 35bb80d4c8e302a46bf4ab0e28e105a0, type: 3}
+  - {fileID: 8300000, guid: ebfb88c3fe60a6444a977b9a6a66cd75, type: 3}
+  - {fileID: 8300000, guid: 56e312e797795084898f4747fad82874, type: 3}
+  - {fileID: 8300000, guid: 465a40d9f3cb97449aaae5fa8c5ad19b, type: 3}
+  - {fileID: 8300000, guid: bdccfa02871e3ab439ffda57479a8161, type: 3}
+  - {fileID: 8300000, guid: 55dd2a4333fa01942bc4faff562cd60c, type: 3}
+  - {fileID: 8300000, guid: 6c675386941d84c45ac60fee0818a990, type: 3}
+  - {fileID: 8300000, guid: 93c12a76ace5964449e98e350682e13f, type: 3}
+  - {fileID: 8300000, guid: 1bc553a211eddfd40bd37586bee5216c, type: 3}
+  - {fileID: 8300000, guid: 1f367387ad93bdb4a93efe50a5673b67, type: 3}
+  - {fileID: 8300000, guid: 1dd20b249753b2f4f96d51db4ff54297, type: 3}
+  - {fileID: 8300000, guid: a14532408309a574e9586a391c415d26, type: 3}
+  - {fileID: 8300000, guid: cd678a5be40f20f4db04d9b87e8e021a, type: 3}
+  - {fileID: 8300000, guid: a8ca279007ce031458fe0c5e47a99e63, type: 3}
+  - {fileID: 8300000, guid: 9253053f178f4534b98c73fdb351d985, type: 3}
+  - {fileID: 8300000, guid: ea90e6b67d2194e4b835003e2856fc5a, type: 3}
+  - {fileID: 8300000, guid: 2a46ad36e101d414c9a384641986cf7f, type: 3}
+  - {fileID: 8300000, guid: 711327aeae0dbd5459006067e3990aa8, type: 3}
+  - {fileID: 8300000, guid: 3aaf98bb9798576459effbd904330ae4, type: 3}
+  - {fileID: 8300000, guid: d160048389ba29f4ca05cb9990d014ef, type: 3}
+  - {fileID: 8300000, guid: 1f4991d3dfd55e24e9ddbeec1a08539c, type: 3}
+  - {fileID: 8300000, guid: e308e381e7e0e3246a8126cea564fc4a, type: 3}
+  playMode: 0
+  mixerGroup: {fileID: -1723648475596354334, guid: 6ee5bd016cb09514ea38d5c2ce6d67e2, type: 2}
+  volume: 1
+  volumeVariance: 0
+  pitch: 1
+  pitchVariance: 0
+  loop: 0
+  preventDuplicates: 1
+  spatialBlend: 0
+  minDistance: 1
+  maxDistance: 50
+  rolloffMode: 1

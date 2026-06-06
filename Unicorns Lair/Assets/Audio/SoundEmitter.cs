@@ -12,6 +12,11 @@ public class SoundEmitter : MonoBehaviour
         if (playOnStart) Play();
     }
 
+    void OnDisable()
+    {
+        Stop();
+    }
+
     public void Play()
     {
         if (soundData == null || SoundManager.Instance == null) return; // Prevents errors in case SoundManager is missing from the scene

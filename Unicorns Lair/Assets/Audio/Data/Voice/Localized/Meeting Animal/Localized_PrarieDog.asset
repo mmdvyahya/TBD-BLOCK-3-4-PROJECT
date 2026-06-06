@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de1329f180c857442a4c7151b300a569, type: 3}
+  m_Name: Localized_PrarieDog
+  m_EditorClassIdentifier: Assembly-CSharp::LocalizedSoundData
+  dutch: {fileID: 11400000, guid: 6b584cb9974008a45846a0d7319de4a8, type: 2}
+  german: {fileID: 0}
+  english: {fileID: 11400000, guid: aa1eb2436c17d7d42abb33d6a46cf357, type: 2}

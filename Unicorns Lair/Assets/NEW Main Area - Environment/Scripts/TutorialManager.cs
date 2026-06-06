@@ -116,10 +116,10 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private float charsPerSecond = 38f;
     [Tooltip("Shared voice sequence asset that plays on every new intro dialogue line.")]
     [Header("Dialogue Voice Lines")]
-    [SerializeField] private SoundData introDialogueSoundData;
-    [SerializeField] private SoundData welcomeBackSoundData;
-    [SerializeField] private SoundData tutorialCompleteSoundData;
-    [SerializeField] private SoundData randomFactSoundData;
+    [SerializeField] private LocalizedSoundData introDialogueLocalized;
+    [SerializeField] private LocalizedSoundData welcomeBackLocalized;
+    [SerializeField] private LocalizedSoundData tutorialCompleteLocalized;
+    [SerializeField] private LocalizedSoundData randomFactLocalized;
     private SoundData _activeVoiceSound;
     private int _activeVoiceClipIndex = -1;
 
@@ -222,7 +222,7 @@ public class TutorialManager : MonoBehaviour
             ApplyUnlocks();
             HidePointer();
             HideBanner();
-            ShowDialogue(introDialogue, OnIntroDialogueComplete, introDialogueSoundData);
+            ShowDialogue(introDialogue, OnIntroDialogueComplete, VoiceLocalizer.Resolve(introDialogueLocalized));
         }
         else
         {
@@ -233,7 +233,7 @@ public class TutorialManager : MonoBehaviour
                 HideBanner();
                 var options = GetWelcomeBackDialogue();
                 int index = Random.Range(0, options.Length);
-                ShowDialogue(new DialogueLine[] { options[index] }, ResumeFromState, welcomeBackSoundData, index);
+                ShowDialogue(new DialogueLine[] { options[index] }, ResumeFromState, VoiceLocalizer.Resolve(welcomeBackLocalized), index);
             }
             else ResumeFromState();
         }
@@ -360,6 +360,15 @@ public class TutorialManager : MonoBehaviour
         }
     }
 
+    [Header("Tutorial Voice Lines")]
+    [SerializeField] private LocalizedSoundData tutorialWaitingForBuyLocalized;
+    [SerializeField] private LocalizedSoundData tutorialBuildingLocalized;
+    [SerializeField] private LocalizedSoundData tutorialWaitingForTapLocalized;
+    [SerializeField] private LocalizedSoundData tutorialWaitingForInspectLocalized;
+    [SerializeField] private LocalizedSoundData tutorialInspectingLocalized;
+    [SerializeField] private LocalizedSoundData tutorialPressBackLocalized;
+    [SerializeField] private LocalizedSoundData tutorialPressMinigameLocalized;
+
     void EnterSubState(SubState next)
     {
         _sub = next;
@@ -395,11 +404,14 @@ public class TutorialManager : MonoBehaviour
                     HidePointer();
                     ShowBanner(SafeGet("tutorial_earn_coins", "Speel minigames om munten te verdienen. Als je er genoeg hebt, kun je het volgende verblijf bouwen!"));
                 }
+
+                VoiceLocalizer.PlayLocalized(tutorialWaitingForBuyLocalized);
                 break;
 
             case SubState.Building:
                 HidePointer();
                 ShowBanner(SafeGet("tutorial_building", "Daar komt 'ie... je verblijf wordt gebouwd!"));
+                VoiceLocalizer.PlayLocalized(tutorialBuildingLocalized);
                 break;
 
             case SubState.WaitingForTap:
@@ -410,29 +422,34 @@ public class TutorialManager : MonoBehaviour
                 }
                 ShowPointer(useTapIcon: true);
                 ShowBanner(SafeGet("tutorial_tap_habitat", "Tik nu op het verblijf om je nieuwe dier te ontmoeten!"));
+                VoiceLocalizer.PlayLocalized(tutorialWaitingForTapLocalized);
                 break;
 
             case SubState.WaitingForInspect:
                 HidePointer();
                 ShowBanner(SafeGet("tutorial_press_inspect", "Druk op de knop Inspecteren om alles van dichtbij te bekijken!"));
+                VoiceLocalizer.PlayLocalized(tutorialWaitingForInspectLocalized);
                 StartPulsing(_pulsingCardInspect);
                 break;
 
             case SubState.Inspecting:
                 HidePointer();
                 ShowBanner(SafeGet("tutorial_inspecting", "Kijk maar goed rond! Kantel je tablet om overal naar te kijken."));
+                VoiceLocalizer.PlayLocalized(tutorialInspectingLocalized);
                 _inspectTimer = inspectionPromptSeconds;
                 break;
 
             case SubState.WaitingForBack:
                 HidePointer();
                 ShowBanner(SafeGet("tutorial_press_back", "Klaar met kijken? Druk op de knop Terug om verder te gaan!"));
+                VoiceLocalizer.PlayLocalized(tutorialPressBackLocalized);
                 StartPulsing(_pulsingInspectBack);
                 break;
 
             case SubState.WaitingForMinigame:
                 HidePointer();
                 ShowBanner(SafeGet("tutorial_press_minigame", "Speel nu de minigame om munten te verdienen!"));
+                VoiceLocalizer.PlayLocalized(tutorialPressMinigameLocalized);
                 StartPulsing(_pulsingCardMinigame);
                 break;
         }
@@ -522,7 +539,7 @@ public class TutorialManager : MonoBehaviour
             PlayerPrefs.SetInt(PREF_SUB, (int)SubState.Complete);
             PlayerPrefs.Save();
 
-            ShowDialogue(GetTutorialCompleteDialogue(), OnTutorialCompleteDialogueDone, tutorialCompleteSoundData);
+            ShowDialogue(GetTutorialCompleteDialogue(), OnTutorialCompleteDialogueDone, VoiceLocalizer.Resolve(tutorialCompleteLocalized));
 
             return;
         }
@@ -952,7 +969,7 @@ public class TutorialManager : MonoBehaviour
     void PlayVoiceLine(SoundData data)
     {
         if (data == null || SoundManager.Instance == null) return;
-        SoundManager.Instance.Stop(data);
+        SoundManager.Instance.FadeOut(data);
 
         if (_activeVoiceClipIndex >= 0)
             SoundManager.Instance.PlayClipAt(data, _activeVoiceClipIndex);
@@ -1047,6 +1064,12 @@ public class TutorialManager : MonoBehaviour
         if (_typeCoroutine != null) StopCoroutine(_typeCoroutine);
         HideContinueIndicator();
 
+        if (_activeVoiceSound != null && SoundManager.Instance != null)
+        {
+            SoundManager.Instance.FadeOut(_activeVoiceSound);
+            _activeVoiceClipIndex = -1;
+        }
+
         var brt = _dialogueBox != null ? _dialogueBox.GetComponent<RectTransform>() : null;
         if (brt != null)
         {
@@ -1093,30 +1116,36 @@ public class TutorialManager : MonoBehaviour
     }
 
     [Header("Animal Dialogue Voice Lines")]
-    [SerializeField] private SoundData beaverDialogueSoundData;
-    [SerializeField] private SoundData polarBearDialogueSoundData;
-    [SerializeField] private SoundData raccoonDialogueSoundData;
-    [SerializeField] private SoundData prairieDogDialogueSoundData;
-    [SerializeField] private SoundData baboonDialogueSoundData;
-    [SerializeField] private SoundData hippoDialogueSoundData;
+    [SerializeField] private LocalizedSoundData beaverDialogueLocalized;
+    [SerializeField] private LocalizedSoundData polarBearDialogueLocalized;
+    [SerializeField] private LocalizedSoundData raccoonDialogueLocalized;
+    [SerializeField] private LocalizedSoundData prairieDogDialogueLocalized;
+    [SerializeField] private LocalizedSoundData baboonDialogueLocalized;
+    [SerializeField] private LocalizedSoundData hippoDialogueLocalized;
+    [SerializeField] private LocalizedSoundData parrotDialogueLocalized;
+    [SerializeField] private LocalizedSoundData otterDialogueLocalized;
 
     SoundData GetAnimalSoundData(string habitatId)
     {
         switch (habitatId)
         {
-            case "beaver_habitat":
-                return beaverDialogueSoundData;
-            case "polarbear_habitat":
-                return polarBearDialogueSoundData;
-            case "racoon_habitat":
-                return raccoonDialogueSoundData;
+            case "beaver_habitat":    
+                return VoiceLocalizer.Resolve(beaverDialogueLocalized);
+            case "polarbear_habitat": 
+                return VoiceLocalizer.Resolve(polarBearDialogueLocalized);
+            case "racoon_habitat":    
+                return VoiceLocalizer.Resolve(raccoonDialogueLocalized);
             case "prairiedog_habitat":
-                return prairieDogDialogueSoundData;
-            case "baboon_habitat":
-                return baboonDialogueSoundData;
-            case "hippo_habitat":
-                return hippoDialogueSoundData;
-            default:
+                return VoiceLocalizer.Resolve(prairieDogDialogueLocalized);
+            case "baboon_habitat":    
+                return VoiceLocalizer.Resolve(baboonDialogueLocalized);
+            case "hippo_habitat":     
+                return VoiceLocalizer.Resolve(hippoDialogueLocalized);
+            case "parrot_habitat":
+                return VoiceLocalizer.Resolve(parrotDialogueLocalized);
+            case "otter_habitat":
+                return VoiceLocalizer.Resolve(otterDialogueLocalized);
+            default: 
                 return null;
         }
     }
@@ -1234,7 +1263,7 @@ public class TutorialManager : MonoBehaviour
         if (_factBank == null || _factBank.Length == 0) { _factTimer = factMaxInterval; return; }
 
         int index = Random.Range(0, _factBank.Length);
-        ShowDialogue(new DialogueLine[] { _factBank[index] }, ScheduleNextFact, randomFactSoundData, index);
+        ShowDialogue(new DialogueLine[] { _factBank[index] }, ScheduleNextFact, VoiceLocalizer.Resolve(randomFactLocalized), index);
     }
 
     void EnsureFactBank()
