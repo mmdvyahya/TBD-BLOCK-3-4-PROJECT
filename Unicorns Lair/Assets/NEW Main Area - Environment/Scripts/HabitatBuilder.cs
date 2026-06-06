@@ -15,8 +15,7 @@ public class HabitatBuilder : MonoBehaviour
     private Vector3 _originalScale;
     private Bounds _worldBounds;
     private Canvas _uiCanvas;
-    private RectTransform _progressBar;
-    private Text _buildLabel;
+    private int _confettiActive;
     private List<GameObject> _clouds = new();
 
     void Awake()
@@ -51,9 +50,6 @@ public class HabitatBuilder : MonoBehaviour
         float radius = _worldBounds.extents.magnitude;
 
         SetupBuildUI();
-        SetBuildLabel(LanguageManager.Instance != null
-            ? LanguageManager.Instance.Get("building_label")
-            : "In aanbouw!");
 
         yield return StartCoroutine(Phase_CloudCover(center, radius));
         yield return StartCoroutine(Phase_Building(center, radius));
@@ -68,7 +64,8 @@ public class HabitatBuilder : MonoBehaviour
 
         yield return StartCoroutine(Phase_Reveal(center, radius));
 
-        yield return StartCoroutine(ShowContinueButton());
+        // Keep the canvas alive until the confetti has fully finished playing.
+        while (_confettiActive > 0) yield return null;
 
         CleanupUI();
         transform.localScale = _originalScale;
@@ -125,7 +122,6 @@ public class HabitatBuilder : MonoBehaviour
         for (int i = 0; i < 10; i++)
         {
             yield return new WaitForSeconds(interval);
-            SetProgress((float)(i + 1) / 10f);
             SpawnStars(center + Random.insideUnitSphere * radius * 0.35f + Vector3.up * radius * 0.2f, 6, radius * 0.4f);
             StartCoroutine(SpawnDebrisPuff(center + Random.insideUnitSphere * radius * 0.3f, radius));
 
@@ -413,78 +409,6 @@ public class HabitatBuilder : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
     }
 
-    IEnumerator ShowContinueButton()
-    {
-        bool pressed = false;
-
-        var btnObj = new GameObject("ContinueBtn");
-        btnObj.transform.SetParent(_uiCanvas.transform, false);
-        var rt = btnObj.AddComponent<RectTransform>();
-        rt.anchorMin = new Vector2(0.5f, 0.5f);
-        rt.anchorMax = new Vector2(0.5f, 0.5f);
-        rt.pivot = new Vector2(0.5f, 0.5f);
-        rt.anchoredPosition = new Vector2(0f, -80f);
-        rt.sizeDelta = new Vector2(440f, 130f);
-        rt.localScale = Vector3.zero;
-
-        var img = btnObj.AddComponent<Image>();
-        img.color = new Color(0.12f, 0.68f, 0.34f);
-
-        var btn = btnObj.AddComponent<Button>();
-        btn.targetGraphic = img;
-        btn.colors = new ColorBlock
-        {
-            normalColor = new Color(0.12f, 0.68f, 0.34f),
-            highlightedColor = new Color(0.20f, 0.85f, 0.46f),
-            pressedColor = new Color(0.07f, 0.46f, 0.22f),
-            selectedColor = new Color(0.12f, 0.68f, 0.34f),
-            disabledColor = new Color(0.35f, 0.35f, 0.35f),
-            colorMultiplier = 1f,
-            fadeDuration = 0.08f
-        };
-        btn.onClick.AddListener(() => pressed = true);
-
-        var lblObj = new GameObject("Label");
-        lblObj.transform.SetParent(btnObj.transform, false);
-        var lrt = lblObj.AddComponent<RectTransform>();
-        lrt.anchorMin = Vector2.zero;
-        lrt.anchorMax = Vector2.one;
-        lrt.offsetMin = lrt.offsetMax = Vector2.zero;
-        var txt = lblObj.AddComponent<Text>();
-        txt.text = LanguageManager.Instance != null ? LanguageManager.Instance.Get("btn_continue") : "Doorgaan";
-        txt.font = GetFont();
-        txt.fontSize = 52;
-        txt.fontStyle = FontStyle.Bold;
-        txt.alignment = TextAnchor.MiddleCenter;
-        txt.color = Color.white;
-        txt.raycastTarget = false;
-        lblObj.AddComponent<Outline>().effectColor = new Color(0f, 0.2f, 0.1f, 0.6f);
-
-        float t = 0f;
-        while (t < 0.3f)
-        {
-            t += Time.deltaTime;
-            float p = t / 0.3f;
-            float overshoot = 1f + Mathf.Sin(p * Mathf.PI) * 0.15f;
-            rt.localScale = Vector3.one * Mathf.SmoothStep(0f, 1f, p) * overshoot;
-            yield return null;
-        }
-        rt.localScale = Vector3.one;
-
-        while (!pressed)
-            yield return null;
-
-        t = 0f;
-        while (t < 0.15f)
-        {
-            t += Time.deltaTime;
-            rt.localScale = Vector3.Lerp(Vector3.one, Vector3.zero, t / 0.15f);
-            yield return null;
-        }
-
-        Destroy(btnObj);
-    }
-
     IEnumerator PulseCloud(Transform t, Vector3 baseScale)
     {
         float offset = Random.Range(0f, Mathf.PI * 2f);
@@ -605,6 +529,7 @@ public class HabitatBuilder : MonoBehaviour
 
     IEnumerator AnimConfetti(RectTransform rt, Image img, float spin, float fall, float sway, float amount, float startX)
     {
+        _confettiActive++;
         float t = 0f;
         while (t < 2.6f && rt != null)
         {
@@ -615,6 +540,7 @@ public class HabitatBuilder : MonoBehaviour
             yield return null;
         }
         if (rt != null) Destroy(rt.gameObject);
+        _confettiActive--;
     }
 
     void SetupBuildUI()
@@ -630,129 +556,9 @@ public class HabitatBuilder : MonoBehaviour
         scaler.referenceResolution = new Vector2(1080, 1920);
         scaler.matchWidthOrHeight = 0.5f;
         cObj.AddComponent<GraphicRaycaster>();
-
-        var card = new GameObject("Card");
-        card.transform.SetParent(cObj.transform, false);
-        var cardRt = card.AddComponent<RectTransform>();
-        cardRt.anchorMin = new Vector2(0.5f, 0f);
-        cardRt.anchorMax = new Vector2(0.5f, 0f);
-        cardRt.pivot = new Vector2(0.5f, 0f);
-        cardRt.anchoredPosition = new Vector2(0f, 30f);
-        cardRt.sizeDelta = new Vector2(460f, 130f);
-        cardRt.localScale = Vector3.zero;
-        var cardBg = card.AddComponent<Image>();
-        cardBg.color = new Color(0.16f, 0.09f, 0.04f, 0.95f);
-        cardBg.raycastTarget = false;
-
-        var accent = new GameObject("AccentTop");
-        accent.transform.SetParent(card.transform, false);
-        var acRt = accent.AddComponent<RectTransform>();
-        acRt.anchorMin = new Vector2(0f, 1f);
-        acRt.anchorMax = new Vector2(1f, 1f);
-        acRt.pivot = new Vector2(0.5f, 1f);
-        acRt.anchoredPosition = Vector2.zero;
-        acRt.sizeDelta = new Vector2(0f, 6f);
-        accent.AddComponent<Image>().color = new Color(0.76f, 0.52f, 0.22f);
-
-        var accentBot = new GameObject("AccentBot");
-        accentBot.transform.SetParent(card.transform, false);
-        var acBotRt = accentBot.AddComponent<RectTransform>();
-        acBotRt.anchorMin = new Vector2(0f, 0f);
-        acBotRt.anchorMax = new Vector2(1f, 0f);
-        acBotRt.pivot = new Vector2(0.5f, 0f);
-        acBotRt.anchoredPosition = Vector2.zero;
-        acBotRt.sizeDelta = new Vector2(0f, 6f);
-        accentBot.AddComponent<Image>().color = new Color(0.76f, 0.52f, 0.22f);
-
-        var titleObj = new GameObject("Title");
-        titleObj.transform.SetParent(card.transform, false);
-        var titleRt = titleObj.AddComponent<RectTransform>();
-        titleRt.anchorMin = new Vector2(0.5f, 1f);
-        titleRt.anchorMax = new Vector2(0.5f, 1f);
-        titleRt.pivot = new Vector2(0.5f, 1f);
-        titleRt.anchoredPosition = new Vector2(0f, -10f);
-        titleRt.sizeDelta = new Vector2(440f, 32f);
-        var titleTxt = titleObj.AddComponent<Text>();
-        titleTxt.text = LanguageManager.Instance != null
-            ? LanguageManager.Instance.Get("building_title")
-            : "Verblijf bouwen!";
-        titleTxt.font = GetFont();
-        titleTxt.fontSize = 22;
-        titleTxt.fontStyle = FontStyle.Bold;
-        titleTxt.alignment = TextAnchor.MiddleCenter;
-        titleTxt.color = new Color(1f, 0.82f, 0.42f);
-        titleTxt.raycastTarget = false;
-        titleObj.AddComponent<Outline>().effectColor = new Color(0.3f, 0.1f, 0f, 0.8f);
-
-        var tObj = new GameObject("LabelText");
-        tObj.transform.SetParent(card.transform, false);
-        var trt = tObj.AddComponent<RectTransform>();
-        trt.anchorMin = new Vector2(0.5f, 0.5f);
-        trt.anchorMax = new Vector2(0.5f, 0.5f);
-        trt.pivot = new Vector2(0.5f, 0.5f);
-        trt.anchoredPosition = new Vector2(0f, 2f);
-        trt.sizeDelta = new Vector2(430f, 38f);
-        _buildLabel = tObj.AddComponent<Text>();
-        _buildLabel.font = GetFont();
-        _buildLabel.fontSize = 24;
-        _buildLabel.fontStyle = FontStyle.Bold;
-        _buildLabel.alignment = TextAnchor.MiddleCenter;
-        _buildLabel.color = Color.white;
-        _buildLabel.raycastTarget = false;
-        tObj.AddComponent<Outline>().effectColor = new Color(0f, 0f, 0f, 0.8f);
-
-        var barBg = new GameObject("ProgressBg");
-        barBg.transform.SetParent(card.transform, false);
-        var barBgRt = barBg.AddComponent<RectTransform>();
-        barBgRt.anchorMin = new Vector2(0.5f, 0f);
-        barBgRt.anchorMax = new Vector2(0.5f, 0f);
-        barBgRt.pivot = new Vector2(0.5f, 0f);
-        barBgRt.anchoredPosition = new Vector2(0f, 14f);
-        barBgRt.sizeDelta = new Vector2(420f, 18f);
-        barBg.AddComponent<Image>().color = new Color(0f, 0f, 0f, 0.55f);
-
-        var barFill = new GameObject("ProgressFill");
-        barFill.transform.SetParent(barBg.transform, false);
-        _progressBar = barFill.AddComponent<RectTransform>();
-        _progressBar.anchorMin = new Vector2(0f, 0f);
-        _progressBar.anchorMax = new Vector2(0f, 1f);
-        _progressBar.pivot = new Vector2(0f, 0.5f);
-        _progressBar.offsetMin = new Vector2(3f, 3f);
-        _progressBar.offsetMax = new Vector2(3f, -3f);
-        _progressBar.sizeDelta = new Vector2(0f, 0f);
-        barFill.AddComponent<Image>().color = new Color(0.76f, 0.52f, 0.22f);
-
-        StartCoroutine(PopInCard(cardRt));
-        StartCoroutine(CycleFunText());
     }
 
-    private static readonly string[] _funTextKeys =
-    {
-        "building_fun_0",
-        "building_fun_1",
-        "building_fun_2",
-        "building_fun_3",
-        "building_fun_4",
-        "building_fun_5",
-        "building_fun_6",
-        "building_fun_7",
-        "building_fun_8",
-        "building_fun_9",
-    };
 
-    IEnumerator CycleFunText()
-    {
-        int idx = 0;
-        while (_buildLabel != null)
-        {
-            string text = (LanguageManager.Instance != null)
-                ? LanguageManager.Instance.Get(_funTextKeys[idx % _funTextKeys.Length])
-                : _funTextKeys[idx % _funTextKeys.Length];
-            SetBuildLabel(text);
-            idx++;
-            yield return new WaitForSeconds(1.1f);
-        }
-    }
 
     IEnumerator PopInCard(RectTransform rt)
     {
@@ -768,13 +574,7 @@ public class HabitatBuilder : MonoBehaviour
         rt.localScale = Vector3.one;
     }
 
-    void SetBuildLabel(string text) { if (_buildLabel != null) _buildLabel.text = text; }
 
-    void SetProgress(float p)
-    {
-        if (_progressBar == null) return;
-        _progressBar.sizeDelta = new Vector2(414f * p, 0f);
-    }
 
     void CleanupUI()
     {
