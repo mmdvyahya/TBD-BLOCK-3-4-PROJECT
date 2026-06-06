@@ -66,7 +66,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 473a8c7b18a8ae34082cb8af573e2bb6, type: 2}
     - target: {fileID: 919132149155446097, guid: c48b730e791bec943abf6396b764302a, type: 3}
       propertyPath: m_Name
-      value: Grass
+      value: Grass_1
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: c48b730e791bec943abf6396b764302a, type: 3}
       propertyPath: m_IsActive
@@ -83,5 +83,33 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c48b730e791bec943abf6396b764302a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -2039365535930794679}
   m_SourcePrefab: {fileID: 100100000, guid: c48b730e791bec943abf6396b764302a, type: 3}
+--- !u!1 &7983000254285409390 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c48b730e791bec943abf6396b764302a, type: 3}
+  m_PrefabInstance: {fileID: 7063959506329653567}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &-2039365535930794679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7983000254285409390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.AI.Navigation::Unity.AI.Navigation.NavMeshModifier
+  m_SerializedVersion: 0
+  m_OverrideArea: 0
+  m_Area: 0
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 1
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff

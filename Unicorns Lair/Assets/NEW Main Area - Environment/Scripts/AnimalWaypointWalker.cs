@@ -4,6 +4,7 @@ using UnityEngine.AI;
 
 public class AnimalWaypointWalker : MonoBehaviour
 {
+    
     [SerializeField] private NavMeshAgent agent;
     [SerializeField] private Animator animator;
     [SerializeField] private Transform[] waypoints;
@@ -54,6 +55,7 @@ public class AnimalWaypointWalker : MonoBehaviour
         PlayIdle();
         StartCoroutine(WalkLoop());
     }
+  
 
     private IEnumerator WalkLoop()
     {
