@@ -22205,22 +22205,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1293463583}
     m_Modifications:
-    - target: {fileID: -7511558181221131132, guid: 220deca34771597428c7a3e80bc1319c, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 2812508ac65a2954ab8fc99ae0d09493, type: 2}
-    - target: {fileID: -7511558181221131132, guid: 220deca34771597428c7a3e80bc1319c, type: 3}
-      propertyPath: 'm_Materials.Array.data[1]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 36969dc4873322a40841ef5319b57632, type: 2}
-    - target: {fileID: -7511558181221131132, guid: 220deca34771597428c7a3e80bc1319c, type: 3}
-      propertyPath: 'm_Materials.Array.data[2]'
-      value: 
-      objectReference: {fileID: 2100000, guid: cd25466e9d953d3468ca2f47dc93908e, type: 2}
-    - target: {fileID: -7511558181221131132, guid: 220deca34771597428c7a3e80bc1319c, type: 3}
-      propertyPath: 'm_Materials.Array.data[3]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 2366e6482947ae040b43392b309d8b7a, type: 2}
     - target: {fileID: 1188191722613822518, guid: 3ef109322e53bee43a319de140356f1d, type: 3}
       propertyPath: m_Name
       value: Beaver
@@ -22285,6 +22269,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 220deca34771597428c7a3e80bc1319c, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 2812508ac65a2954ab8fc99ae0d09493, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 220deca34771597428c7a3e80bc1319c, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 36969dc4873322a40841ef5319b57632, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 220deca34771597428c7a3e80bc1319c, type: 3}
+      propertyPath: 'm_Materials.Array.data[2]'
+      value: 
+      objectReference: {fileID: 2100000, guid: cd25466e9d953d3468ca2f47dc93908e, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 220deca34771597428c7a3e80bc1319c, type: 3}
+      propertyPath: 'm_Materials.Array.data[3]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 2366e6482947ae040b43392b309d8b7a, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -24825,6 +24825,39 @@ MonoBehaviour:
   buttonHeight: 175
   buttonSpacing: 20
   buttonRowOrigin: {x: 30, y: 30}
+  namePanelSprite: {fileID: 21300000, guid: 90614580ba447a5448050f742823f4c4, type: 3}
+  namePanelPos: {x: 0, y: -30}
+  namePanelSize: {x: 960, y: 160}
+  namePanelOpacity: 1
+  nameTextSize: 52
+  nameTextColor: {r: 1, g: 1, b: 1, a: 1}
+  nameTextAlignment: 4
+  nameTextPadLeft: 40
+  nameTextPadRight: 40
+  nameTextPadTop: 20
+  nameTextPadBottom: 20
+  infoSprite: {fileID: 21300000, guid: baf8cf26d0084bd469ef02f749883a01, type: 3}
+  infoPanelSprite: {fileID: 21300000, guid: eff4b33e2b823c54e90820991531edd5, type: 3}
+  infoPanelPos: {x: 0, y: 0}
+  infoPanelSize: {x: 1000, y: 480}
+  infoPanelOpacity: 1
+  infoDimOpacity: 0.85
+  infoDescPos: {x: 0, y: -100}
+  infoDescSize: {x: 760, y: 320}
+  infoDescFontSize: 34
+  infoDescColor: {r: 1, g: 1, b: 1, a: 1}
+  infoDescAlignment: 1
+  infoFactPos: {x: 0, y: -175}
+  infoFactSize: {x: 760, y: 260}
+  infoFactFontSize: 30
+  infoFactColor: {r: 1, g: 1, b: 1, a: 1}
+  infoFactAlignment: 1
+  infoTapAnchor: {x: 0.5, y: 0}
+  infoTapPosition: {x: 0, y: 24}
+  infoTapSize: {x: 420, y: 48}
+  infoTapFontSize: 26
+  infoTapColor: {r: 0.514151, g: 0.9717739, b: 1, a: 1}
+  infoTapAlignment: 4
   cameraMoveDuration: 1.1
   cameraReturnDuration: 1
 --- !u!4 &1129687375
@@ -40984,22 +41017,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 199286317}
     m_Modifications:
-    - target: {fileID: -7511558181221131132, guid: 220deca34771597428c7a3e80bc1319c, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 2812508ac65a2954ab8fc99ae0d09493, type: 2}
-    - target: {fileID: -7511558181221131132, guid: 220deca34771597428c7a3e80bc1319c, type: 3}
-      propertyPath: 'm_Materials.Array.data[1]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 36969dc4873322a40841ef5319b57632, type: 2}
-    - target: {fileID: -7511558181221131132, guid: 220deca34771597428c7a3e80bc1319c, type: 3}
-      propertyPath: 'm_Materials.Array.data[2]'
-      value: 
-      objectReference: {fileID: 2100000, guid: cd25466e9d953d3468ca2f47dc93908e, type: 2}
-    - target: {fileID: -7511558181221131132, guid: 220deca34771597428c7a3e80bc1319c, type: 3}
-      propertyPath: 'm_Materials.Array.data[3]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 2366e6482947ae040b43392b309d8b7a, type: 2}
     - target: {fileID: 1188191722613822518, guid: 3ef109322e53bee43a319de140356f1d, type: 3}
       propertyPath: m_Name
       value: Beaver (1)
@@ -41064,6 +41081,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 220deca34771597428c7a3e80bc1319c, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 2812508ac65a2954ab8fc99ae0d09493, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 220deca34771597428c7a3e80bc1319c, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 36969dc4873322a40841ef5319b57632, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 220deca34771597428c7a3e80bc1319c, type: 3}
+      propertyPath: 'm_Materials.Array.data[2]'
+      value: 
+      objectReference: {fileID: 2100000, guid: cd25466e9d953d3468ca2f47dc93908e, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 220deca34771597428c7a3e80bc1319c, type: 3}
+      propertyPath: 'm_Materials.Array.data[3]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 2366e6482947ae040b43392b309d8b7a, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

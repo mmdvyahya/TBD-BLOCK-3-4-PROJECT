@@ -30,6 +30,60 @@ public class HabitatInteractionController : MonoBehaviour
     [Tooltip("Bottom-left position of the button row (and of the inspect back button).")]
     [SerializeField] private Vector2 buttonRowOrigin = new Vector2(30f, 30f);
 
+    [Header("Name Panel (PNG, top middle)")]
+    [Tooltip("PNG used as the top-middle name panel. If empty, the old dark box is used.")]
+    [SerializeField] private Sprite namePanelSprite;
+    [Tooltip("Position from the TOP-CENTER of the screen. X = right, Y = down (negative).")]
+    [SerializeField] private Vector2 namePanelPos = new Vector2(0f, -30f);
+    [SerializeField] private Vector2 namePanelSize = new Vector2(960f, 160f);
+    [Range(0f, 1f)]
+    [SerializeField] private float namePanelOpacity = 1f;
+    [SerializeField] private int nameTextSize = 52;
+    [SerializeField] private Color nameTextColor = Color.white;
+    [SerializeField] private TextAnchor nameTextAlignment = TextAnchor.MiddleCenter;
+    [SerializeField] private float nameTextPadLeft = 40f;
+    [SerializeField] private float nameTextPadRight = 40f;
+    [SerializeField] private float nameTextPadTop = 20f;
+    [SerializeField] private float nameTextPadBottom = 20f;
+
+    [Header("Info Button (PNG, between inspect and play)")]
+    [Tooltip("Icon for the new info button placed between the inspect and minigame buttons. Opens the info popup.")]
+    [SerializeField] private Sprite infoSprite;
+
+    [Header("Info Popup (PNG)")]
+    [Tooltip("PNG background of the popup that shows the habitat description and educational fact.")]
+    [SerializeField] private Sprite infoPanelSprite;
+    [SerializeField] private Vector2 infoPanelPos = new Vector2(0f, 0f);
+    [SerializeField] private Vector2 infoPanelSize = new Vector2(900f, 820f);
+    [Range(0f, 1f)]
+    [SerializeField] private float infoPanelOpacity = 1f;
+    [Tooltip("Darkening behind the popup. Tap anywhere to close.")]
+    [Range(0f, 1f)]
+    [SerializeField] private float infoDimOpacity = 0.6f;
+
+    [Header("Info Popup - Description Text")]
+    [SerializeField] private Vector2 infoDescPos = new Vector2(0f, 150f);
+    [SerializeField] private Vector2 infoDescSize = new Vector2(760f, 320f);
+    [SerializeField] private int infoDescFontSize = 34;
+    [SerializeField] private Color infoDescColor = Color.white;
+    [SerializeField] private TextAnchor infoDescAlignment = TextAnchor.UpperCenter;
+
+    [Header("Info Popup - Fact Text")]
+    [SerializeField] private Vector2 infoFactPos = new Vector2(0f, -230f);
+    [SerializeField] private Vector2 infoFactSize = new Vector2(760f, 260f);
+    [SerializeField] private int infoFactFontSize = 30;
+    [SerializeField] private Color infoFactColor = Color.white;
+    [SerializeField] private TextAnchor infoFactAlignment = TextAnchor.UpperCenter;
+
+    [Header("Info Popup - Tap To Continue")]
+    [Tooltip("Anchor/pivot inside the panel (0.5,0 = bottom-center).")]
+    [SerializeField] private Vector2 infoTapAnchor = new Vector2(0.5f, 0f);
+    [SerializeField] private Vector2 infoTapPosition = new Vector2(0f, 24f);
+    [SerializeField] private Vector2 infoTapSize = new Vector2(420f, 48f);
+    [SerializeField] private int infoTapFontSize = 26;
+    [SerializeField] private Color infoTapColor = new Color(1f, 0.9f, 0.5f);
+    [SerializeField] private TextAnchor infoTapAlignment = TextAnchor.MiddleCenter;
+
     [Header("Tuning")]
     [SerializeField] private float cameraMoveDuration = 1.1f;
     [SerializeField] private float cameraReturnDuration = 1.0f;
@@ -45,6 +99,9 @@ public class HabitatInteractionController : MonoBehaviour
 
     private InspectableHabitat _currentHabitat;
     private GameObject _cardCanvas;
+    private GameObject _infoPopup;
+    private RectTransform _infoPanelRt;
+    private bool _infoClosing;
 
     void Start()
     {
@@ -163,36 +220,40 @@ public class HabitatInteractionController : MonoBehaviour
         canvasObj.AddComponent<GraphicRaycaster>();
         EnsureEventSystem();
 
-        var card = new GameObject("InfoCard");
+        var card = new GameObject("NamePanel");
         card.transform.SetParent(canvasObj.transform, false);
         var cardRt = card.AddComponent<RectTransform>();
         cardRt.anchorMin = new Vector2(0.5f, 1f); cardRt.anchorMax = new Vector2(0.5f, 1f);
         cardRt.pivot = new Vector2(0.5f, 1f);
-        cardRt.anchoredPosition = new Vector2(0f, -30f);
-        cardRt.sizeDelta = new Vector2(960f, 280f);
+        cardRt.anchoredPosition = namePanelPos;
+        cardRt.sizeDelta = namePanelSize;
         var cardImg = card.AddComponent<Image>();
-        cardImg.color = new Color(0.08f, 0.12f, 0.20f, 0.92f);
+        if (namePanelSprite != null)
+        {
+            cardImg.sprite = namePanelSprite;
+            cardImg.type = Image.Type.Simple;
+            cardImg.preserveAspect = false;
+            cardImg.color = new Color(1f, 1f, 1f, namePanelOpacity);
+        }
+        else cardImg.color = new Color(0.08f, 0.12f, 0.20f, 0.92f);
         cardImg.raycastTarget = false;
 
-        var accent = new GameObject("Accent");
-        accent.transform.SetParent(card.transform, false);
-        var aRt = accent.AddComponent<RectTransform>();
-        aRt.anchorMin = new Vector2(0f, 1f); aRt.anchorMax = new Vector2(1f, 1f);
-        aRt.pivot = new Vector2(0.5f, 1f); aRt.anchoredPosition = Vector2.zero; aRt.sizeDelta = new Vector2(0f, 10f);
-        accent.AddComponent<Image>().color = new Color(0.55f, 0.35f, 0.10f);
-
-        var nameTxt = MakeLabelSafe(card.transform, habitat.AnimalNameKey, "Verblijf", 52, FontStyle.Bold, Color.white, new Vector2(0f, -24f), new Vector2(920f, 70f));
-        var descTxt = MakeLabelSafe(card.transform, habitat.HabitatDescriptionKey, "Een verblijf voor dieren.", 32, FontStyle.Normal, new Color(0.80f, 0.92f, 1f), new Vector2(0f, -102f), new Vector2(920f, 56f));
-        var factTxt = MakeLabelSafe(card.transform, habitat.EducationalFactKey, "Leuk weetje!", 26, FontStyle.Normal, new Color(1f, 0.88f, 0.55f), new Vector2(0f, -160f), new Vector2(920f, 48f));
-        var hintTxt = MakeLabelSafe(card.transform, "inspect_hint", "Tilt to look around", 22, FontStyle.Normal, new Color(0.55f, 0.65f, 0.75f), new Vector2(0f, -220f), new Vector2(920f, 36f));
+        var nameObj = new GameObject("NameText");
+        nameObj.transform.SetParent(card.transform, false);
+        var nrt = nameObj.AddComponent<RectTransform>();
+        nrt.anchorMin = Vector2.zero; nrt.anchorMax = Vector2.one;
+        nrt.offsetMin = new Vector2(nameTextPadLeft, nameTextPadBottom);
+        nrt.offsetMax = new Vector2(-nameTextPadRight, -nameTextPadTop);
+        var nameTxt = nameObj.AddComponent<Text>();
+        nameTxt.font = GetFont(); nameTxt.fontSize = nameTextSize; nameTxt.fontStyle = FontStyle.Bold;
+        nameTxt.alignment = nameTextAlignment; nameTxt.color = nameTextColor; nameTxt.raycastTarget = false;
+        nameTxt.horizontalOverflow = HorizontalWrapMode.Wrap; nameTxt.verticalOverflow = VerticalWrapMode.Overflow;
+        nameTxt.text = SafeGet(LanguageManager.Instance, habitat.AnimalNameKey, "Verblijf");
 
         LanguageManager.OnLanguageChanged refresh = () =>
         {
             var lm = LanguageManager.Instance;
             if (nameTxt != null) nameTxt.text = SafeGet(lm, habitat.AnimalNameKey, "Verblijf");
-            if (descTxt != null) descTxt.text = SafeGet(lm, habitat.HabitatDescriptionKey, "Een verblijf voor dieren.");
-            if (factTxt != null) factTxt.text = SafeGet(lm, habitat.EducationalFactKey, "Leuk weetje!");
-            if (hintTxt != null) hintTxt.text = SafeGet(lm, "inspect_hint", "Tilt to look around");
         };
         if (LanguageManager.Instance != null) LanguageManager.Instance.LanguageChanged += refresh;
         var deathHook = canvasObj.AddComponent<OnDestroyHook>();
@@ -210,6 +271,9 @@ public class HabitatInteractionController : MonoBehaviour
         var inspBtn = MakeIconButton(canvasObj.transform, inspectSprite, new Vector2(rowX, rowY), buttonHeight, out float wInsp);
         rowX += wInsp + buttonSpacing;
 
+        var infoBtn = MakeIconButton(canvasObj.transform, infoSprite, new Vector2(rowX, rowY), buttonHeight, out float wInfo);
+        rowX += wInfo + buttonSpacing;
+
         Button mgBtn = null;
         if (habitat.HasMinigame)
         {
@@ -218,6 +282,8 @@ public class HabitatInteractionController : MonoBehaviour
         }
 
         backBtn.onClick.AddListener(CloseHabitat);
+
+        infoBtn.onClick.AddListener(() => ShowInfoPopup(habitat));
 
         inspBtn.onClick.AddListener(() =>
         {
@@ -273,6 +339,8 @@ public class HabitatInteractionController : MonoBehaviour
 
     void DestroyCard()
     {
+        _infoPopup = null;
+        _infoClosing = false;
         if (_cardCanvas != null) { Destroy(_cardCanvas); _cardCanvas = null; CardClosed?.Invoke(); }
     }
 
@@ -287,6 +355,135 @@ public class HabitatInteractionController : MonoBehaviour
         t.text = SafeGet(LanguageManager.Instance, key, fallback);
         t.font = GetFont(); t.fontSize = size; t.fontStyle = style;
         t.alignment = TextAnchor.MiddleCenter; t.color = color; t.raycastTarget = false;
+        return t;
+    }
+
+    void ShowInfoPopup(InspectableHabitat habitat)
+    {
+        if (_cardCanvas == null) return;
+        if (_infoPopup != null) Destroy(_infoPopup);
+        _infoClosing = false;
+
+        var root = new GameObject("InfoPopup");
+        root.transform.SetParent(_cardCanvas.transform, false);
+        var rrt = root.AddComponent<RectTransform>();
+        rrt.anchorMin = Vector2.zero; rrt.anchorMax = Vector2.one;
+        rrt.offsetMin = rrt.offsetMax = Vector2.zero;
+        _infoPopup = root;
+
+        // Dim background; tap anywhere to close.
+        var dim = root.AddComponent<Image>();
+        dim.color = new Color(0f, 0f, 0f, infoDimOpacity);
+        var dimBtn = root.AddComponent<Button>();
+        dimBtn.transition = Selectable.Transition.None;
+        dimBtn.targetGraphic = dim;
+        dimBtn.onClick.AddListener(BeginCloseInfoPopup);
+
+        // Panel
+        var panel = new GameObject("Panel");
+        panel.transform.SetParent(root.transform, false);
+        var prt = panel.AddComponent<RectTransform>();
+        prt.anchorMin = prt.anchorMax = prt.pivot = new Vector2(0.5f, 0.5f);
+        prt.anchoredPosition = infoPanelPos; prt.sizeDelta = infoPanelSize;
+        prt.localScale = Vector3.zero;
+        _infoPanelRt = prt;
+        var pImg = panel.AddComponent<Image>();
+        if (infoPanelSprite != null)
+        {
+            pImg.sprite = infoPanelSprite;
+            pImg.type = Image.Type.Simple;
+            pImg.preserveAspect = false;
+            pImg.color = new Color(1f, 1f, 1f, infoPanelOpacity);
+        }
+        else pImg.color = new Color(0.08f, 0.12f, 0.20f, 0.97f);
+        pImg.raycastTarget = false;
+
+        var descTxt = MakePopupText(panel.transform, infoDescPos, infoDescSize, infoDescFontSize, infoDescColor, infoDescAlignment);
+        var factTxt = MakePopupText(panel.transform, infoFactPos, infoFactSize, infoFactFontSize, infoFactColor, infoFactAlignment);
+
+        // Tap-to-continue indicator (same as the dialogue / how-to popups)
+        var tapObj = new GameObject("TapToContinue");
+        tapObj.transform.SetParent(panel.transform, false);
+        var tapRt = tapObj.AddComponent<RectTransform>();
+        tapRt.anchorMin = tapRt.anchorMax = tapRt.pivot = infoTapAnchor;
+        tapRt.anchoredPosition = infoTapPosition;
+        tapRt.sizeDelta = infoTapSize;
+        var tapTxt = tapObj.AddComponent<Text>();
+        tapTxt.font = GetFont(); tapTxt.fontSize = infoTapFontSize; tapTxt.fontStyle = FontStyle.Bold;
+        tapTxt.alignment = infoTapAlignment; tapTxt.color = infoTapColor; tapTxt.raycastTarget = false;
+
+        LanguageManager.OnLanguageChanged refresh = () =>
+        {
+            var lm = LanguageManager.Instance;
+            if (descTxt != null) descTxt.text = SafeGet(lm, habitat.HabitatDescriptionKey, "Een verblijf voor dieren.");
+            if (factTxt != null) factTxt.text = SafeGet(lm, habitat.EducationalFactKey, "Leuk weetje!");
+            if (tapTxt != null) tapTxt.text = SafeGet(lm, "intro_tap_continue", "Tik om verder \u25B6");
+        };
+        refresh();
+        if (LanguageManager.Instance != null) LanguageManager.Instance.LanguageChanged += refresh;
+        var hook = root.AddComponent<OnDestroyHook>();
+        hook.OnDestroyAction = () =>
+        {
+            if (LanguageManager.Instance != null) LanguageManager.Instance.LanguageChanged -= refresh;
+        };
+
+        StartCoroutine(InfoPopIn(prt));
+    }
+
+    void BeginCloseInfoPopup()
+    {
+        if (_infoClosing || _infoPopup == null) return;
+        _infoClosing = true;
+        StartCoroutine(InfoPopOut(_infoPopup, _infoPanelRt));
+    }
+
+    IEnumerator InfoPopIn(RectTransform rt)
+    {
+        float t = 0f;
+        while (t < 0.3f && rt != null)
+        {
+            t += Time.deltaTime;
+            float p = t / 0.3f;
+            float overshoot = 1f + Mathf.Sin(p * Mathf.PI) * 0.15f;
+            rt.localScale = Vector3.one * Mathf.SmoothStep(0f, 1f, p) * overshoot;
+            yield return null;
+        }
+        if (rt != null) rt.localScale = Vector3.one;
+    }
+
+    IEnumerator InfoPopOut(GameObject root, RectTransform rt)
+    {
+        Vector3 start = rt != null ? rt.localScale : Vector3.one;
+        float t = 0f;
+        while (t < 0.15f && rt != null)
+        {
+            t += Time.deltaTime;
+            rt.localScale = Vector3.Lerp(start, Vector3.zero, t / 0.15f);
+            yield return null;
+        }
+        if (root != null) Destroy(root);
+        if (_infoPopup == root) _infoPopup = null;
+        _infoClosing = false;
+    }
+
+    void CloseInfoPopup()
+    {
+        if (_infoPopup != null) { Destroy(_infoPopup); _infoPopup = null; }
+        _infoClosing = false;
+    }
+
+    Text MakePopupText(Transform parent, Vector2 pos, Vector2 size, int fontSize, Color color, TextAnchor align)
+    {
+        var obj = new GameObject("Text");
+        obj.transform.SetParent(parent, false);
+        var rt = obj.AddComponent<RectTransform>();
+        rt.anchorMin = rt.anchorMax = rt.pivot = new Vector2(0.5f, 0.5f);
+        rt.anchoredPosition = pos; rt.sizeDelta = size;
+        var t = obj.AddComponent<Text>();
+        t.font = GetFont(); t.fontSize = fontSize; t.fontStyle = FontStyle.Normal;
+        t.alignment = align; t.color = color; t.raycastTarget = false;
+        t.horizontalOverflow = HorizontalWrapMode.Wrap;
+        t.verticalOverflow = VerticalWrapMode.Overflow;
         return t;
     }
 

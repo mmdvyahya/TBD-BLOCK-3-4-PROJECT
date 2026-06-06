@@ -63,7 +63,7 @@ public class SceneOpener : MonoBehaviour
             for (int i = 0; i < pixels.Length; i++)
             {
                 float alpha = Mathf.Clamp01((radius - dists[i]) / feather + 0.5f);
-                pixels[i] = new Color(0f, 0f, 0f, 1f - alpha);
+                pixels[i] = new Color(1f, 1f, 1f, 1f - alpha);
             }
 
             tex.SetPixels(pixels);

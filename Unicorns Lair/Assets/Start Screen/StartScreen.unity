@@ -2265,6 +2265,12 @@ MonoBehaviour:
   irisDuration: 0.9
   EndPos: {x: -13.919, y: 4.44, z: -69.8}
   EndRot: {x: 0, y: 0, z: 0, w: 1}
+  titleSprite: {fileID: 21300000, guid: 176cb807c22025947bd23fb13f541d0f, type: 3}
+  titlePos: {x: 0, y: 150}
+  titleSize: {x: 600, y: 600}
+  playButtonSprite: {fileID: 21300000, guid: 93ffb68ba8220be4680a92a024dd3959, type: 3}
+  playButtonPos: {x: 0, y: -200}
+  playButtonSize: {x: 420, y: 150}
 --- !u!1001 &380733284
 PrefabInstance:
   m_ObjectHideFlags: 0

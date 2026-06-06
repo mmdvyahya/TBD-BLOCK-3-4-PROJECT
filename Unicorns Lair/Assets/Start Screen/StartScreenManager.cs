@@ -13,6 +13,18 @@ public class StartScreenManager : MonoBehaviour
     [SerializeField] private Vector3 EndPos = new Vector3(-125.4f, 26.1f, 1070.5f);
     [SerializeField] private Quaternion EndRot = Quaternion.Euler(10.05f, 90.855f, 0f);
 
+    [Header("Title Logo (PNG)")]
+    [Tooltip("Centered title/logo PNG. If empty, the 'Wildlands Game' text is shown instead.")]
+    [SerializeField] private Sprite titleSprite;
+    [SerializeField] private Vector2 titlePos = new Vector2(0f, 260f);
+    [SerializeField] private Vector2 titleSize = new Vector2(820f, 300f);
+
+    [Header("Play Button (PNG)")]
+    [Tooltip("Play button PNG (no text). If empty, the old green button with the localized label is shown.")]
+    [SerializeField] private Sprite playButtonSprite;
+    [SerializeField] private Vector2 playButtonPos = new Vector2(0f, -40f);
+    [SerializeField] private Vector2 playButtonSize = new Vector2(420f, 150f);
+
     private Camera _cam;
     private Canvas _canvas;
     private bool _flying;
@@ -52,21 +64,33 @@ public class StartScreenManager : MonoBehaviour
         trt.anchorMin = new Vector2(0.5f, 0.5f);
         trt.anchorMax = new Vector2(0.5f, 0.5f);
         trt.pivot = new Vector2(0.5f, 0.5f);
-        trt.anchoredPosition = new Vector2(0f, 260f);
-        trt.sizeDelta = new Vector2(960f, 220f);
-        var titleTxt = titleObj.AddComponent<Text>();
-        titleTxt.font = GetFont();
-        titleTxt.fontSize = 100;
-        titleTxt.fontStyle = FontStyle.Bold;
-        titleTxt.alignment = TextAnchor.MiddleCenter;
-        titleTxt.color = Color.white;
-        titleTxt.raycastTarget = false;
-        var titleLoc = titleObj.AddComponent<LocalizedText>();
-        titleLoc.key = "title_wildlands";
-        titleLoc.Refresh();
-        var to = titleObj.AddComponent<Outline>();
-        to.effectColor = new Color(0f, 0f, 0f, 0.65f);
-        to.effectDistance = new Vector2(5f, -5f);
+        trt.anchoredPosition = titlePos;
+        trt.sizeDelta = titleSize;
+        if (titleSprite != null)
+        {
+            var titleImg = titleObj.AddComponent<Image>();
+            titleImg.sprite = titleSprite;
+            titleImg.type = Image.Type.Simple;
+            titleImg.preserveAspect = true;
+            titleImg.color = Color.white;
+            titleImg.raycastTarget = false;
+        }
+        else
+        {
+            var titleTxt = titleObj.AddComponent<Text>();
+            titleTxt.font = GetFont();
+            titleTxt.fontSize = 100;
+            titleTxt.fontStyle = FontStyle.Bold;
+            titleTxt.alignment = TextAnchor.MiddleCenter;
+            titleTxt.color = Color.white;
+            titleTxt.raycastTarget = false;
+            var titleLoc = titleObj.AddComponent<LocalizedText>();
+            titleLoc.key = "title_wildlands";
+            titleLoc.Refresh();
+            var to = titleObj.AddComponent<Outline>();
+            to.effectColor = new Color(0f, 0f, 0f, 0.65f);
+            to.effectDistance = new Vector2(5f, -5f);
+        }
 
         var btnObj = new GameObject("SpelenBtn");
         btnObj.transform.SetParent(_canvas.transform, false);
@@ -74,45 +98,38 @@ public class StartScreenManager : MonoBehaviour
         brt.anchorMin = new Vector2(0.5f, 0.5f);
         brt.anchorMax = new Vector2(0.5f, 0.5f);
         brt.pivot = new Vector2(0.5f, 0.5f);
-        brt.anchoredPosition = new Vector2(0f, -40f);
-        brt.sizeDelta = new Vector2(420f, 150f);
+        brt.anchoredPosition = playButtonPos;
+        brt.sizeDelta = playButtonSize;
 
         var btnImg = btnObj.AddComponent<Image>();
-        btnImg.color = new Color(0.12f, 0.72f, 0.36f);
+        Color pBase;
+        if (playButtonSprite != null)
+        {
+            btnImg.sprite = playButtonSprite;
+            btnImg.type = Image.Type.Simple;
+            btnImg.preserveAspect = true;
+            btnImg.color = Color.white;
+            pBase = Color.white;
+        }
+        else
+        {
+            pBase = new Color(0.12f, 0.72f, 0.36f);
+            btnImg.color = pBase;
+        }
 
         var btn = btnObj.AddComponent<Button>();
         btn.targetGraphic = btnImg;
         btn.colors = new ColorBlock
         {
-            normalColor = new Color(0.12f, 0.72f, 0.36f),
-            highlightedColor = new Color(0.20f, 0.88f, 0.48f),
-            pressedColor = new Color(0.07f, 0.48f, 0.22f),
-            selectedColor = new Color(0.12f, 0.72f, 0.36f),
+            normalColor = pBase,
+            highlightedColor = pBase * 1.12f,
+            pressedColor = pBase * 0.8f,
+            selectedColor = pBase,
             disabledColor = new Color(0.35f, 0.35f, 0.35f),
             colorMultiplier = 1f,
             fadeDuration = 0.1f
         };
         btn.onClick.AddListener(OnSpelen);
-
-        var lblObj = new GameObject("Label");
-        lblObj.transform.SetParent(btnObj.transform, false);
-        var lrt = lblObj.AddComponent<RectTransform>();
-        lrt.anchorMin = Vector2.zero;
-        lrt.anchorMax = Vector2.one;
-        lrt.offsetMin = lrt.offsetMax = Vector2.zero;
-        var lTxt = lblObj.AddComponent<Text>();
-        lTxt.font = GetFont();
-        lTxt.fontSize = 64;
-        lTxt.fontStyle = FontStyle.Bold;
-        lTxt.alignment = TextAnchor.MiddleCenter;
-        lTxt.color = Color.white;
-        lTxt.raycastTarget = false;
-        var spelenLoc = lblObj.AddComponent<LocalizedText>();
-        spelenLoc.key = "btn_spelen";
-        spelenLoc.Refresh();
-        var lo = lblObj.AddComponent<Outline>();
-        lo.effectColor = new Color(0f, 0.2f, 0.1f, 0.6f);
-        lo.effectDistance = new Vector2(2f, -2f);
 
         MakeSettingsButton(_canvas.transform);
 
@@ -469,7 +486,7 @@ public class StartScreenManager : MonoBehaviour
             for (int i = 0; i < pixels.Length; i++)
             {
                 float alpha = Mathf.Clamp01((dists[i] - radius) / feather + 0.5f);
-                pixels[i] = new Color(0f, 0f, 0f, alpha);
+                pixels[i] = new Color(1f, 1f, 1f, alpha);
             }
 
             tex.SetPixels(pixels);
@@ -477,7 +494,7 @@ public class StartScreenManager : MonoBehaviour
             yield return null;
         }
 
-        for (int i = 0; i < pixels.Length; i++) pixels[i] = Color.black;
+        for (int i = 0; i < pixels.Length; i++) pixels[i] = Color.white;
         tex.SetPixels(pixels);
         tex.Apply(false);
     }

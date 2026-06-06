@@ -162,6 +162,7 @@ public class TutorialManager : MonoBehaviour
     private Canvas _tutorialCanvas;
     private GameObject _bannerObj;
     private Text _bannerText;
+    private string _lastInstructionToken;
     private GameObject _pointerObj;
     private RectTransform _pointerRt;
     private Image _pointerImage;
@@ -391,18 +392,18 @@ public class TutorialManager : MonoBehaviour
                 {
                     if (habitat != null) _pointerTarget = habitat.GetButtonAnchor();
                     ShowPointer(useTapIcon: false);
-                    ShowBanner(SafeGet("tutorial_first_buy", "Tik op de groene knop om je allereerste verblijf te bouwen!"));
+                    ShowInstruction("tutorial_first_buy", "Tik op de groene knop om je allereerste verblijf te bouwen!");
                 }
                 else if (HasCoinsForNext())
                 {
                     if (habitat != null) _pointerTarget = habitat.GetButtonAnchor();
                     ShowPointer(useTapIcon: false);
-                    ShowBanner(SafeGet("tutorial_next_buy", "Geweldig! Laten we een huis bouwen voor het volgende dier!"));
+                    ShowInstruction("tutorial_next_buy", "Geweldig! Laten we een huis bouwen voor het volgende dier!");
                 }
                 else
                 {
                     HidePointer();
-                    ShowBanner(SafeGet("tutorial_earn_coins", "Speel minigames om munten te verdienen. Als je er genoeg hebt, kun je het volgende verblijf bouwen!"));
+                    ShowInstruction("tutorial_earn_coins", "Speel minigames om munten te verdienen. Als je er genoeg hebt, kun je het volgende verblijf bouwen!");
                 }
 
                 VoiceLocalizer.PlayLocalized(tutorialWaitingForBuyLocalized);
@@ -410,7 +411,7 @@ public class TutorialManager : MonoBehaviour
 
             case SubState.Building:
                 HidePointer();
-                ShowBanner(SafeGet("tutorial_building", "Daar komt 'ie... je verblijf wordt gebouwd!"));
+                ShowInstruction("tutorial_building", "Daar komt 'ie... je verblijf wordt gebouwd!");
                 VoiceLocalizer.PlayLocalized(tutorialBuildingLocalized);
                 break;
 
@@ -421,34 +422,34 @@ public class TutorialManager : MonoBehaviour
                     SpawnGlowAroundHabitat(habitat);
                 }
                 ShowPointer(useTapIcon: true);
-                ShowBanner(SafeGet("tutorial_tap_habitat", "Tik nu op het verblijf om je nieuwe dier te ontmoeten!"));
+                ShowInstruction("tutorial_tap_habitat", "Tik nu op het verblijf om je nieuwe dier te ontmoeten!");
                 VoiceLocalizer.PlayLocalized(tutorialWaitingForTapLocalized);
                 break;
 
             case SubState.WaitingForInspect:
                 HidePointer();
-                ShowBanner(SafeGet("tutorial_press_inspect", "Druk op de knop Inspecteren om alles van dichtbij te bekijken!"));
+                ShowInstruction("tutorial_press_inspect", "Druk op de knop Inspecteren om alles van dichtbij te bekijken!");
                 VoiceLocalizer.PlayLocalized(tutorialWaitingForInspectLocalized);
                 StartPulsing(_pulsingCardInspect);
                 break;
 
             case SubState.Inspecting:
                 HidePointer();
-                ShowBanner(SafeGet("tutorial_inspecting", "Kijk maar goed rond! Kantel je tablet om overal naar te kijken."));
+                ShowInstruction("tutorial_inspecting", "Kijk maar goed rond! Kantel je tablet om overal naar te kijken.");
                 VoiceLocalizer.PlayLocalized(tutorialInspectingLocalized);
                 _inspectTimer = inspectionPromptSeconds;
                 break;
 
             case SubState.WaitingForBack:
                 HidePointer();
-                ShowBanner(SafeGet("tutorial_press_back", "Klaar met kijken? Druk op de knop Terug om verder te gaan!"));
+                ShowInstruction("tutorial_press_back", "Klaar met kijken? Druk op de knop Terug om verder te gaan!");
                 VoiceLocalizer.PlayLocalized(tutorialPressBackLocalized);
                 StartPulsing(_pulsingInspectBack);
                 break;
 
             case SubState.WaitingForMinigame:
                 HidePointer();
-                ShowBanner(SafeGet("tutorial_press_minigame", "Speel nu de minigame om munten te verdienen!"));
+                ShowInstruction("tutorial_press_minigame", "Speel nu de minigame om munten te verdienen!");
                 VoiceLocalizer.PlayLocalized(tutorialPressMinigameLocalized);
                 StartPulsing(_pulsingCardMinigame);
                 break;
@@ -1129,23 +1130,23 @@ public class TutorialManager : MonoBehaviour
     {
         switch (habitatId)
         {
-            case "beaver_habitat":    
+            case "beaver_habitat":
                 return VoiceLocalizer.Resolve(beaverDialogueLocalized);
-            case "polarbear_habitat": 
+            case "polarbear_habitat":
                 return VoiceLocalizer.Resolve(polarBearDialogueLocalized);
-            case "racoon_habitat":    
+            case "racoon_habitat":
                 return VoiceLocalizer.Resolve(raccoonDialogueLocalized);
             case "prairiedog_habitat":
                 return VoiceLocalizer.Resolve(prairieDogDialogueLocalized);
-            case "baboon_habitat":    
+            case "baboon_habitat":
                 return VoiceLocalizer.Resolve(baboonDialogueLocalized);
-            case "hippo_habitat":     
+            case "hippo_habitat":
                 return VoiceLocalizer.Resolve(hippoDialogueLocalized);
             case "parrot_habitat":
                 return VoiceLocalizer.Resolve(parrotDialogueLocalized);
             case "otter_habitat":
                 return VoiceLocalizer.Resolve(otterDialogueLocalized);
-            default: 
+            default:
                 return null;
         }
     }
@@ -1307,6 +1308,18 @@ public class TutorialManager : MonoBehaviour
     }
 
     void OnLanguageChanged() { EnterSubState(_sub); }
+
+    void ShowInstruction(string key, string fallback)
+    {
+        // Each tutorial part shows its instruction once, in the same PNG dialogue window as the intro.
+        // The player can tap it away; it only reappears when the tutorial moves to a different part.
+        string token = key + "#" + _currentStep;
+        if (token == _lastInstructionToken) return;
+        _lastInstructionToken = token;
+
+        var line = new DialogueLine { localizationKey = key, fallbackText = fallback };
+        ShowDialogue(new DialogueLine[] { line }, null);
+    }
 
     void ShowBanner(string text)
     {
