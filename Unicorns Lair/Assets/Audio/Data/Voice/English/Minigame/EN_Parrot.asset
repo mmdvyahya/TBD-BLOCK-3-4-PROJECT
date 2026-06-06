@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c78abb296699c84f8462c27c68afdf0, type: 3}
+  m_Name: EN_Parrot
+  m_EditorClassIdentifier: Assembly-CSharp::SoundData
+  clips:
+  - {fileID: 8300000, guid: eee6f07c71e73d548a6a3dd7d4697bc7, type: 3}
+  - {fileID: 8300000, guid: 0427e6a959380f74ea97ca4e4a93af70, type: 3}
+  - {fileID: 8300000, guid: 8ceb81c4dcbcdc04fa9d77d6463a482d, type: 3}
+  - {fileID: 8300000, guid: 1e905fdbab0e07a479ad81936831c3e0, type: 3}
+  playMode: 1
+  mixerGroup: {fileID: -1723648475596354334, guid: 6ee5bd016cb09514ea38d5c2ce6d67e2, type: 2}
+  volume: 1
+  volumeVariance: 0
+  pitch: 1
+  pitchVariance: 0
+  loop: 0
+  preventDuplicates: 1
+  spatialBlend: 0
+  minDistance: 1
+  maxDistance: 50
+  rolloffMode: 1

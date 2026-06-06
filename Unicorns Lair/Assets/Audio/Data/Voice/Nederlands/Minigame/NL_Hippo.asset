@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c78abb296699c84f8462c27c68afdf0, type: 3}
+  m_Name: NL_Hippo
+  m_EditorClassIdentifier: Assembly-CSharp::SoundData
+  clips:
+  - {fileID: 8300000, guid: d2c51d0f206e4e049bc36a0cef546712, type: 3}
+  - {fileID: 8300000, guid: 16c4d072a59ec62468305028cc48bfcf, type: 3}
+  - {fileID: 8300000, guid: 6142b56ee0179984cb6794672dbe76de, type: 3}
+  - {fileID: 8300000, guid: 8f61c53763e2cbd4ea8961040d3584d8, type: 3}
+  playMode: 1
+  mixerGroup: {fileID: -1723648475596354334, guid: 6ee5bd016cb09514ea38d5c2ce6d67e2, type: 2}
+  volume: 1
+  volumeVariance: 0
+  pitch: 1
+  pitchVariance: 0
+  loop: 0
+  preventDuplicates: 1
+  spatialBlend: 0
+  minDistance: 1
+  maxDistance: 50
+  rolloffMode: 1

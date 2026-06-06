@@ -3404,6 +3404,51 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5446500229224181331, guid: dcdd5c471dfd0ca4fa7f1a66471cb019, type: 3}
   m_PrefabInstance: {fileID: 681304790}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &685918044
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 685918046}
+  - component: {fileID: 685918045}
+  m_Layer: 0
+  m_Name: SoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &685918045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 685918044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: facb24c281f89484092dc1529ec89e14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SoundManager
+  poolSize: 10
+--- !u!4 &685918046
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 685918044}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 14.38297, y: 1.71, z: 32.51471}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &716344214 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6751024573959276434, guid: 7c30c4bd1e69b22439b763fc822e36eb, type: 3}
@@ -5568,6 +5613,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1174773403}
   - component: {fileID: 1174773402}
+  - component: {fileID: 1174773404}
   m_Layer: 0
   m_Name: ottermangaer
   m_TagString: Untagged
@@ -5624,6 +5670,7 @@ MonoBehaviour:
   howToTapSize: {x: 440, y: 50}
   howToTapFontSize: 26
   howToTapColor: {r: 1, g: 1, b: 1, a: 1}
+  howToPlayLocalized: {fileID: 11400000, guid: 50b26c16c17a5ce498c8b817ebb6ad3f, type: 2}
   letsGoButtonSprite: {fileID: 21300000, guid: fad97dba535facf41a94ddc75fdb5f8e, type: 3}
   letsGoButtonPos: {x: 0, y: -400}
   letsGoButtonSize: {x: 480, y: 170}
@@ -5657,6 +5704,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1174773404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1174773401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70cd5a07ba430c34e873f7008d5d2fe6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MinigameVoicePlayer
 --- !u!1001 &1186565308
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10405,3 +10464,4 @@ SceneRoots:
   - {fileID: 1340286048}
   - {fileID: 856904013}
   - {fileID: 218292544}
+  - {fileID: 685918046}

@@ -63,6 +63,9 @@ public class OtterShellBreakMinigame : MonoBehaviour
     [SerializeField] private int howToTapFontSize = 26;
     [SerializeField] private Color howToTapColor = new Color(1f, 0.9f, 0.5f);
 
+    [Header("How To Play Voice")]
+    [SerializeField] private LocalizedSoundData howToPlayLocalized;
+
     [Header("How To Play - Lets Go Button (PNG)")]
     [SerializeField] private Sprite letsGoButtonSprite;
     [SerializeField] private Vector2 letsGoButtonPos = new Vector2(0f, -760f);
@@ -491,6 +494,8 @@ public class OtterShellBreakMinigame : MonoBehaviour
             _htImage.sprite = sp;
             _htImage.enabled = sp != null;
         }
+
+        MinigameVoicePlayer.PlayLocalizedForPage(howToPlayLocalized, _htPage, true);
 
         bool last = _htPage >= _htLineCount - 1;
         if (_htTapIndicator != null) _htTapIndicator.SetActive(!last);

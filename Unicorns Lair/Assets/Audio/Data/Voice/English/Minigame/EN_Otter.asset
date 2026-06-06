@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c78abb296699c84f8462c27c68afdf0, type: 3}
+  m_Name: EN_Otter
+  m_EditorClassIdentifier: Assembly-CSharp::SoundData
+  clips:
+  - {fileID: 8300000, guid: 653f83ce11c26d74c9e57ac747bf7738, type: 3}
+  - {fileID: 8300000, guid: 83e033b3794f8bc429ecb037e30636d6, type: 3}
+  - {fileID: 8300000, guid: 22ef4b141644eee4e9e4f1ddb5394179, type: 3}
+  - {fileID: 8300000, guid: 54aecb3e30b2c594eaae2bddc0c2c57f, type: 3}
+  playMode: 1
+  mixerGroup: {fileID: -1723648475596354334, guid: 6ee5bd016cb09514ea38d5c2ce6d67e2, type: 2}
+  volume: 1
+  volumeVariance: 0
+  pitch: 1
+  pitchVariance: 0
+  loop: 0
+  preventDuplicates: 1
+  spatialBlend: 0
+  minDistance: 1
+  maxDistance: 50
+  rolloffMode: 1

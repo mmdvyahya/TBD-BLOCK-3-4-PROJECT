@@ -9913,6 +9913,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1518487836}
   - component: {fileID: 1518487835}
+  - component: {fileID: 1518487837}
   m_Layer: 0
   m_Name: HippoFoodSortingManager
   m_TagString: Untagged
@@ -10022,6 +10023,7 @@ MonoBehaviour:
   letsGoButtonPos: {x: 0, y: -400}
   letsGoButtonSize: {x: 480, y: 170}
   howToDimOpacity: 0.85
+  howToPlayLocalized: {fileID: 11400000, guid: a667afbfaad9ed0409adcecddf5e32bd, type: 2}
   normalizeItemSize: 1
   targetItemSize: 1.5
   coinReward: 100
@@ -10041,6 +10043,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1518487837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1518487834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70cd5a07ba430c34e873f7008d5d2fe6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MinigameVoicePlayer
 --- !u!1 &1541171075
 GameObject:
   m_ObjectHideFlags: 0
@@ -14685,6 +14699,51 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 737257187606748849, guid: b7bff77f9eb56384286ce1334a4c4f0a, type: 3}
   m_PrefabInstance: {fileID: 2109199797}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2111744515
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2111744517}
+  - component: {fileID: 2111744516}
+  m_Layer: 0
+  m_Name: SoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2111744516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2111744515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: facb24c281f89484092dc1529ec89e14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SoundManager
+  poolSize: 10
+--- !u!4 &2111744517
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2111744515}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 14.38297, y: 1.71, z: 32.51471}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2116492241
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14991,3 +15050,4 @@ SceneRoots:
   - {fileID: 1550148221}
   - {fileID: 1058625634}
   - {fileID: 53881589}
+  - {fileID: 2111744517}

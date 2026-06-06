@@ -103,6 +103,9 @@ public class HippoFoodSortingManager : MonoBehaviour
     [Range(0f, 1f)]
     [SerializeField] private float howToDimOpacity = 0.78f;
 
+    [Header("How To Play Voice")]
+    [SerializeField] private LocalizedSoundData howToPlayLocalized;
+
     [Header("Item Size")]
     [Tooltip("Scale every spawned food so its largest dimension equals this many world units. Keeps each model's aspect ratio (uniform scale). Lower this if items look too big.")]
     [SerializeField] private bool normalizeItemSize = true;
@@ -525,6 +528,8 @@ public class HippoFoodSortingManager : MonoBehaviour
             _htImage.sprite = sp;
             _htImage.enabled = sp != null;
         }
+
+        MinigameVoicePlayer.PlayLocalizedForPage(howToPlayLocalized, _htPage, true);
 
         bool last = _htPage >= _htLineCount - 1;
         if (_htTapIndicator != null) _htTapIndicator.SetActive(!last);

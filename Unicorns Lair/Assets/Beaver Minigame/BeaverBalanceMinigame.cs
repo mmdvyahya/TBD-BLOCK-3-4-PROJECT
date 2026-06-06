@@ -89,6 +89,9 @@ public class BeaverBalanceMinigame : MonoBehaviour
     [SerializeField] private Vector2 letsGoButtonPos = new Vector2(0f, -760f);
     [SerializeField] private Vector2 letsGoButtonSize = new Vector2(480f, 170f);
 
+    [Header("How To Play Voice")]
+    [SerializeField] private LocalizedSoundData howToPlayLocalized;
+
     [Header("How To Play - Background")]
     [Range(0f, 1f)]
     [SerializeField] private float howToDimOpacity = 0.78f;
@@ -117,6 +120,7 @@ public class BeaverBalanceMinigame : MonoBehaviour
     private Image _htImage;
     private GameObject _htTapIndicator;
     private Button _htLetsGoBtn;
+    // voice handled by MinigameVoicePlayer
 
     void Start()
     {
@@ -574,7 +578,8 @@ public class BeaverBalanceMinigame : MonoBehaviour
             _htImage.sprite = sp;
             _htImage.enabled = sp != null;
         }
-
+        // Delegate voice playback to the shared minigame voice player
+        MinigameVoicePlayer.PlayLocalizedForPage(howToPlayLocalized, _htPage, true);
         bool last = _htPage >= _htLineCount - 1;
         if (_htTapIndicator != null) _htTapIndicator.SetActive(!last);
         if (_htLetsGoBtn != null) _htLetsGoBtn.gameObject.SetActive(last);

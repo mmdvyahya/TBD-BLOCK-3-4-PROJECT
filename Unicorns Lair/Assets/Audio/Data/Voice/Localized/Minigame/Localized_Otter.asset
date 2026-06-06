@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de1329f180c857442a4c7151b300a569, type: 3}
+  m_Name: Localized_Otter
+  m_EditorClassIdentifier: Assembly-CSharp::LocalizedSoundData
+  dutch: {fileID: 11400000, guid: 8a020fb99d1863642b4893e33bc59b72, type: 2}
+  german: {fileID: 0}
+  english: {fileID: 11400000, guid: 04e5ce67732d60943a8fa37a11e042fe, type: 2}

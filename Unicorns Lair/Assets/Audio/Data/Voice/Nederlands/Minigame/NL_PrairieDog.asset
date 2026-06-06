@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c78abb296699c84f8462c27c68afdf0, type: 3}
+  m_Name: NL_PrairieDog
+  m_EditorClassIdentifier: Assembly-CSharp::SoundData
+  clips:
+  - {fileID: 8300000, guid: 866342df5c12d0e4fa8d5c996ad25148, type: 3}
+  - {fileID: 8300000, guid: e2dda6635374d0940a29f8327e569239, type: 3}
+  - {fileID: 8300000, guid: a705b6326ba9ac147b50e1129774c149, type: 3}
+  - {fileID: 8300000, guid: e034ddb3313c5304c87b1d5aa05f59ee, type: 3}
+  playMode: 1
+  mixerGroup: {fileID: -1723648475596354334, guid: 6ee5bd016cb09514ea38d5c2ce6d67e2, type: 2}
+  volume: 1
+  volumeVariance: 0
+  pitch: 1
+  pitchVariance: 0
+  loop: 0
+  preventDuplicates: 1
+  spatialBlend: 0
+  minDistance: 1
+  maxDistance: 50
+  rolloffMode: 1
