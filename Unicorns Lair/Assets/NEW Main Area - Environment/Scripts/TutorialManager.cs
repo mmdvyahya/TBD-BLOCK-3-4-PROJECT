@@ -122,6 +122,7 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private LocalizedSoundData randomFactLocalized;
     private SoundData _activeVoiceSound;
     private int _activeVoiceClipIndex = -1;
+    private SoundData _activeTutorialVoice;  // Track currently playing tutorial voice
 
     [SerializeField]
     private DialogueLine[] introDialogue = new DialogueLine[]
@@ -361,13 +362,31 @@ public class TutorialManager : MonoBehaviour
     }
 
     [Header("Tutorial Voice Lines")]
-    [SerializeField] private LocalizedSoundData tutorialWaitingForBuyLocalized;
+    [SerializeField] private LocalizedSoundData tutorialWaitingForBuyLocalizedFirst;
+    [SerializeField] private LocalizedSoundData tutorialWaitingForBuyLocalizedSecond;
     [SerializeField] private LocalizedSoundData tutorialBuildingLocalized;
     [SerializeField] private LocalizedSoundData tutorialWaitingForTapLocalized;
     [SerializeField] private LocalizedSoundData tutorialWaitingForInspectLocalized;
     [SerializeField] private LocalizedSoundData tutorialInspectingLocalized;
     [SerializeField] private LocalizedSoundData tutorialPressBackLocalized;
     [SerializeField] private LocalizedSoundData tutorialPressMinigameLocalized;
+
+    void StopTutorialVoice()
+    {
+        if (_activeTutorialVoice != null && SoundManager.Instance != null)
+        {
+            SoundManager.Instance.FadeOut(_activeTutorialVoice);
+            _activeTutorialVoice = null;
+        }
+    }
+
+    void PlayTutorialVoice(LocalizedSoundData localized)
+    {
+        StopTutorialVoice();
+        if (localized == null) return;
+        _activeTutorialVoice = VoiceLocalizer.Resolve(localized);
+        VoiceLocalizer.PlayLocalized(localized);
+    }
 
     void EnterSubState(SubState next)
     {
@@ -384,6 +403,9 @@ public class TutorialManager : MonoBehaviour
         string currentId = habitatOrder[_currentStep];
         var habitat = FindHabitat(currentId);
 
+
+        Debug.Log("Entering tutorial substate: " + next);
+        Debug.Log("currentstep: " + _currentStep);
         switch (next)
         {
             case SubState.WaitingForBuy:
@@ -392,26 +414,30 @@ public class TutorialManager : MonoBehaviour
                     if (habitat != null) _pointerTarget = habitat.GetButtonAnchor();
                     ShowPointer(useTapIcon: false);
                     ShowBanner(SafeGet("tutorial_first_buy", "Tik op de groene knop om je allereerste verblijf te bouwen!"));
+                    PlayTutorialVoice(tutorialWaitingForBuyLocalizedFirst);
+
                 }
                 else if (HasCoinsForNext())
                 {
                     if (habitat != null) _pointerTarget = habitat.GetButtonAnchor();
                     ShowPointer(useTapIcon: false);
                     ShowBanner(SafeGet("tutorial_next_buy", "Geweldig! Laten we een huis bouwen voor het volgende dier!"));
+                    PlayTutorialVoice(tutorialWaitingForBuyLocalizedSecond);
+
                 }
+                // No voice line for this one
                 else
                 {
                     HidePointer();
-                    ShowBanner(SafeGet("tutorial_earn_coins", "Speel minigames om munten te verdienen. Als je er genoeg hebt, kun je het volgende verblijf bouwen!"));
+                    ShowBanner(SafeGet("tutorial_earn_coins", "Speel minigames om munten te verdienen. Als je er genoeg hebt, kun je het volgende verblijf bouwen!")); 
                 }
 
-                VoiceLocalizer.PlayLocalized(tutorialWaitingForBuyLocalized);
                 break;
 
             case SubState.Building:
                 HidePointer();
                 ShowBanner(SafeGet("tutorial_building", "Daar komt 'ie... je verblijf wordt gebouwd!"));
-                VoiceLocalizer.PlayLocalized(tutorialBuildingLocalized);
+                PlayTutorialVoice(tutorialBuildingLocalized);
                 break;
 
             case SubState.WaitingForTap:
@@ -422,34 +448,34 @@ public class TutorialManager : MonoBehaviour
                 }
                 ShowPointer(useTapIcon: true);
                 ShowBanner(SafeGet("tutorial_tap_habitat", "Tik nu op het verblijf om je nieuwe dier te ontmoeten!"));
-                VoiceLocalizer.PlayLocalized(tutorialWaitingForTapLocalized);
+                PlayTutorialVoice(tutorialWaitingForTapLocalized);
                 break;
 
             case SubState.WaitingForInspect:
                 HidePointer();
                 ShowBanner(SafeGet("tutorial_press_inspect", "Druk op de knop Inspecteren om alles van dichtbij te bekijken!"));
-                VoiceLocalizer.PlayLocalized(tutorialWaitingForInspectLocalized);
+                PlayTutorialVoice(tutorialWaitingForInspectLocalized);
                 StartPulsing(_pulsingCardInspect);
                 break;
 
             case SubState.Inspecting:
                 HidePointer();
                 ShowBanner(SafeGet("tutorial_inspecting", "Kijk maar goed rond! Kantel je tablet om overal naar te kijken."));
-                VoiceLocalizer.PlayLocalized(tutorialInspectingLocalized);
+                PlayTutorialVoice(tutorialInspectingLocalized);
                 _inspectTimer = inspectionPromptSeconds;
                 break;
 
             case SubState.WaitingForBack:
                 HidePointer();
                 ShowBanner(SafeGet("tutorial_press_back", "Klaar met kijken? Druk op de knop Terug om verder te gaan!"));
-                VoiceLocalizer.PlayLocalized(tutorialPressBackLocalized);
+                PlayTutorialVoice(tutorialPressBackLocalized);
                 StartPulsing(_pulsingInspectBack);
                 break;
 
             case SubState.WaitingForMinigame:
                 HidePointer();
                 ShowBanner(SafeGet("tutorial_press_minigame", "Speel nu de minigame om munten te verdienen!"));
-                VoiceLocalizer.PlayLocalized(tutorialPressMinigameLocalized);
+                PlayTutorialVoice(tutorialPressMinigameLocalized);
                 StartPulsing(_pulsingCardMinigame);
                 break;
         }

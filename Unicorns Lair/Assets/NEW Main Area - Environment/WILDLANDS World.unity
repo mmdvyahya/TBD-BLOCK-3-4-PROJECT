@@ -22205,22 +22205,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1293463583}
     m_Modifications:
-    - target: {fileID: -7511558181221131132, guid: 220deca34771597428c7a3e80bc1319c, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 2812508ac65a2954ab8fc99ae0d09493, type: 2}
-    - target: {fileID: -7511558181221131132, guid: 220deca34771597428c7a3e80bc1319c, type: 3}
-      propertyPath: 'm_Materials.Array.data[1]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 36969dc4873322a40841ef5319b57632, type: 2}
-    - target: {fileID: -7511558181221131132, guid: 220deca34771597428c7a3e80bc1319c, type: 3}
-      propertyPath: 'm_Materials.Array.data[2]'
-      value: 
-      objectReference: {fileID: 2100000, guid: cd25466e9d953d3468ca2f47dc93908e, type: 2}
-    - target: {fileID: -7511558181221131132, guid: 220deca34771597428c7a3e80bc1319c, type: 3}
-      propertyPath: 'm_Materials.Array.data[3]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 2366e6482947ae040b43392b309d8b7a, type: 2}
     - target: {fileID: 1188191722613822518, guid: 3ef109322e53bee43a319de140356f1d, type: 3}
       propertyPath: m_Name
       value: Beaver
@@ -22285,6 +22269,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 220deca34771597428c7a3e80bc1319c, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 2812508ac65a2954ab8fc99ae0d09493, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 220deca34771597428c7a3e80bc1319c, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 36969dc4873322a40841ef5319b57632, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 220deca34771597428c7a3e80bc1319c, type: 3}
+      propertyPath: 'm_Materials.Array.data[2]'
+      value: 
+      objectReference: {fileID: 2100000, guid: cd25466e9d953d3468ca2f47dc93908e, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 220deca34771597428c7a3e80bc1319c, type: 3}
+      propertyPath: 'm_Materials.Array.data[3]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 2366e6482947ae040b43392b309d8b7a, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -29984,7 +29984,8 @@ MonoBehaviour:
     fallbackText: Speel leuke minigames met de dieren om munten te verdienen!
   - localizationKey: intro_dlg_6
     fallbackText: Bouw met die munten gloednieuwe verblijven!
-  tutorialWaitingForBuyLocalized: {fileID: 11400000, guid: dd5358f6b3e02f144bf179bf564f0141, type: 2}
+  tutorialWaitingForBuyLocalizedFirst: {fileID: 11400000, guid: dd5358f6b3e02f144bf179bf564f0141, type: 2}
+  tutorialWaitingForBuyLocalizedSecond: {fileID: 11400000, guid: bf9153e6c9611684c972833ac576e04a, type: 2}
   tutorialBuildingLocalized: {fileID: 11400000, guid: 458369e376b72c44da1944d1c71831bb, type: 2}
   tutorialWaitingForTapLocalized: {fileID: 11400000, guid: e1d5ca3dc85c3ff42ae508b2ac5fba18, type: 2}
   tutorialWaitingForInspectLocalized: {fileID: 11400000, guid: f10ab13e3bf061543b37756395d78c8e, type: 2}
@@ -40984,22 +40985,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 199286317}
     m_Modifications:
-    - target: {fileID: -7511558181221131132, guid: 220deca34771597428c7a3e80bc1319c, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 2812508ac65a2954ab8fc99ae0d09493, type: 2}
-    - target: {fileID: -7511558181221131132, guid: 220deca34771597428c7a3e80bc1319c, type: 3}
-      propertyPath: 'm_Materials.Array.data[1]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 36969dc4873322a40841ef5319b57632, type: 2}
-    - target: {fileID: -7511558181221131132, guid: 220deca34771597428c7a3e80bc1319c, type: 3}
-      propertyPath: 'm_Materials.Array.data[2]'
-      value: 
-      objectReference: {fileID: 2100000, guid: cd25466e9d953d3468ca2f47dc93908e, type: 2}
-    - target: {fileID: -7511558181221131132, guid: 220deca34771597428c7a3e80bc1319c, type: 3}
-      propertyPath: 'm_Materials.Array.data[3]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 2366e6482947ae040b43392b309d8b7a, type: 2}
     - target: {fileID: 1188191722613822518, guid: 3ef109322e53bee43a319de140356f1d, type: 3}
       propertyPath: m_Name
       value: Beaver (1)
@@ -41064,6 +41049,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 220deca34771597428c7a3e80bc1319c, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 2812508ac65a2954ab8fc99ae0d09493, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 220deca34771597428c7a3e80bc1319c, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 36969dc4873322a40841ef5319b57632, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 220deca34771597428c7a3e80bc1319c, type: 3}
+      propertyPath: 'm_Materials.Array.data[2]'
+      value: 
+      objectReference: {fileID: 2100000, guid: cd25466e9d953d3468ca2f47dc93908e, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 220deca34771597428c7a3e80bc1319c, type: 3}
+      propertyPath: 'm_Materials.Array.data[3]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 2366e6482947ae040b43392b309d8b7a, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
