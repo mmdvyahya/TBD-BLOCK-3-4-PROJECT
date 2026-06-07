@@ -312,9 +312,6 @@ public class RaccoonJarTwistMinigame : MonoBehaviour
         jarLid.localPosition = targetPos;
         jarLid.localRotation = targetRot;
     }
-
-    // ---------- UI ----------
-
     private void BuildUI()
     {
         var cObj = new GameObject("RaccoonCanvas");

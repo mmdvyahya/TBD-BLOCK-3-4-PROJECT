@@ -36,7 +36,7 @@ public class TutorialManager : MonoBehaviour
 
     [Header("Random Animal Facts")]
     [Tooltip("After the tutorial is complete, the zookeeper pops in with a random fact now and then.")]
-    [SerializeField] private bool enableRandomFacts = true;
+    [SerializeField] private bool enableRandomFacts = false;
     [Tooltip("Seconds to wait before the first random fact (and after each return to the zoo).")]
     [SerializeField] private float firstFactDelay = 25f;
     [SerializeField] private float factMinInterval = 35f;
@@ -200,6 +200,8 @@ public class TutorialManager : MonoBehaviour
         LanguageManager.Ensure();
         GameStateManager.Ensure();
 
+        enableRandomFacts = false; // random facts after the tutorial are disabled
+
         LoadOrShuffleOrder();
 
         _currentStep = PlayerPrefs.GetInt(PREF_STEP, 0);
@@ -273,7 +275,6 @@ public class TutorialManager : MonoBehaviour
             }
         }
 
-        // Fisher-Yates shuffle of a copy, then persist so the order is stable across reloads.
         var arr = (string[])habitatOrder.Clone();
         for (int i = arr.Length - 1; i > 0; i--)
         {
@@ -408,7 +409,7 @@ public class TutorialManager : MonoBehaviour
 
         Debug.Log("Entering tutorial substate: " + next);
         Debug.Log("currentstep: " + _currentStep);
-switch (next)
+        switch (next)
         {
             case SubState.WaitingForBuy:
                 if (_currentStep == 0)
@@ -1332,7 +1333,7 @@ switch (next)
 
     void OnLanguageChanged() { EnterSubState(_sub); }
 
-void ShowInstruction(string key, string fallback, LocalizedSoundData voice = null)
+    void ShowInstruction(string key, string fallback, LocalizedSoundData voice = null)
     {
         // Each tutorial part shows its instruction once, in the same PNG dialogue window as the intro.
         // The player can tap it away; it only reappears when the tutorial moves to a different part.

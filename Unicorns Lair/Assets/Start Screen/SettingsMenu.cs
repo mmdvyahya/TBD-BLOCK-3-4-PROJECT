@@ -2,12 +2,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
-
-// Self-contained settings button + menu. Make this a prefab, configure it once,
-// and it works in every scene. It builds its own canvas, so it does not depend on
-// any other script. It is a persistent singleton: add the prefab once (e.g. in your
-// first scene) and it follows you into every scene. You can also drop the prefab into
-// every scene individually - the singleton guard prevents duplicates.
 public class SettingsMenu : MonoBehaviour
 {
     public static SettingsMenu Instance { get; private set; }

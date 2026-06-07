@@ -313,9 +313,6 @@ public class OtterShellBreakMinigame : MonoBehaviour
         if (otterAnimator != null && !string.IsNullOrEmpty(happyTrigger))
             otterAnimator.SetTrigger(happyTrigger);
     }
-
-    // ---------- UI ----------
-
     private void BuildUI()
     {
         var cObj = new GameObject("OtterCanvas");
