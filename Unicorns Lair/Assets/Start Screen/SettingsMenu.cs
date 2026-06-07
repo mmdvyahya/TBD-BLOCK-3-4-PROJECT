@@ -1,30 +1,16 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 
-public class StartScreenManager : MonoBehaviour
+// Self-contained settings button + menu. Make this a prefab, configure it once,
+// and it works in every scene. It builds its own canvas, so it does not depend on
+// any other script. It is a persistent singleton: add the prefab once (e.g. in your
+// first scene) and it follows you into every scene. You can also drop the prefab into
+// every scene individually - the singleton guard prevents duplicates.
+public class SettingsMenu : MonoBehaviour
 {
-    [Header("Timing")]
-    [SerializeField] private float flyDuration = 3.5f;
-    [SerializeField] private float irisStartAt = 0.72f;
-    [SerializeField] private float irisDuration = 0.9f;
-
-    [SerializeField] private Vector3 EndPos = new Vector3(-125.4f, 26.1f, 1070.5f);
-    [SerializeField] private Quaternion EndRot = Quaternion.Euler(10.05f, 90.855f, 0f);
-
-    [Header("Title Logo (PNG)")]
-    [Tooltip("Centered title/logo PNG. If empty, the 'Wildlands Game' text is shown instead.")]
-    [SerializeField] private Sprite titleSprite;
-    [SerializeField] private Vector2 titlePos = new Vector2(0f, 260f);
-    [SerializeField] private Vector2 titleSize = new Vector2(820f, 300f);
-
-    [Header("Play Button (PNG)")]
-    [Tooltip("Play button PNG (no text). If empty, the old green button with the localized label is shown.")]
-    [SerializeField] private Sprite playButtonSprite;
-    [SerializeField] private Vector2 playButtonPos = new Vector2(0f, -40f);
-    [SerializeField] private Vector2 playButtonSize = new Vector2(420f, 150f);
+    public static SettingsMenu Instance { get; private set; }
 
     [Header("Settings Button (PNG)")]
     [SerializeField] private Sprite settingsButtonSprite;
@@ -38,8 +24,8 @@ public class StartScreenManager : MonoBehaviour
     [SerializeField] private Sprite settingsPanelSprite;
     [SerializeField] private Vector2 settingsPanelPos = new Vector2(0f, 0f);
     [SerializeField] private Vector2 settingsPanelSize = new Vector2(980f, 660f);
-    [Range(0f, 1f)][SerializeField] private float settingsPanelOpacity = 1f;
-    [Range(0f, 1f)][SerializeField] private float settingsDimOpacity = 0.6f;
+    [Range(0f, 1f)] [SerializeField] private float settingsPanelOpacity = 1f;
+    [Range(0f, 1f)] [SerializeField] private float settingsDimOpacity = 0.6f;
 
     [Header("Settings Panel - Title (PNG, top center)")]
     [SerializeField] private Sprite settingsTitleSprite;
@@ -61,7 +47,6 @@ public class StartScreenManager : MonoBehaviour
     [SerializeField] private Vector2 musicLabelPos = new Vector2(-300f, -210f);
 
     [Header("Settings - Selection Highlight (PNG behind selected)")]
-    [Tooltip("Shown behind the selected language / ON / OFF option.")]
     [SerializeField] private Sprite selectionHighlightSprite;
 
     [Header("Settings - Language Options (NED / ENG / DEU)")]
@@ -110,131 +95,58 @@ public class StartScreenManager : MonoBehaviour
     [SerializeField] private string masterParameter = "Master";
     [SerializeField] private string musicParameter = "Music";
 
-    // PlayerPrefs keys
+    [Header("Behaviour")]
+    [Tooltip("Keep this menu alive across scene loads so you only need to add it once.")]
+    [SerializeField] private bool persistAcrossScenes = true;
+    [Tooltip("Sorting order of the settings canvas. Keep high so it sits above scene UI.")]
+    [SerializeField] private int canvasSortingOrder = 200;
+
+    // PlayerPrefs keys (shared with VolumeSettings)
     const string PP_MASTER_LEVEL = "MasterLevel";
     const string PP_MUTED = "audio_muted";
     const string PP_MUSIC_ON = "music_on";
     const string PP_VIB_ON = "vibrations_on";
 
-    // live references while the settings panel is open
+    private Canvas _canvas;
     private Image _muteIconImg;
     private GameObject _langHighlightNed, _langHighlightEng, _langHighlightDeu;
     private GameObject _vibOnHl, _vibOffHl, _musicOnHl, _musicOffHl;
 
-    private Camera _cam;
-    private Canvas _canvas;
-    private bool _flying;
+    void Awake()
+    {
+        if (Instance != null && Instance != this) { Destroy(gameObject); return; }
+        Instance = this;
+        if (persistAcrossScenes) DontDestroyOnLoad(gameObject);
+    }
+
+    void OnEnable()  { SceneManager.sceneLoaded += OnSceneLoaded; }
+    void OnDisable() { SceneManager.sceneLoaded -= OnSceneLoaded; }
+
+    void OnSceneLoaded(Scene s, LoadSceneMode m) { EnsureEventSystem(); }
 
     void Start()
     {
-        _cam = Camera.main;
-        if (_cam == null)
-        {
-            var co = new GameObject("Main Camera");
-            _cam = co.AddComponent<Camera>();
-            co.tag = "MainCamera";
-        }
-
-        EnsureEventSystem();
+        LanguageManager.Ensure();
         ApplyAudioToMixer();
-        BuildUI();
+        EnsureEventSystem();
+        BuildButton();
     }
 
-    void BuildUI()
+    void BuildButton()
     {
-        var cObj = new GameObject("StartCanvas");
+        var cObj = new GameObject("SettingsCanvas");
+        cObj.transform.SetParent(transform, false); // child of this -> persists with the singleton
         _canvas = cObj.AddComponent<Canvas>();
         _canvas.renderMode = RenderMode.ScreenSpaceOverlay;
-
+        _canvas.sortingOrder = canvasSortingOrder;
         var scaler = cObj.AddComponent<CanvasScaler>();
         scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
         scaler.referenceResolution = new Vector2(1080, 1920);
         scaler.matchWidthOrHeight = 0.5f;
-
         cObj.AddComponent<GraphicRaycaster>();
 
-        LanguageManager.Ensure();
-
-        var titleObj = new GameObject("Title");
-        titleObj.transform.SetParent(_canvas.transform, false);
-        var trt = titleObj.AddComponent<RectTransform>();
-        trt.anchorMin = new Vector2(0.5f, 0.5f);
-        trt.anchorMax = new Vector2(0.5f, 0.5f);
-        trt.pivot = new Vector2(0.5f, 0.5f);
-        trt.anchoredPosition = titlePos;
-        trt.sizeDelta = titleSize;
-        if (titleSprite != null)
-        {
-            var titleImg = titleObj.AddComponent<Image>();
-            titleImg.sprite = titleSprite;
-            titleImg.type = Image.Type.Simple;
-            titleImg.preserveAspect = true;
-            titleImg.color = Color.white;
-            titleImg.raycastTarget = false;
-        }
-        else
-        {
-            var titleTxt = titleObj.AddComponent<Text>();
-            titleTxt.font = GetFont();
-            titleTxt.fontSize = 100;
-            titleTxt.fontStyle = FontStyle.Bold;
-            titleTxt.alignment = TextAnchor.MiddleCenter;
-            titleTxt.color = Color.white;
-            titleTxt.raycastTarget = false;
-            var titleLoc = titleObj.AddComponent<LocalizedText>();
-            titleLoc.key = "title_wildlands";
-            titleLoc.Refresh();
-            var to = titleObj.AddComponent<Outline>();
-            to.effectColor = new Color(0f, 0f, 0f, 0.65f);
-            to.effectDistance = new Vector2(5f, -5f);
-        }
-
-        var btnObj = new GameObject("SpelenBtn");
-        btnObj.transform.SetParent(_canvas.transform, false);
-        var brt = btnObj.AddComponent<RectTransform>();
-        brt.anchorMin = new Vector2(0.5f, 0.5f);
-        brt.anchorMax = new Vector2(0.5f, 0.5f);
-        brt.pivot = new Vector2(0.5f, 0.5f);
-        brt.anchoredPosition = playButtonPos;
-        brt.sizeDelta = playButtonSize;
-
-        var btnImg = btnObj.AddComponent<Image>();
-        Color pBase;
-        if (playButtonSprite != null)
-        {
-            btnImg.sprite = playButtonSprite;
-            btnImg.type = Image.Type.Simple;
-            btnImg.preserveAspect = true;
-            btnImg.color = Color.white;
-            pBase = Color.white;
-        }
-        else
-        {
-            pBase = new Color(0.12f, 0.72f, 0.36f);
-            btnImg.color = pBase;
-        }
-
-        var btn = btnObj.AddComponent<Button>();
-        btn.targetGraphic = btnImg;
-        btn.colors = new ColorBlock
-        {
-            normalColor = pBase,
-            highlightedColor = pBase * 1.12f,
-            pressedColor = pBase * 0.8f,
-            selectedColor = pBase,
-            disabledColor = new Color(0.35f, 0.35f, 0.35f),
-            colorMultiplier = 1f,
-            fadeDuration = 0.1f
-        };
-        btn.onClick.AddListener(OnSpelen);
-
-        StartCoroutine(PulseButton(brt));
-    }
-
-    void MakeSettingsButton(Transform parent)
-    {
         var obj = new GameObject("SettingsBtn");
-        obj.transform.SetParent(parent, false);
+        obj.transform.SetParent(_canvas.transform, false);
         var rt = obj.AddComponent<RectTransform>();
         rt.anchorMin = new Vector2(1f, 1f);
         rt.anchorMax = new Vector2(1f, 1f);
@@ -251,11 +163,7 @@ public class StartScreenManager : MonoBehaviour
             img.color = Color.white;
             baseCol = Color.white;
         }
-        else
-        {
-            baseCol = new Color(0f, 0f, 0f, 0.45f);
-            img.color = baseCol;
-        }
+        else { baseCol = new Color(0f, 0f, 0f, 0.45f); img.color = baseCol; }
 
         var btn = obj.AddComponent<Button>();
         btn.targetGraphic = img;
@@ -269,7 +177,7 @@ public class StartScreenManager : MonoBehaviour
             colorMultiplier = 1f,
             fadeDuration = 0.08f
         };
-        btn.onClick.AddListener(() => BuildSettingsPanel());
+        btn.onClick.AddListener(BuildSettingsPanel);
 
         if (settingsButtonIconSprite != null)
         {
@@ -301,8 +209,9 @@ public class StartScreenManager : MonoBehaviour
         }
     }
 
-    void BuildSettingsPanel()
+    public void BuildSettingsPanel()
     {
+        if (_canvas == null) return;
         var existing = _canvas.transform.Find("SettingsPanel");
         if (existing != null) { Destroy(existing.gameObject); return; }
 
@@ -316,7 +225,6 @@ public class StartScreenManager : MonoBehaviour
         overlay.color = new Color(0f, 0f, 0f, settingsDimOpacity);
         overlay.raycastTarget = true;
 
-        // Panel background PNG
         var box = MakePanelImage(panel.transform, "Box", settingsPanelSprite, settingsPanelPos, settingsPanelSize, settingsPanelOpacity,
             new Color(0.10f, 0.15f, 0.22f, 0.98f), false, false).gameObject;
 
@@ -331,23 +239,24 @@ public class StartScreenManager : MonoBehaviour
 
         var curLang = LanguageManager.Instance.CurrentLanguage;
 
+        // Language row
         MakeRowLabel(box.transform, "settings_language", "Language:", languageLabelPos);
         _langHighlightNed = MakeSelectable(box.transform, languageCodes.Length > 0 ? languageCodes[0] : "NED", langNedPos, langOptionSize, langOptionFontSize, langOptionColor, langHighlightSize, curLang == Language.Nederlands, () => SelectLanguage(Language.Nederlands));
         _langHighlightEng = MakeSelectable(box.transform, languageCodes.Length > 1 ? languageCodes[1] : "ENG", langEngPos, langOptionSize, langOptionFontSize, langOptionColor, langHighlightSize, curLang == Language.English, () => SelectLanguage(Language.English));
         _langHighlightDeu = MakeSelectable(box.transform, languageCodes.Length > 2 ? languageCodes[2] : "DEU", langDeuPos, langOptionSize, langOptionFontSize, langOptionColor, langHighlightSize, curLang == Language.Deutsch, () => SelectLanguage(Language.Deutsch));
 
-
+        // Audio row
         MakeRowLabel(box.transform, "settings_audio", "Audio:", audioLabelPos);
         MakeMuteButton(box.transform);
         BuildVolumeSlider(box.transform);
 
-
+        // Vibrations row
         bool vibOn = PlayerPrefs.GetInt(PP_VIB_ON, 1) == 1;
         MakeRowLabel(box.transform, "settings_vibrations", "Vibrations:", vibrationsLabelPos);
         _vibOnHl = MakeSelectable(box.transform, onLabel, vibOnPos, toggleOptionSize, toggleFontSize, toggleColor, toggleHighlightSize, vibOn, () => SetVibrations(true));
         _vibOffHl = MakeSelectable(box.transform, offLabel, vibOffPos, toggleOptionSize, toggleFontSize, toggleColor, toggleHighlightSize, !vibOn, () => SetVibrations(false));
 
-
+        // Music row
         bool musicOn = PlayerPrefs.GetInt(PP_MUSIC_ON, 1) == 1;
         MakeRowLabel(box.transform, "settings_music", "Music:", musicLabelPos);
         _musicOnHl = MakeSelectable(box.transform, onLabel, musicOnPos, toggleOptionSize, toggleFontSize, toggleColor, toggleHighlightSize, musicOn, () => SetMusic(true));
@@ -390,7 +299,6 @@ public class StartScreenManager : MonoBehaviour
         return txt;
     }
 
-    // Returns the highlight GameObject so the caller can toggle which option is selected
     GameObject MakeSelectable(Transform parent, string label, Vector2 pos, Vector2 optSize, int fontSize, Color color, Vector2 hlSize, bool selected, System.Action onClick)
     {
         var go = new GameObject("Option_" + label);
@@ -571,154 +479,6 @@ public class StartScreenManager : MonoBehaviour
         PlayerPrefs.SetFloat(musicParameter, music);
 
         PlayerPrefs.Save();
-    }
-
-    void MakePanelLabel(Transform parent, string key, int size, FontStyle style, Color color, Vector2 pos, Vector2 sizeDelta)
-    {
-        var obj = new GameObject(key);
-        obj.transform.SetParent(parent, false);
-        var rt = obj.AddComponent<RectTransform>();
-        rt.anchorMin = new Vector2(0.5f, 0.5f);
-        rt.anchorMax = new Vector2(0.5f, 0.5f);
-        rt.pivot = new Vector2(0.5f, 0.5f);
-        rt.anchoredPosition = pos;
-        rt.sizeDelta = sizeDelta;
-        var txt = obj.AddComponent<Text>();
-        txt.font = GetFont();
-        txt.fontSize = size;
-        txt.fontStyle = style;
-        txt.alignment = TextAnchor.MiddleCenter;
-        txt.color = color;
-        txt.raycastTarget = false;
-        var loc = obj.AddComponent<LocalizedText>();
-        loc.key = key;
-        loc.Refresh();
-    }
-
-    IEnumerator PulseButton(RectTransform rt)
-    {
-        while (!_flying)
-        {
-            float s = 1f + Mathf.Sin(Time.time * 2.2f) * 0.04f;
-            rt.localScale = Vector3.one * s;
-            yield return null;
-        }
-        rt.localScale = Vector3.one;
-    }
-
-    void OnSpelen()
-    {
-        if (_flying) return;
-        _flying = true;
-
-        // Disable animator to prevent overriding transform changes during the fly sequence
-        var camAnimator = _cam.GetComponent<Animator>();
-        if (camAnimator != null) camAnimator.enabled = false;
-
-        StartCoroutine(FlyAndWipe());
-    }
-
-    IEnumerator FlyAndWipe()
-    {
-        HideUI();
-
-        Vector3 startPos = _cam.transform.position;
-        Quaternion startRot = _cam.transform.rotation;
-
-        bool irisStarted = false;
-        Coroutine irisCoroutine = null;
-
-        float t = 0f;
-        while (t < flyDuration)
-        {
-            t += Time.deltaTime;
-            float p = Mathf.SmoothStep(0f, 1f, Mathf.Clamp01(t / flyDuration));
-
-            _cam.transform.position = Vector3.Lerp(startPos, EndPos, p);
-            _cam.transform.rotation = Quaternion.Slerp(startRot, EndRot, p);
-
-            if (!irisStarted && t / flyDuration >= irisStartAt)
-            {
-                irisStarted = true;
-                irisCoroutine = StartCoroutine(IrisClose(irisDuration));
-            }
-
-            yield return null;
-        }
-
-        _cam.transform.position = EndPos;
-        _cam.transform.rotation = EndRot;
-
-        if (irisCoroutine != null)
-            yield return irisCoroutine;
-
-        yield return new WaitForSeconds(0.2f);
-        SceneManager.LoadScene("CutsceneScene");
-    }
-
-    IEnumerator IrisClose(float duration)
-    {
-        int res = 128;
-        float cx = res * 0.5f;
-        float cy = res * 0.5f;
-        float aspect = (float)Screen.height / Mathf.Max(Screen.width, 1);
-
-        float[] dists = new float[res * res];
-        float maxDist = 0f;
-        for (int i = 0; i < res * res; i++)
-        {
-            float nx = ((i % res) - cx) / res;
-            float ny = ((i / res) - cy) / res * aspect;
-            float d = Mathf.Sqrt(nx * nx + ny * ny);
-            dists[i] = d;
-            if (d > maxDist) maxDist = d;
-        }
-
-        var tex = new Texture2D(res, res, TextureFormat.RGBA32, false);
-        tex.filterMode = FilterMode.Bilinear;
-        tex.wrapMode = TextureWrapMode.Clamp;
-
-        var irisObj = new GameObject("IrisWipe");
-        irisObj.transform.SetParent(_canvas.transform, false);
-        irisObj.transform.SetAsLastSibling();
-        var irt = irisObj.AddComponent<RectTransform>();
-        irt.anchorMin = Vector2.zero;
-        irt.anchorMax = Vector2.one;
-        irt.offsetMin = irt.offsetMax = Vector2.zero;
-        var raw = irisObj.AddComponent<RawImage>();
-        raw.texture = tex;
-        raw.raycastTarget = false;
-
-        Color[] pixels = new Color[res * res];
-        float feather = 0.018f;
-        float elapsed = 0f;
-
-        while (elapsed < duration)
-        {
-            elapsed += Time.deltaTime;
-            float p = Mathf.SmoothStep(0f, 1f, Mathf.Clamp01(elapsed / duration));
-            float radius = Mathf.Lerp(maxDist * 1.05f, 0f, p);
-
-            for (int i = 0; i < pixels.Length; i++)
-            {
-                float alpha = Mathf.Clamp01((dists[i] - radius) / feather + 0.5f);
-                pixels[i] = new Color(1f, 1f, 1f, alpha);
-            }
-
-            tex.SetPixels(pixels);
-            tex.Apply(false);
-            yield return null;
-        }
-
-        for (int i = 0; i < pixels.Length; i++) pixels[i] = Color.white;
-        tex.SetPixels(pixels);
-        tex.Apply(false);
-    }
-
-    void HideUI()
-    {
-        foreach (Transform child in _canvas.transform)
-            child.gameObject.SetActive(false);
     }
 
     void EnsureEventSystem()
