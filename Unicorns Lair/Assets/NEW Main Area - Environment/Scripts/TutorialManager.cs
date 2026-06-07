@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class TutorialManager : MonoBehaviour
 {
@@ -565,6 +566,12 @@ switch (next)
 
     void Update()
     {
+        if(Keyboard.current.tKey.wasPressedThisFrame)
+        {
+            ShowDialogue(GetTutorialCompleteDialogue(), OnTutorialCompleteDialogueDone, VoiceLocalizer.Resolve(tutorialCompleteLocalized));
+        }
+
+
         if (_tutorialFinished && enableRandomFacts && _factTimer > 0f)
         {
             _factTimer -= Time.deltaTime;
@@ -1079,6 +1086,8 @@ switch (next)
     {
         if (_typeCoroutine != null) StopCoroutine(_typeCoroutine);
         HideContinueIndicator();
+
+        StopTutorialVoice();
 
         if (_activeVoiceSound != null && SoundManager.Instance != null)
         {

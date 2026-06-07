@@ -16,7 +16,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: d31997366aafc8640b0dea5c114eef1c, type: 3}
   - {fileID: 8300000, guid: 13b8d4519e4190048b1e4bf29b158b7f, type: 3}
   - {fileID: 8300000, guid: 4e61a30f0250add439e146ecbb535ad3, type: 3}
-  playMode: 0
+  playMode: 1
   mixerGroup: {fileID: -1723648475596354334, guid: 6ee5bd016cb09514ea38d5c2ce6d67e2, type: 2}
   volume: 1
   volumeVariance: 0
