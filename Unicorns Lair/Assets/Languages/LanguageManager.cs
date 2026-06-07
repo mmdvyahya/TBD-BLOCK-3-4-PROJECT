@@ -15,6 +15,24 @@ public class LanguageManager : MonoBehaviour
     private static readonly Dictionary<string, Dictionary<Language, string>> _strings
         = new()
         {
+            ["settings_audio"] = new()
+            {
+                [Language.Nederlands] = "Geluid:",
+                [Language.Deutsch] = "Ton:",
+                [Language.English] = "Audio:",
+            },
+            ["settings_vibrations"] = new()
+            {
+                [Language.Nederlands] = "Trillingen:",
+                [Language.Deutsch] = "Vibration:",
+                [Language.English] = "Vibrations:",
+            },
+            ["settings_music"] = new()
+            {
+                [Language.Nederlands] = "Muziek:",
+                [Language.Deutsch] = "Musik:",
+                [Language.English] = "Music:",
+            },
             ["btn_spelen"] = new()
             {
                 [Language.Nederlands] = "Spelen ▶",
