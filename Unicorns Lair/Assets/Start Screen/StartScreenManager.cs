@@ -1,7 +1,6 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 
 public class StartScreenManager : MonoBehaviour
@@ -26,101 +25,6 @@ public class StartScreenManager : MonoBehaviour
     [SerializeField] private Vector2 playButtonPos = new Vector2(0f, -40f);
     [SerializeField] private Vector2 playButtonSize = new Vector2(420f, 150f);
 
-    [Header("Settings Button (PNG)")]
-    [SerializeField] private Sprite settingsButtonSprite;
-    [Tooltip("Optional gear symbol PNG overlaid on the settings button. If empty, no overlay.")]
-    [SerializeField] private Sprite settingsButtonIconSprite;
-    [SerializeField] private Vector2 settingsButtonPos = new Vector2(-30f, -30f);
-    [SerializeField] private Vector2 settingsButtonSize = new Vector2(120f, 120f);
-    [SerializeField] private Vector2 settingsButtonIconSize = new Vector2(90f, 90f);
-
-    [Header("Settings Panel - Background (PNG)")]
-    [SerializeField] private Sprite settingsPanelSprite;
-    [SerializeField] private Vector2 settingsPanelPos = new Vector2(0f, 0f);
-    [SerializeField] private Vector2 settingsPanelSize = new Vector2(980f, 660f);
-    [Range(0f, 1f)][SerializeField] private float settingsPanelOpacity = 1f;
-    [Range(0f, 1f)][SerializeField] private float settingsDimOpacity = 0.6f;
-
-    [Header("Settings Panel - Title (PNG, top center)")]
-    [SerializeField] private Sprite settingsTitleSprite;
-    [SerializeField] private Vector2 settingsTitlePos = new Vector2(0f, 250f);
-    [SerializeField] private Vector2 settingsTitleSize = new Vector2(380f, 110f);
-
-    [Header("Settings Panel - Close Button (PNG)")]
-    [SerializeField] private Sprite settingsCloseSprite;
-    [SerializeField] private Vector2 settingsClosePos = new Vector2(410f, 250f);
-    [SerializeField] private Vector2 settingsCloseSize = new Vector2(90f, 90f);
-
-    [Header("Settings - Row Labels (left text)")]
-    [SerializeField] private int rowLabelFontSize = 48;
-    [SerializeField] private Color rowLabelColor = Color.white;
-    [SerializeField] private Vector2 rowLabelSize = new Vector2(400f, 80f);
-    [SerializeField] private Vector2 languageLabelPos = new Vector2(-300f, 150f);
-    [SerializeField] private Vector2 audioLabelPos = new Vector2(-300f, 30f);
-    [SerializeField] private Vector2 vibrationsLabelPos = new Vector2(-300f, -90f);
-    [SerializeField] private Vector2 musicLabelPos = new Vector2(-300f, -210f);
-
-    [Header("Settings - Selection Highlight (PNG behind selected)")]
-    [Tooltip("Shown behind the selected language / ON / OFF option.")]
-    [SerializeField] private Sprite selectionHighlightSprite;
-
-    [Header("Settings - Language Options (NED / ENG / DEU)")]
-    [SerializeField] private string[] languageCodes = { "NED", "ENG", "DEU" };
-    [SerializeField] private Vector2 langNedPos = new Vector2(70f, 150f);
-    [SerializeField] private Vector2 langEngPos = new Vector2(250f, 150f);
-    [SerializeField] private Vector2 langDeuPos = new Vector2(430f, 150f);
-    [SerializeField] private Vector2 langOptionSize = new Vector2(170f, 80f);
-    [SerializeField] private int langOptionFontSize = 48;
-    [SerializeField] private Color langOptionColor = Color.white;
-    [SerializeField] private Vector2 langHighlightSize = new Vector2(170f, 96f);
-
-    [Header("Settings - Audio Mute Button (PNG)")]
-    [SerializeField] private Sprite audioUnmutedSprite;
-    [SerializeField] private Sprite audioMutedSprite;
-    [SerializeField] private Vector2 mutePos = new Vector2(40f, 30f);
-    [SerializeField] private Vector2 muteSize = new Vector2(90f, 90f);
-
-    [Header("Settings - Volume Slider (PNG)")]
-    [SerializeField] private Sprite sliderTrackSprite;
-    [Tooltip("Optional fill PNG that grows with the value.")]
-    [SerializeField] private Sprite sliderFillSprite;
-    [SerializeField] private Sprite sliderKnobSprite;
-    [SerializeField] private Vector2 sliderPos = new Vector2(320f, 30f);
-    [SerializeField] private Vector2 sliderSize = new Vector2(420f, 40f);
-    [SerializeField] private Vector2 sliderKnobSize = new Vector2(70f, 70f);
-
-    [Header("Settings - ON / OFF Toggles (shared)")]
-    [SerializeField] private Vector2 toggleOptionSize = new Vector2(160f, 80f);
-    [SerializeField] private int toggleFontSize = 48;
-    [SerializeField] private Color toggleColor = Color.white;
-    [SerializeField] private Vector2 toggleHighlightSize = new Vector2(170f, 96f);
-    [SerializeField] private string onLabel = "ON";
-    [SerializeField] private string offLabel = "OFF";
-
-    [Header("Settings - Vibrations ON/OFF positions")]
-    [SerializeField] private Vector2 vibOnPos = new Vector2(110f, -90f);
-    [SerializeField] private Vector2 vibOffPos = new Vector2(300f, -90f);
-
-    [Header("Settings - Music ON/OFF positions")]
-    [SerializeField] private Vector2 musicOnPos = new Vector2(110f, -210f);
-    [SerializeField] private Vector2 musicOffPos = new Vector2(300f, -210f);
-
-    [Header("Settings - Audio Mixer")]
-    [SerializeField] private AudioMixer audioMixer;
-    [SerializeField] private string masterParameter = "Master";
-    [SerializeField] private string musicParameter = "Music";
-
-    // PlayerPrefs keys
-    const string PP_MASTER_LEVEL = "MasterLevel";
-    const string PP_MUTED = "audio_muted";
-    const string PP_MUSIC_ON = "music_on";
-    const string PP_VIB_ON = "vibrations_on";
-
-    // live references while the settings panel is open
-    private Image _muteIconImg;
-    private GameObject _langHighlightNed, _langHighlightEng, _langHighlightDeu;
-    private GameObject _vibOnHl, _vibOffHl, _musicOnHl, _musicOffHl;
-
     private Camera _cam;
     private Canvas _canvas;
     private bool _flying;
@@ -136,7 +40,6 @@ public class StartScreenManager : MonoBehaviour
         }
 
         EnsureEventSystem();
-        ApplyAudioToMixer();
         BuildUI();
     }
 
@@ -228,6 +131,8 @@ public class StartScreenManager : MonoBehaviour
         };
         btn.onClick.AddListener(OnSpelen);
 
+        MakeSettingsButton(_canvas.transform);
+
         StartCoroutine(PulseButton(brt));
     }
 
@@ -239,66 +144,39 @@ public class StartScreenManager : MonoBehaviour
         rt.anchorMin = new Vector2(1f, 1f);
         rt.anchorMax = new Vector2(1f, 1f);
         rt.pivot = new Vector2(1f, 1f);
-        rt.anchoredPosition = settingsButtonPos;
-        rt.sizeDelta = settingsButtonSize;
+        rt.anchoredPosition = new Vector2(-30f, -30f);
+        rt.sizeDelta = new Vector2(120f, 120f);
 
         var img = obj.AddComponent<Image>();
-        Color baseCol;
-        if (settingsButtonSprite != null)
-        {
-            img.sprite = settingsButtonSprite;
-            img.preserveAspect = true;
-            img.color = Color.white;
-            baseCol = Color.white;
-        }
-        else
-        {
-            baseCol = new Color(0f, 0f, 0f, 0.45f);
-            img.color = baseCol;
-        }
+        img.color = new Color(0f, 0f, 0f, 0.45f);
 
         var btn = obj.AddComponent<Button>();
         btn.targetGraphic = img;
         btn.colors = new ColorBlock
         {
-            normalColor = baseCol,
-            highlightedColor = baseCol * 1.12f,
-            pressedColor = baseCol * 0.8f,
-            selectedColor = baseCol,
-            disabledColor = new Color(0.3f, 0.3f, 0.3f, 0.4f),
+            normalColor = new Color(0f, 0f, 0f, 0.45f),
+            highlightedColor = new Color(0.2f, 0.2f, 0.2f, 0.7f),
+            pressedColor = new Color(0f, 0f, 0f, 0.8f),
+            selectedColor = new Color(0f, 0f, 0f, 0.45f),
+            disabledColor = new Color(0f, 0f, 0f, 0.2f),
             colorMultiplier = 1f,
             fadeDuration = 0.08f
         };
         btn.onClick.AddListener(() => BuildSettingsPanel());
 
-        if (settingsButtonIconSprite != null)
-        {
-            var ico = new GameObject("Icon");
-            ico.transform.SetParent(obj.transform, false);
-            var irt = ico.AddComponent<RectTransform>();
-            irt.anchorMin = irt.anchorMax = irt.pivot = new Vector2(0.5f, 0.5f);
-            irt.anchoredPosition = Vector2.zero;
-            irt.sizeDelta = settingsButtonIconSize;
-            var iImg = ico.AddComponent<Image>();
-            iImg.sprite = settingsButtonIconSprite;
-            iImg.preserveAspect = true;
-            iImg.raycastTarget = false;
-        }
-        else
-        {
-            var lObj = new GameObject("Icon");
-            lObj.transform.SetParent(obj.transform, false);
-            var lrt = lObj.AddComponent<RectTransform>();
-            lrt.anchorMin = Vector2.zero; lrt.anchorMax = Vector2.one;
-            lrt.offsetMin = lrt.offsetMax = Vector2.zero;
-            var lTxt = lObj.AddComponent<Text>();
-            lTxt.text = "\u2699";
-            lTxt.font = GetFont();
-            lTxt.fontSize = 72;
-            lTxt.alignment = TextAnchor.MiddleCenter;
-            lTxt.color = Color.white;
-            lTxt.raycastTarget = false;
-        }
+        var lObj = new GameObject("Icon");
+        lObj.transform.SetParent(obj.transform, false);
+        var lrt = lObj.AddComponent<RectTransform>();
+        lrt.anchorMin = Vector2.zero;
+        lrt.anchorMax = Vector2.one;
+        lrt.offsetMin = lrt.offsetMax = Vector2.zero;
+        var lTxt = lObj.AddComponent<Text>();
+        lTxt.text = "⚙";
+        lTxt.font = GetFont();
+        lTxt.fontSize = 72;
+        lTxt.alignment = TextAnchor.MiddleCenter;
+        lTxt.color = Color.white;
+        lTxt.raycastTarget = false;
     }
 
     void BuildSettingsPanel()
@@ -313,264 +191,170 @@ public class StartScreenManager : MonoBehaviour
         prt.anchorMax = Vector2.one;
         prt.offsetMin = prt.offsetMax = Vector2.zero;
         var overlay = panel.AddComponent<Image>();
-        overlay.color = new Color(0f, 0f, 0f, settingsDimOpacity);
+        overlay.color = new Color(0f, 0f, 0f, 0.78f);
         overlay.raycastTarget = true;
 
-        // Panel background PNG
-        var box = MakePanelImage(panel.transform, "Box", settingsPanelSprite, settingsPanelPos, settingsPanelSize, settingsPanelOpacity,
-            new Color(0.10f, 0.15f, 0.22f, 0.98f), false, false).gameObject;
+        var box = new GameObject("Box");
+        box.transform.SetParent(panel.transform, false);
+        var brt = box.AddComponent<RectTransform>();
+        brt.anchorMin = new Vector2(0.5f, 0.5f);
+        brt.anchorMax = new Vector2(0.5f, 0.5f);
+        brt.pivot = new Vector2(0.5f, 0.5f);
+        brt.anchoredPosition = Vector2.zero;
+        brt.sizeDelta = new Vector2(720f, 880f);
+        var boxImg = box.AddComponent<Image>();
+        boxImg.color = new Color(0.10f, 0.15f, 0.22f);
+        boxImg.raycastTarget = false;
 
-        MakePanelImage(box.transform, "Title", settingsTitleSprite, settingsTitlePos, settingsTitleSize, 1f,
-            new Color(0.22f, 0.30f, 0.44f), false, true);
+        MakePanelLabel(box.transform, "settings_title", 56, FontStyle.Bold, Color.white, new Vector2(0f, 290f), new Vector2(680f, 90f));
+        MakePanelLabel(box.transform, "settings_language", 36, FontStyle.Normal, new Color(0.72f, 0.85f, 1f), new Vector2(0f, 190f), new Vector2(680f, 60f));
 
-        var closeImg = MakePanelImage(box.transform, "CloseBtn", settingsCloseSprite, settingsClosePos, settingsCloseSize, 1f,
-            new Color(0.55f, 0.18f, 0.18f), true, true);
-        var closeBtn = closeImg.gameObject.AddComponent<Button>();
-        closeBtn.targetGraphic = closeImg;
-        closeBtn.onClick.AddListener(() => Destroy(panel));
+        var langs = new[] {
+            ("Nederlands", Language.Nederlands),
+            ("Deutsch",    Language.Deutsch),
+            ("English",    Language.English),
+        };
 
-        var curLang = LanguageManager.Instance.CurrentLanguage;
+        float[] yPos = { 80f, -60f, -200f };
 
-        MakeRowLabel(box.transform, "settings_language", "Language:", languageLabelPos);
-        _langHighlightNed = MakeSelectable(box.transform, languageCodes.Length > 0 ? languageCodes[0] : "NED", langNedPos, langOptionSize, langOptionFontSize, langOptionColor, langHighlightSize, curLang == Language.Nederlands, () => SelectLanguage(Language.Nederlands));
-        _langHighlightEng = MakeSelectable(box.transform, languageCodes.Length > 1 ? languageCodes[1] : "ENG", langEngPos, langOptionSize, langOptionFontSize, langOptionColor, langHighlightSize, curLang == Language.English, () => SelectLanguage(Language.English));
-        _langHighlightDeu = MakeSelectable(box.transform, languageCodes.Length > 2 ? languageCodes[2] : "DEU", langDeuPos, langOptionSize, langOptionFontSize, langOptionColor, langHighlightSize, curLang == Language.Deutsch, () => SelectLanguage(Language.Deutsch));
-
-
-        MakeRowLabel(box.transform, "settings_audio", "Audio:", audioLabelPos);
-        MakeMuteButton(box.transform);
-        BuildVolumeSlider(box.transform);
-
-
-        bool vibOn = PlayerPrefs.GetInt(PP_VIB_ON, 1) == 1;
-        MakeRowLabel(box.transform, "settings_vibrations", "Vibrations:", vibrationsLabelPos);
-        _vibOnHl = MakeSelectable(box.transform, onLabel, vibOnPos, toggleOptionSize, toggleFontSize, toggleColor, toggleHighlightSize, vibOn, () => SetVibrations(true));
-        _vibOffHl = MakeSelectable(box.transform, offLabel, vibOffPos, toggleOptionSize, toggleFontSize, toggleColor, toggleHighlightSize, !vibOn, () => SetVibrations(false));
-
-
-        bool musicOn = PlayerPrefs.GetInt(PP_MUSIC_ON, 1) == 1;
-        MakeRowLabel(box.transform, "settings_music", "Music:", musicLabelPos);
-        _musicOnHl = MakeSelectable(box.transform, onLabel, musicOnPos, toggleOptionSize, toggleFontSize, toggleColor, toggleHighlightSize, musicOn, () => SetMusic(true));
-        _musicOffHl = MakeSelectable(box.transform, offLabel, musicOffPos, toggleOptionSize, toggleFontSize, toggleColor, toggleHighlightSize, !musicOn, () => SetMusic(false));
-    }
-
-    Image MakePanelImage(Transform parent, string name, Sprite sprite, Vector2 pos, Vector2 size, float opacity, Color fallback, bool raycast, bool keepAspect)
-    {
-        var go = new GameObject(name);
-        go.transform.SetParent(parent, false);
-        var rt = go.AddComponent<RectTransform>();
-        rt.anchorMin = rt.anchorMax = rt.pivot = new Vector2(0.5f, 0.5f);
-        rt.anchoredPosition = pos; rt.sizeDelta = size;
-        var img = go.AddComponent<Image>();
-        if (sprite != null)
+        for (int i = 0; i < langs.Length; i++)
         {
-            img.sprite = sprite;
-            img.type = Image.Type.Simple;
-            img.preserveAspect = keepAspect;
-            img.color = new Color(1f, 1f, 1f, opacity);
-        }
-        else img.color = fallback;
-        img.raycastTarget = raycast;
-        return img;
-    }
+            var (name, lang) = langs[i];
+            bool active = LanguageManager.Instance.CurrentLanguage == lang;
+            Color btnCol = active ? new Color(0.12f, 0.62f, 0.32f) : new Color(0.22f, 0.30f, 0.44f);
 
-    Text MakeRowLabel(Transform parent, string key, string fallback, Vector2 pos)
-    {
-        var go = new GameObject("Label_" + key);
-        go.transform.SetParent(parent, false);
-        var rt = go.AddComponent<RectTransform>();
-        rt.anchorMin = rt.anchorMax = rt.pivot = new Vector2(0.5f, 0.5f);
-        rt.anchoredPosition = pos; rt.sizeDelta = rowLabelSize;
-        var txt = go.AddComponent<Text>();
-        txt.font = GetFont(); txt.fontSize = rowLabelFontSize; txt.fontStyle = FontStyle.Bold;
-        txt.alignment = TextAnchor.MiddleLeft; txt.color = rowLabelColor; txt.raycastTarget = false;
-        var loc = go.AddComponent<LocalizedText>();
-        loc.key = key; loc.Refresh();
-        if (string.IsNullOrEmpty(txt.text) || txt.text == "[" + key + "]") txt.text = fallback;
-        return txt;
-    }
+            var lbObj = new GameObject($"Lang_{name}");
+            lbObj.transform.SetParent(box.transform, false);
+            var lbrt = lbObj.AddComponent<RectTransform>();
+            lbrt.anchorMin = new Vector2(0.5f, 0.5f);
+            lbrt.anchorMax = new Vector2(0.5f, 0.5f);
+            lbrt.pivot = new Vector2(0.5f, 0.5f);
+            lbrt.anchoredPosition = new Vector2(0f, yPos[i]);
+            lbrt.sizeDelta = new Vector2(620f, 110f);
 
-    // Returns the highlight GameObject so the caller can toggle which option is selected
-    GameObject MakeSelectable(Transform parent, string label, Vector2 pos, Vector2 optSize, int fontSize, Color color, Vector2 hlSize, bool selected, System.Action onClick)
-    {
-        var go = new GameObject("Option_" + label);
-        go.transform.SetParent(parent, false);
-        var rt = go.AddComponent<RectTransform>();
-        rt.anchorMin = rt.anchorMax = rt.pivot = new Vector2(0.5f, 0.5f);
-        rt.anchoredPosition = pos; rt.sizeDelta = optSize;
+            var lbImg = lbObj.AddComponent<Image>();
+            lbImg.color = btnCol;
+            var lbBtn = lbObj.AddComponent<Button>();
+            lbBtn.targetGraphic = lbImg;
+            lbBtn.colors = new ColorBlock
+            {
+                normalColor = btnCol,
+                highlightedColor = btnCol * 1.2f,
+                pressedColor = btnCol * 0.75f,
+                selectedColor = btnCol,
+                disabledColor = btnCol * 0.5f,
+                colorMultiplier = 1f,
+                fadeDuration = 0.08f
+            };
 
-        var hit = go.AddComponent<Image>();
-        hit.color = new Color(0f, 0f, 0f, 0f);
-        hit.raycastTarget = true;
+            Language capturedLang = lang;
+            GameObject capturedPanel = panel;
+            lbBtn.onClick.AddListener(() => {
+                LanguageManager.Instance.SetLanguage(capturedLang);
+                Destroy(capturedPanel);
+                BuildSettingsPanel();
+            });
 
-        GameObject hl = null;
-        if (selectionHighlightSprite != null)
-        {
-            hl = new GameObject("Highlight");
-            hl.transform.SetParent(go.transform, false);
-            var hrt = hl.AddComponent<RectTransform>();
-            hrt.anchorMin = hrt.anchorMax = hrt.pivot = new Vector2(0.5f, 0.5f);
-            hrt.anchoredPosition = Vector2.zero; hrt.sizeDelta = hlSize;
-            var hImg = hl.AddComponent<Image>();
-            hImg.sprite = selectionHighlightSprite; hImg.type = Image.Type.Simple; hImg.raycastTarget = false;
-            hl.transform.SetAsFirstSibling();
-            hl.SetActive(selected);
+            var llbObj = new GameObject("Label");
+            llbObj.transform.SetParent(lbObj.transform, false);
+            var llbrt = llbObj.AddComponent<RectTransform>();
+            llbrt.anchorMin = Vector2.zero;
+            llbrt.anchorMax = Vector2.one;
+            llbrt.offsetMin = llbrt.offsetMax = Vector2.zero;
+            var llbTxt = llbObj.AddComponent<Text>();
+            llbTxt.text = (active ? "✓  " : "       ") + name;
+            llbTxt.font = GetFont();
+            llbTxt.fontSize = 50;
+            llbTxt.fontStyle = FontStyle.Bold;
+            llbTxt.alignment = TextAnchor.MiddleCenter;
+            llbTxt.color = Color.white;
+            llbTxt.raycastTarget = false;
         }
 
-        var t = new GameObject("Text");
-        t.transform.SetParent(go.transform, false);
-        var trt = t.AddComponent<RectTransform>();
-        trt.anchorMin = Vector2.zero; trt.anchorMax = Vector2.one; trt.offsetMin = trt.offsetMax = Vector2.zero;
-        var txt = t.AddComponent<Text>();
-        txt.text = label; txt.font = GetFont(); txt.fontSize = fontSize; txt.fontStyle = FontStyle.Bold;
-        txt.alignment = TextAnchor.MiddleCenter; txt.color = color; txt.raycastTarget = false;
-
-        var btn = go.AddComponent<Button>();
-        btn.targetGraphic = hit;
-        btn.transition = Selectable.Transition.None;
-        btn.onClick.AddListener(() => onClick());
-
-        return hl;
-    }
-
-    Button MakeMuteButton(Transform parent)
-    {
-        var go = new GameObject("MuteBtn");
-        go.transform.SetParent(parent, false);
-        var rt = go.AddComponent<RectTransform>();
-        rt.anchorMin = rt.anchorMax = rt.pivot = new Vector2(0.5f, 0.5f);
-        rt.anchoredPosition = mutePos; rt.sizeDelta = muteSize;
-        _muteIconImg = go.AddComponent<Image>();
-        _muteIconImg.preserveAspect = true;
-        bool muted = PlayerPrefs.GetInt(PP_MUTED, 0) == 1;
-        _muteIconImg.sprite = muted ? audioMutedSprite : audioUnmutedSprite;
-        _muteIconImg.color = (_muteIconImg.sprite == null) ? (muted ? new Color(0.7f, 0.2f, 0.2f) : Color.white) : Color.white;
-        var btn = go.AddComponent<Button>();
-        btn.targetGraphic = _muteIconImg;
-        btn.onClick.AddListener(ToggleMute);
-        return btn;
-    }
-
-    Slider BuildVolumeSlider(Transform parent)
-    {
-        var go = new GameObject("AudioSlider");
-        go.transform.SetParent(parent, false);
-        var rt = go.AddComponent<RectTransform>();
-        rt.anchorMin = rt.anchorMax = rt.pivot = new Vector2(0.5f, 0.5f);
-        rt.anchoredPosition = sliderPos; rt.sizeDelta = sliderSize;
-        var slider = go.AddComponent<Slider>();
-
-        var bg = new GameObject("Track");
-        bg.transform.SetParent(go.transform, false);
-        var bgrt = bg.AddComponent<RectTransform>();
-        bgrt.anchorMin = Vector2.zero; bgrt.anchorMax = Vector2.one; bgrt.offsetMin = bgrt.offsetMax = Vector2.zero;
-        var bgImg = bg.AddComponent<Image>();
-        if (sliderTrackSprite != null) { bgImg.sprite = sliderTrackSprite; bgImg.type = Image.Type.Simple; }
-        else bgImg.color = new Color(1f, 1f, 1f, 0.3f);
-        bgImg.raycastTarget = true;
-
-        if (sliderFillSprite != null)
+        var closeObj = new GameObject("CloseBtn");
+        closeObj.transform.SetParent(box.transform, false);
+        var crt = closeObj.AddComponent<RectTransform>();
+        crt.anchorMin = new Vector2(0.5f, 0.5f);
+        crt.anchorMax = new Vector2(0.5f, 0.5f);
+        crt.pivot = new Vector2(0.5f, 0.5f);
+        crt.anchoredPosition = new Vector2(0f, -310f);
+        crt.sizeDelta = new Vector2(480f, 100f);
+        var cImg = closeObj.AddComponent<Image>();
+        cImg.color = new Color(0.55f, 0.18f, 0.18f);
+        var cBtn = closeObj.AddComponent<Button>();
+        cBtn.targetGraphic = cImg;
+        cBtn.colors = new ColorBlock
         {
-            var fillArea = new GameObject("Fill Area");
-            fillArea.transform.SetParent(go.transform, false);
-            var fart = fillArea.AddComponent<RectTransform>();
-            fart.anchorMin = new Vector2(0f, 0.5f); fart.anchorMax = new Vector2(1f, 0.5f);
-            fart.sizeDelta = new Vector2(0f, sliderSize.y);
-            fart.anchoredPosition = Vector2.zero;
-            var fill = new GameObject("Fill");
-            fill.transform.SetParent(fillArea.transform, false);
-            var frt = fill.AddComponent<RectTransform>();
-            frt.anchorMin = new Vector2(0f, 0f); frt.anchorMax = new Vector2(1f, 1f); frt.offsetMin = frt.offsetMax = Vector2.zero;
-            var fImg = fill.AddComponent<Image>(); fImg.sprite = sliderFillSprite; fImg.type = Image.Type.Simple; fImg.raycastTarget = false;
-            slider.fillRect = frt;
-        }
+            normalColor = new Color(0.55f, 0.18f, 0.18f),
+            highlightedColor = new Color(0.72f, 0.25f, 0.25f),
+            pressedColor = new Color(0.38f, 0.10f, 0.10f),
+            selectedColor = new Color(0.55f, 0.18f, 0.18f),
+            disabledColor = new Color(0.3f, 0.3f, 0.3f),
+            colorMultiplier = 1f,
+            fadeDuration = 0.08f
+        };
+        cBtn.onClick.AddListener(() => Destroy(panel));
 
-        var handleArea = new GameObject("Handle Slide Area");
-        handleArea.transform.SetParent(go.transform, false);
-        var hart = handleArea.AddComponent<RectTransform>();
-        hart.anchorMin = Vector2.zero; hart.anchorMax = Vector2.one; hart.offsetMin = hart.offsetMax = Vector2.zero;
-        var handle = new GameObject("Handle");
-        handle.transform.SetParent(handleArea.transform, false);
-        var hrt = handle.AddComponent<RectTransform>();
-        hrt.sizeDelta = sliderKnobSize;
-        var hImg = handle.AddComponent<Image>();
-        if (sliderKnobSprite != null) { hImg.sprite = sliderKnobSprite; hImg.preserveAspect = true; }
-        else hImg.color = Color.white;
-        slider.handleRect = hrt;
-        slider.targetGraphic = hImg;
+        var clObj = new GameObject("Label");
+        clObj.transform.SetParent(closeObj.transform, false);
+        var clrt = clObj.AddComponent<RectTransform>();
+        clrt.anchorMin = Vector2.zero;
+        clrt.anchorMax = Vector2.one;
+        clrt.offsetMin = clrt.offsetMax = Vector2.zero;
+        var clTxt = clObj.AddComponent<Text>();
+        clTxt.font = GetFont();
+        clTxt.fontSize = 46;
+        clTxt.fontStyle = FontStyle.Bold;
+        clTxt.alignment = TextAnchor.MiddleCenter;
+        clTxt.color = Color.white;
+        clTxt.raycastTarget = false;
+        var closeLoc = clObj.AddComponent<LocalizedText>();
+        closeLoc.key = "btn_close";
+        closeLoc.Refresh();
 
-        slider.direction = Slider.Direction.LeftToRight;
-        slider.minValue = 0f; slider.maxValue = 100f; slider.wholeNumbers = false;
-        slider.value = PlayerPrefs.GetFloat(PP_MASTER_LEVEL, 100f);
-        slider.onValueChanged.AddListener(OnMasterSliderChanged);
-        return slider;
-    }
-
-    void SelectLanguage(Language lang)
-    {
-        LanguageManager.Instance.SetLanguage(lang);
-        var cur = LanguageManager.Instance.CurrentLanguage;
-        if (_langHighlightNed != null) _langHighlightNed.SetActive(cur == Language.Nederlands);
-        if (_langHighlightEng != null) _langHighlightEng.SetActive(cur == Language.English);
-        if (_langHighlightDeu != null) _langHighlightDeu.SetActive(cur == Language.Deutsch);
-    }
-
-    void SetVibrations(bool on)
-    {
-        PlayerPrefs.SetInt(PP_VIB_ON, on ? 1 : 0);
-        PlayerPrefs.Save();
-        if (_vibOnHl != null) _vibOnHl.SetActive(on);
-        if (_vibOffHl != null) _vibOffHl.SetActive(!on);
-    }
-
-    void SetMusic(bool on)
-    {
-        PlayerPrefs.SetInt(PP_MUSIC_ON, on ? 1 : 0);
-        PlayerPrefs.Save();
-        if (_musicOnHl != null) _musicOnHl.SetActive(on);
-        if (_musicOffHl != null) _musicOffHl.SetActive(!on);
-        ApplyAudioToMixer();
-    }
-
-    void ToggleMute()
-    {
-        bool muted = PlayerPrefs.GetInt(PP_MUTED, 0) == 1;
-        muted = !muted;
-        PlayerPrefs.SetInt(PP_MUTED, muted ? 1 : 0);
-        PlayerPrefs.Save();
-        if (_muteIconImg != null)
+        var resetObj = new GameObject("ResetBtn");
+        resetObj.transform.SetParent(box.transform, false);
+        var rrt = resetObj.AddComponent<RectTransform>();
+        rrt.anchorMin = new Vector2(0.5f, 0.5f);
+        rrt.anchorMax = new Vector2(0.5f, 0.5f);
+        rrt.pivot = new Vector2(0.5f, 0.5f);
+        rrt.anchoredPosition = new Vector2(0f, -430f);
+        rrt.sizeDelta = new Vector2(480f, 90f);
+        var rImg = resetObj.AddComponent<Image>();
+        rImg.color = new Color(0.35f, 0.12f, 0.12f);
+        var rBtn = resetObj.AddComponent<Button>();
+        rBtn.targetGraphic = rImg;
+        rBtn.colors = new ColorBlock
         {
-            _muteIconImg.sprite = muted ? audioMutedSprite : audioUnmutedSprite;
-            _muteIconImg.color = (_muteIconImg.sprite == null) ? (muted ? new Color(0.7f, 0.2f, 0.2f) : Color.white) : Color.white;
-        }
-        ApplyAudioToMixer();
-    }
+            normalColor = new Color(0.35f, 0.12f, 0.12f),
+            highlightedColor = new Color(0.55f, 0.18f, 0.18f),
+            pressedColor = new Color(0.20f, 0.06f, 0.06f),
+            selectedColor = new Color(0.35f, 0.12f, 0.12f),
+            disabledColor = new Color(0.3f, 0.3f, 0.3f),
+            colorMultiplier = 1f,
+            fadeDuration = 0.08f
+        };
+        rBtn.onClick.AddListener(() =>
+        {
+            GameStateManager.Ensure();
+            GameStateManager.Instance.ResetAllProgress();
+            Destroy(panel);
+        });
 
-    void OnMasterSliderChanged(float v)
-    {
-        PlayerPrefs.SetFloat(PP_MASTER_LEVEL, v);
-        PlayerPrefs.Save();
-        ApplyAudioToMixer();
-    }
-
-    float LinearToDb(float lin) => lin > 0.001f ? Mathf.Log10(lin / 100f) * 20f : -80f;
-
-    void ApplyAudioToMixer()
-    {
-        if (audioMixer == null) return;
-
-        float level = PlayerPrefs.GetFloat(PP_MASTER_LEVEL, 100f);
-        bool muted = PlayerPrefs.GetInt(PP_MUTED, 0) == 1;
-        float master = muted ? 0f : level;
-        audioMixer.SetFloat(masterParameter, LinearToDb(master));
-        PlayerPrefs.SetFloat(masterParameter, master);
-
-        bool musicOn = PlayerPrefs.GetInt(PP_MUSIC_ON, 1) == 1;
-        float music = musicOn ? 100f : 0f;
-        audioMixer.SetFloat(musicParameter, LinearToDb(music));
-        PlayerPrefs.SetFloat(musicParameter, music);
-
-        PlayerPrefs.Save();
+        var rlObj = new GameObject("Label");
+        rlObj.transform.SetParent(resetObj.transform, false);
+        var rlrt = rlObj.AddComponent<RectTransform>();
+        rlrt.anchorMin = Vector2.zero;
+        rlrt.anchorMax = Vector2.one;
+        rlrt.offsetMin = rlrt.offsetMax = Vector2.zero;
+        var rlTxt = rlObj.AddComponent<Text>();
+        rlTxt.text = "🗑  Reset Progress";
+        rlTxt.font = GetFont();
+        rlTxt.fontSize = 36;
+        rlTxt.fontStyle = FontStyle.Bold;
+        rlTxt.alignment = TextAnchor.MiddleCenter;
+        rlTxt.color = new Color(1f, 0.65f, 0.65f);
+        rlTxt.raycastTarget = false;
     }
 
     void MakePanelLabel(Transform parent, string key, int size, FontStyle style, Color color, Vector2 pos, Vector2 sizeDelta)

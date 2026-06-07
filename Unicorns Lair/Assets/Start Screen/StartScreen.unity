@@ -2271,64 +2271,6 @@ MonoBehaviour:
   playButtonSprite: {fileID: 21300000, guid: 93ffb68ba8220be4680a92a024dd3959, type: 3}
   playButtonPos: {x: 0, y: -200}
   playButtonSize: {x: 420, y: 150}
-  settingsButtonSprite: {fileID: 0}
-  settingsButtonIconSprite: {fileID: 21300000, guid: 08e81711315989a4585df8398b9d896b, type: 3}
-  settingsButtonPos: {x: -60, y: -30}
-  settingsButtonSize: {x: 120, y: 120}
-  settingsButtonIconSize: {x: 90, y: 90}
-  settingsPanelSprite: {fileID: 21300000, guid: b819bd1b73bd56e4d998654cfe5cad7d, type: 3}
-  settingsPanelPos: {x: 0, y: 0}
-  settingsPanelSize: {x: 980, y: 660}
-  settingsPanelOpacity: 1
-  settingsDimOpacity: 0.6
-  settingsTitleSprite: {fileID: 21300000, guid: 33a9c1b618930e143a52379c3be409e3, type: 3}
-  settingsTitlePos: {x: 0, y: 230}
-  settingsTitleSize: {x: 380, y: 110}
-  settingsCloseSprite: {fileID: 21300000, guid: e761ba276dafaf14bab1b7bdce3e7566, type: 3}
-  settingsClosePos: {x: 390, y: 250}
-  settingsCloseSize: {x: 90, y: 90}
-  rowLabelFontSize: 48
-  rowLabelColor: {r: 1, g: 1, b: 1, a: 1}
-  rowLabelSize: {x: 250, y: 80}
-  languageLabelPos: {x: -300, y: 150}
-  audioLabelPos: {x: -300, y: 30}
-  vibrationsLabelPos: {x: -300, y: -90}
-  musicLabelPos: {x: -300, y: -210}
-  selectionHighlightSprite: {fileID: 21300000, guid: 8c2411736ef2b1a40b696b2771523ab6, type: 3}
-  languageCodes:
-  - NED
-  - ENG
-  - DEU
-  langNedPos: {x: 0, y: 150}
-  langEngPos: {x: 180, y: 150}
-  langDeuPos: {x: 360, y: 150}
-  langOptionSize: {x: 100, y: 80}
-  langOptionFontSize: 48
-  langOptionColor: {r: 1, g: 1, b: 1, a: 1}
-  langHighlightSize: {x: 400, y: 120}
-  audioUnmutedSprite: {fileID: 21300000, guid: 4608a38b8e68caf47a3155477406f772, type: 3}
-  audioMutedSprite: {fileID: 21300000, guid: 01bb4d84e5fcda8469b31de876d73aec, type: 3}
-  mutePos: {x: -90, y: 30}
-  muteSize: {x: 90, y: 90}
-  sliderTrackSprite: {fileID: 21300000, guid: 18c16dfb17a46134a9e3721ee6e028d0, type: 3}
-  sliderFillSprite: {fileID: 21300000, guid: 8a91c79fd0c35d546b50c26a943a5753, type: 3}
-  sliderKnobSprite: {fileID: 21300000, guid: 18863af49931e0e4caf0369409d94e20, type: 3}
-  sliderPos: {x: 200, y: 30}
-  sliderSize: {x: 420, y: 40}
-  sliderKnobSize: {x: 70, y: 70}
-  toggleOptionSize: {x: 160, y: 80}
-  toggleFontSize: 48
-  toggleColor: {r: 1, g: 1, b: 1, a: 1}
-  toggleHighlightSize: {x: 400, y: 120}
-  onLabel: ON
-  offLabel: OFF
-  vibOnPos: {x: 110, y: -90}
-  vibOffPos: {x: 300, y: -90}
-  musicOnPos: {x: 110, y: -210}
-  musicOffPos: {x: 300, y: -210}
-  audioMixer: {fileID: 24100000, guid: 6ee5bd016cb09514ea38d5c2ce6d67e2, type: 2}
-  masterParameter: Master
-  musicParameter: Music
 --- !u!1001 &380733284
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13223,63 +13165,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!1001 &6804472194583531848
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1403307657929025815, guid: e4c8cc7a3e1d57f4990ac5bae26057f3, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -5.2127
-      objectReference: {fileID: 0}
-    - target: {fileID: 1403307657929025815, guid: e4c8cc7a3e1d57f4990ac5bae26057f3, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 1403307657929025815, guid: e4c8cc7a3e1d57f4990ac5bae26057f3, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 4.9122
-      objectReference: {fileID: 0}
-    - target: {fileID: 1403307657929025815, guid: e4c8cc7a3e1d57f4990ac5bae26057f3, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1403307657929025815, guid: e4c8cc7a3e1d57f4990ac5bae26057f3, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1403307657929025815, guid: e4c8cc7a3e1d57f4990ac5bae26057f3, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1403307657929025815, guid: e4c8cc7a3e1d57f4990ac5bae26057f3, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1403307657929025815, guid: e4c8cc7a3e1d57f4990ac5bae26057f3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1403307657929025815, guid: e4c8cc7a3e1d57f4990ac5bae26057f3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1403307657929025815, guid: e4c8cc7a3e1d57f4990ac5bae26057f3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7456108203810507134, guid: e4c8cc7a3e1d57f4990ac5bae26057f3, type: 3}
-      propertyPath: m_Name
-      value: SettingsMenu
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: e4c8cc7a3e1d57f4990ac5bae26057f3, type: 3}
 --- !u!1 &7313411172231434098
 GameObject:
   m_ObjectHideFlags: 0
@@ -13334,18 +13219,17 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1654014583}
+  - {fileID: 380465338}
+  - {fileID: 549760260}
   - {fileID: 1227338685}
   - {fileID: 2141444711}
   - {fileID: 2017100912}
   - {fileID: 52093120}
   - {fileID: 1939786290}
-  - {fileID: 860042213}
   - {fileID: 409536179}
   - {fileID: 2028243076}
   - {fileID: 380733284}
   - {fileID: 1204247029}
   - {fileID: 3032508279653634339}
   - {fileID: 4167355987111038364}
-  - {fileID: 6804472194583531848}
-  - {fileID: 380465338}
-  - {fileID: 549760260}
+  - {fileID: 860042213}
