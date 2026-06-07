@@ -252,6 +252,7 @@ public class OtterShellBreakMinigame : MonoBehaviour
 
     private void CompleteMinigame()
     {
+        DeviceVibration.Vibrate();
         isCompleted = true;
         isRunning = false;
 

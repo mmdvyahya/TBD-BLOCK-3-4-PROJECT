@@ -467,6 +467,7 @@ public class PolarBearCoolingMinigame : MonoBehaviour
 
     IEnumerator CompleteSequence()
     {
+        DeviceVibration.Vibrate();
         _completed = true;
         PlaytestLogger.Instance?.LogMinigameSuccess("PolarBear");
         SetWindEmission(0f);

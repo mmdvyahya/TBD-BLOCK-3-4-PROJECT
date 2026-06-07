@@ -295,6 +295,7 @@ public class HippoFoodSortingManager : MonoBehaviour
 
     void CompleteMinigame()
     {
+        DeviceVibration.Vibrate();
         _state = SortingState.Complete;
         SetFoodName("");
         StartCoroutine(HippoReactHappy());

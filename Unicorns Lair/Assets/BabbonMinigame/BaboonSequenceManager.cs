@@ -267,7 +267,9 @@ public class BaboonSequenceManager : MonoBehaviour
     }
 
     void CompleteMinigame()
+
     {
+        DeviceVibration.Vibrate();
         _complete = true;
 
         PlaytestLogger.Instance?.LogMinigameSuccess("BaboonSequence");
