@@ -566,11 +566,10 @@ switch (next)
 
     void Update()
     {
-        if(Keyboard.current.tKey.wasPressedThisFrame)
-        {
-            ShowDialogue(GetTutorialCompleteDialogue(), OnTutorialCompleteDialogueDone, VoiceLocalizer.Resolve(tutorialCompleteLocalized));
-        }
-
+        // if(Keyboard.current.tKey.wasPressedThisFrame)
+        // {
+        //     ShowDialogue(GetTutorialCompleteDialogue(), OnTutorialCompleteDialogueDone, VoiceLocalizer.Resolve(tutorialCompleteLocalized));
+        // }
 
         if (_tutorialFinished && enableRandomFacts && _factTimer > 0f)
         {
