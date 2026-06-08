@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
+using UnityEngine.Audio;
 
 public class GlobalUIClickSound : MonoBehaviour
 {
@@ -9,6 +9,9 @@ public class GlobalUIClickSound : MonoBehaviour
     [Header("Audio")]
     [SerializeField] private AudioClip clickSound;
     [SerializeField] private float volume = 0.7f;
+
+    [Header("Mixer")]
+    [SerializeField] private AudioMixerGroup mixerGroup;
 
     private AudioSource audioSource;
     private GameObject lastPressedObject;
@@ -27,6 +30,8 @@ public class GlobalUIClickSound : MonoBehaviour
         audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.playOnAwake = false;
         audioSource.spatialBlend = 0f;
+
+        audioSource.outputAudioMixerGroup = mixerGroup;
     }
 
     private void Update()
@@ -42,11 +47,8 @@ public class GlobalUIClickSound : MonoBehaviour
         if (currentPressed == lastPressedObject)
             return;
 
-        if (currentPressed.GetComponent<Button>() != null)
-        {
-            PlayClickSound();
-            lastPressedObject = currentPressed;
-        }
+        PlayClickSound();
+        lastPressedObject = currentPressed;
     }
 
     private void LateUpdate()

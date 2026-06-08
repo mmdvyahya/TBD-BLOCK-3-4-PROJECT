@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class VictorySoundPlayer : MonoBehaviour
 {
@@ -7,6 +8,9 @@ public class VictorySoundPlayer : MonoBehaviour
     [Header("Audio")]
     [SerializeField] private AudioClip victorySound;
     [SerializeField] private float volume = 0.8f;
+
+    [Header("Mixer")]
+    [SerializeField] private AudioMixerGroup mixerGroup;
 
     private AudioSource audioSource;
 
@@ -24,6 +28,8 @@ public class VictorySoundPlayer : MonoBehaviour
         audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.playOnAwake = false;
         audioSource.spatialBlend = 0f;
+
+        audioSource.outputAudioMixerGroup = mixerGroup;
     }
 
     public void PlayVictorySound()
