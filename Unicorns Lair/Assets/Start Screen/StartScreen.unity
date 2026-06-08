@@ -2819,6 +2819,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GlobalUIClickSound
   clickSound: {fileID: 8300000, guid: 0d54653003bc3524ab6b64cac060bd52, type: 3}
   volume: 0.7
+  mixerGroup: {fileID: 4123816018395926707, guid: 6ee5bd016cb09514ea38d5c2ce6d67e2, type: 2}
 --- !u!4 &456419582
 Transform:
   m_ObjectHideFlags: 0
@@ -3971,6 +3972,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::VictorySoundPlayer
   victorySound: {fileID: 8300000, guid: 973cbfce50fc9634b8c2729624d4cc4d, type: 3}
   volume: 0.8
+  mixerGroup: {fileID: 4123816018395926707, guid: 6ee5bd016cb09514ea38d5c2ce6d67e2, type: 2}
 --- !u!4 &808535380
 Transform:
   m_ObjectHideFlags: 0
