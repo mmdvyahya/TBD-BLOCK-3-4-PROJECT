@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class TutorialManager : MonoBehaviour
 {
@@ -120,10 +121,16 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private LocalizedSoundData introDialogueLocalized;
     [SerializeField] private LocalizedSoundData welcomeBackLocalized;
     [SerializeField] private LocalizedSoundData tutorialCompleteLocalized;
+
+    [Header("Ending")]
+    [Tooltip("Scene loaded after the player clicks through the final 'all habitats built' dialogue. Leave empty to stay in the current scene.")]
+    [SerializeField] private string endCreditsSceneName = "EndCreditsScene";
+    [Tooltip("After all habitats are built, the ending dialogue only appears once the player has earned at least this many coins again (so the last minigame still matters).")]
+    [SerializeField] private int endCreditsCoinGoal = 100;
     [SerializeField] private LocalizedSoundData randomFactLocalized;
     private SoundData _activeVoiceSound;
     private int _activeVoiceClipIndex = -1;
-    private SoundData _activeTutorialVoice;  // Track currently playing tutorial voice
+    private SoundData _activeTutorialVoice;  
 
     [SerializeField]
     private DialogueLine[] introDialogue = new DialogueLine[]
@@ -155,6 +162,7 @@ public class TutorialManager : MonoBehaviour
     private int _currentStep;
     private bool _hasSeenIntro;
     private bool _tutorialFinished;
+    private bool _awaitingEndCredits;
     private SubState _sub;
     private float _inspectTimer;
     private float _factTimer = -1f;
@@ -186,6 +194,7 @@ public class TutorialManager : MonoBehaviour
     const string PREF_SUB = "tutorial_substate";
     const string PREF_COINS = "tutorial_coins_before_minigame";
     const string PREF_ORDER = "tutorial_order";
+    const string PREF_CREDITS = "tutorial_credits_shown";
 
     void Awake()
     {
@@ -200,7 +209,7 @@ public class TutorialManager : MonoBehaviour
         LanguageManager.Ensure();
         GameStateManager.Ensure();
 
-        enableRandomFacts = false; // random facts after the tutorial are disabled
+        enableRandomFacts = false; 
 
         LoadOrShuffleOrder();
 
@@ -208,6 +217,8 @@ public class TutorialManager : MonoBehaviour
         _hasSeenIntro = PlayerPrefs.GetInt(PREF_INTRO, 0) == 1;
         _sub = (SubState)PlayerPrefs.GetInt(PREF_SUB, (int)SubState.WaitingForBuy);
         _tutorialFinished = _currentStep >= habitatOrder.Length;
+        if (_tutorialFinished && PlayerPrefs.GetInt(PREF_CREDITS, 0) == 0)
+            _awaitingEndCredits = true; 
 
         BuildTutorialCanvas();
         ApplyUnlocks();
@@ -221,7 +232,15 @@ public class TutorialManager : MonoBehaviour
         HabitatInteractionController.InspectBackButtonShown += OnInspectBackShown;
         HabitatInteractionController.MinigamePressed += OnMinigamePressed;
 
-        if (!_hasSeenIntro)
+        if (_awaitingEndCredits)
+        {
+
+            HidePointer();
+            HideBanner();
+            if (GameStateManager.Instance.Coins >= endCreditsCoinGoal)
+                TriggerEndCredits();
+        }
+        else if (!_hasSeenIntro)
         {
             _introActive = true;
             ApplyUnlocks();
@@ -304,11 +323,17 @@ public class TutorialManager : MonoBehaviour
 
     void OnCoinsChanged(int amount)
     {
+        if (_awaitingEndCredits)
+        {
+            if (GameStateManager.Instance != null && GameStateManager.Instance.Coins >= endCreditsCoinGoal)
+                TriggerEndCredits();
+            return;
+        }
         if (_tutorialFinished) return;
-        if (_currentStep == 0) return;                 // first habitat uses the full guided flow
-        if (_sub != SubState.WaitingForBuy) return;    // only refresh while waiting to build the next one
-        ApplyUnlocks();                                // show/hide the buy button for the new coin total
-        EnterSubState(SubState.WaitingForBuy);         // refresh pointer + banner
+        if (_currentStep == 0) return;                 
+        if (_sub != SubState.WaitingForBuy) return;   
+        ApplyUnlocks();                                
+        EnterSubState(SubState.WaitingForBuy);        
     }
 
     public bool IsHabitatUnlocked(string habitatId)
@@ -319,11 +344,11 @@ public class TutorialManager : MonoBehaviour
             return false;
         int idx = System.Array.IndexOf(habitatOrder, habitatId);
         if (idx < 0) return true;
-        if (idx < _currentStep) return true;   // already built / past steps stay unlocked
-        if (idx > _currentStep) return false;  // future steps locked
-        // current step:
-        if (_currentStep == 0) return true;    // first habitat is always available
-        return HasCoinsForNext();              // later habitats unlock only once the player has enough coins
+        if (idx < _currentStep) return true;  
+        if (idx > _currentStep) return false;  
+   
+        if (_currentStep == 0) return true;   
+        return HasCoinsForNext();              
     }
 
     void ApplyUnlocks() => UnlockChanged?.Invoke();
@@ -340,7 +365,7 @@ public class TutorialManager : MonoBehaviour
             return;
         }
 
-        // Habitats after the first skip the tap/inspect/minigame steps entirely.
+
         if (_currentStep >= 1)
         {
             bool built = GameStateManager.Instance.IsBuilt(habitatOrder[_currentStep]);
@@ -422,19 +447,17 @@ public class TutorialManager : MonoBehaviour
                 {
                     if (habitat != null) _pointerTarget = habitat.GetButtonAnchor();
                     ShowPointer(useTapIcon: false);
-                    ShowInstruction("tutorial_next_buy", "Geweldig! Laten we een huis bouwen voor het volgende dier!", tutorialWaitingForBuyLocalizedSecond);
                 }
-                // No voice line for this one
                 else
                 {
                     HidePointer();
-                    ShowInstruction("tutorial_earn_coins", "Speel minigames om munten te verdienen. Als je er genoeg hebt, kun je het volgende verblijf bouwen!");
                 }
                 break;
 
             case SubState.Building:
                 HidePointer();
-                ShowInstruction("tutorial_building", "Daar komt 'ie... je verblijf wordt gebouwd!", tutorialBuildingLocalized);
+                if (_currentStep == 0)
+                    ShowInstruction("tutorial_building", "Daar komt 'ie... je verblijf wordt gebouwd!", tutorialBuildingLocalized);
                 break;
 
             case SubState.WaitingForTap:
@@ -488,9 +511,9 @@ public class TutorialManager : MonoBehaviour
         if (_currentStep >= habitatOrder.Length) return;
         if (habitatOrder[_currentStep] != itemId) return;
         if (_currentStep == 0)
-            EnterSubState(SubState.WaitingForTap);   // first habitat: full guided flow
+            EnterSubState(SubState.WaitingForTap);   
         else
-            AdvanceToNextHabitatStep();              // later habitats: no tap/inspect/minigame
+            AdvanceToNextHabitatStep();             
     }
 
     void OnCardShown(Button back, Button inspect, Button minigame, InspectableHabitat habitat)
@@ -533,7 +556,7 @@ public class TutorialManager : MonoBehaviour
     void OnMinigamePressed(InspectableHabitat habitat)
     {
         if (_tutorialFinished) return;
-        if (_currentStep != 0) return;   // only the first habitat drives the minigame tutorial step
+        if (_currentStep != 0) return;   
         PlayerPrefs.SetInt(PREF_COINS, GameStateManager.Instance.Coins);
         EnterSubState(SubState.WaitingForMinigameReturn);
     }
@@ -557,7 +580,14 @@ public class TutorialManager : MonoBehaviour
             PlayerPrefs.SetInt(PREF_SUB, (int)SubState.Complete);
             PlayerPrefs.Save();
 
-            ShowDialogue(GetTutorialCompleteDialogue(), OnTutorialCompleteDialogueDone, VoiceLocalizer.Resolve(tutorialCompleteLocalized));
+
+            if (PlayerPrefs.GetInt(PREF_CREDITS, 0) == 0)
+            {
+                if (GameStateManager.Instance != null && GameStateManager.Instance.Coins >= endCreditsCoinGoal)
+                    TriggerEndCredits();
+                else
+                    _awaitingEndCredits = true; 
+            }
 
             return;
         }
@@ -565,12 +595,29 @@ public class TutorialManager : MonoBehaviour
         EnterSubState(SubState.WaitingForBuy);
     }
 
+    void TriggerEndCredits()
+    {
+        if (PlayerPrefs.GetInt(PREF_CREDITS, 0) == 1) return; 
+
+        _awaitingEndCredits = false;
+        _tutorialFinished = true;
+
+        HidePointer();
+        HideGlow();
+        HideBanner();
+        StopPulsing();
+
+        ApplyUnlocks();
+
+        PlayerPrefs.SetInt(PREF_SUB, (int)SubState.Complete);
+        PlayerPrefs.Save();
+
+        ShowDialogue(GetTutorialCompleteDialogue(), OnTutorialCompleteDialogueDone, VoiceLocalizer.Resolve(tutorialCompleteLocalized));
+    }
+
     void Update()
     {
-        // if(Keyboard.current.tKey.wasPressedThisFrame)
-        // {
-        //     ShowDialogue(GetTutorialCompleteDialogue(), OnTutorialCompleteDialogueDone, VoiceLocalizer.Resolve(tutorialCompleteLocalized));
-        // }
+  
 
         if (_tutorialFinished && enableRandomFacts && _factTimer > 0f)
         {
@@ -1252,6 +1299,15 @@ public class TutorialManager : MonoBehaviour
 
     void OnTutorialCompleteDialogueDone()
     {
+
+        if (!string.IsNullOrWhiteSpace(endCreditsSceneName))
+        {
+            PlayerPrefs.SetInt(PREF_CREDITS, 1);
+            PlayerPrefs.Save();
+            SceneManager.LoadScene(endCreditsSceneName);
+            return;
+        }
+
         if (showMiniTestAfterTutorial)
             StartCoroutine(ShowMiniTestAfterDelay(0.5f));
 
@@ -1335,8 +1391,7 @@ public class TutorialManager : MonoBehaviour
 
     void ShowInstruction(string key, string fallback, LocalizedSoundData voice = null)
     {
-        // Each tutorial part shows its instruction once, in the same PNG dialogue window as the intro.
-        // The player can tap it away; it only reappears when the tutorial moves to a different part.
+
         string token = key + "#" + _currentStep;
         if (token == _lastInstructionToken) return;
         _lastInstructionToken = token;
