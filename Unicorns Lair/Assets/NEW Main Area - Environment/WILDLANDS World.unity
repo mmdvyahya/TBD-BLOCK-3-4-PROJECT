@@ -3627,6 +3627,21 @@ MonoBehaviour:
   buttonAnchor: {fileID: 2056560178}
   mainCamera: {fileID: 0}
   midBuildChild: {fileID: 0}
+  buyButtonSprite: {fileID: 21300000, guid: 6e0072809028bd340bafdc884b63bb21, type: 3}
+  buyButtonSize: {x: 460, y: 230}
+  nameTextPos: {x: 0, y: 34}
+  nameTextSize: {x: 400, y: 70}
+  nameTextFontSize: 40
+  nameTextColor: {r: 1, g: 1, b: 1, a: 1}
+  nameTextAlignment: 4
+  pricePngSprite: {fileID: 21300000, guid: 6764c1e1092e15845843dc1f6f8463c5, type: 3}
+  pricePngPos: {x: -70, y: -42}
+  pricePngSize: {x: 60, y: 60}
+  priceTextPos: {x: 80, y: -42}
+  priceTextSize: {x: 180, y: 60}
+  priceTextFontSize: 36
+  priceTextColor: {r: 1, g: 1, b: 1, a: 1}
+  priceTextAlignment: 3
 --- !u!1 &187624062
 GameObject:
   m_ObjectHideFlags: 0
@@ -9801,6 +9816,21 @@ MonoBehaviour:
   buttonAnchor: {fileID: 734692441}
   mainCamera: {fileID: 0}
   midBuildChild: {fileID: 0}
+  buyButtonSprite: {fileID: 21300000, guid: 6e0072809028bd340bafdc884b63bb21, type: 3}
+  buyButtonSize: {x: 460, y: 230}
+  nameTextPos: {x: 0, y: 34}
+  nameTextSize: {x: 400, y: 70}
+  nameTextFontSize: 40
+  nameTextColor: {r: 1, g: 1, b: 1, a: 1}
+  nameTextAlignment: 4
+  pricePngSprite: {fileID: 21300000, guid: 6764c1e1092e15845843dc1f6f8463c5, type: 3}
+  pricePngPos: {x: -70, y: -42}
+  pricePngSize: {x: 60, y: 60}
+  priceTextPos: {x: 80, y: -42}
+  priceTextSize: {x: 180, y: 60}
+  priceTextFontSize: 36
+  priceTextColor: {r: 1, g: 1, b: 1, a: 1}
+  priceTextAlignment: 3
 --- !u!4 &438614618 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6908463814369781333, guid: 9f1892b82d3e1f34c80404c29d49613b, type: 3}
@@ -21585,6 +21615,21 @@ MonoBehaviour:
   buttonAnchor: {fileID: 423381127}
   mainCamera: {fileID: 0}
   midBuildChild: {fileID: 0}
+  buyButtonSprite: {fileID: 21300000, guid: 6e0072809028bd340bafdc884b63bb21, type: 3}
+  buyButtonSize: {x: 460, y: 230}
+  nameTextPos: {x: 0, y: 34}
+  nameTextSize: {x: 400, y: 70}
+  nameTextFontSize: 40
+  nameTextColor: {r: 1, g: 1, b: 1, a: 1}
+  nameTextAlignment: 4
+  pricePngSprite: {fileID: 21300000, guid: 6764c1e1092e15845843dc1f6f8463c5, type: 3}
+  pricePngPos: {x: -70, y: -42}
+  pricePngSize: {x: 60, y: 60}
+  priceTextPos: {x: 80, y: -42}
+  priceTextSize: {x: 180, y: 60}
+  priceTextFontSize: 36
+  priceTextColor: {r: 1, g: 1, b: 1, a: 1}
+  priceTextAlignment: 3
 --- !u!1 &902700665
 GameObject:
   m_ObjectHideFlags: 0
@@ -27722,6 +27767,21 @@ MonoBehaviour:
   buttonAnchor: {fileID: 976256391}
   mainCamera: {fileID: 0}
   midBuildChild: {fileID: 0}
+  buyButtonSprite: {fileID: 21300000, guid: 6e0072809028bd340bafdc884b63bb21, type: 3}
+  buyButtonSize: {x: 460, y: 230}
+  nameTextPos: {x: 0, y: 34}
+  nameTextSize: {x: 400, y: 70}
+  nameTextFontSize: 40
+  nameTextColor: {r: 1, g: 1, b: 1, a: 1}
+  nameTextAlignment: 4
+  pricePngSprite: {fileID: 21300000, guid: 6764c1e1092e15845843dc1f6f8463c5, type: 3}
+  pricePngPos: {x: -70, y: -42}
+  pricePngSize: {x: 60, y: 60}
+  priceTextPos: {x: 80, y: -42}
+  priceTextSize: {x: 180, y: 60}
+  priceTextFontSize: 36
+  priceTextColor: {r: 1, g: 1, b: 1, a: 1}
+  priceTextAlignment: 3
 --- !u!1001 &1195482578
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29498,6 +29558,21 @@ MonoBehaviour:
   buttonAnchor: {fileID: 1814173356}
   mainCamera: {fileID: 0}
   midBuildChild: {fileID: 0}
+  buyButtonSprite: {fileID: 21300000, guid: 6e0072809028bd340bafdc884b63bb21, type: 3}
+  buyButtonSize: {x: 460, y: 230}
+  nameTextPos: {x: 0, y: 34}
+  nameTextSize: {x: 400, y: 70}
+  nameTextFontSize: 40
+  nameTextColor: {r: 1, g: 1, b: 1, a: 1}
+  nameTextAlignment: 4
+  pricePngSprite: {fileID: 21300000, guid: 6764c1e1092e15845843dc1f6f8463c5, type: 3}
+  pricePngPos: {x: -70, y: -42}
+  pricePngSize: {x: 60, y: 60}
+  priceTextPos: {x: 80, y: -42}
+  priceTextSize: {x: 180, y: 60}
+  priceTextFontSize: 36
+  priceTextColor: {r: 1, g: 1, b: 1, a: 1}
+  priceTextAlignment: 3
 --- !u!1001 &1269715896
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30620,8 +30695,8 @@ MonoBehaviour:
   - racoon_habitat
   randomizeBuildOrder: 0
   coinsToUnlockNext: 100
-  showMiniTestAfterTutorial: 1
-  enableRandomFacts: 1
+  showMiniTestAfterTutorial: 0
+  enableRandomFacts: 0
   firstFactDelay: 10
   factMinInterval: 35
   factMaxInterval: 70
@@ -30973,6 +31048,21 @@ MonoBehaviour:
   buttonAnchor: {fileID: 1178964361}
   mainCamera: {fileID: 0}
   midBuildChild: {fileID: 0}
+  buyButtonSprite: {fileID: 21300000, guid: 6e0072809028bd340bafdc884b63bb21, type: 3}
+  buyButtonSize: {x: 460, y: 230}
+  nameTextPos: {x: 0, y: 34}
+  nameTextSize: {x: 400, y: 70}
+  nameTextFontSize: 40
+  nameTextColor: {r: 1, g: 1, b: 1, a: 1}
+  nameTextAlignment: 4
+  pricePngSprite: {fileID: 21300000, guid: 6764c1e1092e15845843dc1f6f8463c5, type: 3}
+  pricePngPos: {x: -70, y: -42}
+  pricePngSize: {x: 60, y: 60}
+  priceTextPos: {x: 80, y: -42}
+  priceTextSize: {x: 180, y: 60}
+  priceTextFontSize: 36
+  priceTextColor: {r: 1, g: 1, b: 1, a: 1}
+  priceTextAlignment: 3
 --- !u!1 &1328142560
 GameObject:
   m_ObjectHideFlags: 0
@@ -31042,7 +31132,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1329757313
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43498,6 +43588,21 @@ MonoBehaviour:
   buttonAnchor: {fileID: 12034990}
   mainCamera: {fileID: 0}
   midBuildChild: {fileID: 0}
+  buyButtonSprite: {fileID: 21300000, guid: 6e0072809028bd340bafdc884b63bb21, type: 3}
+  buyButtonSize: {x: 460, y: 230}
+  nameTextPos: {x: 0, y: 34}
+  nameTextSize: {x: 400, y: 70}
+  nameTextFontSize: 40
+  nameTextColor: {r: 1, g: 1, b: 1, a: 1}
+  nameTextAlignment: 4
+  pricePngSprite: {fileID: 21300000, guid: 6764c1e1092e15845843dc1f6f8463c5, type: 3}
+  pricePngPos: {x: -70, y: -42}
+  pricePngSize: {x: 60, y: 60}
+  priceTextPos: {x: 80, y: -42}
+  priceTextSize: {x: 180, y: 60}
+  priceTextFontSize: 36
+  priceTextColor: {r: 1, g: 1, b: 1, a: 1}
+  priceTextAlignment: 3
 --- !u!1001 &1875815676
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -44961,6 +45066,21 @@ MonoBehaviour:
   buttonAnchor: {fileID: 728250822}
   mainCamera: {fileID: 0}
   midBuildChild: {fileID: 0}
+  buyButtonSprite: {fileID: 21300000, guid: 6e0072809028bd340bafdc884b63bb21, type: 3}
+  buyButtonSize: {x: 460, y: 230}
+  nameTextPos: {x: 0, y: 34}
+  nameTextSize: {x: 400, y: 70}
+  nameTextFontSize: 40
+  nameTextColor: {r: 1, g: 1, b: 1, a: 1}
+  nameTextAlignment: 4
+  pricePngSprite: {fileID: 21300000, guid: 6764c1e1092e15845843dc1f6f8463c5, type: 3}
+  pricePngPos: {x: -70, y: -42}
+  pricePngSize: {x: 60, y: 60}
+  priceTextPos: {x: 80, y: -42}
+  priceTextSize: {x: 180, y: 60}
+  priceTextFontSize: 36
+  priceTextColor: {r: 1, g: 1, b: 1, a: 1}
+  priceTextAlignment: 3
 --- !u!1 &1943640362
 GameObject:
   m_ObjectHideFlags: 0

@@ -32,12 +32,38 @@ public class Habitat : MonoBehaviour
              "If set, this child is enabled during the build animation phase and disabled when 'Built' takes over.")]
     [SerializeField] private GameObject midBuildChild;
 
+    [Header("Buy Button (PNG)")]
+    [Tooltip("PNG background for the buy button (replaces the green box). If empty, the green box is used.")]
+    [SerializeField] private Sprite buyButtonSprite;
+    [SerializeField] private Vector2 buyButtonSize = new Vector2(420f, 160f);
+
+    [Header("Buy Button - Name Text")]
+    [SerializeField] private Vector2 nameTextPos = new Vector2(0f, 34f);
+    [SerializeField] private Vector2 nameTextSize = new Vector2(400f, 70f);
+    [SerializeField] private int nameTextFontSize = 40;
+    [SerializeField] private Color nameTextColor = Color.white;
+    [SerializeField] private TextAnchor nameTextAlignment = TextAnchor.MiddleCenter;
+
+    [Header("Buy Button - Price PNG (under the name)")]
+    [Tooltip("Optional PNG shown under the name (e.g. a coin / price pill). The price text sits next to it.")]
+    [SerializeField] private Sprite pricePngSprite;
+    [SerializeField] private Vector2 pricePngPos = new Vector2(-70f, -42f);
+    [SerializeField] private Vector2 pricePngSize = new Vector2(60f, 60f);
+
+    [Header("Buy Button - Price Text")]
+    [SerializeField] private Vector2 priceTextPos = new Vector2(40f, -42f);
+    [SerializeField] private Vector2 priceTextSize = new Vector2(180f, 60f);
+    [SerializeField] private int priceTextFontSize = 36;
+    [SerializeField] private Color priceTextColor = Color.white;
+    [SerializeField] private TextAnchor priceTextAlignment = TextAnchor.MiddleLeft;
+
     private enum HabitatState { NotPlaced, Building, Built }
     private HabitatState _state;
 
     private Canvas _worldCanvas;
     private GameObject _buttonObj;
-    private Text _buttonLabel;
+    private Text _nameLabel;
+    private Text _priceLabel;
     private HabitatBuilder _builder;
 
     void Start()
@@ -150,38 +176,83 @@ public class Habitat : MonoBehaviour
         var rt = _buttonObj.AddComponent<RectTransform>();
         rt.anchorMin = rt.anchorMax = rt.pivot = new Vector2(0.5f, 0.5f);
         rt.anchoredPosition = Vector2.zero;
-        rt.sizeDelta = new Vector2(420f, 160f);
+        rt.sizeDelta = buyButtonSize;
 
         var img = _buttonObj.AddComponent<Image>();
-        img.color = new Color(0.12f, 0.68f, 0.34f);
+        Color baseCol;
+        if (buyButtonSprite != null)
+        {
+            img.sprite = buyButtonSprite;
+            img.type = Image.Type.Simple;
+            img.preserveAspect = true;
+            img.color = Color.white;
+            baseCol = Color.white;
+        }
+        else
+        {
+            baseCol = new Color(0.12f, 0.68f, 0.34f);
+            img.color = baseCol;
+        }
 
         var btn = _buttonObj.AddComponent<Button>();
         btn.targetGraphic = img;
         btn.colors = new ColorBlock
         {
-            normalColor = new Color(0.12f, 0.68f, 0.34f),
-            highlightedColor = new Color(0.20f, 0.85f, 0.46f),
-            pressedColor = new Color(0.07f, 0.46f, 0.22f),
-            selectedColor = new Color(0.12f, 0.68f, 0.34f),
+            normalColor = baseCol,
+            highlightedColor = baseCol * 1.12f,
+            pressedColor = baseCol * 0.8f,
+            selectedColor = baseCol,
             disabledColor = new Color(0.35f, 0.35f, 0.35f),
             colorMultiplier = 1f,
             fadeDuration = 0.1f
         };
         btn.onClick.AddListener(OnButtonPressed);
 
-        var lblObj = new GameObject("Label");
-        lblObj.transform.SetParent(_buttonObj.transform, false);
-        var lrt = lblObj.AddComponent<RectTransform>();
-        lrt.anchorMin = Vector2.zero; lrt.anchorMax = Vector2.one;
-        lrt.offsetMin = new Vector2(12f, 6f); lrt.offsetMax = new Vector2(-12f, -6f);
-        _buttonLabel = lblObj.AddComponent<Text>();
-        _buttonLabel.font = GetFont();
-        _buttonLabel.fontSize = 40;
-        _buttonLabel.fontStyle = FontStyle.Bold;
-        _buttonLabel.alignment = TextAnchor.MiddleCenter;
-        _buttonLabel.color = Color.white;
-        _buttonLabel.raycastTarget = false;
-        lblObj.AddComponent<Outline>().effectColor = new Color(0f, 0.2f, 0.1f, 0.7f);
+        // Name text (overlaid on the button PNG)
+        var nameObj = new GameObject("NameLabel");
+        nameObj.transform.SetParent(_buttonObj.transform, false);
+        var nrt = nameObj.AddComponent<RectTransform>();
+        nrt.anchorMin = nrt.anchorMax = nrt.pivot = new Vector2(0.5f, 0.5f);
+        nrt.anchoredPosition = nameTextPos; nrt.sizeDelta = nameTextSize;
+        _nameLabel = nameObj.AddComponent<Text>();
+        _nameLabel.font = GetFont();
+        _nameLabel.fontSize = nameTextFontSize;
+        _nameLabel.fontStyle = FontStyle.Bold;
+        _nameLabel.alignment = nameTextAlignment;
+        _nameLabel.color = nameTextColor;
+        _nameLabel.raycastTarget = false;
+        _nameLabel.horizontalOverflow = HorizontalWrapMode.Wrap;
+        _nameLabel.verticalOverflow = VerticalWrapMode.Overflow;
+        nameObj.AddComponent<Outline>().effectColor = new Color(0f, 0.2f, 0.1f, 0.7f);
+
+        // Price PNG (under the name)
+        if (pricePngSprite != null)
+        {
+            var pObj = new GameObject("PricePng");
+            pObj.transform.SetParent(_buttonObj.transform, false);
+            var prt2 = pObj.AddComponent<RectTransform>();
+            prt2.anchorMin = prt2.anchorMax = prt2.pivot = new Vector2(0.5f, 0.5f);
+            prt2.anchoredPosition = pricePngPos; prt2.sizeDelta = pricePngSize;
+            var pImg = pObj.AddComponent<Image>();
+            pImg.sprite = pricePngSprite;
+            pImg.preserveAspect = true;
+            pImg.raycastTarget = false;
+        }
+
+        // Price text (next to the price PNG)
+        var priceObj = new GameObject("PriceLabel");
+        priceObj.transform.SetParent(_buttonObj.transform, false);
+        var prt = priceObj.AddComponent<RectTransform>();
+        prt.anchorMin = prt.anchorMax = prt.pivot = new Vector2(0.5f, 0.5f);
+        prt.anchoredPosition = priceTextPos; prt.sizeDelta = priceTextSize;
+        _priceLabel = priceObj.AddComponent<Text>();
+        _priceLabel.font = GetFont();
+        _priceLabel.fontSize = priceTextFontSize;
+        _priceLabel.fontStyle = FontStyle.Bold;
+        _priceLabel.alignment = priceTextAlignment;
+        _priceLabel.color = priceTextColor;
+        _priceLabel.raycastTarget = false;
+        priceObj.AddComponent<Outline>().effectColor = new Color(0f, 0.2f, 0.1f, 0.7f);
 
         StartCoroutine(TrackWorldPosition(rt));
         ApplyBuildModeVisibility();
@@ -191,7 +262,8 @@ public class Habitat : MonoBehaviour
     {
         if (_worldCanvas != null) { Destroy(_worldCanvas.gameObject); _worldCanvas = null; }
         _buttonObj = null;
-        _buttonLabel = null;
+        _nameLabel = null;
+        _priceLabel = null;
     }
 
     IEnumerator TrackWorldPosition(RectTransform rt)
@@ -230,17 +302,24 @@ public class Habitat : MonoBehaviour
 
     void UpdateButtonLabel()
     {
-        if (_buttonLabel == null) return;
+        if (_nameLabel == null && _priceLabel == null) return;
         if (_state != HabitatState.NotPlaced) return;
 
         var lm = LanguageManager.Instance;
-        string animalName = lm != null ? lm.Get(nameKey) : nameKey;
-        if (animalName == $"[{nameKey}]") animalName = nameKey;
 
-        string priceLine = lm != null ? lm.Get("shop_currency_short", cost) : cost.ToString();
-        if (priceLine == "[shop_currency_short]") priceLine = cost + " coins";
+        if (_nameLabel != null)
+        {
+            string animalName = lm != null ? lm.Get(nameKey) : nameKey;
+            if (animalName == $"[{nameKey}]") animalName = nameKey;
+            _nameLabel.text = animalName;
+        }
 
-        _buttonLabel.text = $"{animalName}\n{priceLine}";
+        if (_priceLabel != null)
+        {
+            string priceLine = lm != null ? lm.Get("shop_currency_short", cost) : cost.ToString();
+            if (priceLine == "[shop_currency_short]") priceLine = cost.ToString();
+            _priceLabel.text = priceLine;
+        }
     }
 
     IEnumerator ShakeButton()
