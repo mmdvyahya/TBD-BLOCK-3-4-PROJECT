@@ -3351,6 +3351,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -1.276001
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 754c7f7a0bb722f459c37127a51d1ebd, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a3a22f347ae5c2a48af223da40717226, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 754c7f7a0bb722f459c37127a51d1ebd, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: abb9d7c0a5ffee54081e20d51f5a48a7, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 754c7f7a0bb722f459c37127a51d1ebd, type: 3}
+      propertyPath: 'm_Materials.Array.data[2]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 11ae3eae638fa9b41a0a0c30d423548f, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 754c7f7a0bb722f459c37127a51d1ebd, type: 3}
+      propertyPath: 'm_Materials.Array.data[3]'
+      value: 
+      objectReference: {fileID: 2100000, guid: c6286c99ffd32d34eb15c5c296b421a9, type: 2}
     - target: {fileID: 919132149155446097, guid: 754c7f7a0bb722f459c37127a51d1ebd, type: 3}
       propertyPath: m_Name
       value: Djembe (2)
@@ -3780,6 +3796,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 63.850998
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 754c7f7a0bb722f459c37127a51d1ebd, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a3a22f347ae5c2a48af223da40717226, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 754c7f7a0bb722f459c37127a51d1ebd, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: abb9d7c0a5ffee54081e20d51f5a48a7, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 754c7f7a0bb722f459c37127a51d1ebd, type: 3}
+      propertyPath: 'm_Materials.Array.data[2]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 11ae3eae638fa9b41a0a0c30d423548f, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 754c7f7a0bb722f459c37127a51d1ebd, type: 3}
+      propertyPath: 'm_Materials.Array.data[3]'
+      value: 
+      objectReference: {fileID: 2100000, guid: c6286c99ffd32d34eb15c5c296b421a9, type: 2}
     - target: {fileID: 919132149155446097, guid: 754c7f7a0bb722f459c37127a51d1ebd, type: 3}
       propertyPath: m_Name
       value: Djembe (4)
@@ -5033,8 +5065,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BaboonSequenceButton
   buttonIndex: 3
-  normalColor: {r: 0, g: 0.6256571, b: 1, a: 1}
-  highlightColor: {r: 1, g: 1, b: 1, a: 1}
+  normalColor: {r: 0.34100214, g: 0.5903554, b: 0.9150943, a: 1}
+  highlightColor: {r: 0.92156863, g: 0.9411765, b: 0.93333334, a: 1}
   flashDuration: 0.35
   targetRenderer: {fileID: 614575525}
   colorMaterialNames:
@@ -6643,6 +6675,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -246.823
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 754c7f7a0bb722f459c37127a51d1ebd, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a3a22f347ae5c2a48af223da40717226, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 754c7f7a0bb722f459c37127a51d1ebd, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: abb9d7c0a5ffee54081e20d51f5a48a7, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 754c7f7a0bb722f459c37127a51d1ebd, type: 3}
+      propertyPath: 'm_Materials.Array.data[2]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 11ae3eae638fa9b41a0a0c30d423548f, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 754c7f7a0bb722f459c37127a51d1ebd, type: 3}
+      propertyPath: 'm_Materials.Array.data[3]'
+      value: 
+      objectReference: {fileID: 2100000, guid: c6286c99ffd32d34eb15c5c296b421a9, type: 2}
     - target: {fileID: 919132149155446097, guid: 754c7f7a0bb722f459c37127a51d1ebd, type: 3}
       propertyPath: m_Name
       value: Djembe (1)
@@ -6673,8 +6721,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BaboonSequenceButton
   buttonIndex: 0
-  normalColor: {r: 0, g: 1, b: 0.21511793, a: 1}
-  highlightColor: {r: 1, g: 1, b: 1, a: 1}
+  normalColor: {r: 0.7413335, g: 0.8490566, b: 0.3724635, a: 1}
+  highlightColor: {r: 0.92156863, g: 0.9411765, b: 0.93333334, a: 1}
   flashDuration: 0.35
   targetRenderer: {fileID: 774253386}
   colorMaterialNames:
@@ -14571,6 +14619,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -2.0130005
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 754c7f7a0bb722f459c37127a51d1ebd, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a3a22f347ae5c2a48af223da40717226, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 754c7f7a0bb722f459c37127a51d1ebd, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: abb9d7c0a5ffee54081e20d51f5a48a7, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 754c7f7a0bb722f459c37127a51d1ebd, type: 3}
+      propertyPath: 'm_Materials.Array.data[2]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 11ae3eae638fa9b41a0a0c30d423548f, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 754c7f7a0bb722f459c37127a51d1ebd, type: 3}
+      propertyPath: 'm_Materials.Array.data[3]'
+      value: 
+      objectReference: {fileID: 2100000, guid: c6286c99ffd32d34eb15c5c296b421a9, type: 2}
     - target: {fileID: 919132149155446097, guid: 754c7f7a0bb722f459c37127a51d1ebd, type: 3}
       propertyPath: m_Name
       value: Djembe (3)
@@ -14675,8 +14739,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BaboonSequenceButton
   buttonIndex: 2
-  normalColor: {r: 1, g: 0, b: 0.069015026, a: 1}
-  highlightColor: {r: 1, g: 1, b: 1, a: 1}
+  normalColor: {r: 0.8301887, g: 0.246707, b: 0.32679263, a: 1}
+  highlightColor: {r: 0.92156863, g: 0.9411765, b: 0.93333334, a: 1}
   flashDuration: 0.35
   targetRenderer: {fileID: 1450950304}
   colorMaterialNames:
@@ -14867,8 +14931,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BaboonSequenceButton
   buttonIndex: 1
-  normalColor: {r: 1, g: 0.9832283, b: 0, a: 1}
-  highlightColor: {r: 1, g: 1, b: 1, a: 1}
+  normalColor: {r: 0.9716981, g: 0.87102973, b: 0.36209506, a: 1}
+  highlightColor: {r: 0.92156863, g: 0.9411765, b: 0.93333334, a: 1}
   flashDuration: 0.35
   targetRenderer: {fileID: 1481008423}
   colorMaterialNames:

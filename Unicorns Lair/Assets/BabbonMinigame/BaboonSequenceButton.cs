@@ -45,7 +45,7 @@ public class BaboonSequenceButton : MonoBehaviour
 
     public int ButtonIndex => buttonIndex;
 
-    static readonly int ID_BaseColor = Shader.PropertyToID("_BaseColor");
+    static readonly int ID_BaseColor = Shader.PropertyToID("_Base_Color");
     static readonly int ID_Color = Shader.PropertyToID("_Color");
 
     private void Awake()
@@ -184,8 +184,12 @@ public class BaboonSequenceButton : MonoBehaviour
         foreach (var m in _tintMats)
         {
             if (m == null) continue;
-            if (m.HasProperty(ID_BaseColor)) m.SetColor(ID_BaseColor, c);
-            if (m.HasProperty(ID_Color)) m.SetColor(ID_Color, c);
+
+            if (m.HasProperty(ID_BaseColor))
+                m.SetColor(ID_BaseColor, c);
+
+            if (m.HasProperty(ID_Color))
+                m.SetColor(ID_Color, c);
         }
     }
 
