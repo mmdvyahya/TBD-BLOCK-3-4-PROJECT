@@ -269,6 +269,7 @@ public class BaboonSequenceManager : MonoBehaviour
     void CompleteMinigame()
 
     {
+        VictorySoundPlayer.Instance?.PlayVictorySound();
         DeviceVibration.Vibrate();
         _complete = true;
 

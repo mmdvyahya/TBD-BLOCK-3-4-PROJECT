@@ -295,6 +295,7 @@ public class HippoFoodSortingManager : MonoBehaviour
 
     void CompleteMinigame()
     {
+        VictorySoundPlayer.Instance?.PlayVictorySound();
         DeviceVibration.Vibrate();
         _state = SortingState.Complete;
         SetFoodName("");

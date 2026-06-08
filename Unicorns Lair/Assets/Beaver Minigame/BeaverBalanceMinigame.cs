@@ -246,6 +246,7 @@ public class BeaverBalanceMinigame : MonoBehaviour
 
     IEnumerator CompleteSequence()
     {
+        VictorySoundPlayer.Instance?.PlayVictorySound();
         DeviceVibration.Vibrate();
         _complete = true;
         _isRunning = false;

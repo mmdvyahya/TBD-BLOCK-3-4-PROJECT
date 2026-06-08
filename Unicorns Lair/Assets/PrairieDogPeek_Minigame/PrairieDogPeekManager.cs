@@ -275,6 +275,7 @@ public class PrairieDogPeekManager : MonoBehaviour
     void CompleteMinigame()
     {
         DeviceVibration.Vibrate();
+        VictorySoundPlayer.Instance?.PlayVictorySound();
         _complete = true;
         PlaytestLogger.Instance?.LogMinigameSuccess("PrairieDog");
         SetState(PrairieDogPeekState.Complete);

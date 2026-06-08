@@ -359,6 +359,7 @@ public class ParrotFeedingManager : MonoBehaviour
     private void CompleteMinigame()
     {
         DeviceVibration.Vibrate();
+        VictorySoundPlayer.Instance?.PlayVictorySound();
         if (currentState == ParrotFeedingState.Complete) return;
         currentState = ParrotFeedingState.Complete;
 

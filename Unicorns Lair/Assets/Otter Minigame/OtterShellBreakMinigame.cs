@@ -253,6 +253,7 @@ public class OtterShellBreakMinigame : MonoBehaviour
     private void CompleteMinigame()
     {
         DeviceVibration.Vibrate();
+        VictorySoundPlayer.Instance?.PlayVictorySound();
         isCompleted = true;
         isRunning = false;
 

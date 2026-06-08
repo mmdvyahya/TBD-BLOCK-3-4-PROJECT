@@ -278,6 +278,7 @@ public class RaccoonJarTwistMinigame : MonoBehaviour
     private IEnumerator FinishMinigame()
     {
         DeviceVibration.Vibrate();
+        VictorySoundPlayer.Instance?.PlayVictorySound();
         isFinished = true;
 
         if (_hintText != null) _hintText.text = SafeGet("minigame_complete", "Gefeliciteerd!");
